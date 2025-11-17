@@ -28,11 +28,15 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        CheckInputs();
-        HandleXInput();
-        HandleYInput();
+        CheckInputs();       
         Flip();
         Dash();       
+    }
+
+    private void FixedUpdate()
+    {
+        HandleXInput();
+        HandleYInput();
     }
 
     private void CheckInputs()
