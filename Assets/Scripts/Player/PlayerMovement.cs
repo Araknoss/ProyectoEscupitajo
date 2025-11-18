@@ -97,8 +97,5 @@ public class PlayerMovement : MonoBehaviour
         {
             onDash = false;
         }
-    }
-
-   
-
+    }     
 }
