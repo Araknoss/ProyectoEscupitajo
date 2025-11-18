@@ -3,12 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MouseMovement : MonoBehaviour
-{    void Update()
+{
+    [Header("Movement")]
+    [SerializeField] private float moveSpeed = 5f;
+    private Vector2 targetPosition;
+
+    [Header("Components")]
+    [SerializeField] private Rigidbody2D body;
+
+    private void Awake()
     {
-        MoveToMouse();
+        if (body == null)
+        {
+            body = GetComponent<Rigidbody2D>();
+        }
+        
+        targetPosition = body.position;
     }
-    private void MoveToMouse()
+
+    private void Update()
     {
-        gameObject.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+        UpdateMouseTarget();
+    }
+
+    private void FixedUpdate()
+    {
+        MoveToTarget();
+    }
+
+    private void UpdateMouseTarget()
+    {
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = transform.position.z;
+
+        targetPosition = mouseWorldPos;
+    }
+
+    private void MoveToTarget()
+    {        
+        Vector2 newPosition = Vector2.MoveTowards(body.position, targetPosition, moveSpeed * Time.fixedDeltaTime);
+        body.MovePosition(newPosition);
     }
 }
