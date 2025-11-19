@@ -678,6 +678,8 @@ GameObject:
   - component: {fileID: 1656907636}
   - component: {fileID: 1656907638}
   - component: {fileID: 1656907637}
+  - component: {fileID: 1656907640}
+  - component: {fileID: 1656907639}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -845,6 +847,56 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1656907639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656907632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c97c9acfdd405498b027116b202cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comboTimeout: 1.5
+  baseMultiplier: 1
+  repeatPenalty: 0.5
+  totalScore: 0
+  currentComboScore: 0
+  currentMultiplier: 0
+  comboActive: 0
+  comboTimer: 0
+  tricksInCurrentCombo: []
+--- !u!114 &1656907640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656907632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99df3c9a901fe2d4785d1d4fc1435288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInAir: 0
+  grabKey: 106
+  flipKey: 107
+  spinKey: 108
+  directionThreshold: 0.5
+  neutralGrabTrick: {fileID: 0}
+  upGrabTrick: {fileID: 0}
+  downGrabTrick: {fileID: 0}
+  leftGrabTrick: {fileID: 0}
+  rightGrabTrick: {fileID: 0}
+  neutralFlipTrick: {fileID: 0}
+  upFlipTrick: {fileID: 0}
+  downFlipTrick: {fileID: 0}
+  leftFlipTrick: {fileID: 0}
+  rightFlipTrick: {fileID: 0}
+  spinTrick: {fileID: 0}
+  comboManager: {fileID: 0}
 --- !u!4 &1666443393 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5726152325391540981, guid: 1bbb8c466b26bb043931478c49363ec8, type: 3}
