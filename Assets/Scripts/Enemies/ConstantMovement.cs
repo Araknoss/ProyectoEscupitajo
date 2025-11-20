@@ -13,6 +13,6 @@ public class ConstantMovement : MonoBehaviour
     }
     private void Move()
     {
-        rb.velocity = toRight ? new Vector2(1,1) * movementSpeed : new Vector2(-1,1) * movementSpeed;
+        rb.velocity = toRight ? new Vector2(1,rb.velocity.y) * movementSpeed : new Vector2(-1, rb.velocity.y) * movementSpeed;
     }
 }
