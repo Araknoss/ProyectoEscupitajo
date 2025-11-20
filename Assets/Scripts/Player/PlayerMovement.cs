@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
-    private bool mirandoDerecha;
+    [SerializeField] private bool lookingRight;
 
     [Header("Dash")]
     [SerializeField] private KeyCode dashKey;
@@ -21,11 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D body;  
-
-    private void Awake()
-    {
-        mirandoDerecha = true;
-    }
+  
     private void Update()
     {
         CheckInputs();       
@@ -63,14 +59,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Flip()
     {
-        if (xInput > 0 && !mirandoDerecha)
+        if (xInput > 0 && !lookingRight)
         {
-            mirandoDerecha = true;
+            lookingRight = true;
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
-        else if (xInput < 0 && mirandoDerecha)
+        else if (xInput < 0 && lookingRight)
         {
-            mirandoDerecha = false;
+            lookingRight = false;
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }        
     } 
@@ -82,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             onDash = true;
             timeOnDash = 0;           
             body.velocity = Vector2.zero;
-            if (mirandoDerecha)
+            if (lookingRight)
             {
                 body.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
             }

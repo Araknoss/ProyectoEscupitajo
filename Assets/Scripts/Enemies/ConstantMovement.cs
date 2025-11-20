@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ConstantMovement : MonoBehaviour
 {
-    [SerializeField] private Vector2 movementSpeed;
-    [SerializeField] private bool toRight;
+    [SerializeField] private Vector2 movementSpeed;   
     [SerializeField] private Rigidbody2D rb;
     private void FixedUpdate()
     {
@@ -13,6 +12,6 @@ public class ConstantMovement : MonoBehaviour
     }
     private void Move()
     {
-        rb.velocity = toRight ? new Vector2(1,rb.velocity.y) * movementSpeed : new Vector2(-1, rb.velocity.y) * movementSpeed;
+        rb.velocity = new Vector2(1, rb.velocity.y) * movementSpeed;
     }
 }
