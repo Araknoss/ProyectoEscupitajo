@@ -16,23 +16,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private KeyCode dashKey;
     [SerializeField] private float dashTime;
     [SerializeField] private float dashForce;
-    private float timeOnDash;    
-    private bool onDash;    
+    private float timeOnDash;
+    private bool onDash;
 
     [Header("Components")]
-    [SerializeField] private Rigidbody2D body;  
-  
+    [SerializeField] private Rigidbody2D body;
+
     private void Update()
     {
-        CheckInputs();       
+        CheckInputs();
         Flip();
-        Dash();       
+        Dash();
     }
 
     private void FixedUpdate()
     {
-        HandleXInput();
-        HandleYInput();
+        HandleMovement();
     }
 
     private void CheckInputs()
@@ -41,20 +40,20 @@ public class PlayerMovement : MonoBehaviour
         yInput = Input.GetAxisRaw("Vertical");
     }
 
-    private void HandleXInput()
+    // Reemplaza HandleXInput + HandleYInput: normaliza el vector de entrada
+    // para que la velocidad total no aumente al moverse en diagonal.
+    private void HandleMovement()
     {
-        if (!onDash)
-        {
-            body.velocity = new Vector2(xInput * moveSpeed, body.velocity.y);
-        }        
-    }
+        if (onDash) return;
 
-    private void HandleYInput()
-    {
-        if (!onDash)
+        Vector2 input = new Vector2(xInput, yInput);
+        
+        if (input.sqrMagnitude > 1f)
         {
-            body.velocity = new Vector2(body.velocity.x, yInput * moveSpeed);
+            input = input.normalized;
         }
+
+        body.velocity = input * moveSpeed;
     }
 
     private void Flip()
@@ -68,15 +67,15 @@ public class PlayerMovement : MonoBehaviour
         {
             lookingRight = false;
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        }        
-    } 
+        }
+    }
 
     private void Dash()
     {
         if (Input.GetKeyDown(dashKey))
         {
             onDash = true;
-            timeOnDash = 0;           
+            timeOnDash = 0;
             body.velocity = Vector2.zero;
             if (lookingRight)
             {
@@ -93,5 +92,5 @@ public class PlayerMovement : MonoBehaviour
         {
             onDash = false;
         }
-    }     
+    }
 }
