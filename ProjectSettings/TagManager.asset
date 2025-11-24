@@ -46,3 +46,6 @@ TagManager:
   - name: StaticObstacles
     uniqueID: 3483305567
     locked: 0
+  - name: DynamicObstacles
+    uniqueID: 4089440373
+    locked: 0
