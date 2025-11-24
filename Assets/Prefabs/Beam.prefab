@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3924855700886507069}
   m_Layer: 0
   m_Name: Beam
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: {x: 0, y: 5}
-  toRight: 0
   rb: {fileID: 9120977012407370892}
 --- !u!50 &9120977012407370892
 Rigidbody2D:
