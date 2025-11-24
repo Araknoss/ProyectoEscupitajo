@@ -8,7 +8,7 @@ public class CollisionDetection : MonoBehaviour
     public GameEvent onPlayerDeath;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Floor"))
+        if(collision.gameObject.CompareTag("Obstacle"))
         {
             onPlayerDeath.Raise(this, collision);
             Debug.Log("Player collided with Floor");
