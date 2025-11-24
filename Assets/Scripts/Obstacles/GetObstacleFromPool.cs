@@ -45,22 +45,12 @@ public class GetObstacleFromPool : MonoBehaviour
             spawnPos.y += heightOffset;
 
             pooledObject.transform.position = spawnPos;
+            pooledObject.transform.localScale = spawnLeft ? Vector3.one : new Vector3(-1f, 1f, 1f);
             pooledObject.SetActive(true);
 
-            // Reset físico si tiene Rigidbody2D para evitar velocidades residuales
-            var rb2d = pooledObject.GetComponent<Rigidbody2D>();
-            if (rb2d != null)
-            {
-                rb2d.velocity = Vector2.zero;
-                rb2d.angularVelocity = 0f;
-            }
-
-            // Configurar TransformMovement si existe
             var tm = pooledObject.GetComponent<TransformMovement>();
             if (tm != null)
-            {
-                // Si spawnea a la izquierda, mover hacia la derecha (1).
-                // Si spawnea a la derecha, mover hacia la izquierda (-1).
+            {                
                 tm.SetHorizontalDirection(spawnLeft ? 1 : -1);                
             }
         }

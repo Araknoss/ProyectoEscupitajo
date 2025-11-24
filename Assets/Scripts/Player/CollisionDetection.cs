@@ -14,4 +14,14 @@ public class CollisionDetection : MonoBehaviour
             Debug.Log("Player collided with Floor");
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            onPlayerDeath.Raise(this, collision);
+            Debug.Log("Player triggered with Obstacle");
+        }
+    }
 }
+

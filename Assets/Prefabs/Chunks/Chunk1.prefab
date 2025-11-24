@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6593fa4d3b5624f9e52ab2f5d354ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 3
   direction: {x: 0, y: 1, z: 0}
 --- !u!1001 &4002564781094936983
 PrefabInstance:
@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4380629284808359784, guid: af7b3ffc93535f64f86716f6af8eb304, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.7487047
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
