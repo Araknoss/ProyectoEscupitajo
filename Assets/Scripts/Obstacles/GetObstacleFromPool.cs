@@ -17,10 +17,8 @@ public class GetObstacleFromPool : MonoBehaviour
             if (pooledObject != null)
             {
                 pooledObject.transform.position = initialTransform.position;
-                pooledObject.GetComponent<Rigidbody>().AddForce(Vector3.up * bulletForce, ForceMode.Impulse);
-                
-            }
-            
+                pooledObject.GetComponent<Rigidbody>().AddForce(Vector3.up * bulletForce, ForceMode.Impulse);                
+            }            
         }
     }
 }
