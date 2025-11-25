@@ -6,14 +6,26 @@ using UnityEngine;
 public class CollisionDetection : MonoBehaviour
 {
     public GameEvent onPlayerDeath;
+    public GameEvent onWallDetection;
     private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("Obstacle"))
+    {        
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            onPlayerDeath.Raise(this, collision);
-            Debug.Log("Player collided with Floor");
+            onWallDetection.Raise(this, true);
+            Debug.Log("Player collided with Wall");
         }
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            onWallDetection.Raise(this, false);
+            Debug.Log("Player exited collision with Wall");
+        }
+    }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,7 +33,7 @@ public class CollisionDetection : MonoBehaviour
         {
             onPlayerDeath.Raise(this, collision);
             Debug.Log("Player triggered with Obstacle");
-        }
+        }        
     }
 }
 

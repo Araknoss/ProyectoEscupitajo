@@ -5,13 +5,16 @@ using UnityEngine;
 public class AirComboInput : MonoBehaviour
 {
     [Header("State")]
-    [SerializeField] private bool isInAir;
+    [SerializeField] private bool isInWall;
 
     [Header("Inputs")]
     [SerializeField] private KeyCode grabKey = KeyCode.J;
     [SerializeField] private KeyCode flipKey = KeyCode.K;
     [SerializeField] private KeyCode spinKey = KeyCode.L;
     [SerializeField] private float directionThreshold = 0.5f;
+
+    [Header("Wall Tricks")]
+    [SerializeField] private Trick wallStaticTrick;
 
     [Header("Grab Tricks")]
     [SerializeField] private Trick neutralGrabTrick;
@@ -48,11 +51,12 @@ public class AirComboInput : MonoBehaviour
     {
         CheckInputs();
 
-        if (!isInAir)
+        if (isInWall)
         {
+            HandleWallInput();
             return;
         }
-
+        
         HandleGrabInput();
         HandleFlipInput();
         HandleSpinInput();
@@ -64,6 +68,17 @@ public class AirComboInput : MonoBehaviour
         yInput = Input.GetAxisRaw("Vertical");
     }
 
+    private void HandleWallInput()
+    {
+        if (!Input.GetKeyDown(grabKey))
+        {
+            return;
+        }
+        if (wallStaticTrick != null)
+        {
+            comboManager.AddTrick(wallStaticTrick);
+        }
+    }
     private void HandleGrabInput()
     {
         if (!Input.GetKeyDown(grabKey))
@@ -137,9 +152,9 @@ public class AirComboInput : MonoBehaviour
         comboManager.AddTrick(spinTrick);
     }
 
-    public void SetIsInAir(bool value)
+    public void SetIsInWall(bool value)
     {
-        isInAir = value;
+        isInWall = value;
     }
 }
 

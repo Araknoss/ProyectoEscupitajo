@@ -18,15 +18,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashForce;
     private float timeOnDash;
     private bool onDash;
+    private bool isInWall;
 
     [Header("Components")]
-    [SerializeField] private Rigidbody2D body;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Rigidbody2D body;    
 
     private void Update()
     {
         CheckInputs();
         Flip();
-        Dash();
+        WallDash();
     }
 
     private void FixedUpdate()
@@ -58,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Flip()
     {
+        if (onDash) return;
+        
         if (xInput > 0 && !lookingRight)
         {
             lookingRight = true;
@@ -70,14 +74,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Dash()
+    private void WallDash()
     {
-        if (Input.GetKeyDown(dashKey))
+        if (Input.GetKeyDown(dashKey) && isInWall)
         {
             onDash = true;
             timeOnDash = 0;
             body.velocity = Vector2.zero;
-            if (lookingRight)
+            animator.SetTrigger("Dash");
+            if (!lookingRight)
             {
                 body.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
             }
@@ -91,6 +96,14 @@ public class PlayerMovement : MonoBehaviour
         if (timeOnDash >= dashTime)
         {
             onDash = false;
+        }
+    }
+
+    public void SetIsInWall(Component sender, object data)
+    {
+        if (data is bool)
+        {
+            isInWall = (bool)data;
         }
     }
 }

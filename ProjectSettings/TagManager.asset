@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Obstacle
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -48,4 +49,7 @@ TagManager:
     locked: 0
   - name: DynamicObstacles
     uniqueID: 4089440373
+    locked: 0
+  - name: Effects
+    uniqueID: 3326677257
     locked: 0
