@@ -22,7 +22,6 @@ public class ScoreManager : MonoBehaviour
             updateTimer = 0f;
         }
     }
-
     private void AddScore(int points)
     {       
         score += points;
@@ -34,7 +33,15 @@ public class ScoreManager : MonoBehaviour
         score = points;
         onScoreChanged.Raise(this, score);
     }
-    
+
+    public void HandleTrickPerformed(Component sender, object data)
+    {
+        if(data is not Trick) return;
+
+        Trick trick = (Trick)data;
+        AddScore(trick.baseScore);
+    }
+
 
 
 }

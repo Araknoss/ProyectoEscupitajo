@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
             onDash = true;
             timeOnDash = 0;
             body.velocity = Vector2.zero;
-            animator.SetTrigger("Dash");
+            //animator.SetTrigger("Dash");
             if (!lookingRight)
             {
                 body.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
