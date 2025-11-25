@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class ChunkManager : MonoBehaviour
 {
-    private ChunkPooler _pooler;
+    private ChunkPooler _pooler;    
     private GameObject chunk;
     private GameObject newChunk;
     [SerializeField] private Vector3 spawnPosition;
     [SerializeField] private float spawnHeight = 50f;
     [SerializeField] private float dispawnHeight = 70f;
+    [SerializeField] private float chunkSpeed;
     void Start()
     {
         _pooler=gameObject.GetComponent<ChunkPooler>();
         chunk = _pooler.GetPooledObject(); //Lo activa antes de usarlo
         chunk.transform.position = spawnPosition;
+        chunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
     }
 
     void Update()
@@ -35,5 +37,24 @@ public class ChunkManager : MonoBehaviour
     {
         newChunk = _pooler.GetRandomPooledObject(); //Lo activa             
         newChunk.transform.position = spawnPosition;
+        newChunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
+    }
+
+    public void SetChunkSpeed(Component sender, object data)
+    {
+        if(sender is DebugTools && data is float)
+        {
+            Debug.Log("Chunk speed changed to: " + data);
+            chunkSpeed = (float)data;
+            if (chunk != null)
+            {
+                chunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
+            }
+            if (newChunk != null)
+            {
+                newChunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
+            }
+        }
+        
     }
 }

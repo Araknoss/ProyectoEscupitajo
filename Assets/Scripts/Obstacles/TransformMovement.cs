@@ -23,4 +23,9 @@ public class TransformMovement : MonoBehaviour
         if (directionSign == 0) return;
         direction = new Vector3(Mathf.Sign(directionSign), 0f, 0f);
     }
+
+    public void SetSpeed(float speed)
+    {
+        movementSpeed = speed;
+    }
 }

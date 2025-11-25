@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class DebugTools : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameEvent onSliderValueChanged;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private Slider chunkSpeedSlider;
+
+    public void SetChunkSpeed()
     {
-        
+        onSliderValueChanged.Raise(this, chunkSpeedSlider.value);
     }
 }
