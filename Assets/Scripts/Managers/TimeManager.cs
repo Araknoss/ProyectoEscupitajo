@@ -12,4 +12,17 @@ public class TimeManager : MonoBehaviour
     {
         Time.timeScale = timeScale;
     }
+
+    public void HandleOnGamePause(Component sender, object data)
+    {
+        bool isPaused = (bool)data;
+        if (isPaused)
+        {
+            SetTime(0f);
+        }
+        else
+        {
+            SetTime(1f);
+        }
+    }
 }
