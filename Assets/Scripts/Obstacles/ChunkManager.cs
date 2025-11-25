@@ -41,9 +41,7 @@ public class ChunkManager : MonoBehaviour
     }
 
     public void SetChunkSpeed(Component sender, object data)
-    {
-        if(sender is DebugTools && data is float)
-        {
+    {        
             Debug.Log("Chunk speed changed to: " + data);
             chunkSpeed = (float)data;
             if (chunk != null)
@@ -53,8 +51,6 @@ public class ChunkManager : MonoBehaviour
             if (newChunk != null)
             {
                 newChunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
-            }
-        }
-        
+            }    
     }
 }

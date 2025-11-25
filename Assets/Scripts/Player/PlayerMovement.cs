@@ -106,4 +106,9 @@ public class PlayerMovement : MonoBehaviour
             isInWall = (bool)data;
         }
     }
+
+    public void SetPlayerSpeed(Component sender, object data)
+    {        
+        moveSpeed = (float)data;        
+    }
 }

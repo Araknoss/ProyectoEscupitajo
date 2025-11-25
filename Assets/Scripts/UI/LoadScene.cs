@@ -6,6 +6,14 @@ using UnityEngine.SceneManagement;
 public class LoadScene : MonoBehaviour
 {
     [SerializeField] private float delayDuration = 1f;
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
     public void LoadByIndexAfterDelay(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
