@@ -26,7 +26,8 @@ public class TrickScoreTextUI : MonoBehaviour
     }
 
     private void OnEnable()
-    {        
+    {      
+        
         PlayAnimation();
     }
 
