@@ -21,11 +21,20 @@ public class TricksManager : MonoBehaviour
     private float inWallTimer;
     private float inWallTrickThreshold = 0.1f;
 
+    [Header("Flip Tricks")]
+    [SerializeField] private Trick horizontalFlip;
+    [SerializeField] private Trick backFlip;
+    [SerializeField] private float backFlipBufferTime = 0.3f;
+    private bool canDoBackFlip = false;
+    private float backFlipBufferTimer = 0f;
 
-
-    private float xInput;
-    private float yInput;
-    private bool trickInput;
+    [Header("Inputs")]
+    private bool jumpInput;
+    private bool grabTrickInput;
+    private bool flipTrickInput;
+    [SerializeField] private KeyCode grabTrickKey;
+    [SerializeField] private KeyCode flipTrickKey;
+    [SerializeField] private float inputBufferTime = 0.1f;
     private void Awake()
     {
         if (comboManager == null)
@@ -37,12 +46,16 @@ public class TricksManager : MonoBehaviour
     {
         CheckInputs();        
         HandleWallTricks();
+        HandleOnAirTricks();
+        HandleBackFlipBuffer();
     }
     private void CheckInputs()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
-        trickInput = Input.GetButtonDown("Jump");
+        //xInput = Input.GetAxisRaw("Horizontal");
+        //yInput = Input.GetAxisRaw("Vertical");
+        jumpInput = Input.GetButtonDown("Jump");
+        grabTrickInput = Input.GetKeyDown(grabTrickKey);
+        flipTrickInput = Input.GetKeyDown(flipTrickKey);
     }
     private void HandleWallTricks()
     {
@@ -54,7 +67,7 @@ public class TricksManager : MonoBehaviour
                 inWallTimer = 0f;
                 onTrickPerformed.Raise(this, wallSlide);                
             }
-            if(trickInput)
+            if(jumpInput)
             {
                 onTrickPerformed.Raise(this, wallJump);
                 animator.SetTrigger("wallJump");
@@ -65,6 +78,39 @@ public class TricksManager : MonoBehaviour
             inWallTimer = 0f;
         }
     }
+    
+
+    private void HandleOnAirTricks()
+    {
+        if (grabTrickInput && !isInWall)
+        {
+            onTrickPerformed.Raise(this, horizontalFlip);
+            canDoBackFlip = true;
+            backFlipBufferTimer = backFlipBufferTime;
+            animator.SetTrigger("horizontalFlip");
+        }
+        else if (flipTrickInput && canDoBackFlip && !isInWall)
+        {
+            onTrickPerformed.Raise(this, backFlip);
+            canDoBackFlip = false;
+            backFlipBufferTimer = 0f;
+            animator.SetTrigger("backFlip");
+        }
+    }
+
+    private void HandleBackFlipBuffer()
+    {
+        if (canDoBackFlip)
+        {
+            backFlipBufferTimer -= Time.deltaTime;
+            if (backFlipBufferTimer <= 0f)
+            {
+                canDoBackFlip = false;
+                backFlipBufferTimer = 0f;
+            }
+        }
+    }
+  
     public void SetIsInWall(Component sender, object data)
     {
         if(data is bool)

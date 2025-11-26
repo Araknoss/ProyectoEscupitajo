@@ -11,8 +11,13 @@ public class LoadScene : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(1);
+            ResetLevel();
+
         }
+    }    
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void LoadByIndexAfterDelay(int sceneIndex)
     {

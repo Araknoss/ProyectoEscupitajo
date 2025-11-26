@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
+  m_Name: BackFlip
+  m_EditorClassIdentifier: 
+  trickAnimation: {fileID: 7400000, guid: 98db49118c5b1bd47bd015cb979341ba, type: 2}
+  trickName: BackFlip
+  baseScore: 100
+  difficultyMultiplier: 1
+  extraMultiplier: 0
