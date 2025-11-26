@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ScoreText : MonoBehaviour
+public class ScoreTextUI : MonoBehaviour
 {
     private TextMeshProUGUI scoreText;
     [SerializeField] private float returnAnimationSpeed=5f;

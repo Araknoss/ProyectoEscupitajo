@@ -22,7 +22,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private Animator animator;
-    [SerializeField] private Rigidbody2D body;    
+    [SerializeField] private Rigidbody2D body;
+    [SerializeField] private GameObject spriteObject;
 
     private void Update()
     {
@@ -65,12 +66,12 @@ public class PlayerMovement : MonoBehaviour
         if (xInput > 0 && !lookingRight)
         {
             lookingRight = true;
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            spriteObject.transform.localScale = new Vector3(-spriteObject.transform.localScale.x, spriteObject.transform.localScale.y, spriteObject.transform.localScale.z);
         }
         else if (xInput < 0 && lookingRight)
         {
             lookingRight = false;
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            spriteObject.transform.localScale = new Vector3(-spriteObject.transform.localScale.x, spriteObject.transform.localScale.y, spriteObject.transform.localScale.z);
         }
     }
 

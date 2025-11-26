@@ -9,13 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4498833231828548051}
+  - component: {fileID: 5896162138720363171}
   m_Layer: 0
   m_Name: TrickScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4498833231828548051
 Transform:
   m_ObjectHideFlags: 0
@@ -32,6 +33,20 @@ Transform:
   - {fileID: 6910156893279135579}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5896162138720363171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6603846404768819305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6593fa4d3b5624f9e52ab2f5d354ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 10
+  direction: {x: 0, y: 1, z: 0}
 --- !u!1 &6912156417878305567
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,10 +58,10 @@ GameObject:
   - component: {fileID: 6371612589075309767}
   - component: {fileID: 190545169004915402}
   - component: {fileID: 7240576039501904479}
-  - component: {fileID: 1632684162449227709}
-  - component: {fileID: 6088634123156492651}
+  - component: {fileID: 811701959274612870}
+  - component: {fileID: 8112803587811883154}
   m_Layer: 5
-  m_Name: ScoreText
+  m_Name: TrickScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,11 +81,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6910156893279135579}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 1}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &190545169004915402
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -168,7 +183,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1632684162449227709
+--- !u!114 &811701959274612870
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,38 +192,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 6912156417878305567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fd2b438e179d364faa82c47b52d74bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a24c396c05219441b544ddb19fb9b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnAnimationSpeed: 10
---- !u!114 &6088634123156492651
-MonoBehaviour:
+  showDuration: 0.5
+  stayDuration: 1.5
+  hideDuration: 0.5
+  parent: {fileID: 6603846404768819305}
+  text: {fileID: 7240576039501904479}
+--- !u!225 &8112803587811883154
+CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6912156417878305567}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: d0169634b8d299a4d8097d01613493da, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1632684162449227709}
-        m_TargetAssemblyTypeName: ScoreText, Assembly-CSharp
-        m_MethodName: UpdateScoreText
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &8724840554582236201
 GameObject:
   m_ObjectHideFlags: 0

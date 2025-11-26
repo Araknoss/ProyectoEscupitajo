@@ -28,4 +28,9 @@ public class TransformMovement : MonoBehaviour
     {
         movementSpeed = speed;
     }
+
+    public void SetInitialPosition(Vector3 position)
+    {
+        gameObject.transform.position = position;
+    }
 }
