@@ -1889,10 +1889,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb26ffb5c8aede41af3da2f38ed7bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showDuration: 0
   stayDuration: 1
   hideDuration: 0.2
-  returnAnimationSpeed: 1
+  returnAnimationSpeed: 5
   text: {fileID: 1900208196}
   canvasGroup: {fileID: 460114071}
 --- !u!114 &460114073

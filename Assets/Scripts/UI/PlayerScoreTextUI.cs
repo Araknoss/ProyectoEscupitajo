@@ -1,16 +1,18 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 
 public class PlayerScoreTextUI : MonoBehaviour
 {
-    [Header("Settings")]
-    public float showDuration = 0.05f;
-    public float stayDuration = 1f;
-    public float hideDuration = 0.2f;
-    public float returnAnimationSpeed = 5f;
+    [Header("Animation")]    
+    [SerializeField] private float stayDuration = 1f;
+    [SerializeField] private float hideDuration = 0.2f;
+    [SerializeField] private float returnAnimationSpeed = 5f;
+
+    private float temporaryScore = 0f;
 
     [Header("References")]    
     [SerializeField] private TextMeshProUGUI text;
@@ -19,35 +21,45 @@ public class PlayerScoreTextUI : MonoBehaviour
 
     private void Update()
     {
-        text.transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, Time.deltaTime * returnAnimationSpeed);
+        text.transform.localScale = Vector3.Lerp(text.transform.localScale, Vector3.one, Time.deltaTime * returnAnimationSpeed);
     }
     public void HandleTrickPerformed(Component sender, object data)
     {
         if (data is Trick)
         {
             Trick trick = (Trick)data;
-            text.text = "+ " + trick.baseScore.ToString();
-
-            text.gameObject.SetActive(true);
+            AddTemporaryScore(trick.baseScore);
 
             currentTween?.Kill();
-
             PlayAnimation();
         }
     }
     private void PlayAnimation()
-    {
-        // Reset state
+    {       
+        //Reset state
+        text.gameObject.SetActive(true);        
         canvasGroup.alpha = 1f;
-        text.transform.localScale = Vector3.one * 1.3f;
+        text.transform.localScale = Vector3.one * 1.3f;        
 
-        // Sequence
         Sequence seq = DOTween.Sequence();
 
         seq.AppendInterval(stayDuration)
-           .Append(canvasGroup.DOFade(0f, hideDuration))           
-           .OnComplete(() => text.gameObject.SetActive(false));
+           .Append(canvasGroup.DOFade(0f, hideDuration))
+           .OnComplete(() => EndAnimation());
 
         currentTween = seq;
+    }
+
+    private void EndAnimation()
+    {
+        text.gameObject.SetActive(false);
+        temporaryScore = 0f;
+        currentTween?.Kill();
+    }
+
+    private void AddTemporaryScore(int score)
+    {
+        temporaryScore += score;
+        text.text = "+" + temporaryScore.ToString();
     }
 }
