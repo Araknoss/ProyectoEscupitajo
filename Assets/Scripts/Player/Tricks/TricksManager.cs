@@ -5,6 +5,9 @@ using UnityEngine;
 public class TricksManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private float trickCooldown;
+    private float trickCooldownTimer=0f;
+    private bool isOnCooldown = false;
 
     [Header("State")]
     [SerializeField] private bool isInWall;     
@@ -27,7 +30,7 @@ public class TricksManager : MonoBehaviour
     [SerializeField] private float backFlipBufferTime = 0.3f;
     private bool canDoBackFlip = false;
     private float backFlipBufferTimer = 0f;
-
+  
     [Header("Inputs")]
     private bool jumpInput;
     private bool grabTrickInput;
@@ -48,6 +51,7 @@ public class TricksManager : MonoBehaviour
         HandleWallTricks();
         HandleOnAirTricks();
         HandleBackFlipBuffer();
+        HandleTrickCooldown();
     }
     private void CheckInputs()
     {
@@ -82,12 +86,13 @@ public class TricksManager : MonoBehaviour
 
     private void HandleOnAirTricks()
     {
-        if (grabTrickInput && !isInWall)
+        if (grabTrickInput && !isInWall && !isOnCooldown)
         {
             onTrickPerformed.Raise(this, horizontalFlip);
             canDoBackFlip = true;
             backFlipBufferTimer = backFlipBufferTime;
             animator.SetTrigger("horizontalFlip");
+            isOnCooldown = true; //Solo se lo añado aqui para que no puedas spamear el combo pero si puedas encadenarlo
         }
         else if (flipTrickInput && canDoBackFlip && !isInWall)
         {
@@ -106,7 +111,20 @@ public class TricksManager : MonoBehaviour
             if (backFlipBufferTimer <= 0f)
             {
                 canDoBackFlip = false;
-                backFlipBufferTimer = 0f;
+                backFlipBufferTimer = backFlipBufferTime;
+            }
+        }
+    }
+
+    private void HandleTrickCooldown()
+    {
+        if (isOnCooldown)
+        {
+            trickCooldownTimer += Time.deltaTime;
+            if (trickCooldownTimer >= trickCooldown)
+            {
+                isOnCooldown = false;
+                trickCooldownTimer = 0;
             }
         }
     }

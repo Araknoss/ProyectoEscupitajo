@@ -17,6 +17,11 @@ public class DebugTools : MonoBehaviour
     [SerializeField] private Slider playerSpeedSlider;
     [SerializeField] private TextMeshProUGUI playerSpeedText;
 
+    [Header("Camera Size")]
+    [SerializeField] private Slider cameraSizeSlider;
+    [SerializeField] private TextMeshProUGUI cameraSizeText;
+    [SerializeField] private List<GameObject> limits = new List<GameObject>();
+
     public void SetChunkSpeed()
     {
         onChunkSpeedChanged.Raise(this, chunkSpeedSlider.value);
@@ -28,4 +33,23 @@ public class DebugTools : MonoBehaviour
         onPlayerSpeedChanged.Raise(this, playerSpeedSlider.value);
         playerSpeedText.text = "Player Speed: " + playerSpeedSlider.value.ToString("");
     }    
+
+    public void SetCameraSize()
+    {
+        Camera.main.orthographicSize = cameraSizeSlider.value;
+        cameraSizeText.text = "Camera Size: " + cameraSizeSlider.value.ToString("");
+        int limitIndex = (int)cameraSizeSlider.value;
+        for(int i=0;i<limits.Count;i++)
+        {
+            if(i+5== limitIndex)
+            {
+                limits[i].SetActive(true);
+            }
+            else
+            {
+                limits[i].SetActive(false);
+            }
+        }
+
+    }
 }
