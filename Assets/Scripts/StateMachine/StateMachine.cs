@@ -12,8 +12,31 @@ public class StateMachine
         {
             state?.Exit();
             state = newState;
-            state.Initialize(this);
+            state.Initialise(this);
             state.Enter();
         }
     }
+
+    public List<State> GetActiveStateBranch(List<State> list = null)
+    {
+        if (list == null)
+        {
+            list = new List<State>();
+        }
+
+        if (state == null)
+        {
+            return list;
+        }
+        if (state.machine == this)
+        {
+            list.Add(state);
+            return list;
+        }
+
+        list.Add(state);
+        return state.machine.GetActiveStateBranch(list);
+    }
 }
+
+

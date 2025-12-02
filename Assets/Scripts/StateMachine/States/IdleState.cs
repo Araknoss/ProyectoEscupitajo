@@ -14,6 +14,9 @@ public class IdleState : State
         
     }
 
-    public override void FixedDo() { }
+    public override void FixedDo() 
+    {
+        body.velocity = Vector2.zero;
+    }
     public override void Exit() { }
 }

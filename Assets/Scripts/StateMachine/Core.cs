@@ -14,18 +14,27 @@ public abstract class Core : MonoBehaviour
 
     protected void Set(State newState, bool forceReset = false)
     {
-        machine.Set(newState, forceReset);
-        actualState = newState;
+        machine.Set(newState, forceReset);        
     }
-    public void SetupStates()
+
+    public void SetupInstances()
     {
         machine = new StateMachine();
-        
         State[] allChildStates = GetComponentsInChildren<State>();
         foreach(State state in allChildStates)
         {
-            state.SetCore(this,machine);
-            Debug.Log(state);
+            state.SetCore(this,machine);            
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+#if UNITY_EDITOR
+        if (Application.isPlaying && state!=null)
+        {
+            List<State> activeStates = machine.GetActiveStateBranch();
+            UnityEditor.Handles.Label(transform.position, "Active States: " +string.Join(" > ",activeStates));
+        }
+#endif
     }
 }

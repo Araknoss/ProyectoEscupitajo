@@ -8,21 +8,20 @@ public class PlayerController : Core
 {
     [Header("States")]    
     [SerializeField] private IdleState idleState;   
+    [SerializeField] private MoveState moveState;
+    [SerializeField] private WallState wallState;  
+    [SerializeField] private JumpState jumpState;
 
-    [Header("State Variables")] //They can be modified from each state
-
+    [Header("Internal Variables")]
+    public bool onJump;
 
     [Header("Inputs")]
     [SerializeField] private PlayerController playerInputs;
     public float xInput { get; private set; }
+    public float yInput { get; private set; }
     public bool startJumpInput { get; private set; }
-    public bool jumpInput { get; private set; }
-
-
-    public float moveSpeed;
-    public bool lookingRight { get; private set; }
-    [SerializeField] private float jumpForce;
-
+    public bool jumpInput { get; private set; }   
+    public bool lookingRight { get; private set; }   
 
     private void Awake()
     {
@@ -30,14 +29,13 @@ public class PlayerController : Core
     }
     private void Start()
     {       
-        SetupStates();
+        SetupInstances();
         ResetBools();        
         Set(idleState);
     }
     private void Update()
     {
-        InitializeInputs();
-        HandleJumpInput();
+        InitializeInputs();      
         SelectState();             
         FlipSprite();       
         state.Do();
@@ -49,21 +47,30 @@ public class PlayerController : Core
     }
     private void SelectState()
     {
+        if(groundSensor.grounded)
+        {
+            if (startJumpInput || onJump)
+            {
+                Set(jumpState);
+                return;
+            }
+            Set(wallState);            
+            return;
+        }
+        if (xInput!=0 || yInput !=0)
+        {
+            Set(moveState);
+            return;
+        }
         Set(idleState);
     }
     void InitializeInputs()
     {
         xInput = Input.GetAxisRaw("Horizontal");
+        yInput=Input.GetAxisRaw("Vertical");
         startJumpInput = Input.GetButtonDown("Jump");
         jumpInput = Input.GetButton("Jump");
-    }
-    private void HandleJumpInput()
-    {
-        if (startJumpInput && groundSensor.grounded)
-        {
-            body.AddForce(groundSensor.GroundNormal() * jumpForce, ForceMode2D.Impulse);
-        }
-    }    
+    }     
     private void CheckGround()
     {
         if (groundSensor.grounded)
@@ -88,5 +95,6 @@ public class PlayerController : Core
 
     private void ResetBools()
     {
+        //Reset all the bool inputs here
     }
 }

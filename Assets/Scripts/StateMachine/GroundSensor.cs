@@ -39,8 +39,9 @@ public class GroundSensor : MonoBehaviour
                 col.GetContacts(contactPoints);
 
                 if (contactPoints.Count > 0)
-                {                    
-                    return contactPoints[0].normal;
+                {
+                    Debug.DrawRay(transform.position, contactPoints[0].normal, Color.red, 1f);
+                    return contactPoints[0].normal;                    
                 }
             }
         }

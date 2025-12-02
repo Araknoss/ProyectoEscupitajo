@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = input * moveSpeed;
     }
 
+
     private void Flip()
     {
         if (onDash) return;
