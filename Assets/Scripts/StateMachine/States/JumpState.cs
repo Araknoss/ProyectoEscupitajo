@@ -15,7 +15,7 @@ public class JumpState : State
     public override void Enter()
     {
         animator.Play(moveAnimation.name);
-        jumpDirection = groundSensor.GroundNormal();
+        jumpDirection = _input.lookingRight ? Vector2.left : Vector2.right;
         _input.onJump = true;
     }
     public override void Do()
@@ -30,5 +30,8 @@ public class JumpState : State
     {        
         body.AddForce(jumpDirection * jumpForce, ForceMode2D.Impulse);        
     }
-    public override void Exit() { }
+    public override void Exit() 
+    {
+        _input.onJump = false;
+    }
 }
