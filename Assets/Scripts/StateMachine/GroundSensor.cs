@@ -11,6 +11,7 @@ public class GroundSensor : MonoBehaviour
     private ContactFilter2D contactFilter;
     private Collider2D[] results = new Collider2D[5];
     private List<ContactPoint2D> contactPoints = new List<ContactPoint2D>();
+    public Vector2 groundNormal;
     private void FixedUpdate()
     {
         CheckGround();
@@ -19,33 +20,54 @@ public class GroundSensor : MonoBehaviour
     private void CheckGround()
     {
         grounded = groundCheckCollider.IsTouchingLayers(groundLayer);
-    }
-
-    public Vector2 GroundNormal()
-    {
-        contactPoints.Clear();
-        
-        int count = groundCheckCollider.OverlapCollider(contactFilter, results);
-
-        if (count == 0)
-            return Vector2.zero;
-        
-        for (int i = 0; i < count; i++)
+        if (grounded)
         {
-            Collider2D col = results[i];
-
-            if (col != null)
+            int count = groundCheckCollider.OverlapCollider(contactFilter, results);
+            for (int i = 0; i < count; i++)
             {
-                col.GetContacts(contactPoints);
+                Collider2D col = results[i];
 
-                if (contactPoints.Count > 0)
+                if (col != null)
                 {
-                    Debug.DrawRay(transform.position, contactPoints[0].normal, Color.red, 1f);
-                    return contactPoints[0].normal;                    
+                    col.GetContacts(contactPoints);
+
+                    if (contactPoints.Count > 0)
+                    {
+                        Debug.DrawRay(transform.position, contactPoints[0].normal, Color.red, 1f);
+                        if (contactPoints[0].normal.y <0.1f)
+                        groundNormal = new Vector2(-contactPoints[0].normal.x, 0); 
+                        groundNormal.Normalize();
+
+                    }
                 }
             }
-        }
-
-        return Vector2.zero;
+        }        
     }
+
+    //public Vector2 GroundNormal()
+    //{
+    //    contactPoints.Clear();
+        
+    //    int count = groundCheckCollider.OverlapCollider(contactFilter, results);
+
+    //    //if (count == 0)
+    //    //    return Vector2.zero;
+        
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        Collider2D col = results[i];
+
+    //        if (col != null)
+    //        {
+    //            col.GetContacts(contactPoints);
+
+    //            if (contactPoints.Count > 0)
+    //            {
+    //                Debug.DrawRay(transform.position, contactPoints[0].normal, Color.red, 1f);
+    //                return contactPoints[0].normal;                    
+    //            }
+    //        }
+    //    }
+    //    //return contactPoints[0].normal;
+    //}
 }

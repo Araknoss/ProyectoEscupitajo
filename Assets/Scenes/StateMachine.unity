@@ -9304,6 +9304,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   groundCheckCollider: {fileID: 1670783003}
+  groundNormal: {x: 0, y: 0}
 --- !u!58 &1670783003
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12660,8 +12661,9 @@ MonoBehaviour:
   actualState: {fileID: 0}
   idleState: {fileID: 1231848935}
   moveState: {fileID: 1658230490}
-  wallState: {fileID: 0}
-  jumpState: {fileID: 0}
+  wallState: {fileID: 1115951932}
+  jumpState: {fileID: 994544566}
+  onJump: 0
   playerInputs: {fileID: 9025593811688948609}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

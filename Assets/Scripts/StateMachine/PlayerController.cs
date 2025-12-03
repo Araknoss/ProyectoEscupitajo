@@ -22,34 +22,39 @@ public class PlayerController : Core
     public bool startJumpInput { get; private set; }
     public bool jumpInput { get; private set; }   
     public bool lookingRight { get; private set; }   
+    public Vector2 groundNormal { get; private set; }
 
-    private void Awake()
+private void Awake()
     {
         lookingRight = false;
     }
     private void Start()
     {       
-        SetupInstances();
-        ResetBools();        
+        SetupInstances();             
         Set(idleState);
     }
     private void Update()
     {
         InitializeInputs();      
         SelectState();             
-        FlipSprite();       
+        FlipSprite();   
+       
         state.Do();
     }
     private void FixedUpdate()
-    {
-        CheckGround();       
+    {         
         state.FixedDo();
     }
     private void SelectState()
     {
-        if(groundSensor.grounded)
+        if(onJump)
         {
-            if (startJumpInput || onJump)
+            Set(jumpState);
+            return;
+        }
+        if (groundSensor.grounded)
+        {
+            if (startJumpInput)
             {
                 Set(jumpState);
                 return;
@@ -70,14 +75,7 @@ public class PlayerController : Core
         yInput=Input.GetAxisRaw("Vertical");
         startJumpInput = Input.GetButtonDown("Jump");
         jumpInput = Input.GetButton("Jump");
-    }     
-    private void CheckGround()
-    {
-        if (groundSensor.grounded)
-        {
-            ResetBools();
-        }
-    }    
+    }         
 
     private void FlipSprite()
     {        
@@ -93,8 +91,4 @@ public class PlayerController : Core
         }
     }
 
-    private void ResetBools()
-    {
-        //Reset all the bool inputs here
-    }
 }
