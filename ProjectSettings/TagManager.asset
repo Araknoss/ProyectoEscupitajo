@@ -3,16 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Floor
+  - Obstacle
+  - Wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
+  - Limits
+  - Wall
   - 
   - 
   - 
@@ -40,4 +43,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: StaticObstacles
+    uniqueID: 3483305567
+    locked: 0
+  - name: DynamicObstacles
+    uniqueID: 4089440373
+    locked: 0
+  - name: Effects
+    uniqueID: 3326677257
     locked: 0
