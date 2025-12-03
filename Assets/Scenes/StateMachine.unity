@@ -1972,6 +1972,7 @@ GameObject:
   - component: {fileID: 342532754}
   - component: {fileID: 342532755}
   - component: {fileID: 342532756}
+  - component: {fileID: 342532757}
   m_Layer: 0
   m_Name: ObstaclesPooler
   m_TagString: Untagged
@@ -2003,7 +2004,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342532753}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52cb417f781ac5742a02fe48c6b972c8, type: 3}
   m_Name: 
@@ -2030,6 +2031,25 @@ MonoBehaviour:
   pooledObject: {fileID: 3833173835197867263, guid: af7b3ffc93535f64f86716f6af8eb304, type: 3}
   poolAmount: 6
   poolList: []
+--- !u!114 &342532757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342532753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e037e55cfa3cbe34fb75172d727e505d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pooler: {fileID: 342532756}
+  leftSpawnPoint: {fileID: 1096897074}
+  rightSpawnPoint: {fileID: 595623367}
+  minInterval: 3
+  maxInterval: 10
+  minHeightOffset: -1
+  maxHeightOffset: 1
 --- !u!1 &352916616
 GameObject:
   m_ObjectHideFlags: 0
@@ -12657,7 +12677,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 9025593811688948607}
   body: {fileID: 3897545789484901697}
-  groundSensor: {fileID: 1670783002}
   actualState: {fileID: 0}
   idleState: {fileID: 1231848935}
   moveState: {fileID: 1658230490}
@@ -12665,6 +12684,7 @@ MonoBehaviour:
   jumpState: {fileID: 994544566}
   onJump: 0
   playerInputs: {fileID: 9025593811688948609}
+  groundSensor: {fileID: 1670783002}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
