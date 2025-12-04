@@ -37,7 +37,7 @@ public class TricksManager : MonoBehaviour
     private bool flipTrickInput;
     [SerializeField] private KeyCode grabTrickKey;
     [SerializeField] private KeyCode flipTrickKey;
-    [SerializeField] private float inputBufferTime = 0.1f;
+    //[SerializeField] private float inputBufferTime = 0.1f;
     private void Awake()
     {
         if (comboManager == null)

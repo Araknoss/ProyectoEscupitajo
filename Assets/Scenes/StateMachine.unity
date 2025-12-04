@@ -1978,7 +1978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &342532754
 Transform:
   m_ObjectHideFlags: 0
@@ -5378,7 +5378,6 @@ MonoBehaviour:
   backFlipBufferTime: 0.2
   grabTrickKey: 107
   flipTrickKey: 106
-  inputBufferTime: 0.1
 --- !u!4 &984221463
 Transform:
   m_ObjectHideFlags: 0
@@ -12442,7 +12441,6 @@ MonoBehaviour:
   backFlipBufferTime: 0.3
   grabTrickKey: 0
   flipTrickKey: 0
-  inputBufferTime: 0.1
 --- !u!114 &2146403539
 MonoBehaviour:
   m_ObjectHideFlags: 0
