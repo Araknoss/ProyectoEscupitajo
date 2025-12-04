@@ -13,8 +13,7 @@ public class EnemyMoveState : State
     }
     public override void Do()
     {
-        core.gameObject.transform.position += movementSpeed * Time.deltaTime * direction;
-        Debug.Log("RataLataMoving");
+        core.gameObject.transform.position += movementSpeed * Time.deltaTime * direction;       
     }
 
     public override void FixedDo()
@@ -22,21 +21,12 @@ public class EnemyMoveState : State
         body.velocity = Vector2.zero;
     }
     public override void Exit() { }
-
-    public void SetDirection(Vector3 dir)
-    {
-        if (dir == Vector3.zero) return;
-        direction = dir.normalized;
-    }
-
+       
     public void SetHorizontalDirection(int directionSign)
     {
         if (directionSign == 0) return;
         direction = new Vector3(Mathf.Sign(directionSign), 0f, 0f);
     }
 
-    public void SetSpeed(float speed)
-    {
-        movementSpeed = speed;
-    }
+    
 }
