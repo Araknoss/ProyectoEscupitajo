@@ -12,6 +12,8 @@ public class EnemyController : Core
     [SerializeField] private EnemyMoveState constantMoveState;
     [SerializeField] private MoveDetectionState moveDetectionState;
     [SerializeField] private ExplodeState explodeState;
+    [SerializeField] private DetectionState detectionState;
+    [SerializeField] private ChargedAttackState chargedAttackState;
 
     private void OnEnable()
     {
@@ -30,6 +32,12 @@ public class EnemyController : Core
                 Debug.Log("Enemy exploded");
                 gameObject.SetActive(false);
                 
+            }
+            if(state==chargedAttackState)
+            {
+                actualState = detectionState;
+                Debug.Log("Enemy attack end");
+                gameObject.SetActive(false);
             }
         }
     }    
