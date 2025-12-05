@@ -22,7 +22,6 @@ public class DetectionState : State
         if (Detected())
         {
            Set(chargedAttackState);
-
         }
     }    
     public override void Exit() { }

@@ -47,7 +47,7 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: 7e6d7917074a4e84bbd1f99ea3cb4ac9, type: 2}
   detectedClip: {fileID: 7400000, guid: 41826e8e0deb65e478892f0938bbfb4d, type: 2}
   attackDelay: 1
-  attackDuration: 4
+  attackDuration: 1.5
   movementSpeed: 20
   attackTrigger: {fileID: 3419424166599366618}
 --- !u!1 &1376532725453186680
@@ -100,7 +100,7 @@ MonoBehaviour:
   detectionLayer:
     serializedVersion: 2
     m_Bits: 8
-  chargedAttackState: {fileID: 0}
+  chargedAttackState: {fileID: 2557949488246791051}
 --- !u!1 &3419424166599366618
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,8 +190,8 @@ GameObject:
   - component: {fileID: 430229470877555376}
   - component: {fileID: 8708864720977356367}
   - component: {fileID: 4380629284808359784}
+  - component: {fileID: 5784260369995208536}
   - component: {fileID: 2103399490007918199}
-  - component: {fileID: -514539187487802698}
   - component: {fileID: 8523496141165524645}
   m_Layer: 0
   m_Name: Palamara
@@ -342,6 +342,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72366524, y: 0.4014597}
   m_EdgeRadius: 0
+--- !u!114 &5784260369995208536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833173835197867263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2962d65ba316f3d40aeae8e8f219222d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8523496141165524645}
+  body: {fileID: 8708864720977356367}
+  actualState: {fileID: 0}
+  startState: {fileID: 4539295129785539868}
+  detectionState: {fileID: 4539295129785539868}
+  chargedAttackState: {fileID: 2557949488246791051}
 --- !u!114 &2103399490007918199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,27 +373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 10
---- !u!114 &-514539187487802698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3833173835197867263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18f9d6ba9827822498241f8b18ea5a3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 8523496141165524645}
-  body: {fileID: 8708864720977356367}
-  actualState: {fileID: 0}
-  startState: {fileID: 4539295129785539868}
-  constantMoveState: {fileID: 0}
-  moveDetectionState: {fileID: 0}
-  explodeState: {fileID: 0}
-  detectionState: {fileID: 4539295129785539868}
-  chargedAttackState: {fileID: 2557949488246791051}
 --- !u!95 &8523496141165524645
 Animator:
   serializedVersion: 5
