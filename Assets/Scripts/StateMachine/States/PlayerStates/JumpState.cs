@@ -8,14 +8,13 @@ public class JumpState : State
     [SerializeField] private AnimationClip moveAnimation;
     [SerializeField] private PlayerController _input;
     [SerializeField] private float jumpForce;
-    [SerializeField] private float jumpTime;
-    private Vector2 moveInput;
+    [SerializeField] private float jumpTime;   
     private Vector2 jumpDirection;
-    private bool onJump;
+   
     public override void Enter()
     {
         animator.Play(moveAnimation.name);
-        jumpDirection = groundSensor.groundNormal;
+        jumpDirection = _input.groundSensor.groundNormal;
         _input.onJump = true;
     }
     public override void Do()

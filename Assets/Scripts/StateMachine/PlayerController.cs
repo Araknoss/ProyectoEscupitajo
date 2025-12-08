@@ -16,15 +16,17 @@ public class PlayerController : Core
     public bool onJump;
 
     [Header("Inputs")]
-    [SerializeField] private PlayerController playerInputs;
+    [SerializeField] private PlayerController playerInputs;   
     public float xInput { get; private set; }
     public float yInput { get; private set; }
     public bool startJumpInput { get; private set; }
     public bool jumpInput { get; private set; }   
-    public bool lookingRight { get; private set; }   
-    public Vector2 groundNormal { get; private set; }
+    public bool lookingRight { get; private set; }
 
-private void Awake()
+    [Header("Ground Sensor")]
+    public GroundSensor groundSensor;   
+
+    private void Awake()
     {
         lookingRight = false;
     }

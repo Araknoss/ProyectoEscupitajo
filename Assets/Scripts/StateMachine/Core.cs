@@ -5,8 +5,7 @@ using UnityEngine;
 public abstract class Core : MonoBehaviour
 {
     public Animator animator;
-    public Rigidbody2D body;    
-    public GroundSensor groundSensor;
+    public Rigidbody2D body;        
 
     protected StateMachine machine;
     protected State state => machine.state;
