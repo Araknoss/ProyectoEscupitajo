@@ -38,6 +38,7 @@ public class ChargedAttackState : State
     }
     public override void Exit() 
     {
+        animator.Play(animationClip.name);
         attackTrigger.SetActive(false);
         onAttack = false;
         core.gameObject.transform.SetParent(parent);
