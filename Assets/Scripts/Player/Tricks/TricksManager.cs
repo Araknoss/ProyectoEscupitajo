@@ -91,7 +91,8 @@ public class TricksManager : MonoBehaviour
             onTrickPerformed.Raise(this, horizontalFlip);
             canDoBackFlip = true;
             backFlipBufferTimer = backFlipBufferTime;
-            animator.SetTrigger("horizontalFlip");
+            //animator.SetTrigger("horizontalFlip");
+            animator.Play(horizontalFlip.animationClip.name);
             isOnCooldown = true; //Solo se lo añado aqui para que no puedas spamear el combo pero si puedas encadenarlo
         }
         else if (flipTrickInput && canDoBackFlip && !isInWall)
@@ -99,7 +100,8 @@ public class TricksManager : MonoBehaviour
             onTrickPerformed.Raise(this, backFlip);
             canDoBackFlip = false;
             backFlipBufferTimer = 0f;
-            animator.SetTrigger("backFlip");
+            //animator.SetTrigger("backFlip");
+            animator.Play(backFlip.animationClip.name);
         }
     }
 

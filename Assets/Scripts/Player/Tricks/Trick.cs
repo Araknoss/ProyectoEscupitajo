@@ -3,9 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Spit/Trick")]
 public class Trick : ScriptableObject
 {
-    public AnimationClip trickAnimation;
+    public AnimationClip animationClip;
     public string trickName;
     public int baseScore;
-    public float difficultyMultiplier = 1f;
-    public int extraMultiplier = 0;
+    public float multiplier = 1f;    
 }

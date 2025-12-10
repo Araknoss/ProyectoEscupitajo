@@ -82,9 +82,9 @@ public class ComboManager : MonoBehaviour
             trickScore = Mathf.RoundToInt(trickScore * repeatPenalty);
         }
 
-        trickScore = Mathf.RoundToInt(trickScore * trick.difficultyMultiplier);
+        trickScore = Mathf.RoundToInt(trickScore /** trick.difficultyMultiplier*/);
 
-        currentMultiplier += trick.extraMultiplier;
+        //currentMultiplier += trick.extraMultiplier;
 
         trickScore *= currentMultiplier;
 

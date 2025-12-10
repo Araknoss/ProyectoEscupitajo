@@ -13,14 +13,14 @@ public class ChargedAttackState : State
     [SerializeField] private GameObject attackTrigger;
     private bool onAttack;
 
-    private Transform parent;
+    private Transform parent1;
 
     public override void Enter()
     {
         animator.Play(detectedClip.name);
         attackTrigger.SetActive(true);
         onAttack = false;
-        parent = core.gameObject.transform.parent;
+        parent1 = core.gameObject.transform.parent;
     }
     public override void Do()
     {
@@ -41,7 +41,7 @@ public class ChargedAttackState : State
         animator.Play(animationClip.name);
         attackTrigger.SetActive(false);
         onAttack = false;
-        core.gameObject.transform.SetParent(parent);
+        core.gameObject.transform.SetParent(parent1);
     }   
     
     private void Attack()
