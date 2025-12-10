@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
     private int score;
     private float updateTimer = 0f;
     [SerializeField] private float updateTime;
-    public GameEvent onScoreChanged;
+    public GameEvent onScoreUpdate;
     void Start()
     {
         SetScore(0);
@@ -25,20 +25,20 @@ public class ScoreManager : MonoBehaviour
     private void AddScore(int points)
     {       
         score += points;
-        onScoreChanged.Raise(this, score);
+        onScoreUpdate.Raise(this, score);
     }
     
     private void SetScore(int points)
     {        
         score = points;
-        onScoreChanged.Raise(this, score);
+        onScoreUpdate.Raise(this, score);
     }
 
     public void HandleTrickPerformed(Component sender, object data)
     {
-        if(data is not Trick) return;
+        if (data is not TrickData) return;
 
-        Trick trick = (Trick)data;
+        TrickData trick = (TrickData)data;
         AddScore(trick.baseScore);
     }
 
