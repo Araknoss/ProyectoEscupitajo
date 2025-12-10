@@ -31,7 +31,7 @@ public class PlayerController : Core
         lookingRight = false;
     }
     private void Start()
-    {       
+    {        
         SetupInstances();             
         Set(idleState);
     }

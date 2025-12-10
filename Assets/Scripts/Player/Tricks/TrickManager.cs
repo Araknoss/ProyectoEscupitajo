@@ -6,7 +6,10 @@ public class TrickManager : MonoBehaviour
 {
     [SerializeField] private List<Trick> tricksPerformed = new List<Trick>();
 
+    [Header("Input")]
     [SerializeField] private KeyCode bodyKey= KeyCode.J;
+    private bool bodyInput;
+
     [Header("Variables")]
     [SerializeField] private float trickCooldownTime=0.2f;
     private float trickCooldownTimer;
@@ -17,12 +20,23 @@ public class TrickManager : MonoBehaviour
 
     [Header("Events")]
     public GameEvent onTrickPerformed;
+
+    private void Start()
+    {
+        
+    }
     private void Update()
     {
-        HandleInput();
+        InitializeInput();
         HandleTrickCooldown();
+        HandleBodyTricks();
     }
-    void HandleInput()
+
+    void InitializeInput()
+    {
+        bodyInput = Input.GetKeyDown(bodyKey);
+    }
+    void HandleBodyTricks()
     {
         if (Input.GetKeyDown(bodyKey))
         {
