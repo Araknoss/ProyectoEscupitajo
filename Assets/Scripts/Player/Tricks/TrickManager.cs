@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrickManager : MonoBehaviour
 {
     [SerializeField] private List<Trick> tricksPerformed = new List<Trick>();
+    [SerializeField] private List<Trick> availableTricks = new List<Trick>();
 
     [Header("Input")]
     [SerializeField] private KeyCode bodyKey= KeyCode.J;
@@ -62,6 +63,12 @@ public class TrickManager : MonoBehaviour
         onTrickPerformed.Raise(this, trick);
         tricksPerformed.Add(trick);
         trickCooldownTimer = trickCooldownTime;
+
+        availableTricks.Clear();
+        for(int i=0;i<trick.comboTricks.Count;i++)
+        {
+            availableTricks.Add(trick.comboTricks[i]);
+        }
     }
     
 }
