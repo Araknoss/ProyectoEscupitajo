@@ -3193,7 +3193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateTime: 0.2
-  onScoreChanged: {fileID: 11400000, guid: d0169634b8d299a4d8097d01613493da, type: 2}
+  onScoreUpdate: {fileID: 0}
 --- !u!4 &496823997
 Transform:
   m_ObjectHideFlags: 0
@@ -9176,7 +9176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e685082f5b4f754b95428d7b6d1b484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 12
   lookingRight: 0
   dashKey: 32
   dashTime: 0.1
