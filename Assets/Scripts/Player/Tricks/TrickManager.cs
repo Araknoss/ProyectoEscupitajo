@@ -29,13 +29,35 @@ public class TrickManager : MonoBehaviour
     private void Update()
     {
         InitializeInput();
+        HandleInput();
         HandleTrickCooldown();
         HandleBodyTricks();
     }
-
     void InitializeInput()
     {
         bodyInput = Input.GetKeyDown(bodyKey);
+    }
+
+    void HandleInput()
+    {
+        if(Input.GetKeyDown(bodyKey))
+        {
+            CheckAvailable();
+        }
+    }
+    void CheckAvailable()
+    {
+        if(availableTricks.Count > 0)
+        {
+            for(int i=0;i<availableTricks.Count;i++)
+            {
+                if(availableTricks[i].inputKey == bodyKey)
+                {
+                    HandleBodyInput();
+                    return;
+                }
+            }
+        }        
     }
     void HandleBodyTricks()
     {

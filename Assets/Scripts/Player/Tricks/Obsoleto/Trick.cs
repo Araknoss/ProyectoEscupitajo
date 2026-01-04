@@ -9,4 +9,5 @@ public class Trick : ScriptableObject
     public int baseScore;
     public float multiplier = 1f;
     public List<Trick> comboTricks = new List<Trick>();
+    public KeyCode inputKey;
 }
