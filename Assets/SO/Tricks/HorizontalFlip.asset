@@ -16,3 +16,6 @@ MonoBehaviour:
   trickName: HorizontalFlip
   baseScore: 30
   multiplier: 1
+  comboTricks:
+  - {fileID: 11400000, guid: 30c6e2d5478c3554394902c83d677333, type: 2}
+  inputKey: 106

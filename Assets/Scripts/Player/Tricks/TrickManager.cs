@@ -6,14 +6,18 @@ public class TrickManager : MonoBehaviour
 {
     [SerializeField] private List<Trick> tricksPerformed = new List<Trick>();
     [SerializeField] private List<Trick> availableTricks = new List<Trick>();
+    [SerializeField] private List<Trick> baseTricks = new List<Trick>();
 
     [Header("Input")]
     [SerializeField] private KeyCode bodyKey= KeyCode.J;
     private bool bodyInput;
+    [SerializeField] private KeyCode skateKey= KeyCode.K;
+    private bool skateInput;
 
     [Header("Variables")]
     [SerializeField] private float trickCooldownTime=0.2f;
     private float trickCooldownTimer;
+    private bool trickPerformed;
 
     [Header("Tricks")]
     [SerializeField] private Trick horizontalFlip;
@@ -24,66 +28,74 @@ public class TrickManager : MonoBehaviour
 
     private void Start()
     {
-        
+        ResetAvailableTricks();
     }
     private void Update()
     {
         InitializeInput();
         HandleInput();
         HandleTrickCooldown();
-        HandleBodyTricks();
+        //HandleBodyTricks();
     }
     void InitializeInput()
     {
         bodyInput = Input.GetKeyDown(bodyKey);
+        skateInput= Input.GetKeyDown(skateKey);
     }
 
     void HandleInput()
     {
-        if(Input.GetKeyDown(bodyKey))
+        if(bodyInput)
         {
-            CheckAvailable();
+            CheckAvailable(bodyKey);
+        }
+        if(skateInput)
+        {
+            CheckAvailable(skateKey);
         }
     }
-    void CheckAvailable()
+    void CheckAvailable(KeyCode input)
     {
         if(availableTricks.Count > 0)
         {
             for(int i=0;i<availableTricks.Count;i++)
             {
-                if(availableTricks[i].inputKey == bodyKey)
+                if(availableTricks[i].inputKey == input)
                 {
-                    HandleBodyInput();
+                    PerformTrick(availableTricks[i]);
                     return;
                 }
             }
         }        
-    }
-    void HandleBodyTricks()
-    {
-        if (Input.GetKeyDown(bodyKey))
-        {
-            HandleBodyInput();
-        }
-    }
+    }    
     void HandleTrickCooldown()
     {
-        if (trickCooldownTimer > 0f)
+        if (trickCooldownTimer > 0f && trickPerformed)
         {
             trickCooldownTimer -= Time.deltaTime;
         }
+        else if(trickPerformed) //Cuando el cooldown termina se resetean los trucos disponibles
+        {           
+            trickPerformed = false;
+            ResetAvailableTricks();
+            trickCooldownTimer = trickCooldownTime;
+        }
     }
 
-    void HandleBodyInput()
+    void ResetAvailableTricks()
     {
-        PerformTrick(horizontalFlip);
+        availableTricks.Clear();
+        for(int i=0;i<baseTricks.Count;i++)
+        {
+            availableTricks.Add(baseTricks[i]);
+        }
     }
 
     void PerformTrick(Trick trick)
-    {
-        if(trickCooldownTimer > 0f) return;
+    {                
         onTrickPerformed.Raise(this, trick);
         tricksPerformed.Add(trick);
+        trickPerformed = true;
         trickCooldownTimer = trickCooldownTime;
 
         availableTricks.Clear();

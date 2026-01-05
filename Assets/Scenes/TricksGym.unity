@@ -5428,8 +5428,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tricksPerformed: []
   availableTricks: []
+  baseTricks: []
   bodyKey: 106
-  trickCooldownTime: 0.2
+  trickCooldownTime: 0.5
   horizontalFlip: {fileID: 11400000, guid: 1c8020f2de7eef44aaab217d06615c5a, type: 2}
   verticalFlip: {fileID: 11400000, guid: 30c6e2d5478c3554394902c83d677333, type: 2}
   onTrickPerformed: {fileID: 11400000, guid: efa7df2a394382947ad724f7a33738d3, type: 2}
