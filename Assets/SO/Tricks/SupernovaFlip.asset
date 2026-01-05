@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: ee2941a426742f94694ed84e698ed004, type: 2}
   trickName: HorizontalFlip
-  baseScore: 30
+  baseScore: 200
   multiplier: 1
   comboTricks:
-  - {fileID: 11400000, guid: 30c6e2d5478c3554394902c83d677333, type: 2}
-  inputKey: 106
+  - {fileID: 11400000, guid: 1c8020f2de7eef44aaab217d06615c5a, type: 2}
+  inputKey: 107

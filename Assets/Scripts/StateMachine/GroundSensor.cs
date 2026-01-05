@@ -20,9 +20,9 @@ public class GroundSensor : MonoBehaviour
     private void CheckGround()
     {
         grounded = groundCheckCollider.IsTouchingLayers(groundLayer);
-        if (grounded)
+        if (grounded) // If grounded, find the ground normal
         {
-            int count = groundCheckCollider.OverlapCollider(contactFilter, results);
+            int count = groundCheckCollider.OverlapCollider(contactFilter, results); 
             for (int i = 0; i < count; i++)
             {
                 Collider2D col = results[i];
@@ -43,31 +43,5 @@ public class GroundSensor : MonoBehaviour
             }
         }        
     }
-
-    //public Vector2 GroundNormal()
-    //{
-    //    contactPoints.Clear();
-        
-    //    int count = groundCheckCollider.OverlapCollider(contactFilter, results);
-
-    //    //if (count == 0)
-    //    //    return Vector2.zero;
-        
-    //    for (int i = 0; i < count; i++)
-    //    {
-    //        Collider2D col = results[i];
-
-    //        if (col != null)
-    //        {
-    //            col.GetContacts(contactPoints);
-
-    //            if (contactPoints.Count > 0)
-    //            {
-    //                Debug.DrawRay(transform.position, contactPoints[0].normal, Color.red, 1f);
-    //                return contactPoints[0].normal;                    
-    //            }
-    //        }
-    //    }
-    //    //return contactPoints[0].normal;
-    //}
+    
 }

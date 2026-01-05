@@ -16,5 +16,6 @@ MonoBehaviour:
   trickName: BackFlip
   baseScore: 100
   multiplier: 1
-  comboTricks: []
+  comboTricks:
+  - {fileID: 11400000, guid: e49246bfea67d604abecbee1a48c577c, type: 2}
   inputKey: 106

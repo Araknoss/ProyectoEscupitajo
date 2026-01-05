@@ -35,6 +35,7 @@ public class TrickManager : MonoBehaviour
         InitializeInput();
         HandleInput();
         HandleTrickCooldown();
+        HandleWallSlide();
         //HandleBodyTricks();
     }
     void InitializeInput()

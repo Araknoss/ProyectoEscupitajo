@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4904867081948001828}
   - component: {fileID: 9120977012407370892}
   - component: {fileID: 3924855700886507069}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Beam
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7096710197146255737}
   - component: {fileID: 561159349058313174}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ObstacleTrigger
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
