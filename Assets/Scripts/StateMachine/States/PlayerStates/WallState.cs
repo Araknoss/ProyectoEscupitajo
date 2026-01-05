@@ -9,9 +9,15 @@ public class WallState : State
     [SerializeField] private PlayerController _input;
     [SerializeField] private float moveSpeed;
     private Vector2 moveInput;
+
+    public GameEvent onWallDetection;
+
     public override void Enter()
     {
         animator.Play(moveAnimation.name);
+
+        onWallDetection.Raise(this, true);
+
     }
     public override void Do()
     {
@@ -27,5 +33,8 @@ public class WallState : State
     {
         body.velocity = moveInput * moveSpeed;
     }
-    public override void Exit() { }
+    public override void Exit()
+    {
+        onWallDetection.Raise(this, false);
+    }
 }

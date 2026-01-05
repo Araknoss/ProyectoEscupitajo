@@ -7,8 +7,12 @@ public class TrickAnimationPlayer : MonoBehaviour
     public void HandleTrickPerformed(Component sender, object data)
     {
         if (data is not Trick) return;
-        Trick trick = (Trick)data;        
-        animator.Play(trick.animationClip.name,0,0f);
+        Trick trick = (Trick)data;
+        if (trick.animationClip != null)
+        {
+            animator.Play(trick.animationClip.name, 0, 0f);
+        }
+        
     }
 }
 

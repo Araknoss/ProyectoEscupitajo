@@ -19,6 +19,12 @@ public class TrickManager : MonoBehaviour
     private float trickCooldownTimer;
     private bool trickPerformed;
 
+    [Header("OnWall")]
+    [SerializeField] private Trick wallSlideTrick;
+    [SerializeField] private float wallScoreTime = 0.1f;
+    private bool isOnWall=false;
+    private float wallScoreTimer;    
+
     [Header("Tricks")]
     [SerializeField] private Trick horizontalFlip;
     [SerializeField] private Trick verticalFlip;
@@ -105,5 +111,26 @@ public class TrickManager : MonoBehaviour
             availableTricks.Add(trick.comboTricks[i]);
         }
     }
-    
+
+    void HandleWallSlide()
+    {        
+        if(isOnWall)
+        {
+            wallScoreTimer += Time.deltaTime;
+            if (wallScoreTimer > wallScoreTime)
+            {
+                wallScoreTimer = 0;
+                PerformTrick(wallSlideTrick);
+            }
+        }
+    }
+
+    public void SetIsOnWall(Component sender, object data)
+    {
+        if (data is bool)
+        {
+            isOnWall = (bool)data;            
+        }
+    }
+
 }
