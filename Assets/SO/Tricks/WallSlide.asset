@@ -16,5 +16,6 @@ MonoBehaviour:
   trickName: Wall Slide
   baseScore: 5
   multiplier: 1
-  comboTricks: []
+  comboTricks:
+  - {fileID: 11400000, guid: d91cba3fefa56e04fac53b027afc7474, type: 2}
   inputKey: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BackFlip
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 98db49118c5b1bd47bd015cb979341ba, type: 2}
-  trickName: BackFlip
+  trickName: Back Flip
   baseScore: 100
   multiplier: 1
   comboTricks:

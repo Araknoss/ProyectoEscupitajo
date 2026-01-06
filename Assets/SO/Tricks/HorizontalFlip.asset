@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HorizontalFlip
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: ee2941a426742f94694ed84e698ed004, type: 2}
-  trickName: HorizontalFlip
+  trickName: Horizontal Flip
   baseScore: 30
   multiplier: 1
   comboTricks:

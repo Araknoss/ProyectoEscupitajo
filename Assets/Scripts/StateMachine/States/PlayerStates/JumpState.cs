@@ -10,12 +10,15 @@ public class JumpState : State
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpTime;   
     private Vector2 jumpDirection;
-   
+    public GameEvent onWallJump;
+
     public override void Enter()
     {
         animator.Play(moveAnimation.name);
         jumpDirection = _input.groundSensor.groundNormal;
         _input.onJump = true;
+
+        onWallJump.Raise(this, null);
     }
     public override void Do()
     {

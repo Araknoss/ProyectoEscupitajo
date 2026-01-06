@@ -21,6 +21,7 @@ public class TrickManager : MonoBehaviour
 
     [Header("OnWall")]
     [SerializeField] private Trick wallSlideTrick;
+    [SerializeField] private Trick wallJumpTrick;
     [SerializeField] private float wallScoreTime = 0.1f;
     private bool isOnWall=false;
     private float wallScoreTimer;    
@@ -31,10 +32,11 @@ public class TrickManager : MonoBehaviour
 
     [Header("Events")]
     public GameEvent onTrickPerformed;
+    public GameEvent onAvailableTricksReset;
 
     private void Start()
     {
-        ResetAvailableTricks();
+        ResetAvailableTricks(baseTricks);
     }
     private void Update()
     {
@@ -50,7 +52,7 @@ public class TrickManager : MonoBehaviour
         skateInput= Input.GetKeyDown(skateKey);
     }
 
-    void HandleInput()
+    void HandleInput() //Solo se pueden hacer trucos cuando estan disponibles en la lista AvailableTricks
     {
         if(bodyInput)
         {
@@ -61,7 +63,7 @@ public class TrickManager : MonoBehaviour
             CheckAvailable(skateKey);
         }
     }
-    void CheckAvailable(KeyCode input)
+    void CheckAvailable(KeyCode input) //Se comprueba si el input corresponde a algun truco disponible
     {
         if(availableTricks.Count > 0)
         {
@@ -84,18 +86,25 @@ public class TrickManager : MonoBehaviour
         else if(trickPerformed) //Cuando el cooldown termina se resetean los trucos disponibles
         {           
             trickPerformed = false;
-            ResetAvailableTricks();
+            ResetAvailableTricks(baseTricks);
             trickCooldownTimer = trickCooldownTime;
         }
     }
 
-    void ResetAvailableTricks()
+    void ResetAvailableTricks(List<Trick> newAvailableTricks)
     {
         availableTricks.Clear();
-        for(int i=0;i<baseTricks.Count;i++)
+
+        if(newAvailableTricks != null && newAvailableTricks.Count == 0) //Si el truco no tiene comboTricks se resetea a los trucos base
         {
-            availableTricks.Add(baseTricks[i]);
+            newAvailableTricks= baseTricks;
         }
+
+        for (int i=0;i< newAvailableTricks.Count;i++)
+        {
+            availableTricks.Add(newAvailableTricks[i]);
+        }
+        onAvailableTricksReset.Raise(this, availableTricks);
     }
 
     void PerformTrick(Trick trick)
@@ -105,11 +114,7 @@ public class TrickManager : MonoBehaviour
         trickPerformed = true;
         trickCooldownTimer = trickCooldownTime;
 
-        availableTricks.Clear();
-        for(int i=0;i<trick.comboTricks.Count;i++)
-        {
-            availableTricks.Add(trick.comboTricks[i]);
-        }
+        ResetAvailableTricks(trick.comboTricks);        
     }
 
     void HandleWallSlide()
@@ -129,7 +134,20 @@ public class TrickManager : MonoBehaviour
     {
         if (data is bool)
         {
-            isOnWall = (bool)data;            
+            isOnWall = (bool)data; 
+            if(!isOnWall)
+            {
+                wallScoreTimer = 0f;
+                ResetAvailableTricks(baseTricks);
+            }
+        }
+    }
+
+    public void HandleOnWallJump(Component sender, object data)
+    {
+        if(data is null)
+        {
+            PerformTrick(wallJumpTrick);
         }
     }
 
