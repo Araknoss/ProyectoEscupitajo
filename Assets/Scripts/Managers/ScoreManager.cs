@@ -15,8 +15,12 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
+        HandlePassiveScore();
+    }
+    private void HandlePassiveScore()
+    {
         updateTimer += Time.deltaTime;
-        if(updateTimer >= updateTime)
+        if (updateTimer >= updateTime)
         {
             AddScore(1);
             updateTimer = 0f;
@@ -36,9 +40,9 @@ public class ScoreManager : MonoBehaviour
 
     public void HandleTrickPerformed(Component sender, object data)
     {
-        if (data is not TrickData) return;
+        if (data is not Trick) return;
 
-        TrickData trick = (TrickData)data;
+        Trick trick = (Trick)data;
         AddScore(trick.baseScore);
     }
 

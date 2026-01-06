@@ -17,4 +17,4 @@ MonoBehaviour:
   baseScore: 100
   multiplier: 1
   comboTricks: []
-  inputKey: 0
+  inputKey: 32

@@ -26,15 +26,23 @@ public class UpdateTextOnGameEvent : MonoBehaviour
             }
             else if(data is List<Trick>) //Para los trucos disponibles
             {
-                List<Trick> tricks = (List<Trick>)data;               
+                List<Trick> tricks = (List<Trick>)data;
 
-                List<string> trickNames = new List<string>();         // Crear una lista para almacenar los nombres de los trucos disponibles
-                foreach (Trick availableTrick in tricks)
+                List<string> lines = new List<string>(tricks.Count);
+                foreach (Trick t in tricks)
                 {
-                    trickNames.Add(availableTrick.trickName);
+                    if(t.inputKey != KeyCode.None)
+                    {
+                        lines.Add(t.trickName + " " + t.inputKey.ToString());
+                    }
+                    else
+                    {
+                        lines.Add(t.trickName);
+                    }
+
                 }
 
-                targetText.text = string.Join("\n", trickNames); //Unir los nombres de los trucos con saltos de línea y actualizar el texto
+                targetText.text = string.Join("\n", lines); //Unir los nombres de los trucos con saltos de línea y actualizar el texto
             }
         }
     }    

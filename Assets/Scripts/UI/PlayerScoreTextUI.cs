@@ -37,6 +37,8 @@ public class PlayerScoreTextUI : MonoBehaviour
     private void PlayAnimation()
     {       
         //Reset state
+        currentTween?.Kill();
+
         text.gameObject.SetActive(true);        
         canvasGroup.alpha = 1f;
         text.transform.localScale = Vector3.one * 1.3f;        

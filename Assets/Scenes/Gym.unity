@@ -1723,12 +1723,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2192166159098651082, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      propertyPath: idleAnimation
+      value: 
+      objectReference: {fileID: 7400000, guid: 17dedd41bfe47b9429c84d75585edf6f, type: 2}
+    - target: {fileID: 2192166159098651082, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: onWallDetection
       value: 
       objectReference: {fileID: 11400000, guid: 6901f1094f03d504d8c5f895c2bac5fe, type: 2}
+    - target: {fileID: 3342899415121235853, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      propertyPath: animationClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4735745718199650216, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: m_text
       value: 9999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615502111218105664, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      propertyPath: idleAnimation
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6296509650438831860, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: m_Name

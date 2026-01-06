@@ -12,7 +12,8 @@ public class MoveState : State
     
     public override void Enter()
     {
-        animator.Play(animationClip.name);
+        if(animationClip != null)
+            animator.Play(animationClip.name);
     }
     public override void Do()
     {

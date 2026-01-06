@@ -6,6 +6,7 @@ using UnityEngine.Windows;
 public class WallState : State
 {
     [SerializeField] private AnimationClip moveAnimation;
+    [SerializeField] private AnimationClip idleAnimation;
     [SerializeField] private PlayerController _input;
     [SerializeField] private float moveSpeed;
     private Vector2 moveInput;
@@ -36,5 +37,7 @@ public class WallState : State
     public override void Exit()
     {
         onWallDetection.Raise(this, false);
+
+        animator.Play(idleAnimation.name);
     }
 }
