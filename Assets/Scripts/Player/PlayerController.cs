@@ -24,14 +24,17 @@ public class PlayerController : Core
     public bool lookingRight { get; private set; }
 
     [Header("Ground Sensor")]
-    public GroundSensor groundSensor;   
+    public GroundSensor groundSensor;
+
+    [Header("Sprite Object")]
+    public GameObject spriteObject;
 
     private void Awake()
     {
         lookingRight = false;
     }
     private void Start()
-    {       
+    {        
         SetupInstances();             
         Set(idleState);
     }
@@ -81,15 +84,15 @@ public class PlayerController : Core
 
     private void FlipSprite()
     {        
-        if (xInput < 0 && lookingRight)
-        {
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-            lookingRight = false;
-        }
         if (xInput > 0 && !lookingRight)
         {
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
             lookingRight = true;
+            spriteObject.transform.localScale = new Vector3(-spriteObject.transform.localScale.x, spriteObject.transform.localScale.y, spriteObject.transform.localScale.z);
+        }
+        else if (xInput < 0 && lookingRight)
+        {
+            lookingRight = false;
+            spriteObject.transform.localScale = new Vector3(-spriteObject.transform.localScale.x, spriteObject.transform.localScale.y, spriteObject.transform.localScale.z);
         }
     }
 

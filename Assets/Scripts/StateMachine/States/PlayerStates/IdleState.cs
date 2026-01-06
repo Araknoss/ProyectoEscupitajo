@@ -7,7 +7,8 @@ public class IdleState : State
     [SerializeField] private AnimationClip idleAnimation;
     public override void Enter()
     {
-        animator.Play(idleAnimation.name);
+        if(idleAnimation != null)
+            animator.Play(idleAnimation.name);
     }
     public override void Do()
     {
