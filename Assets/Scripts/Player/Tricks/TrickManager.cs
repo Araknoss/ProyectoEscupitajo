@@ -95,10 +95,10 @@ public class TrickManager : MonoBehaviour
     {
         availableTricks.Clear();
 
-        if(newAvailableTricks != null && newAvailableTricks.Count == 0) //Si el truco no tiene comboTricks se resetea a los trucos base
-        {
-            newAvailableTricks= baseTricks;
-        }
+        //if(newAvailableTricks != null && newAvailableTricks.Count == 0) //Si el truco no tiene comboTricks se resetea a los trucos base
+        //{
+        //    newAvailableTricks= baseTricks;
+        //}
 
         for (int i=0;i< newAvailableTricks.Count;i++)
         {

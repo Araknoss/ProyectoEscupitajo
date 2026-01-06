@@ -16,6 +16,5 @@ MonoBehaviour:
   trickName: Supernova Flip
   baseScore: 200
   multiplier: 1
-  comboTricks:
-  - {fileID: 11400000, guid: 1c8020f2de7eef44aaab217d06615c5a, type: 2}
+  comboTricks: []
   inputKey: 107
