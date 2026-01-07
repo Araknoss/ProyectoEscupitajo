@@ -13,7 +13,8 @@ public class ChargedAttackState : State
     [SerializeField] private GameObject attackTrigger;
     private bool onAttack;
 
-    private Transform parent1;
+    public Transform parent1;
+    public Vector2 originalPosition;
 
     public override void Enter()
     {
@@ -21,6 +22,7 @@ public class ChargedAttackState : State
         attackTrigger.SetActive(true);
         onAttack = false;
         parent1 = core.gameObject.transform.parent;
+        originalPosition = core.gameObject.transform.localPosition;
     }
     public override void Do()
     {
@@ -42,6 +44,8 @@ public class ChargedAttackState : State
         attackTrigger.SetActive(false);
         onAttack = false;
         core.gameObject.transform.SetParent(parent1);
+        Debug.Log("PamaraExitAttack");
+        core.gameObject.transform.localPosition = originalPosition;
     }   
     
     private void Attack()

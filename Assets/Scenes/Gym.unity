@@ -517,7 +517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &72070623
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2692,7 +2692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &453218494
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3657,7 +3657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &599840344
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6348,7 +6348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPosition: {x: 0, y: 0, z: 0}
   spawnHeight: 50
-  dispawnHeight: 70
+  dispawnHeight: 90
   chunkSpeed: 10
 --- !u!114 &1040656506
 MonoBehaviour:
@@ -6446,6 +6446,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1062795908 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8312640240589178808, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+  m_PrefabInstance: {fileID: 286597098}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f047848723eb64d989160ae9fefbf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1096897073
 GameObject:
   m_ObjectHideFlags: 0
@@ -6532,6 +6543,10 @@ PrefabInstance:
     - target: {fileID: 1815178780296579769, guid: e3cf8652fb10b0c4f84b4469f9004f93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798405936189885432, guid: e3cf8652fb10b0c4f84b4469f9004f93, type: 3}
+      propertyPath: attackDelay
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8882,7 +8897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1579771162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10243,7 +10258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1700845750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11115,7 +11130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1845245727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12808,7 +12823,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1656907642}
+      - m_Target: {fileID: 1062795908}
         m_TargetAssemblyTypeName: CollisionDetection, Assembly-CSharp
         m_MethodName: SetInvulnerability
         m_Mode: 1

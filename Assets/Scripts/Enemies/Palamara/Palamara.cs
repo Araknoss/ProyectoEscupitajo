@@ -25,9 +25,9 @@ public class Palamara : Core
         {           
             if(state==chargedAttackState)
             {
-                actualState = detectionState;
+                Set(detectionState);
                 Debug.Log("Enemy attack end");
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
             }
         }
     }    
