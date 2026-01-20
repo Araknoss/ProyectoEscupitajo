@@ -4,10 +4,29 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    [Header("Score")]
     private int score;
     private float updateTimer = 0f;
     [SerializeField] private float updateTime;
     public GameEvent onScoreUpdate;
+
+    [Header("Gold")]
+    public int gold;
+    public GameEvent onGoldUpdate;
+
+    public static ScoreManager Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Persiste entre escenas
+        }
+        else
+        {
+            Destroy(gameObject); // Evita duplicados
+        }
+    }
     void Start()
     {
         SetScore(0);
@@ -46,6 +65,15 @@ public class ScoreManager : MonoBehaviour
         AddScore(trick.baseScore);
     }
 
+    public void Buy(int price)
+    {
+        gold -= price;
+        onGoldUpdate.Raise(this, gold);
+    }
 
-
+    public void AddGold(int amount)
+    {
+        gold += amount;
+        onGoldUpdate.Raise(this, gold);
+    }
 }

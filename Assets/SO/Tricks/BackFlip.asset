@@ -19,3 +19,5 @@ MonoBehaviour:
   comboTricks:
   - {fileID: 11400000, guid: e49246bfea67d604abecbee1a48c577c, type: 2}
   inputKey: 106
+  cost: 50
+  isPurchased: 0

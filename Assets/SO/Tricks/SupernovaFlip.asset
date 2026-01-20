@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: ee2941a426742f94694ed84e698ed004, type: 2}
   trickName: Supernova Flip
-  baseScore: 200
+  baseScore: 300
   multiplier: 1
   comboTricks: []
   inputKey: 107
+  cost: 100
+  isPurchased: 0

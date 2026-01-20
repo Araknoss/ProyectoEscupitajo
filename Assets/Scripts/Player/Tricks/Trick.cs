@@ -10,4 +10,8 @@ public class Trick : ScriptableObject
     public float multiplier = 1f;
     public List<Trick> comboTricks = new List<Trick>();
     public KeyCode inputKey;
+
+    //SHOP
+    public int cost;
+    public bool isPurchased = true;
 }

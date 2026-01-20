@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TrickManager : MonoBehaviour
@@ -49,9 +50,10 @@ public class TrickManager : MonoBehaviour
     void InitializeInput()
     {
         bodyInput = Input.GetKeyDown(bodyKey);
-        skateInput= Input.GetKeyDown(skateKey);
+        skateInput= Input.GetKeyDown(skateKey);       
     }
 
+    
     void HandleInput() //Solo se pueden hacer trucos cuando estan disponibles en la lista AvailableTricks
     {
         if(bodyInput)
@@ -65,11 +67,11 @@ public class TrickManager : MonoBehaviour
     }
     void CheckAvailable(KeyCode input) //Se comprueba si el input corresponde a algun truco disponible
     {
-        if(availableTricks.Count > 0)
+        if(availableTricks.Any())
         {
             for(int i=0;i<availableTricks.Count;i++)
             {
-                if(availableTricks[i].inputKey == input)
+                if(availableTricks[i].inputKey == input && availableTricks[i].isPurchased)
                 {
                     PerformTrick(availableTricks[i]);
                     return;

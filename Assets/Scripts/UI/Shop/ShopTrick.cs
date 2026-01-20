@@ -7,8 +7,11 @@ using UnityEngine.UI;
 public class ShopTrick : MonoBehaviour
 {
     [SerializeField] private Trick trickSO;
-    private TextMeshProUGUI trickText;
+    [SerializeField] private TextMeshProUGUI trickNameText;
+    [SerializeField] private TextMeshProUGUI trickPriceText;
     private Button button;
+
+    [SerializeField] private string purchasedText;
 
 
     [Header("Internal Variables")]    
@@ -16,7 +19,6 @@ public class ShopTrick : MonoBehaviour
     public bool isLocked = false;
     private void Start()
     {
-        trickText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
         button = gameObject.GetComponent<Button>();
         SetLocked(isLocked);
 
@@ -26,14 +28,25 @@ public class ShopTrick : MonoBehaviour
             return;
         }
 
-        trickText.text = trickSO.trickName;
-
-        
+        trickNameText.text = trickSO.trickName;    
+        trickPriceText.text = trickSO.cost.ToString() + " G";
     }
 
     private void SetLocked(bool locked)
     {
         isLocked = locked;
         button.interactable = !isLocked;
+    }
+
+    public void TryToBuy()
+    {
+        if (ScoreManager.Instance.gold >= trickSO.cost)
+        {
+            ScoreManager.Instance.Buy(trickSO.cost);
+            SetLocked(true);
+            isPurchased = true;
+            trickNameText.text = purchasedText;
+            trickPriceText.text="";
+        }
     }
 }
