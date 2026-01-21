@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoadScene : MonoBehaviour
 {
     [SerializeField] private float delayDuration = 1f;
-
+    [SerializeField] private string MainMenuSceneName = "MainMenu";
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.R))
@@ -28,5 +28,10 @@ public class LoadScene : MonoBehaviour
     {
         yield return new WaitForSeconds(delayDuration);
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(MainMenuSceneName);
     }
 }

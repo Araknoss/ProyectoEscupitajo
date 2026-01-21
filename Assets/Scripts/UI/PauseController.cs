@@ -14,7 +14,7 @@ public class PauseController : MonoBehaviour
         }
     }
 
-    private void TogglePause()
+    public void TogglePause()
     {
         if (pauseMenu.activeSelf)
         {            

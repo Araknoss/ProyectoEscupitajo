@@ -45,6 +45,7 @@ public class ShopTrick : MonoBehaviour
             ScoreManager.Instance.Buy(trickSO.cost);
             SetLocked(true);
             isPurchased = true;
+            trickSO.isPurchased = true;
             trickNameText.text = purchasedText;
             trickPriceText.text="";
         }
