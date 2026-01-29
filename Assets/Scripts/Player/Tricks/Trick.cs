@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Spit/Trick")]
 public class Trick : ScriptableObject
 {
+    public int id;
     public AnimationClip animationClip;
     public string trickName;
     public int baseScore;

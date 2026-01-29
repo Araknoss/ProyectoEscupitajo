@@ -71,7 +71,7 @@ public class TrickManager : MonoBehaviour
         {
             for(int i=0;i<availableTricks.Count;i++)
             {
-                if(availableTricks[i].inputKey == input && availableTricks[i].isPurchased)
+                if(availableTricks[i].inputKey == input)
                 {
                     PerformTrick(availableTricks[i]);
                     return;
@@ -95,15 +95,10 @@ public class TrickManager : MonoBehaviour
 
     void ResetAvailableTricks(List<Trick> newAvailableTricks)
     {
-        availableTricks.Clear();
-
-        //if(newAvailableTricks != null && newAvailableTricks.Count == 0) //Si el truco no tiene comboTricks se resetea a los trucos base
-        //{
-        //    newAvailableTricks= baseTricks;
-        //}
+        availableTricks.Clear();        
 
         for (int i=0;i< newAvailableTricks.Count;i++)
-        {
+        {            
             availableTricks.Add(newAvailableTricks[i]);
         }
         onAvailableTricksReset.Raise(this, availableTricks);
