@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
 {
+    [Header("File Storage Config")]
+    [SerializeField] private string fileName = "gameData.json";
+
     private GameData gameData;
-    private List<IDataPersistence> dataPersistenceObjects;
+    public List<IDataPersistence> dataPersistenceObjects;
+    private FileDataHandler dataHandler;
     public static DataPersistenceManager instance { get; private set; }
 
     private void Awake()
@@ -22,10 +27,24 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void Start()
     {
-        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        this.dataPersistenceObjects = FindAllDataPersistenceObjects();       
         LoadGame();
     }
 
+    //private void OnEnable()
+    //{
+    //    SceneManager.sceneUnloaded += OnSceneUnloaded;
+    //}
+
+    //private void OnDisable()
+    //{
+    //    SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    //}
+    //private void OnSceneUnloaded(Scene scene)
+    //{
+    //    SaveGame();
+    //}
     public void NewGame()
     {
         this.gameData = new GameData();
@@ -34,10 +53,11 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         //Load any saved data from a file using the data handler
+        this.gameData = dataHandler.Load();
+
         //if no data can be loaded, initialize to a new game 
-        if(this.gameData == null)
+        if (this.gameData == null)
         {
-            Debug.Log("No data found. Initializing to new game.");
             NewGame();
         }
         //push the loaded data to all other scripts that need it
@@ -52,8 +72,9 @@ public class DataPersistenceManager : MonoBehaviour
         //pass the data to other scripts so they can update it
         foreach(IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
-            dataPersistenceObj.SaveData(ref gameData);
+            dataPersistenceObj.SaveData(ref gameData);          
         }
+        dataHandler.Save(gameData);
         //save the updated data to a file using the data handler
     }
 

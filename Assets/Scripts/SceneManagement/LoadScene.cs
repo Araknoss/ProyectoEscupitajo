@@ -12,7 +12,6 @@ public class LoadScene : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R))
         {
             ResetLevel();
-
         }
     }    
     public void ResetLevel()

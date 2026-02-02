@@ -33,7 +33,7 @@ public class CollisionDetection : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle") && !isInvulnerable)
         {
-            onPlayerDeath.Raise(this, collision);
+            onPlayerDeath.Raise(this, true);
             Debug.Log("Player triggered with Obstacle");
         }        
     }
