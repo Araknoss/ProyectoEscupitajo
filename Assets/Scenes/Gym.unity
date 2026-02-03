@@ -1969,6 +1969,10 @@ PrefabInstance:
       propertyPath: toggle
       value: 
       objectReference: {fileID: 2100819950}
+    - target: {fileID: 8312640240589178808, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      propertyPath: onPlayerDeath
+      value: 
+      objectReference: {fileID: 11400000, guid: d6cb7279f45b4534ab12b4977b9cca83, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4353,8 +4357,8 @@ GameObject:
   m_Component:
   - component: {fileID: 694499015}
   - component: {fileID: 694499019}
+  - component: {fileID: 694499020}
   - component: {fileID: 694499018}
-  - component: {fileID: 694499017}
   - component: {fileID: 694499016}
   m_Layer: 5
   m_Name: DeathText
@@ -4398,9 +4402,9 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 694499017}
-        m_TargetAssemblyTypeName: UpdateTextOnGameEvent, Assembly-CSharp
-        m_MethodName: UpdateScoreText
+      - m_Target: {fileID: 694499020}
+        m_TargetAssemblyTypeName: DeathCountText, Assembly-CSharp
+        m_MethodName: OnPlayerDeath
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4410,19 +4414,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &694499017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694499014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5c9a98132d73ef4786d0e1e8caaf9a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  returnAnimationSpeed: 5
 --- !u!114 &694499018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4520,6 +4511,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694499014}
   m_CullTransparentMesh: 1
+--- !u!114 &694499020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694499014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c997f8b80e4fe4443b1d1bb51caf919f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &711105206
 GameObject:
   m_ObjectHideFlags: 0
@@ -6713,7 +6716,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 231
   m_TargetDisplay: 0
 --- !u!224 &1007308967
 RectTransform:
@@ -7381,6 +7384,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1135630738}
   - component: {fileID: 1135630737}
+  - component: {fileID: 1135630739}
+  - component: {fileID: 1135630740}
   m_Layer: 0
   m_Name: DataPersistenceManager
   m_TagString: Untagged
@@ -7400,6 +7405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452ae89ac9f581345b97938899032942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: data.game
 --- !u!4 &1135630738
 Transform:
   m_ObjectHideFlags: 0
@@ -7415,6 +7421,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1135630739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135630736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: d6cb7279f45b4534ab12b4977b9cca83, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1135630737}
+        m_TargetAssemblyTypeName: DataPersistenceManager, Assembly-CSharp
+        m_MethodName: SaveGameOnGameEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1135630740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135630736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 53b16171e753b414499b64cb7972a48b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1135630737}
+        m_TargetAssemblyTypeName: DataPersistenceManager, Assembly-CSharp
+        m_MethodName: SaveGameOnGameEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1143816597
 PrefabInstance:
   m_ObjectHideFlags: 0

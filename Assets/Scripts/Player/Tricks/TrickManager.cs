@@ -7,7 +7,7 @@ public class TrickManager : MonoBehaviour
 {
     [SerializeField] private List<Trick> tricksPerformed = new List<Trick>();
     [SerializeField] private List<Trick> availableTricks = new List<Trick>();
-    [SerializeField] private List<Trick> baseTricks = new List<Trick>();
+    [SerializeField] private List<Trick> baseTricks = new List<Trick>();    
 
     [Header("Input")]
     [SerializeField] private KeyCode bodyKey= KeyCode.J;
@@ -27,9 +27,9 @@ public class TrickManager : MonoBehaviour
     private bool isOnWall=false;
     private float wallScoreTimer;    
 
-    [Header("Tricks")]
-    [SerializeField] private Trick horizontalFlip;
-    [SerializeField] private Trick verticalFlip;
+    //[Header("Tricks")]
+    //[SerializeField] private Trick horizontalFlip;
+    //[SerializeField] private Trick verticalFlip;
 
     [Header("Events")]
     public GameEvent onTrickPerformed;
@@ -37,7 +37,7 @@ public class TrickManager : MonoBehaviour
 
     private void Start()
     {
-        ResetAvailableTricks(baseTricks);
+        SetAvailableTricks(baseTricks);
     }
     private void Update()
     {
@@ -88,17 +88,18 @@ public class TrickManager : MonoBehaviour
         else if(trickPerformed) //Cuando el cooldown termina se resetean los trucos disponibles
         {           
             trickPerformed = false;
-            ResetAvailableTricks(baseTricks);
+            SetAvailableTricks(baseTricks);
             trickCooldownTimer = trickCooldownTime;
         }
     }
 
-    void ResetAvailableTricks(List<Trick> newAvailableTricks)
+    void SetAvailableTricks(List<Trick> newAvailableTricks)
     {
         availableTricks.Clear();        
 
         for (int i=0;i< newAvailableTricks.Count;i++)
-        {            
+        {
+            if (UnlockablesManager.Instance.HasUnlockedTrick(newAvailableTricks[i]))
             availableTricks.Add(newAvailableTricks[i]);
         }
         onAvailableTricksReset.Raise(this, availableTricks);
@@ -111,7 +112,7 @@ public class TrickManager : MonoBehaviour
         trickPerformed = true;
         trickCooldownTimer = trickCooldownTime;
 
-        ResetAvailableTricks(trick.comboTricks);        
+        SetAvailableTricks(trick.comboTricks);        
     }
 
     void HandleWallSlide()
@@ -135,7 +136,7 @@ public class TrickManager : MonoBehaviour
             if(!isOnWall)
             {
                 wallScoreTimer = 0f;
-                ResetAvailableTricks(baseTricks);
+                SetAvailableTricks(baseTricks);
             }
         }
     }

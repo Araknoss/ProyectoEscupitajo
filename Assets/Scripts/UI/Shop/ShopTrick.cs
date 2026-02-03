@@ -13,6 +13,8 @@ public class ShopTrick : MonoBehaviour
 
     [SerializeField] private string purchasedText;
 
+    [Header("Events")]
+    public GameEvent onTrickUnlocked;
 
     [Header("Internal Variables")]    
     private bool isPurchased = false;
@@ -48,6 +50,8 @@ public class ShopTrick : MonoBehaviour
             //trickSO.isPurchased = true; No funciona correctament aqui
             trickNameText.text = purchasedText;
             trickPriceText.text="";
+
+            onTrickUnlocked.Raise(this, trickSO.id);
         }
     }
 }

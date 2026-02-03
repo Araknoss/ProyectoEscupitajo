@@ -67,7 +67,7 @@ public class DataPersistenceManager : MonoBehaviour
         SaveGame();
     }
 
-    public void OnPlayerDeath(Component sender, object data)
+    public void SaveGameOnGameEvent(Component sender, object data)
     {
         SaveGame();
     }
