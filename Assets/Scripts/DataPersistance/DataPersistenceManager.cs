@@ -13,7 +13,6 @@ public class DataPersistenceManager : MonoBehaviour
     public List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
     public static DataPersistenceManager instance { get; private set; }
-
     private void Awake()
     {
         if(instance != null)
@@ -28,28 +27,14 @@ public class DataPersistenceManager : MonoBehaviour
     private void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        this.dataPersistenceObjects = FindAllDataPersistenceObjects();       
+        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
+        Debug.Log(FindAllDataPersistenceObjects());
         LoadGame();
     }
-
-    //private void OnEnable()
-    //{
-    //    SceneManager.sceneUnloaded += OnSceneUnloaded;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    SceneManager.sceneUnloaded -= OnSceneUnloaded;
-    //}
-    //private void OnSceneUnloaded(Scene scene)
-    //{
-    //    SaveGame();
-    //}
     public void NewGame()
     {
         this.gameData = new GameData();
     }
-
     public void LoadGame()
     {
         //Load any saved data from a file using the data handler
@@ -66,7 +51,6 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObj.LoadData(gameData);
         }
     }
-
     public void SaveGame()
     {
         //pass the data to other scripts so they can update it
@@ -83,10 +67,15 @@ public class DataPersistenceManager : MonoBehaviour
         SaveGame();
     }
 
+    public void OnPlayerDeath(Component sender, object data)
+    {
+        SaveGame();
+    }
+
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>()
-            .OfType<IDataPersistence>();
+            .OfType<IDataPersistence>();        
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
 }

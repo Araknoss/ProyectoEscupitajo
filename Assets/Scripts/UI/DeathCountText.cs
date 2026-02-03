@@ -30,7 +30,7 @@ public class DeathCountText : MonoBehaviour, IDataPersistence
     }
 
     private void UpdateText()
-    {
+    {        
         deathCountText.text = "Deaths: " + deathCount.ToString();
     }
 }
