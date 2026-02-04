@@ -100,7 +100,9 @@ public class TrickManager : MonoBehaviour
         for (int i=0;i< newAvailableTricks.Count;i++)
         {
             if (UnlockablesManager.Instance.HasUnlockedTrick(newAvailableTricks[i]))
-            availableTricks.Add(newAvailableTricks[i]);
+            {
+                availableTricks.Add(newAvailableTricks[i]);
+            }            
         }
         onAvailableTricksReset.Raise(this, availableTricks);
     }

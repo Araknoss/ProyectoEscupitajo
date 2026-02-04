@@ -24,6 +24,20 @@ public class DataPersistenceManager : MonoBehaviour
         instance = this;
     }
 
+    //private void OnEnable()
+    //{
+    //    SceneManager.sceneLoaded += OnSceneLoaded;
+    //}
+
+    //private void OnDisable()
+    //{
+    //    SceneManager.sceneLoaded -= OnSceneLoaded;
+    //}
+    //private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //{
+    //    dataPersistenceObjects = FindAllDataPersistenceObjects();
+    //    LoadGame();
+    //}
     private void Start()
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
@@ -70,12 +84,18 @@ public class DataPersistenceManager : MonoBehaviour
     public void SaveGameOnGameEvent(Component sender, object data)
     {
         SaveGame();
-    }
+    }    
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>()
             .OfType<IDataPersistence>();        
         return new List<IDataPersistence>(dataPersistenceObjects);
+    }
+
+    public void DeleteSaveData()
+    {
+        dataHandler.Delete();
+        NewGame();
     }
 }

@@ -6,12 +6,12 @@ using UnityEngine;
 public class GameData
 {
     public int deathCount;
-    public Dictionary<int, bool> unlockedTricks = new Dictionary<int, bool>();
+    public SerializableDictionary<int, bool> unlockedTricks = new SerializableDictionary<int, bool>();
 
     //Initial values when starting a new game
     public GameData()
     {
         this.deathCount = 0;
-        this.unlockedTricks = new Dictionary<int, bool>();
+        this.unlockedTricks = new SerializableDictionary<int, bool>();
     }
 }

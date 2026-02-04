@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnlockablesManager : MonoBehaviour, IDataPersistence
 {
-    public Dictionary<int, bool> unlockedTricks = new Dictionary<int, bool>(); // Clave: Trick ID, Valor: Desbloqueado o no
+    public SerializableDictionary<int, bool> unlockedTricks = new SerializableDictionary<int, bool>(); // Clave: Trick ID, Valor: Desbloqueado o no
     public static UnlockablesManager Instance;
     private void Awake()
     {
@@ -28,10 +28,16 @@ public class UnlockablesManager : MonoBehaviour, IDataPersistence
     }
     public bool HasUnlockedTrick(Trick trick)
     {
-        // Implementa la lógica para verificar si el truco está desbloqueado
-        return true; // Placeholder
+        if(unlockedTricks.ContainsKey(trick.id))
+        {
+            return true ;
+        }
+        else
+        {
+                return false;
+        }          
     }
-    public void UnlockTrick(Trick trick)
+    public void UnlockTrick(Trick trick) //Aqui pasamos el id del scriptableObject al diccionario y lo ponemos en true
     {
         if (!unlockedTricks.ContainsKey(trick.id))
         {
