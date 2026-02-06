@@ -419,4 +419,5 @@ MonoBehaviour:
   trickNameText: {fileID: 8968702744546424457}
   trickPriceText: {fileID: 3451458538340408231}
   purchasedText: Purchased!
+  onTrickUnlocked: {fileID: 11400000, guid: 53b16171e753b414499b64cb7972a48b, type: 2}
   isLocked: 0

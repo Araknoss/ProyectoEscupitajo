@@ -34,14 +34,18 @@ public class UnlockablesManager : MonoBehaviour, IDataPersistence
         }
         else
         {
-                return false;
+             return false;
         }          
     }
-    public void UnlockTrick(Trick trick) //Aqui pasamos el id del scriptableObject al diccionario y lo ponemos en true
+    public void UnlockTrick(Component sender, object data) //Aqui pasamos el id del scriptableObject al diccionario y lo ponemos en true
     {
-        if (!unlockedTricks.ContainsKey(trick.id))
+        if(data is int trickId)
         {
-            unlockedTricks[trick.id] = true;
-        }
+            if (!unlockedTricks.ContainsKey(trickId))
+            {
+                unlockedTricks[trickId] = true;
+                Debug.Log("Trick unlocked: " + trickId);
+            }
+        }        
     }
 }

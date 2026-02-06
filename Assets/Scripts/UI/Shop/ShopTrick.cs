@@ -14,29 +14,35 @@ public class ShopTrick : MonoBehaviour
     [SerializeField] private string purchasedText;
 
     [Header("Events")]
-    public GameEvent onTrickUnlocked;
-
-    [Header("Internal Variables")]    
-    private bool isPurchased = false;
-    public bool isLocked = false;
+    public GameEvent onTrickUnlocked;   
     private void Start()
     {
-        button = gameObject.GetComponent<Button>();
-        SetLocked(isLocked);
-
+        button = gameObject.GetComponent<Button>();        
+        
         if (trickSO == null)
         {
             SetLocked(true);
             return;
         }
 
-        trickNameText.text = trickSO.trickName;    
-        trickPriceText.text = trickSO.cost.ToString() + " G";
+        CheckIfTrickUnlocked();       
     }
 
-    private void SetLocked(bool locked)
+    private void CheckIfTrickUnlocked()
     {
-        isLocked = locked;
+        if (UnlockablesManager.Instance.HasUnlockedTrick(trickSO))
+        {
+            SetLocked(true);        
+        }
+        else
+        {
+            SetLocked(false);
+            trickNameText.text = trickSO.trickName;
+            trickPriceText.text = trickSO.cost.ToString() + " G";
+        }
+    }
+    private void SetLocked(bool isLocked)
+    {     
         button.interactable = !isLocked;
     }
 
@@ -45,9 +51,7 @@ public class ShopTrick : MonoBehaviour
         if (ScoreManager.Instance.gold >= trickSO.cost)
         {
             ScoreManager.Instance.Buy(trickSO.cost);
-            SetLocked(true);
-            isPurchased = true;
-            //trickSO.isPurchased = true; No funciona correctament aqui
+            SetLocked(true);            
             trickNameText.text = purchasedText;
             trickPriceText.text="";
 
