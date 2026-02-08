@@ -2059,17 +2059,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &1114529368 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7560485140360501088, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
-  m_PrefabInstance: {fileID: 195092318}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e70b9502e994ad64da50ce1a7f88adb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1160892952
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,8 +2410,9 @@ GameObject:
   - component: {fileID: 1401931508}
   - component: {fileID: 1401931507}
   - component: {fileID: 1401931506}
+  - component: {fileID: 1401931509}
   m_Layer: 5
-  m_Name: Button
+  m_Name: AddGoldButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2492,14 +2482,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1114529368}
-        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
-        m_MethodName: AddGold
-        m_Mode: 3
+      - m_Target: {fileID: 1401931509}
+        m_TargetAssemblyTypeName: InvokeGameEvent, Assembly-CSharp
+        m_MethodName: InvokeEvent
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 300
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2542,6 +2532,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401931504}
   m_CullTransparentMesh: 1
+--- !u!114 &1401931509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401931504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfcf302b1485b9f4aa63370153c87329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 06c1d3561a2a3fa4e9397f08cb0ccd91, type: 2}
+  data: 300
 --- !u!1 &1454809309
 GameObject:
   m_ObjectHideFlags: 0

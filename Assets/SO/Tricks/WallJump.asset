@@ -17,7 +17,7 @@ MonoBehaviour:
   trickName: Wall Jump
   baseScore: 100
   multiplier: 1
-  comboTricks: []
+  comboTricks:
+  - {fileID: 11400000, guid: 1c8020f2de7eef44aaab217d06615c5a, type: 2}
   inputKey: 32
   cost: 0
-  isPurchased: 1

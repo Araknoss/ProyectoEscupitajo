@@ -76,4 +76,11 @@ public class ScoreManager : MonoBehaviour
         gold += amount;
         onGoldUpdate.Raise(this, gold);
     }
+
+    public void OnAddGold(Component sender, object data)
+    {
+        if (data is not int) return;
+        int amount = (int)data;
+        AddGold(amount);
+    }
 }

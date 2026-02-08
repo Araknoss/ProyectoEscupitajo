@@ -13,6 +13,5 @@ public class Trick : ScriptableObject
     public KeyCode inputKey;
 
     //SHOP
-    public int cost;
-    public bool isPurchased = true;
+    public int cost;    
 }
