@@ -6,9 +6,9 @@ using UnityEngine;
 public class DeathCountText : MonoBehaviour, IDataPersistence
 {
     private TextMeshProUGUI deathCountText;
-    private int deathCount = 0;
+    public int deathCount = 0;
 
-    private void Awake()
+    private void Start()
     {
         deathCountText = GetComponent<TextMeshProUGUI>();
         UpdateText();
@@ -21,12 +21,12 @@ public class DeathCountText : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         this.deathCount= data.deathCount;
-        deathCountText.text = "Deaths: " + data.deathCount.ToString();
+        //UpdateText();
     }
     public void SaveData(ref GameData data)
     {
         data.deathCount = this.deathCount;
-        //No need to save anything here
+        Debug.Log("Saved death count: " + data.deathCount);
     }
 
     private void UpdateText()

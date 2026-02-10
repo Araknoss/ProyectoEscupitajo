@@ -2393,10 +2393,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 620883966500446102, guid: b1d94164025dca94382300d0530d953b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2129979339}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1d94164025dca94382300d0530d953b, type: 3}
 --- !u!1 &1401931504
 GameObject:
@@ -3036,50 +3033,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088603755}
   m_CullTransparentMesh: 1
---- !u!1 &2129979336 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 620883966500446102, guid: b1d94164025dca94382300d0530d953b, type: 3}
-  m_PrefabInstance: {fileID: 1242400828}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2129979337 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4756786180940913197, guid: b1d94164025dca94382300d0530d953b, type: 3}
-  m_PrefabInstance: {fileID: 1242400828}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2129979336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 386d1908dea886c48bced8712b9b4d59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2129979339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2129979336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 53b16171e753b414499b64cb7972a48b, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2129979337}
-        m_TargetAssemblyTypeName: UnlockablesManager, Assembly-CSharp
-        m_MethodName: UnlockTrick
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &6565811967656999381
 PrefabInstance:
   m_ObjectHideFlags: 0

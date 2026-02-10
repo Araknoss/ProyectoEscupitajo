@@ -22,28 +22,31 @@ public class DataPersistenceManager : MonoBehaviour
             return;
         }
         instance = this;
+
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
     }
 
-    //private void OnEnable()
-    //{
-    //    SceneManager.sceneLoaded += OnSceneLoaded;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    SceneManager.sceneLoaded -= OnSceneLoaded;
-    //}
-    //private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    //{
-    //    dataPersistenceObjects = FindAllDataPersistenceObjects();
-    //    LoadGame();
-    //}
-    private void Start()
+    private void OnEnable()
     {
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        Debug.Log(FindAllDataPersistenceObjects());
         LoadGame();
+        Debug.Log("OnSceneLoaded");
+    }  
+    private void OnSceneUnloaded(Scene scene)
+    {
+        SaveGame();
+        Debug.Log("OnSceneUnloaded");
     }
     public void NewGame()
     {
@@ -83,6 +86,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGameOnGameEvent(Component sender, object data)
     {
+        Debug.Log("Saving game data on event: " + sender.name);
         SaveGame();
     }    
 

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1018602856232376670}
   - component: {fileID: 4756786180940913197}
+  - component: {fileID: 6555060123101097196}
   m_Layer: 0
   m_Name: UnlockablesManager
   m_TagString: Untagged
@@ -47,3 +48,31 @@ MonoBehaviour:
   unlockedTricks:
     keys: 
     values: 
+--- !u!114 &6555060123101097196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620883966500446102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 53b16171e753b414499b64cb7972a48b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4756786180940913197}
+        m_TargetAssemblyTypeName: UnlockablesManager, Assembly-CSharp
+        m_MethodName: UnlockTrick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

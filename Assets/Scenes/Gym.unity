@@ -6503,28 +6503,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrickManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
-      propertyPath: wallJumpTrick
-      value: 
-      objectReference: {fileID: 11400000, guid: d91cba3fefa56e04fac53b027afc7474, type: 2}
-    - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
-      propertyPath: wallSlideTrick
-      value: 
-      objectReference: {fileID: 11400000, guid: 1f6dd524df5f1f4499666b0ca25dda17, type: 2}
-    - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
-      propertyPath: onAvailableTricksReset
-      value: 
-      objectReference: {fileID: 11400000, guid: ea83c3bde698a37468a4340346d8969b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 918170895285684174, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1760585128}
-    - targetCorrespondingSourceObject: {fileID: 918170895285684174, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1760585130}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
 --- !u!1 &942996148
 GameObject:
@@ -8173,17 +8155,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1135630737 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9014616521911981234, guid: ae1d2d9f2f019eb4da20ccda45c9bea9, type: 3}
-  m_PrefabInstance: {fileID: 2570971930572158811}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2570971930572158812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 452ae89ac9f581345b97938899032942, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1143816597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13279,78 +13250,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 766699578a87d6d499c474670d594148, type: 3}
---- !u!1 &1760585125 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 918170895285684174, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
-  m_PrefabInstance: {fileID: 935575530}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1760585126 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
-  m_PrefabInstance: {fileID: 935575530}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760585125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c51ed4a40e07e44194e0b651103b929, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1760585128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760585125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 6901f1094f03d504d8c5f895c2bac5fe, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1760585126}
-        m_TargetAssemblyTypeName: TrickManager, Assembly-CSharp
-        m_MethodName: SetIsOnWall
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1760585130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760585125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: de8e000ca6376b54f87cec68ccdf0b8d, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1760585126}
-        m_TargetAssemblyTypeName: TrickManager, Assembly-CSharp
-        m_MethodName: HandleOnWallJump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1778117810
 GameObject:
   m_ObjectHideFlags: 0
@@ -16880,44 +16779,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3523178821802280315, guid: ae1d2d9f2f019eb4da20ccda45c9bea9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2570971930572158813}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae1d2d9f2f019eb4da20ccda45c9bea9, type: 3}
---- !u!1 &2570971930572158812 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3523178821802280315, guid: ae1d2d9f2f019eb4da20ccda45c9bea9, type: 3}
-  m_PrefabInstance: {fileID: 2570971930572158811}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2570971930572158813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2570971930572158812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 128213f9e8dd5e844af8fbb77ce732e6, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1135630737}
-        m_TargetAssemblyTypeName: DataPersistenceManager, Assembly-CSharp
-        m_MethodName: DeleteSaveData
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &5178498678594032479
 PrefabInstance:
   m_ObjectHideFlags: 0

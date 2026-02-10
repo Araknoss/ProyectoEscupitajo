@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 867806449151303392}
   - component: {fileID: 8959599064956223186}
+  - component: {fileID: 738504626614170699}
+  - component: {fileID: 6808472886406564595}
   m_Layer: 3
   m_Name: TrickManager
   m_TagString: Untagged
@@ -25,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918170895285684174}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -51,6 +53,64 @@ MonoBehaviour:
   bodyKey: 106
   skateKey: 107
   trickCooldownTime: 0.5
-  horizontalFlip: {fileID: 11400000, guid: 1c8020f2de7eef44aaab217d06615c5a, type: 2}
-  verticalFlip: {fileID: 11400000, guid: 30c6e2d5478c3554394902c83d677333, type: 2}
+  wallSlideTrick: {fileID: 11400000, guid: 1f6dd524df5f1f4499666b0ca25dda17, type: 2}
+  wallJumpTrick: {fileID: 11400000, guid: d91cba3fefa56e04fac53b027afc7474, type: 2}
+  wallScoreTime: 0.1
   onTrickPerformed: {fileID: 11400000, guid: efa7df2a394382947ad724f7a33738d3, type: 2}
+  onAvailableTricksReset: {fileID: 11400000, guid: ea83c3bde698a37468a4340346d8969b, type: 2}
+--- !u!114 &738504626614170699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918170895285684174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 6901f1094f03d504d8c5f895c2bac5fe, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8959599064956223186}
+        m_TargetAssemblyTypeName: TrickManager, Assembly-CSharp
+        m_MethodName: SetIsOnWall
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6808472886406564595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918170895285684174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: de8e000ca6376b54f87cec68ccdf0b8d, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8959599064956223186}
+        m_TargetAssemblyTypeName: TrickManager, Assembly-CSharp
+        m_MethodName: HandleOnWallJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
