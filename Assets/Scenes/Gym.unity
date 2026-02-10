@@ -5057,6 +5057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c997f8b80e4fe4443b1d1bb51caf919f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathCount: 0
 --- !u!1 &711105206
 GameObject:
   m_ObjectHideFlags: 0
@@ -16775,6 +16776,10 @@ PrefabInstance:
     - target: {fileID: 3523178821802280315, guid: ae1d2d9f2f019eb4da20ccda45c9bea9, type: 3}
       propertyPath: m_Name
       value: DataPersistenceManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951156170060512426, guid: ae1d2d9f2f019eb4da20ccda45c9bea9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

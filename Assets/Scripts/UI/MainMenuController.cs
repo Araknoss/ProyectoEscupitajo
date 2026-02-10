@@ -6,12 +6,24 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    [SerializeField] private int playSceneIndex = 1;   
+    [SerializeField] private int playSceneIndex = 1;
 
-    public void NewGame()
+    [Header("Menu Buttons")]
+    [SerializeField] private Button newGameButton;
+    [SerializeField] private Button continueGameButton;
+    public void OnNewGameClicked()
     {
-        SceneManager.LoadScene(playSceneIndex);
+        DisableMenuButtons();
+        DataPersistenceManager.Instance.NewGame();
+        SceneManager.LoadSceneAsync(playSceneIndex);
     } 
+
+    public void OnContinueGameClicked()
+    {
+        DisableMenuButtons();
+        //OnSceneLoaded will automatically load the saved data when the play scene is loaded, so we just need to load the scene here
+        SceneManager.LoadSceneAsync(playSceneIndex);
+    }
 
     public void Quit()
     {        
@@ -20,5 +32,11 @@ public class MainMenuController : MonoBehaviour
         #else
                 Application.Quit();
         #endif
+    }
+
+    private void DisableMenuButtons()
+    {
+        newGameButton.interactable = false;
+        continueGameButton.interactable = false;
     }
 }

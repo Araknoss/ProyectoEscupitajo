@@ -12,16 +12,19 @@ public class DataPersistenceManager : MonoBehaviour
     private GameData gameData;
     public List<IDataPersistence> dataPersistenceObjects;
     private FileDataHandler dataHandler;
-    public static DataPersistenceManager instance { get; private set; }
+    public static DataPersistenceManager Instance { get; private set; }
     private void Awake()
     {
-        if(instance != null)
+        if (Instance == null)
         {
-            Debug.LogWarning("Multiple instances of DataPersistenceManager detected. Destroying duplicate.");
-            Destroy(this.gameObject);
-            return;
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Persiste entre escenas
         }
-        instance = this;
+        else
+        {
+            Destroy(gameObject); // Evita duplicados
+        }
+
 
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
     }
