@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : MonoBehaviour, IDataPersistence
 {
     [Header("Score")]
     private int score;
@@ -77,10 +77,22 @@ public class ScoreManager : MonoBehaviour
         onGoldUpdate.Raise(this, gold);
     }
 
-    public void OnAddGold(Component sender, object data)
+    public void OnAddGold(Component sender, object data) //Para el menu principal, usa para añadir oro al hacer click en un botón de recompensa
     {
         if (data is not int) return;
         int amount = (int)data;
         AddGold(amount);
+    }   
+    
+    public void LoadData(GameData data)
+    {        
+        this.gold = data.gold;
+        onScoreUpdate.Raise(this, score);
+        onGoldUpdate.Raise(this, gold);
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.gold = this.gold;
     }
 }
