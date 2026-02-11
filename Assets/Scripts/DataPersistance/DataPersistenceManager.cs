@@ -93,8 +93,8 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGameOnGameEvent(Component sender, object data)
     {
-        Debug.Log("Saving game data on event: " + sender.name);
-        SaveGame();
+        //Debug.Log("Saving game data on event: " + sender.name);
+        //SaveGame();
     }    
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()

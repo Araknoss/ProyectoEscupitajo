@@ -26,7 +26,6 @@ public class DeathCountText : MonoBehaviour, IDataPersistence
     public void SaveData(ref GameData data)
     {
         data.deathCount = this.deathCount;
-        Debug.Log("Saved death count: " + data.deathCount);
     }
 
     private void UpdateText()

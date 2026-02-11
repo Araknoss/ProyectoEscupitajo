@@ -7,6 +7,7 @@ public class UpdateTextOnGameEvent : MonoBehaviour
 {
     private TextMeshProUGUI targetText;
     [SerializeField] private float returnAnimationSpeed=5f;
+    [SerializeField] private string prefix; 
     void Start()
     {
         targetText = GetComponent<TextMeshProUGUI>();
@@ -21,7 +22,7 @@ public class UpdateTextOnGameEvent : MonoBehaviour
         {
             if(data is int) //Para la score
             {
-               targetText.text = data.ToString();
+               targetText.text = data.ToString() + prefix;
                transform.localScale = Vector3.one * 1.2f;
             }
             else if(data is List<Trick>) //Para los trucos disponibles

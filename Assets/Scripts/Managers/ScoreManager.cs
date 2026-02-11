@@ -13,6 +13,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     [Header("Gold")]
     public int gold;
     public GameEvent onGoldUpdate;
+    [SerializeField] private int goldConversion; 
 
     public static ScoreManager Instance;
     private void Awake()
@@ -53,7 +54,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     
     private void SetScore(int points)
     {        
-        score = points;
+        score = Mathf.Clamp(points,0,points);
         onScoreUpdate.Raise(this, score);
     }
 
@@ -83,16 +84,37 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
         int amount = (int)data;
         AddGold(amount);
     }   
-    
+
+    public void OnPlayerDeath(Component sender, object data)
+    {
+        StartCoroutine(ScoreToGoldCo());
+    }
+
+    IEnumerator ScoreToGoldCo()
+    {
+        /*int goldEarned = score / goldConversion; */// Ejemplo: cada 10 puntos de score se convierte en 1 de oro
+        int scoreToConvert = score;        
+        while (scoreToConvert > 0)
+        {
+            AddGold(1);
+            scoreToConvert -= goldConversion;
+            SetScore(scoreToConvert);
+            yield return new WaitForSecondsRealtime(0.1f); // Pequeña pausa para el efecto visual
+        }
+        yield return null;
+    }
     public void LoadData(GameData data)
     {        
         this.gold = data.gold;
         onScoreUpdate.Raise(this, score);
         onGoldUpdate.Raise(this, gold);
+        Debug.Log("Loaded gold: " + data.gold);
     }
 
-    public void SaveData(GameData data)
+    public void SaveData(ref GameData data)
     {
         data.gold = this.gold;
+        Debug.Log("Saved gold: " + data.gold);
     }
+
 }
