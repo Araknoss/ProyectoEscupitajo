@@ -15,19 +15,19 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     public GameEvent onGoldUpdate;
     [SerializeField] private int goldConversion; 
 
-    public static ScoreManager Instance;
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Persiste entre escenas
-        }
-        else
-        {
-            Destroy(gameObject); // Evita duplicados
-        }
-    }
+    //public static ScoreManager Instance;
+    //private void Awake()
+    //{
+    //    if (Instance == null)
+    //    {
+    //        Instance = this;
+    //        DontDestroyOnLoad(gameObject); // Persiste entre escenas
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject); // Evita duplicados
+    //    }
+    //}
     void Start()
     {
         SetScore(0);

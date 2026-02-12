@@ -48,14 +48,14 @@ public class ShopTrick : MonoBehaviour
 
     public void TryToBuy()
     {
-        if (ScoreManager.Instance.gold >= trickSO.cost)
-        {
-            ScoreManager.Instance.Buy(trickSO.cost);
-            SetLocked(true);            
-            trickNameText.text = purchasedText;
-            trickPriceText.text="";
+        //if (ScoreManager.Instance.gold >= trickSO.cost)
+        //{
+        //    ScoreManager.Instance.Buy(trickSO.cost);
+        //    SetLocked(true);            
+        //    trickNameText.text = purchasedText;
+        //    trickPriceText.text="";
 
-            onTrickUnlocked.Raise(this, trickSO.id);
-        }
+        //    onTrickUnlocked.Raise(this, trickSO.id);
+        //}
     }
 }

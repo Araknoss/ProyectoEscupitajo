@@ -8,7 +8,7 @@ public class UpdateTextOnGameEvent : MonoBehaviour
     private TextMeshProUGUI targetText;
     [SerializeField] private float returnAnimationSpeed=5f;
     [SerializeField] private string prefix; 
-    void Start()
+    void Awake()
     {
         targetText = GetComponent<TextMeshProUGUI>();
     }
