@@ -23,7 +23,7 @@ public class DeathCountText : MonoBehaviour, IDataPersistence
         this.deathCount= data.deathCount;
         //UpdateText();
     }
-    public void SaveData(ref GameData data)
+    public void SaveData(/*ref*/ GameData data)
     {
         data.deathCount = this.deathCount;
     }

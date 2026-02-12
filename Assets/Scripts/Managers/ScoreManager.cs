@@ -111,7 +111,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
         Debug.Log("Loaded gold: " + data.gold);
     }
 
-    public void SaveData(ref GameData data)
+    public void SaveData(/*ref*/ GameData data)
     {
         data.gold = this.gold;
         Debug.Log("Saved gold: " + data.gold);

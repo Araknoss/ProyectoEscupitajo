@@ -22,7 +22,7 @@ public class UnlockablesManager : MonoBehaviour, IDataPersistence
     {
         unlockedTricks = data.unlockedTricks;
     }
-    public void SaveData(ref GameData data)
+    public void SaveData(GameData data)
     {
         data.unlockedTricks = unlockedTricks;
     }

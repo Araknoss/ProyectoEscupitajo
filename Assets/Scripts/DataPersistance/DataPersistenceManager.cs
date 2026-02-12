@@ -51,6 +51,7 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void NewGame()
     {
+        dataHandler.Delete(); 
         this.gameData = new GameData();
     }
     public void LoadGame()
@@ -80,7 +81,7 @@ public class DataPersistenceManager : MonoBehaviour
         //pass the data to other scripts so they can update it
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
-            dataPersistenceObj.SaveData(ref gameData);          
+            dataPersistenceObj.SaveData(gameData);          
         }
         dataHandler.Save(gameData);
         //save the updated data to a file using the data handler
@@ -106,8 +107,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void DeleteSaveData()
     {
-        dataHandler.Delete();
-        NewGame();
+        dataHandler.Delete();         
     }
 
     public bool HasGameData()
