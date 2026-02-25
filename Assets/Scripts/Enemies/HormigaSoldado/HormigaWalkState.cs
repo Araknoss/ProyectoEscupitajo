@@ -20,7 +20,9 @@ public class HormigaWalkState : State
     public override void Enter()
     {
         if(walkAnimation != null)
-            core.animator.Play(walkAnimation.name);
+        {
+            animator.Play(walkAnimation.name);
+        }
         core.gameObject.transform.localPosition = core.GetComponent<EnemyController>().startPosition;
         
     }
