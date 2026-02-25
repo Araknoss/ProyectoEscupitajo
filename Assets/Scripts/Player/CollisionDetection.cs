@@ -28,6 +28,13 @@ public class CollisionDetection : MonoBehaviour
     //        Debug.Log("Player exited collision with Wall");
     //    }
     //}
+    private void Start()
+    {
+#if UNITY_EDITOR
+        isInvulnerable = true;
+        toggle.isOn = true;
+#endif
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

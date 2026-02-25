@@ -145,6 +145,8 @@ Transform:
   m_Children:
   - {fileID: 5652302378317893743}
   - {fileID: 2013110080175542819}
+  - {fileID: 8976190127108993896}
+  - {fileID: 6289485151514913950}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2467115855286549482
@@ -275,7 +277,7 @@ MonoBehaviour:
   animator: {fileID: 4801790942814083233}
   body: {fileID: 4382494145833406768}
   actualState: {fileID: 0}
-  startState: {fileID: 0}
+  startState: {fileID: 9215097481749294051}
 --- !u!1 &5072684015303214272
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,5 +324,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkAnimation: {fileID: 0}
   speed: 3
-  movementSpeed: 0
+  movementSpeed: 5
   walkDirection: {x: 0, y: -1, z: 0}
+  leftRayCastOrigin: {fileID: 8976190127108993896}
+  rightRayCastOrigin: {fileID: 6289485151514913950}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!1 &6203473511818831797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6289485151514913950}
+  m_Layer: 0
+  m_Name: RightRayCast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6289485151514913950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6203473511818831797}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2518076224407708963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6555792306659859167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8976190127108993896}
+  m_Layer: 0
+  m_Name: LeftRayCast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8976190127108993896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555792306659859167}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2518076224407708963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
