@@ -32,6 +32,10 @@ public class Topo : Core
             {
                 Set(parabolicMoveState);
             }
+            if (state == parabolicMoveState)
+            {
+                Set(diggingState);
+            }
         }
     }
     private void FixedUpdate()
