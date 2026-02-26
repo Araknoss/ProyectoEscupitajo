@@ -10,7 +10,7 @@ public class DetectionState : State
 
     [SerializeField] private BoxCollider2D detectionCollider;
     [SerializeField] private LayerMask detectionLayer;
-    private bool canDetect = false;
+    //private bool canDetect = false;
 
     [Header("States")]
     [SerializeField] private ChargedAttackState chargedAttackState;

@@ -1192,7 +1192,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 851980669
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.18490559, g: 0.18490559, b: 0.18490559, a: 1}
@@ -2380,26 +2380,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2192166159098651082, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
-      propertyPath: idleAnimation
-      value: 
-      objectReference: {fileID: 7400000, guid: 17dedd41bfe47b9429c84d75585edf6f, type: 2}
-    - target: {fileID: 2192166159098651082, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
-      propertyPath: onWallDetection
-      value: 
-      objectReference: {fileID: 11400000, guid: 6901f1094f03d504d8c5f895c2bac5fe, type: 2}
-    - target: {fileID: 3342899415121235853, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
-      propertyPath: animationClip
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735745718199650216, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
-      propertyPath: m_text
-      value: 9999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 5615502111218105664, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
-      propertyPath: idleAnimation
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6296509650438831860, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: m_Name
       value: StateMachinePlayer
@@ -2444,22 +2424,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6934008127636820641, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
-      propertyPath: onWallJump
-      value: 
-      objectReference: {fileID: 11400000, guid: de8e000ca6376b54f87cec68ccdf0b8d, type: 2}
-    - target: {fileID: 7606790498281543376, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
-      propertyPath: spriteObject
-      value: 
-      objectReference: {fileID: 530866548}
     - target: {fileID: 8312640240589178808, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: toggle
       value: 
       objectReference: {fileID: 2100819950}
-    - target: {fileID: 8312640240589178808, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
-      propertyPath: onPlayerDeath
-      value: 
-      objectReference: {fileID: 11400000, guid: d6cb7279f45b4534ab12b4977b9cca83, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4358,11 +4326,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &530866548 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2156958203769207150, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
-  m_PrefabInstance: {fileID: 286597098}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &568705675
 GameObject:
   m_ObjectHideFlags: 0
@@ -4449,7 +4412,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 851980669
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.18490559, g: 0.18490559, b: 0.18490559, a: 1}
@@ -4588,7 +4551,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 000000005f069fcf75e8bff3091149c67d31c832
+  m_ApplyToSortingLayers: 000000005f069fcf75e8bff3091149c67d31c832e9acfe6c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -9412,7 +9375,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 851980669
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.18490559, g: 0.18490559, b: 0.18490559, a: 1}
@@ -10815,7 +10778,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -968290039
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.34901962, g: 0.9490197, b: 0.5254902, a: 1}
@@ -14678,56 +14641,6 @@ MonoBehaviour:
   - {fileID: 2110872}
   - {fileID: 312082863}
   - {fileID: 1998496612}
---- !u!1 &1845583394 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8828813217851082968, guid: 754b1813a726f9145a84ed1c05f17492, type: 3}
-  m_PrefabInstance: {fileID: 2043713169560398349}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1845583397
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845583394}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.026911974, y: -0.010765314}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.4532833, y: 0.569397}
-  m_EdgeRadius: 0
 --- !u!4 &1851792691 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 832470166254416994, guid: f48aada996b1a5e4ba4d0f306abd8062, type: 3}
@@ -17256,7 +17169,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 851980669
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.18490559, g: 0.18490559, b: 0.18490559, a: 1}
@@ -17893,14 +17806,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1935866721}
     m_Modifications:
-    - target: {fileID: 2991434040829347292, guid: 754b1813a726f9145a84ed1c05f17492, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2991434040829347292, guid: 754b1813a726f9145a84ed1c05f17492, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4378082307616286328, guid: 754b1813a726f9145a84ed1c05f17492, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.5
@@ -17941,33 +17846,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5565842089500860114, guid: 754b1813a726f9145a84ed1c05f17492, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5565842089500860114, guid: 754b1813a726f9145a84ed1c05f17492, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6792644160766359189, guid: 754b1813a726f9145a84ed1c05f17492, type: 3}
       propertyPath: m_Name
       value: TopoExcavadora
       objectReference: {fileID: 0}
-    - target: {fileID: 7432722138531040787, guid: 754b1813a726f9145a84ed1c05f17492, type: 3}
-      propertyPath: maxDiggingTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7432722138531040787, guid: 754b1813a726f9145a84ed1c05f17492, type: 3}
-      propertyPath: minDiggingTime
-      value: 0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8828813217851082968, guid: 754b1813a726f9145a84ed1c05f17492, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1845583397}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 754b1813a726f9145a84ed1c05f17492, type: 3}
 --- !u!4 &2124896879118389346 stripped
 Transform:
