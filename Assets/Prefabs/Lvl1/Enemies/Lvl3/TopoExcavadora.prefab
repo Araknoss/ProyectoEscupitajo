@@ -47,8 +47,10 @@ MonoBehaviour:
   animationClip: {fileID: 0}
   parent1: {fileID: 0}
   originalPosition: {x: 0, y: 0}
-  direction: {x: -2, y: -1, z: 0}
+  direction: {x: -5, y: -1, z: 0}
   movementSpeed: 2
+  duration: 2
+  height: 1
   nextState: {fileID: 7432722138531040787}
 --- !u!1 &6792644160766359189
 GameObject:
@@ -127,7 +129,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -205526923
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 1a872011c0d6f104087d6de7e61433e2, type: 3}
   m_Color: {r: 1, g: 0.9858491, b: 0.9858491, a: 1}
