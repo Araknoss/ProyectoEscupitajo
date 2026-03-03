@@ -18,6 +18,9 @@ public class ChunkManager : MonoBehaviour
     public int chunksCount = 0;
     public int currentLevelIndex = 0;
 
+    [SerializeField] private float onWallSlowdownFactor = 0.8f;
+    private float originalChunkSpeed;
+
     void Start()
     {
         //_pooler=gameObject.GetComponent<ChunkPooler>();
@@ -26,6 +29,8 @@ public class ChunkManager : MonoBehaviour
         chunk = _pooler.GetPooledObject(); //Lo activa antes de usarlo
         chunk.transform.position = spawnPosition;
         chunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
+
+        originalChunkSpeed = chunkSpeed; 
     }
 
     void Update()
@@ -74,5 +79,28 @@ public class ChunkManager : MonoBehaviour
     {
         currentLevelIndex = (currentLevelIndex + 1) % levelChunkPoolers.Count;
         _pooler = levelChunkPoolers[currentLevelIndex];
+    }
+
+    public void OnWallDetection(Component sender, object data)
+    {
+        if(data is bool isWallDetected)
+        {
+            if (isWallDetected)
+            {
+                chunkSpeed *= onWallSlowdownFactor; 
+            }
+            else
+            {
+                chunkSpeed = originalChunkSpeed; 
+            }
+            if (chunk != null)
+            {
+                chunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
+            }
+            if (newChunk != null)
+            {
+                newChunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
+            }
+        }
     }
 }
