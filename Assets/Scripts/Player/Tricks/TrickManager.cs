@@ -19,6 +19,7 @@ public class TrickManager : MonoBehaviour
     [SerializeField] private float trickCooldownTime=0.2f;
     private float trickCooldownTimer;
     private bool trickPerformed;
+    [SerializeField] private float listenInputOffset;
 
     [Header("OnWall")]
     [SerializeField] private Trick wallSlideTrick;
@@ -112,7 +113,9 @@ public class TrickManager : MonoBehaviour
         onTrickPerformed.Raise(this, trick);
         tricksPerformed.Add(trick);
         trickPerformed = true;
-        trickCooldownTimer = trickCooldownTime;
+
+        trickCooldownTime=trick.listenInputTime;
+        trickCooldownTimer = trickCooldownTime + listenInputOffset;
 
         SetAvailableTricks(trick.comboTricks);        
     }

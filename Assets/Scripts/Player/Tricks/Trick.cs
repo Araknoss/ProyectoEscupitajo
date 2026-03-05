@@ -12,6 +12,8 @@ public class Trick : ScriptableObject
     public List<Trick> comboTricks = new List<Trick>();
     public KeyCode inputKey;
 
+    public float listenInputTime=1f;
+
     //SHOP
     public int cost;    
 }
