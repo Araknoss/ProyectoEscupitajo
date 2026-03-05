@@ -115,7 +115,7 @@ public class TrickManager : MonoBehaviour
         trickPerformed = true;
 
         trickCooldownTime=trick.listenInputTime;
-        trickCooldownTimer = trickCooldownTime;
+        trickCooldownTimer = trickCooldownTime + listenInputOffset;
 
         SetAvailableTricks(trick.comboTricks);        
     }
