@@ -17,7 +17,7 @@ public class TrickManager : MonoBehaviour
 
     [Header("Variables")]
     [SerializeField] private float trickCooldownTime=0.2f;
-    private float trickCooldownTimer;
+    [SerializeField] private float trickCooldownTimer;
     private bool trickPerformed;
     [SerializeField] private float listenInputOffset;
 
@@ -115,7 +115,7 @@ public class TrickManager : MonoBehaviour
         trickPerformed = true;
 
         trickCooldownTime=trick.listenInputTime;
-        trickCooldownTimer = trickCooldownTime + listenInputOffset;
+        trickCooldownTimer = trickCooldownTime;
 
         SetAvailableTricks(trick.comboTricks);        
     }

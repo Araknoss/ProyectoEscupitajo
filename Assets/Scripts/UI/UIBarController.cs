@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,13 +20,15 @@ public class UIBarController : MonoBehaviour
 
     void Update()
     {
-        if (!isRunning) return;
+        if (!isRunning) return;      
 
         timer += Time.deltaTime;
 
-        float value = 1f - (timer / duration);
-        barImage.fillAmount = Mathf.Clamp01(value);
-        UpdateColor();
+        float normalized = 1f - (timer / duration); // 1 -> 0
+        normalized = Mathf.Clamp01(normalized);
+
+        HandleBarWidth(normalized);
+        HandleBarColor(normalized);        
 
         if (timer >= duration)
         {
@@ -50,15 +53,15 @@ public class UIBarController : MonoBehaviour
         barImage.color = fullColor;
         isRunning = false;
     }
-    private void UpdateColor()
+    private void HandleBarWidth(float normalized)
     {
-        timer += Time.deltaTime;
-
-        float normalized = 1f - (timer / duration); // 1 -> 0
-        normalized = Mathf.Clamp01(normalized);
-
+        barImage.fillAmount = normalized;
+    }
+    private void HandleBarColor(float normalized)
+    {       
         barImage.color = Color.Lerp(emptyColor, fullColor, normalized);
     }
+
     public void OnTrickPerformed(Component sender, object data)
     {       
         if(data is Trick)
