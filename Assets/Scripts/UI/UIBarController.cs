@@ -15,26 +15,30 @@ public class UIBarController : MonoBehaviour
         private float currentValue = 1f;
 
     [Header("Color")]
-    [SerializeField] private Color fullColor = Color.green;
-    [SerializeField] private Color emptyColor = Color.red;
+    [SerializeField] private Color okColor = Color.green;
+    [SerializeField] private Color perfectColor = Color.red;    
 
     void Update()
     {
-        if (!isRunning) return;      
+        if (!isRunning) return;
 
         timer += Time.deltaTime;
 
         float normalized = 1f - (timer / duration); // 1 -> 0
         normalized = Mathf.Clamp01(normalized);
 
-        HandleBarWidth(normalized);
-        HandleBarColor(normalized);        
+        //// Tamaño (relleno)
+        //barImage.fillAmount = normalized;
 
-        if (timer >= duration)
-        {
-            isRunning = false;
-            barImage.fillAmount = 0f;
-        }
+        //// Color (a menos valor, más rojo)
+        //barImage.color = Color.Lerp(emptyColor, fullColor, normalized);
+
+        //if (timer >= duration)
+        //{
+        //    isRunning = false;
+        //    barImage.fillAmount = 0f;
+        //    barImage.color = emptyColor;
+        //}
     }
 
     public void StartBar(float timeToEmpty)
@@ -50,17 +54,22 @@ public class UIBarController : MonoBehaviour
     {
         timer = 0f;
         barImage.fillAmount = 1f;
-        barImage.color = fullColor;
+        barImage.color = okColor;
         isRunning = false;
+    }
+
+    private void SetBarColor(Color color)
+    {
+        barImage.color= color;
     }
     private void HandleBarWidth(float normalized)
     {
         barImage.fillAmount = normalized;
     }
-    private void HandleBarColor(float normalized)
-    {       
-        barImage.color = Color.Lerp(emptyColor, fullColor, normalized);
-    }
+    //private void HandleBarColor(float normalized)
+    //{       
+    //    barImage.color = Color.Lerp(emptyColor, fullColor, normalized);
+    //}
 
     public void OnTrickPerformed(Component sender, object data)
     {       
@@ -75,4 +84,25 @@ public class UIBarController : MonoBehaviour
             StartBar(trick.listenInputTime);
         }
     }
+
+    public void OnComboEnd(Component sender, object data)
+    {
+        RestoreBar();
+    }
+
+    public void OnPerfectTiming(Component sender, object data)
+    {
+        if(data is bool)
+        {
+            data = (bool)data;
+            if(data is true)
+            {
+                SetBarColor(perfectColor);                
+            }
+            else
+            {
+                SetBarColor(okColor);
+            }
+        }
+    } 
 }

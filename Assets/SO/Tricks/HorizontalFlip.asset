@@ -21,5 +21,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 30c6e2d5478c3554394902c83d677333, type: 2}
   - {fileID: 11400000, guid: e49246bfea67d604abecbee1a48c577c, type: 2}
   inputKey: 106
+  listenInputTime: 2
   cost: 0
-  isPurchased: 1

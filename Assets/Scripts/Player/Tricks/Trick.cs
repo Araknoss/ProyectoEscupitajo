@@ -13,6 +13,7 @@ public class Trick : ScriptableObject
     public KeyCode inputKey;
 
     public float listenInputTime=1f;
+    public bool comboEnder=false;
 
     //SHOP
     public int cost;    

@@ -19,5 +19,5 @@ MonoBehaviour:
   multiplier: 1
   comboTricks: []
   inputKey: 107
+  listenInputTime: 1
   cost: 100
-  isPurchased: 1
