@@ -29094,6 +29094,38 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6f9221cfa06f2f40b9d97298928e3d5, type: 3}
+--- !u!1 &8865668472357352040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3294742443436727462, guid: 803cf98f35581fc4c844f763a306bcf1, type: 3}
+  m_PrefabInstance: {fileID: 9190240787016457241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8865668472357352041 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3003357689505415064, guid: 803cf98f35581fc4c844f763a306bcf1, type: 3}
+  m_PrefabInstance: {fileID: 9190240787016457241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865668472357352040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8865668472357352042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865668472357352040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e7da9328efc464685b12e0f68544e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timingText: {fileID: 8865668472357352041}
+  fadeOutSpeed: 5
+  perfectTimingMessage: Perfect!
+  okTimingMessage: OK!
 --- !u!1001 &9038745317604345481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29279,15 +29311,30 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8707581416685053829, guid: 803cf98f35581fc4c844f763a306bcf1, type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: efa7df2a394382947ad724f7a33738d3, type: 2}
+    - target: {fileID: 8707581416685053829, guid: 803cf98f35581fc4c844f763a306bcf1, type: 3}
       propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8865668472357352042}
+    - target: {fileID: 8707581416685053829, guid: 803cf98f35581fc4c844f763a306bcf1, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTrickPerformed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8707581416685053829, guid: 803cf98f35581fc4c844f763a306bcf1, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TimingTextController, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8350937347726727198, guid: 803cf98f35581fc4c844f763a306bcf1, type: 3}
     - {fileID: 7051198834458350888, guid: 803cf98f35581fc4c844f763a306bcf1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3294742443436727462, guid: 803cf98f35581fc4c844f763a306bcf1, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 8865668472357352042}
   m_SourcePrefab: {fileID: 100100000, guid: 803cf98f35581fc4c844f763a306bcf1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

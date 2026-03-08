@@ -43,7 +43,7 @@ public class UIBarController : MonoBehaviour
 
     public void StartBar(float timeToEmpty)
     {
-        Debug.Log("StartBar");
+        //Debug.Log("StartBar");
         duration = timeToEmpty;
         timer = 0f;
         isRunning = true;
@@ -54,7 +54,7 @@ public class UIBarController : MonoBehaviour
     {
         timer = 0f;
         barImage.fillAmount = 1f;
-        barImage.color = okColor;
+        //barImage.color = okColor;
         isRunning = false;
     }
 
@@ -97,11 +97,13 @@ public class UIBarController : MonoBehaviour
             data = (bool)data;
             if(data is true)
             {
-                SetBarColor(perfectColor);                
+                SetBarColor(perfectColor);   
+                //Debug.Log("EventoRecibidoTrue");
             }
             else
             {
                 SetBarColor(okColor);
+                //Debug.Log("EventoRecibidoFalse");
             }
         }
     } 

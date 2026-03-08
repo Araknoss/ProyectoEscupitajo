@@ -93,7 +93,7 @@ public class TrickManager : MonoBehaviour
         if (trickCooldownTimer > 0f && trickPerformed)
         {
             trickCooldownTimer -= Time.deltaTime;
-            if (trickCooldownTimer > trickPerfectTime && !isPerfectTiming)
+            if (trickCooldownTimer < trickPerfectTime && !isPerfectTiming)
             {
                 //SetOkTiming(false);
                 SetPerfectTiming(true);                
@@ -117,11 +117,15 @@ public class TrickManager : MonoBehaviour
             }            
         }
         onAvailableTricksReset.Raise(this, availableTricks);
+
+        SetPerfectTiming(false);
     }
 
     void PerformTrick(Trick trick)
     {                
         onTrickPerformed.Raise(this, trick);
+        onTrickPerformed.Raise(this, isPerfectTiming);
+
         tricksPerformed.Add(trick);
         trickPerformed = true;
 
@@ -131,9 +135,9 @@ public class TrickManager : MonoBehaviour
             return;
         }
 
-        trickCooldownTime=trick.listenInputTime;
-        trickCooldownTimer = trickCooldownTime + listenInputOffset;
-        trickPerfectTime = trickCooldownTime * trickPerfectTimingPercentage;
+        trickCooldownTime=trick.listenInputTime; //El tiempo en el que el jugador puede pulsar el input para hacer el siguiente truco
+        trickCooldownTimer = trickCooldownTime + listenInputOffset; //El tiempo total que tiene el jugador para hacer el siguiente truco, incluyendo offset general a lo coyote time
+        trickPerfectTime = trickCooldownTime * trickPerfectTimingPercentage; //El momento a partir del cual el jugador tiene un timing perfecto para hacer el siguiente truco
         SetAvailableTricks(trick.comboTricks);        
     }
 
@@ -142,12 +146,7 @@ public class TrickManager : MonoBehaviour
         trickPerformed = false;
         SetAvailableTricks(baseTricks);
         trickCooldownTimer = trickCooldownTime;
-        onComboEnd.Raise(this, true);
-
-        SetPerfectTiming(false);
-        //SetOkTiming(true);
-        
-
+        onComboEnd.Raise(this, true);       
     }
     void HandleWallSlide()
     {        
@@ -166,6 +165,7 @@ public class TrickManager : MonoBehaviour
     {
         isPerfectTiming = isPerfect;
         onPerfectTiming.Raise(this, isPerfectTiming);
+        //Debug.Log("Perfect Timing: " + isPerfectTiming);
     }
 
     //private void SetOkTiming(bool isOk)
