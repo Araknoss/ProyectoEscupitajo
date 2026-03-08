@@ -53,11 +53,17 @@ MonoBehaviour:
   bodyKey: 106
   skateKey: 107
   trickCooldownTime: 0.5
+  trickCooldownTimer: 0
+  listenInputOffset: 0
+  trickPerfectTimingPercentage: 0.2
+  trickPerfectTime: 0
   wallSlideTrick: {fileID: 11400000, guid: 1f6dd524df5f1f4499666b0ca25dda17, type: 2}
   wallJumpTrick: {fileID: 11400000, guid: d91cba3fefa56e04fac53b027afc7474, type: 2}
   wallScoreTime: 0.1
   onTrickPerformed: {fileID: 11400000, guid: efa7df2a394382947ad724f7a33738d3, type: 2}
   onAvailableTricksReset: {fileID: 11400000, guid: ea83c3bde698a37468a4340346d8969b, type: 2}
+  onComboEnd: {fileID: 11400000, guid: b9a8e1d810d21a743b4537f0c62e9a07, type: 2}
+  onPerfectTiming: {fileID: 11400000, guid: 87c6228edd1a5104f8f4eb63cfec229e, type: 2}
 --- !u!114 &738504626614170699
 MonoBehaviour:
   m_ObjectHideFlags: 0

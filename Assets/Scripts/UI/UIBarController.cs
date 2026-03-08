@@ -27,18 +27,18 @@ public class UIBarController : MonoBehaviour
         float normalized = 1f - (timer / duration); // 1 -> 0
         normalized = Mathf.Clamp01(normalized);
 
-        //// Tamaño (relleno)
-        //barImage.fillAmount = normalized;
+        // Tamaño (relleno)
+        barImage.fillAmount = normalized;
 
-        //// Color (a menos valor, más rojo)
+        // Color (a menos valor, más rojo)
         //barImage.color = Color.Lerp(emptyColor, fullColor, normalized);
 
-        //if (timer >= duration)
-        //{
-        //    isRunning = false;
-        //    barImage.fillAmount = 0f;
-        //    barImage.color = emptyColor;
-        //}
+        if (timer >= duration)
+        {
+            isRunning = false;
+            barImage.fillAmount = 0f;
+            //barImage.color = emptyColor;
+        }
     }
 
     public void StartBar(float timeToEmpty)
