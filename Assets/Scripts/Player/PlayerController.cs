@@ -9,11 +9,13 @@ public class PlayerController : Core
     [Header("States")]    
     [SerializeField] private IdleState idleState;   
     [SerializeField] private MoveState moveState;
-    [SerializeField] private WallState wallState;  
+    [SerializeField] private WallState wallState;
+    [SerializeField] private WallChargeState wallChargeState;
     [SerializeField] private JumpState jumpState;
 
     [Header("Internal Variables")]
     public bool onJump;
+    public bool onCharge;
 
     [Header("Inputs")]
     [SerializeField] private PlayerController playerInputs;   
@@ -52,6 +54,16 @@ public class PlayerController : Core
     }
     private void SelectState()
     {
+        //if (actualState == wallChargeState)
+        //{
+        //    if(actualState.isComplete)
+        //        Set(jumpState);
+        //}
+        if (onCharge)
+        {
+            Set(wallChargeState);
+            return;
+        }
         if(onJump)
         {
             Set(jumpState);
@@ -61,7 +73,8 @@ public class PlayerController : Core
         {
             if (startJumpInput)
             {
-                Set(jumpState);
+                //Set(jumpState);
+                Set(wallChargeState);
                 return;
             }
             Set(wallState);            
