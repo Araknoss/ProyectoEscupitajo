@@ -45,6 +45,10 @@ public class UpdateTextOnGameEvent : MonoBehaviour
 
                 targetText.text = string.Join("\n", lines); //Unir los nombres de los trucos con saltos de línea y actualizar el texto
             }
+            else if(data is float) //Para el multiplier
+            {
+                targetText.text = data.ToString() + "x";
+            }
         }
     }    
 }

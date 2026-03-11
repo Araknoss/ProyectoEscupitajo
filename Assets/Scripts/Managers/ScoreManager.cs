@@ -10,24 +10,17 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     [SerializeField] private float updateTime;
     public GameEvent onScoreUpdate;
 
+    [Header("Multiplier")]
+    [SerializeField] private float scoreMultiplier = 1f;
+    [SerializeField] private float perfectTimingMultiplier = 0.5f;
+    public GameEvent onMultiplierUpdate;
+
+
     [Header("Gold")]
     public int gold;
     public GameEvent onGoldUpdate;
     [SerializeField] private int goldConversion; 
 
-    //public static ScoreManager Instance;
-    //private void Awake()
-    //{
-    //    if (Instance == null)
-    //    {
-    //        Instance = this;
-    //        DontDestroyOnLoad(gameObject); // Persiste entre escenas
-    //    }
-    //    else
-    //    {
-    //        Destroy(gameObject); // Evita duplicados
-    //    }
-    //}
     void Start()
     {
         SetScore(0);
@@ -58,12 +51,35 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
         onScoreUpdate.Raise(this, score);
     }
 
+    private void AddMultiplier(float multiplier)
+    {
+        scoreMultiplier += multiplier;
+        onMultiplierUpdate.Raise(this, scoreMultiplier);
+    }
+
     public void HandleTrickPerformed(Component sender, object data)
     {
-        if (data is not Trick) return;
-
-        Trick trick = (Trick)data;
-        AddScore(trick.baseScore);
+        if (data is Trick)
+        {
+            Trick trick = (Trick)data;
+            AddScore(trick.baseScore);
+            AddMultiplier(trick.multiplier);
+        } 
+        else if (data is bool) //Cuando se lanza el evento de timing perfecto
+        {
+            bool onPerfectTiming = (bool)data;
+            if (onPerfectTiming)
+            {
+                AddMultiplier(perfectTimingMultiplier);
+            }
+        }
+    }
+    
+    public void HandleComboEnd(Component sender, object data)
+    {
+        //Reset multiplier when combo ends
+        scoreMultiplier = 1f;
+        onMultiplierUpdate.Raise(this, scoreMultiplier);
     }
 
     public void Buy(int price)

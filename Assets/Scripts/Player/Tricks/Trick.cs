@@ -8,7 +8,7 @@ public class Trick : ScriptableObject
     public AnimationClip animationClip;
     public string trickName;
     public int baseScore;
-    public float multiplier = 1f;
+    public float multiplier = 0.5f;
     public List<Trick> comboTricks = new List<Trick>();
     public KeyCode inputKey;
 
