@@ -7,19 +7,52 @@ public class WallChargeState : State
     [SerializeField] private PlayerController _input;
     //[SerializeField] private JumpState jumpState;
     [SerializeField] private AnimationClip chargeAnimation;
+    [SerializeField] private GameEvent onWallCharge;
+    [SerializeField] private Trick onWallChargeTrick;
+    [SerializeField] private Transform spriteTransform;
+
+    [SerializeField] private float minBufferTime;
+    private bool jumpInputBuffered;
+    
     public override void Enter()
     {
         if (chargeAnimation != null)
             animator.Play(chargeAnimation.name);
         _input.onCharge = true;
+        onWallCharge.Raise(this, null);
+
+        jumpInputBuffered = false;
+
+        spriteTransform.localScale = new Vector3(0.5f, spriteTransform.localScale.y, spriteTransform.localScale.z); //Testing
     }
     public override void Do()
     {
         if(Input.GetButtonUp("Jump"))
         {
+            if(time < minBufferTime)
+            {
+                jumpInputBuffered = true;
+                return;
+            }      
+            Jump();
+        }
+        if (time > onWallChargeTrick.listenInputTime)
+        {
             isComplete = true;
             _input.onCharge = false;
         }
+
+        if(time > minBufferTime && jumpInputBuffered) //Por si lo mantiene muy poco
+        {
+            Jump();
+        }
+    }
+
+    public void Jump()
+    {
+        isComplete = true;
+        _input.onCharge = false;
+        _input.onJump = true;
     }
 
     public override void FixedDo()
@@ -28,6 +61,6 @@ public class WallChargeState : State
     }
     public override void Exit()
     {   
-       _input.onJump = true;
+       spriteTransform.localScale = new Vector3(1f, spriteTransform.localScale.y, spriteTransform.localScale.z); //Testing
     }
 }

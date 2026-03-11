@@ -30,8 +30,10 @@ public class TrickManager : MonoBehaviour
     [Header("OnWall")]
     [SerializeField] private Trick wallSlideTrick;
     [SerializeField] private Trick wallJumpTrick;
+    [SerializeField] private Trick wallChargeTrick;
     [SerializeField] private float wallScoreTime = 0.1f;
     private bool isOnWall=false;
+    private bool isOnWallCharge=false;
     private float wallScoreTimer;    
 
     //[Header("Tricks")]
@@ -101,7 +103,7 @@ public class TrickManager : MonoBehaviour
         }
         else if(trickPerformed) //Cuando el cooldown termina se resetean los trucos disponibles
         {
-            EndCombo();            
+            EndCombo(true);            
         }
     }
 
@@ -131,7 +133,7 @@ public class TrickManager : MonoBehaviour
 
         if (trick.comboEnder)
         {
-            EndCombo();
+            EndCombo(false);
             return;
         }
 
@@ -141,11 +143,12 @@ public class TrickManager : MonoBehaviour
         SetAvailableTricks(trick.comboTricks);        
     }
 
-    void EndCombo()
+    void EndCombo(bool resetMultiplier)
     {
         trickPerformed = false;
         SetAvailableTricks(baseTricks);
         trickCooldownTimer = trickCooldownTime;
+
         onComboEnd.Raise(this, true);       
     }
     void HandleWallSlide()
@@ -191,6 +194,19 @@ public class TrickManager : MonoBehaviour
         if(data is null)
         {
             PerformTrick(wallJumpTrick);
+        }
+    }
+
+    public void HandleOnWallCharge(Component sender, object data)
+    {
+        if(data is null)
+        {
+            //isOnWallCharge = (bool)data;
+            //if (isOnWallCharge)
+            //{
+            //    PerformTrick(wallChargeTrick);
+            //}
+            PerformTrick(wallChargeTrick);
         }
     }
 

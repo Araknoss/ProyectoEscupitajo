@@ -16,9 +16,10 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: 98db49118c5b1bd47bd015cb979341ba, type: 2}
   trickName: Back Flip
   baseScore: 100
-  multiplier: 1
+  multiplier: 0
   comboTricks:
   - {fileID: 11400000, guid: e49246bfea67d604abecbee1a48c577c, type: 2}
   inputKey: 106
   listenInputTime: 1
+  comboEnder: 0
   cost: 50

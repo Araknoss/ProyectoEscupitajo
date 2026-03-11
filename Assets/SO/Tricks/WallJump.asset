@@ -16,9 +16,10 @@ MonoBehaviour:
   animationClip: {fileID: 0}
   trickName: Wall Jump
   baseScore: 100
-  multiplier: 1
+  multiplier: 0.5
   comboTricks:
   - {fileID: 11400000, guid: 1c8020f2de7eef44aaab217d06615c5a, type: 2}
   inputKey: 32
   listenInputTime: 1
+  comboEnder: 0
   cost: 0
