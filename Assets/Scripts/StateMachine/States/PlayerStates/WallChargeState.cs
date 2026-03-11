@@ -22,8 +22,6 @@ public class WallChargeState : State
         onWallCharge.Raise(this, null);
 
         jumpInputBuffered = false;
-
-        spriteTransform.localScale = new Vector3(0.5f, spriteTransform.localScale.y, spriteTransform.localScale.z); //Testing
     }
     public override void Do()
     {
@@ -61,6 +59,6 @@ public class WallChargeState : State
     }
     public override void Exit()
     {   
-       spriteTransform.localScale = new Vector3(1f, spriteTransform.localScale.y, spriteTransform.localScale.z); //Testing
+    
     }
 }
