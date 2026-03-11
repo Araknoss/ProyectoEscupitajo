@@ -78,8 +78,15 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     public void HandleComboEnd(Component sender, object data)
     {
         //Reset multiplier when combo ends
-        scoreMultiplier = 1f;
-        onMultiplierUpdate.Raise(this, scoreMultiplier);
+        if (data is bool)
+        {
+            bool resetMultiplier = (bool)data;
+            if (resetMultiplier)
+            {
+                scoreMultiplier = 1f;
+                onMultiplierUpdate.Raise(this, scoreMultiplier);
+            }
+        }
     }
 
     public void Buy(int price)

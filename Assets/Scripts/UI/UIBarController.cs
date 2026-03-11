@@ -83,11 +83,24 @@ public class UIBarController : MonoBehaviour
             }
             StartBar(trick.listenInputTime);
         }
+        if(data is float)
+        {
+            float listenInputTime = (float)data;
+            StartBar(listenInputTime);
+        }
     }
 
     public void OnComboEnd(Component sender, object data)
     {
-        RestoreBar();
+        if(data is bool)
+        {
+            bool reset = (bool)data;
+            if(reset)
+            {
+                RestoreBar();
+            }
+        }
+        //RestoreBar();
     }
 
     public void OnPerfectTiming(Component sender, object data)

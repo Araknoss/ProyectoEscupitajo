@@ -15,6 +15,9 @@ public class Trick : ScriptableObject
     public float listenInputTime=1f;
     public bool comboEnder=false;
 
+    public bool isStateTrick=false; //Si el truco solo se puede activar desde un estado específico, como el wall charge
+    public bool isBaseTrick = false;
+
     //SHOP
     public int cost;    
 }

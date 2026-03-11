@@ -8,6 +8,7 @@ public class TrickManager : MonoBehaviour
     [SerializeField] private List<Trick> tricksPerformed = new List<Trick>();
     [SerializeField] private List<Trick> availableTricks = new List<Trick>();
     [SerializeField] private List<Trick> baseTricks = new List<Trick>();    
+    //public Trick lastTrickPerformed;
 
     [Header("Input")]
     [SerializeField] private KeyCode bodyKey= KeyCode.J;
@@ -16,7 +17,7 @@ public class TrickManager : MonoBehaviour
     private bool skateInput;
 
     [Header("Variables")]
-    [SerializeField] private float trickCooldownTime=0.2f;
+    [SerializeField] private float trickCooldownTime=0.2f; //Este tiempo depende de cada truco
     [SerializeField] private float trickCooldownTimer;
     private bool trickPerformed;
     [SerializeField] private float listenInputOffset;
@@ -32,7 +33,7 @@ public class TrickManager : MonoBehaviour
     [SerializeField] private Trick wallJumpTrick;
     [SerializeField] private Trick wallChargeTrick;
     [SerializeField] private float wallScoreTime = 0.1f;
-    private bool isOnWall=false;
+    public bool isOnWall=false;
     private bool isOnWallCharge=false;
     private float wallScoreTimer;    
 
@@ -84,8 +85,11 @@ public class TrickManager : MonoBehaviour
             {
                 if(availableTricks[i].inputKey == input)
                 {
-                    PerformTrick(availableTricks[i]);
-                    return;
+                    if (!availableTricks[i].isStateTrick) //Para que los trucos se activen solo desde el estado
+                    {
+                        PerformTrick(availableTricks[i]);
+                        return;
+                    }
                 }
             }
         }        
@@ -94,16 +98,18 @@ public class TrickManager : MonoBehaviour
     {
         if (trickCooldownTimer > 0f && trickPerformed)
         {
-            trickCooldownTimer -= Time.deltaTime;
-            if (trickCooldownTimer < trickPerfectTime && !isPerfectTiming)
+            if (!isOnWall)
             {
-                //SetOkTiming(false);
+                trickCooldownTimer -= Time.deltaTime;
+            }
+            if (trickCooldownTimer < trickPerfectTime && !isPerfectTiming)
+            {                
                 SetPerfectTiming(true);                
             }
         }
         else if(trickPerformed) //Cuando el cooldown termina se resetean los trucos disponibles
-        {
-            EndCombo(true);            
+        {            
+            ResetCombo();
         }
     }
 
@@ -113,7 +119,7 @@ public class TrickManager : MonoBehaviour
 
         for (int i=0;i< newAvailableTricks.Count;i++)
         {
-            if (UnlockablesManager.Instance.HasUnlockedTrick(newAvailableTricks[i]))
+            if (UnlockablesManager.Instance.HasUnlockedTrick(newAvailableTricks[i]) || newAvailableTricks[i].isBaseTrick) //Si el truco es base siempre lo puedes usar
             {
                 availableTricks.Add(newAvailableTricks[i]);
             }            
@@ -124,42 +130,68 @@ public class TrickManager : MonoBehaviour
     }
 
     void PerformTrick(Trick trick)
-    {                
+    {
         onTrickPerformed.Raise(this, trick);
-        onTrickPerformed.Raise(this, isPerfectTiming);
-
-        tricksPerformed.Add(trick);
+        onTrickPerformed.Raise(this, isPerfectTiming);             
+                
+        tricksPerformed.Add(trick);      
         trickPerformed = true;
 
-        if (trick.comboEnder)
-        {
-            EndCombo(false);
-            return;
-        }
-
-        trickCooldownTime=trick.listenInputTime; //El tiempo en el que el jugador puede pulsar el input para hacer el siguiente truco
+        trickCooldownTime = trick.listenInputTime; //El tiempo en el que el jugador puede pulsar el input para hacer el siguiente truco
         trickCooldownTimer = trickCooldownTime + listenInputOffset; //El tiempo total que tiene el jugador para hacer el siguiente truco, incluyendo offset general a lo coyote time
         trickPerfectTime = trickCooldownTime * trickPerfectTimingPercentage; //El momento a partir del cual el jugador tiene un timing perfecto para hacer el siguiente truco
+                      
         SetAvailableTricks(trick.comboTricks);        
+    }    
+
+    void PerformWallSlide()
+    {
+        onTrickPerformed.Raise(this, wallSlideTrick);
+        onTrickPerformed.Raise(this, isPerfectTiming);
+
+        tricksPerformed.Add(wallSlideTrick);
+        trickPerformed = false;
+
+        trickCooldownTime = wallSlideTrick.listenInputTime;
+        trickCooldownTimer = trickCooldownTime + listenInputOffset;
+        trickPerfectTime = trickCooldownTime * trickPerfectTimingPercentage;
+
+        SetAvailableTricks(wallSlideTrick.comboTricks);
     }
 
-    void EndCombo(bool resetMultiplier)
+    void EndCombo(bool reset) //Cuando es true quiere decir que has fallado el combo
     {
-        trickPerformed = false;
         SetAvailableTricks(baseTricks);
+        if (reset)
+        {
+            //lastTrickPerformed = null;
+            trickPerformed = false;
+            trickCooldownTimer = trickCooldownTime;
+        }      
+            
+        //trickCooldownTimer = trickCooldownTime;
+
+        onComboEnd.Raise(this, reset);       
+    }
+
+    private void ResetCombo()
+    {
+        Debug.Log("Combo reset");
+        SetAvailableTricks(baseTricks);
+        trickPerformed = false;
         trickCooldownTimer = trickCooldownTime;
 
-        onComboEnd.Raise(this, true);       
+        onComboEnd.Raise(this, true);
     }
     void HandleWallSlide()
-    {        
-        if(isOnWall)
+    {
+        if (isOnWall)
         {
             wallScoreTimer += Time.deltaTime;
             if (wallScoreTimer > wallScoreTime)
             {
                 wallScoreTimer = 0;
-                PerformTrick(wallSlideTrick);
+                onTrickPerformed.Raise(this, wallSlideTrick);
             }
         }
     }
@@ -167,28 +199,28 @@ public class TrickManager : MonoBehaviour
     private void SetPerfectTiming(bool isPerfect)
     {
         isPerfectTiming = isPerfect;
-        onPerfectTiming.Raise(this, isPerfectTiming);
-        //Debug.Log("Perfect Timing: " + isPerfectTiming);
+        onPerfectTiming.Raise(this, isPerfectTiming);       
     }
-
-    //private void SetOkTiming(bool isOk)
-    //{
-    //    isOkTiming = isOk;
-    //}
 
     public void SetIsOnWall(Component sender, object data)
     {
         if (data is bool)
         {
-            isOnWall = (bool)data; 
-            if(!isOnWall)
+            isOnWall = (bool)data;           
+            if (!isOnWall)
             {
-                wallScoreTimer = 0f;
-                SetAvailableTricks(baseTricks);
+                //wallScoreTimer = 0f;
+                SetAvailableTricks(baseTricks);                
+                onTrickPerformed.Raise(this, wallSlideTrick.listenInputTime);
+                                
             }
+            else
+            {               
+                PerformTrick(wallSlideTrick);
+            }
+            
         }
     }
-
     public void HandleOnWallJump(Component sender, object data)
     {
         if(data is null)
@@ -200,12 +232,7 @@ public class TrickManager : MonoBehaviour
     public void HandleOnWallCharge(Component sender, object data)
     {
         if(data is null)
-        {
-            //isOnWallCharge = (bool)data;
-            //if (isOnWallCharge)
-            //{
-            //    PerformTrick(wallChargeTrick);
-            //}
+        {            
             PerformTrick(wallChargeTrick);
         }
     }
