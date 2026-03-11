@@ -142,23 +142,7 @@ public class TrickManager : MonoBehaviour
         trickPerfectTime = trickCooldownTime * trickPerfectTimingPercentage; //El momento a partir del cual el jugador tiene un timing perfecto para hacer el siguiente truco
                       
         SetAvailableTricks(trick.comboTricks);        
-    }    
-
-    void PerformWallSlide()
-    {
-        onTrickPerformed.Raise(this, wallSlideTrick);
-        onTrickPerformed.Raise(this, isPerfectTiming);
-
-        tricksPerformed.Add(wallSlideTrick);
-        trickPerformed = false;
-
-        trickCooldownTime = wallSlideTrick.listenInputTime;
-        trickCooldownTimer = trickCooldownTime + listenInputOffset;
-        trickPerfectTime = trickCooldownTime * trickPerfectTimingPercentage;
-
-        SetAvailableTricks(wallSlideTrick.comboTricks);
-    }
-
+    }  
     void EndCombo(bool reset) //Cuando es true quiere decir que has fallado el combo
     {
         SetAvailableTricks(baseTricks);
@@ -173,7 +157,6 @@ public class TrickManager : MonoBehaviour
 
         onComboEnd.Raise(this, reset);       
     }
-
     private void ResetCombo()
     {
         Debug.Log("Combo reset");
@@ -195,7 +178,6 @@ public class TrickManager : MonoBehaviour
             }
         }
     }
-
     private void SetPerfectTiming(bool isPerfect)
     {
         isPerfectTiming = isPerfect;
