@@ -13,7 +13,7 @@ public class WallState : State
 
     public GameEvent onWallDetection;
 
-    [SerializeField] private Transform playerSprite;
+    [SerializeField] private SpriteRenderer playerSprite;
     private Vector3 originalPlayerSpriteScale;
 
     public override void Enter()
@@ -22,15 +22,17 @@ public class WallState : State
 
         onWallDetection.Raise(this, true);
 
-        originalPlayerSpriteScale = playerSprite.localScale;
-        if (_input.groundSensor.groundNormal.x > 0)
-        {
-            playerSprite.localScale = new Vector3(-1, 1, 1);
-        }
-        else
-        {
-            playerSprite.localScale = new Vector3(1, 1, 1);
-        }
+        playerSprite.flipX=true;
+
+        //originalPlayerSpriteScale = playerSprite.localScale;
+        //if (_input.groundSensor.groundNormal.x > 0)
+        //{
+        //    playerSprite.localScale = new Vector3(-1, 1, 1);
+        //}
+        //else
+        //{
+        //    playerSprite.localScale = new Vector3(1, 1, 1);
+        //}
     }
     public override void Do()
     {
@@ -52,6 +54,8 @@ public class WallState : State
 
         animator.Play(idleAnimation.name);
 
-        playerSprite.localScale = originalPlayerSpriteScale;
+        playerSprite.flipX = false;
+
+        //playerSprite.localScale = originalPlayerSpriteScale;
     }
 }

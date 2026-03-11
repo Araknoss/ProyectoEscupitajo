@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
   m_Name: WallSlide
   m_EditorClassIdentifier: 
-  id: 10
+  id: 50
   animationClip: {fileID: 0}
   trickName: Wall Slide
   baseScore: 5
   multiplier: 0
   comboTricks:
-  - {fileID: 11400000, guid: d91cba3fefa56e04fac53b027afc7474, type: 2}
+  - {fileID: 11400000, guid: fcb4e38858e7b5d4f8a916a757886a7c, type: 2}
   inputKey: 0
-  listenInputTime: 0.2
+  listenInputTime: 1
   comboEnder: 0
+  isStateTrick: 1
+  isBaseTrick: 1
   cost: 0

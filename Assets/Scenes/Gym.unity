@@ -13749,6 +13749,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2192166159098651082, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      propertyPath: playerSprite
+      value: 
+      objectReference: {fileID: 480647449}
+    - target: {fileID: 2310452226147934507, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6296509650438831860, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: m_Name
       value: StateMachinePlayer
@@ -15443,6 +15451,16 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!212 &480647449 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2310452226147934507, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+  m_PrefabInstance: {fileID: 286597098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &480647450 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1269340507053132227, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+  m_PrefabInstance: {fileID: 286597098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &518725686
 GameObject:
   m_ObjectHideFlags: 0
@@ -15714,6 +15732,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &550642508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 918170895285684174, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
+  m_PrefabInstance: {fileID: 935575530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &550642511 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
+  m_PrefabInstance: {fileID: 935575530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550642508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c51ed4a40e07e44194e0b651103b929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &550642513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550642508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e96d5d414ca10cb44a3eff92f61dbb66, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 550642511}
+        m_TargetAssemblyTypeName: TrickManager, Assembly-CSharp
+        m_MethodName: HandleOnWallCharge
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &570656108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4498833231828548051, guid: c8b349840f6c9464898060d1aed0be92, type: 3}
@@ -17321,7 +17383,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _input: {fileID: 1544787709}
-  chargeAnimation: {fileID: 7400000, guid: 98db49118c5b1bd47bd015cb979341ba, type: 2}
+  chargeAnimation: {fileID: 7400000, guid: 7e40ad062f576e5449235d5acd40a274, type: 2}
+  onWallCharge: {fileID: 11400000, guid: e96d5d414ca10cb44a3eff92f61dbb66, type: 2}
+  onWallChargeTrick: {fileID: 11400000, guid: fcb4e38858e7b5d4f8a916a757886a7c, type: 2}
+  spriteTransform: {fileID: 480647450}
+  playerSprite: {fileID: 480647449}
+  minBufferTime: 0
 --- !u!4 &810238957
 Transform:
   m_ObjectHideFlags: 0
@@ -18204,10 +18271,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrickManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
+      propertyPath: wallChargeTrick
+      value: 
+      objectReference: {fileID: 11400000, guid: fcb4e38858e7b5d4f8a916a757886a7c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 918170895285684174, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 550642513}
   m_SourcePrefab: {fileID: 100100000, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
 --- !u!1 &942996148
 GameObject:

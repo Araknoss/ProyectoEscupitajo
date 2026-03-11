@@ -10,6 +10,7 @@ public class WallChargeState : State
     [SerializeField] private GameEvent onWallCharge;
     [SerializeField] private Trick onWallChargeTrick;
     [SerializeField] private Transform spriteTransform;
+    [SerializeField] private SpriteRenderer playerSprite;
 
     [SerializeField] private float minBufferTime;
     private bool jumpInputBuffered;
@@ -22,6 +23,8 @@ public class WallChargeState : State
         onWallCharge.Raise(this, null);
 
         jumpInputBuffered = false;
+
+        playerSprite.flipX = true;
     }
     public override void Do()
     {
@@ -59,6 +62,6 @@ public class WallChargeState : State
     }
     public override void Exit()
     {   
-    
+        playerSprite.flipX = false;
     }
 }
