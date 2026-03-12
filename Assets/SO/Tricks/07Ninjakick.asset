@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
+  m_Name: 07Ninjakick
+  m_EditorClassIdentifier: 
+  id: 7
+  animationClip: {fileID: 7400000, guid: 02265f97c36428c43a43d6d686ac7403, type: 2}
+  trickName: Ninjakick
+  baseScore: 50
+  multiplier: 0
+  comboTricks:
+  - {fileID: 11400000, guid: dfb5cea8c07a3be46a4d651df7ebce79, type: 2}
+  inputKey: 106
+  listenInputTime: 1.5
+  comboEnder: 0
+  isStateTrick: 0
+  isUnlockedAtStart: 1
+  cost: 0

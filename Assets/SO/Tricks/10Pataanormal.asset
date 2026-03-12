@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
+  m_Name: 10Pataanormal
+  m_EditorClassIdentifier: 
+  id: 10
+  animationClip: {fileID: 7400000, guid: 032d3d215ed68674d827001ad14a6b7e, type: 2}
+  trickName: Pataanormal
+  baseScore: 50
+  multiplier: 0
+  comboTricks:
+  - {fileID: 11400000, guid: e2d537cecde11a149b1d973e46f893b7, type: 2}
+  inputKey: 106
+  listenInputTime: 1
+  comboEnder: 0
+  isStateTrick: 0
+  isUnlockedAtStart: 1
+  cost: 0

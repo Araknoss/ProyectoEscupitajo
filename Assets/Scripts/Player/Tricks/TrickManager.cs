@@ -42,6 +42,9 @@ public class TrickManager : MonoBehaviour
     public GameEvent onComboEnd;
     public GameEvent onPerfectTiming;
 
+    [Header("Debug")]
+    [SerializeField] private Animator animator;
+
     private void Start()
     {
         SetAvailableTricks(baseTricks);
@@ -112,7 +115,7 @@ public class TrickManager : MonoBehaviour
 
         for (int i=0;i< newAvailableTricks.Count;i++)
         {
-            if (UnlockablesManager.Instance.HasUnlockedTrick(newAvailableTricks[i]) || newAvailableTricks[i].isBaseTrick) //Si el truco es base siempre lo puedes usar
+            if (UnlockablesManager.Instance.HasUnlockedTrick(newAvailableTricks[i]) || newAvailableTricks[i].isUnlockedAtStart) //Si el truco es base siempre lo puedes usar
             {
                 availableTricks.Add(newAvailableTricks[i]);
             }            
@@ -158,6 +161,12 @@ public class TrickManager : MonoBehaviour
         trickCooldownTimer = trickCooldownTime;
 
         onComboEnd.Raise(this, true);
+
+        //Debug
+        if (!isOnWall)
+        {
+            animator.SetTrigger("Idle");
+        } 
     }
     void HandleWallSlide()
     {

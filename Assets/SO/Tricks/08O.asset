@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: WallSlide
+  m_Name: 08O
   m_EditorClassIdentifier: 
-  id: 50
-  animationClip: {fileID: 0}
-  trickName: Wall Slide
-  baseScore: 5
+  id: 8
+  animationClip: {fileID: 7400000, guid: bab85d07c1a53c0458391d83813a3261, type: 2}
+  trickName: O
+  baseScore: 50
   multiplier: 0
   comboTricks:
-  - {fileID: 11400000, guid: fcb4e38858e7b5d4f8a916a757886a7c, type: 2}
-  inputKey: 0
+  - {fileID: 11400000, guid: 89bfba1cbc9e53d4c92ef82c9e498f5e, type: 2}
+  inputKey: 106
   listenInputTime: 1
   comboEnder: 0
-  isStateTrick: 1
-  isBaseTrick: 1
+  isStateTrick: 0
+  isUnlockedAtStart: 1
   cost: 0

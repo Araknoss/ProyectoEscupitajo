@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
+  m_Name: 04Culitoculito
+  m_EditorClassIdentifier: 
+  id: 4
+  animationClip: {fileID: 7400000, guid: cd506e6297d4bad42918b7317907902f, type: 2}
+  trickName: Culitoculito
+  baseScore: 50
+  multiplier: 0
+  comboTricks:
+  - {fileID: 11400000, guid: 2de7971ab1fe4774ca6fb796e3146b3f, type: 2}
+  inputKey: 106
+  listenInputTime: 1
+  comboEnder: 0
+  isStateTrick: 0
+  isUnlockedAtStart: 1
+  cost: 0

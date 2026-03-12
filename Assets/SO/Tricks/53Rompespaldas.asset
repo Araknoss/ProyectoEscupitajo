@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: Adan
+  m_Name: 53Rompespaldas
   m_EditorClassIdentifier: 
-  id: 0
-  animationClip: {fileID: 0}
-  trickName: 
-  baseScore: 0
-  multiplier: 0.5
-  comboTricks: []
-  inputKey: 0
-  listenInputTime: 1
+  id: 53
+  animationClip: {fileID: 7400000, guid: 6df55de536afd934e9f06c207b07d4de, type: 2}
+  trickName: Rompespaldas
+  baseScore: 100
+  multiplier: 0
+  comboTricks:
+  - {fileID: 11400000, guid: 331ecc2608e8082439be2d553726e2d1, type: 2}
+  inputKey: 106
+  listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 0
-  isBaseTrick: 1
+  isUnlockedAtStart: 1
   cost: 0

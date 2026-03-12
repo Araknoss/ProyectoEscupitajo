@@ -18272,9 +18272,17 @@ PrefabInstance:
       value: TrickManager
       objectReference: {fileID: 0}
     - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1544787711}
+    - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
       propertyPath: wallChargeTrick
       value: 
       objectReference: {fileID: 11400000, guid: fcb4e38858e7b5d4f8a916a757886a7c, type: 2}
+    - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
+      propertyPath: baseTricks.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23226,6 +23234,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed232beb8d8926043bb50511a6ba5a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1544787711 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2927047487581371016, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+  m_PrefabInstance: {fileID: 286597098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1564534186
 GameObject:
   m_ObjectHideFlags: 0
