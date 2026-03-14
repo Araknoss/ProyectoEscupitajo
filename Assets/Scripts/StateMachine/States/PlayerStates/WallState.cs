@@ -20,9 +20,7 @@ public class WallState : State
     {
         animator.Play(moveAnimation.name);
 
-        onWallDetection.Raise(this, true);
-
-        playerSprite.flipX=true;
+        onWallDetection.Raise(this, true);        
 
         //originalPlayerSpriteScale = playerSprite.localScale;
         //if (_input.groundSensor.groundNormal.x > 0)
@@ -52,9 +50,7 @@ public class WallState : State
     {
         onWallDetection.Raise(this, false);
 
-        animator.Play(idleAnimation.name);
-
-        playerSprite.flipX = false;
+        animator.Play(idleAnimation.name);       
 
         //playerSprite.localScale = originalPlayerSpriteScale;
     }
