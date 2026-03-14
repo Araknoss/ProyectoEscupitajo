@@ -23,8 +23,6 @@ public class WallChargeState : State
         onWallCharge.Raise(this, null);
 
         jumpInputBuffered = false;
-
-        playerSprite.flipX = true;
     }
     public override void Do()
     {
@@ -62,6 +60,6 @@ public class WallChargeState : State
     }
     public override void Exit()
     {   
-        playerSprite.flipX = false;
+       
     }
 }
