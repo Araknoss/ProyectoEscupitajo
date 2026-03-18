@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: 10Pataanormal
+  m_Name: 00Pataanormal
   m_EditorClassIdentifier: 
-  id: 10
+  sprite: {fileID: 21300000, guid: 6449591c4e461b646a46e664bb481bbf, type: 3}
+  id: 201
   animationClip: {fileID: 7400000, guid: 032d3d215ed68674d827001ad14a6b7e, type: 2}
   trickName: Pataanormal
   baseScore: 50
   multiplier: 0
   comboTricks:
-  - {fileID: 11400000, guid: e2d537cecde11a149b1d973e46f893b7, type: 2}
-  inputKey: 106
-  listenInputTime: 1
+  - {fileID: 11400000, guid: 60121bb6d0fc0224aa1348bfb29c611b, type: 2}
+  - {fileID: 11400000, guid: 2afa0fdd44f41b442a4781f76cfceaa5, type: 2}
+  inputKey: 107
+  listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 0
   isUnlockedAtStart: 1

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
   m_Name: 51WallCharge
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 2b67174adc73c074bb5443b19f492b28, type: 3}
   id: 51
   animationClip: {fileID: 0}
   trickName: Wall Charge

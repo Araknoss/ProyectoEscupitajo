@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
   m_Name: 08O
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 8e4bd09a1227b2c40b7fd07c7b292b9b, type: 3}
   id: 8
   animationClip: {fileID: 7400000, guid: bab85d07c1a53c0458391d83813a3261, type: 2}
   trickName: O
   baseScore: 50
   multiplier: 0
   comboTricks:
-  - {fileID: 11400000, guid: 89bfba1cbc9e53d4c92ef82c9e498f5e, type: 2}
-  inputKey: 106
-  listenInputTime: 1
+  - {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}
+  - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
+  inputKey: 107
+  listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 0
   isUnlockedAtStart: 1
