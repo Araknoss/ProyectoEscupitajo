@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 6449591c4e461b646a46e664bb481bbf, type: 3}
   id: 201
-  animationClip: {fileID: 7400000, guid: 032d3d215ed68674d827001ad14a6b7e, type: 2}
+  animationClip: {fileID: 7400000, guid: 77267ef159fd0134d937a9703affd056, type: 2}
   trickName: Pataanormal
   baseScore: 50
   multiplier: 0

@@ -15,8 +15,9 @@ public class UIBarController : MonoBehaviour
         private float currentValue = 1f;
 
     [Header("Color")]
-    [SerializeField] private Color okColor = Color.green;
-    [SerializeField] private Color perfectColor = Color.red;    
+    [SerializeField] private Color greatColor = Color.green;
+    [SerializeField] private Color perfectColor = Color.red;
+    [SerializeField] private Color nullColor = Color.gray;
 
     void Update()
     {
@@ -48,6 +49,7 @@ public class UIBarController : MonoBehaviour
         timer = 0f;
         isRunning = true;
         barImage.fillAmount = 1f;
+        SetBarColor(nullColor);
     }
 
     public void RestoreBar()
@@ -56,6 +58,7 @@ public class UIBarController : MonoBehaviour
         barImage.fillAmount = 1f;
         //barImage.color = okColor;
         isRunning = false;
+        SetBarColor(nullColor);  
     }
 
     private void SetBarColor(Color color)
@@ -112,12 +115,20 @@ public class UIBarController : MonoBehaviour
             {
                 SetBarColor(perfectColor);   
                 //Debug.Log("EventoRecibidoTrue");
-            }
-            else
-            {
-                SetBarColor(okColor);
-                //Debug.Log("EventoRecibidoFalse");
-            }
+            }            
         }
     } 
+
+    public void OnGreatTiming(Component sender, object data)
+    {
+        if (data is bool)
+        {
+            data = (bool)data;
+            if (data is true)
+            {
+                SetBarColor(greatColor);
+                //Debug.Log("EventoRecibidoTrue");
+            }            
+        }
+    }
 }
