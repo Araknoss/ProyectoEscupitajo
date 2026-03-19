@@ -15,8 +15,9 @@ public class TrickManager : MonoBehaviour
     private bool bodyInput;
     [SerializeField] private KeyCode skateKey= KeyCode.K;
     private bool skateInput;
-    [SerializeField] private KeyCode keepKey= KeyCode.Space;
-    private bool keepInput;
+    [SerializeField] private KeyCode keepKey= KeyCode.Space;    
+    private bool keepInputPress;
+    private bool keepInputRelease;
 
     [Header("Variables")]
     [SerializeField] private float trickCooldownTime=0.2f; //Este tiempo depende de cada truco
@@ -44,6 +45,7 @@ public class TrickManager : MonoBehaviour
 
     [Header("Events")]
     public GameEvent onTrickPerformed;
+    public GameEvent onWallSlidePerformed;
     public GameEvent onAvailableTricksReset;
     public GameEvent onComboEnd;
     public GameEvent onPerfectTiming;
@@ -68,7 +70,8 @@ public class TrickManager : MonoBehaviour
     {
         bodyInput = Input.GetKeyDown(bodyKey);
         skateInput= Input.GetKeyDown(skateKey);
-        keepInput = Input.GetKeyDown(keepKey);
+        keepInputPress = Input.GetKeyDown(keepKey);
+        keepInputRelease = Input.GetKeyUp(keepKey);
     }    
     void HandleInput() //Solo se pueden hacer trucos cuando estan disponibles en la lista AvailableTricks
     {
@@ -80,9 +83,13 @@ public class TrickManager : MonoBehaviour
         {
             CheckAvailable(skateKey);
         }
-        if(keepInput)
+        if(keepInputPress)
         {         
             CheckAvailable(keepKey);
+        }
+        if(keepInputRelease)
+        {
+            //Si el truco es de mantener la tecla, se comprueba tanto al pulsar como al soltar para permitir trucos que se activen al soltar la tecla
         }
     }
     void CheckAvailable(KeyCode input) //Se comprueba si el input corresponde a algun truco disponible
@@ -93,7 +100,7 @@ public class TrickManager : MonoBehaviour
             {
                 if(availableTricks[i].inputKey == input)
                 {
-                    if (!availableTricks[i].isStateTrick) //Para que los trucos se activen solo desde el estado
+                    if (!availableTricks[i].isStateTrick) //Para que los trucos de estado solo se activen desde los estados
                     {
                         PerformTrick(availableTricks[i]);
                         return;
@@ -106,11 +113,11 @@ public class TrickManager : MonoBehaviour
     {
         if (trickCooldownTimer > 0f && onCombo)
         {
-            if (!isOnWall)
-            {
-                trickCooldownTimer -= Time.deltaTime;
-            }
-            if(trickCooldownTimer < trickGreatTime && !isGreatTiming)
+            //if (!isOnWall)
+            //{
+            trickCooldownTimer -= Time.deltaTime;
+            //}
+            if (trickCooldownTimer < trickGreatTime && !isGreatTiming)
             {
                 SetGreatTiming(true);
             }
@@ -150,7 +157,7 @@ public class TrickManager : MonoBehaviour
         }
         else if (isGreatTiming)
         {
-            onTrickPerformed.Raise(this, "Great");
+            onTrickPerformed.Raise(this, isGreatTiming);
         }
         //Depurar, añadir tiempo de cooldown y isKeepTrick por isStateTrick???
         else if (onCombo && !trick.isStateTrick) 
@@ -170,21 +177,13 @@ public class TrickManager : MonoBehaviour
         trickGreatTime = trickCooldownTime * trickGreatTimingPercentage;
                       
         SetAvailableTricks(trick.comboTricks);        
-    }  
-    void EndCombo(bool reset) //Cuando es true quiere decir que has fallado el combo
+    }      
+   
+    void PerformWallSlideTrick()
     {
-        SetAvailableTricks(baseTricks);
-        if (reset)
-        {
-            //lastTrickPerformed = null;
-            onCombo = false;
-            trickCooldownTimer = trickCooldownTime;
-        }      
-            
-        //trickCooldownTimer = trickCooldownTime;
 
-        onComboEnd.Raise(this, reset);       
     }
+
     private void ResetCombo()
     {
         Debug.Log("Combo reset");
@@ -208,7 +207,7 @@ public class TrickManager : MonoBehaviour
             if (wallScoreTimer > wallScoreTime)
             {
                 wallScoreTimer = 0;
-                onTrickPerformed.Raise(this, wallSlideTrick);
+                onWallSlidePerformed.Raise(this, wallSlideTrick);
             }
         }
     }
@@ -236,11 +235,11 @@ public class TrickManager : MonoBehaviour
                 onTrickPerformed.Raise(this, wallSlideTrick.listenInputTime);
                                 
             }
-            else
-            {               
-                PerformTrick(wallSlideTrick);
+            else //Cuando entras en contacto se triggerea el truco
+            {
+                //PerformTrick(wallSlideTrick);
             }
-            
+
         }
     }
     public void HandleOnWallJump(Component sender, object data)

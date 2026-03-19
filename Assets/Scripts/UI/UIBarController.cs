@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -78,12 +79,7 @@ public class UIBarController : MonoBehaviour
     {       
         if(data is Trick)
         {
-            Trick trick = (Trick)data;
-            if (trick.id == 10)
-            {
-                RestoreBar();
-                return;
-            }
+            Trick trick = (Trick)data;            
             StartBar(trick.listenInputTime);
         }
         if(data is float)
@@ -91,6 +87,14 @@ public class UIBarController : MonoBehaviour
             float listenInputTime = (float)data;
             StartBar(listenInputTime);
         }
+    }
+
+    public void OnWallSlidePerformed(Component sender, object data)
+    {
+        //if (data is Trick)
+        //{
+        //    RestoreBar();
+        //}
     }
 
     public void OnComboEnd(Component sender, object data)
