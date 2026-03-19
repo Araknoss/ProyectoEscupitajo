@@ -40,11 +40,18 @@ public class PlayerScoreTextUI : MonoBehaviour
         {
             Trick trick = (Trick)data;
             stayDuration = trick.listenInputTime-hideDuration;
+            
             AddTemporaryScore(trick.baseScore);
 
             //currentTween?.Kill();
             //PlayAnimation();
         }
+    }
+
+    public void HandleComboEnd(Component sender, object data)
+    {
+        stayTimer = stayDuration;
+        temporaryScore = 0f;        
     }
     //private void PlayAnimation()
     //{       
