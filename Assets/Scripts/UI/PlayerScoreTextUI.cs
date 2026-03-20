@@ -39,12 +39,9 @@ public class PlayerScoreTextUI : MonoBehaviour
         if (data is Trick)
         {
             Trick trick = (Trick)data;
-            stayDuration = trick.listenInputTime-hideDuration;
-            
-            AddTemporaryScore(trick.baseScore);
+            stayDuration = trick.listenInputTime - hideDuration;
 
-            //currentTween?.Kill();
-            //PlayAnimation();
+            AddTemporaryScore(trick.baseScore); //Habrá que multiplicar por multiplier
         }
     }
 

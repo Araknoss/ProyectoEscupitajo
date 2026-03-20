@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     private int score;
     private float updateTimer = 0f;
     [SerializeField] private float updateTime;
-    public GameEvent onScoreUpdate;
+    public GameEvent onScoreUpdate; 
 
     [Header("Multiplier")]
     [SerializeField] private float scoreMultiplier = 1f;
@@ -28,7 +28,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
 
     void Update()
     {
-        HandlePassiveScore();
+        //HandlePassiveScore();
     }
     private void HandlePassiveScore()
     {

@@ -97,6 +97,15 @@ public class UIBarController : MonoBehaviour
         //}
     }
 
+    public void OnKeepTrickPerfomed(Component sennder, object data)
+    {
+        //if(data is Trick)
+        //{
+        //    RestoreBar();
+        //}
+
+    }
+
     public void OnComboEnd(Component sender, object data)
     {
         if(data is bool)

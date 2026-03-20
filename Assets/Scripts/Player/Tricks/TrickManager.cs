@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,8 +8,10 @@ public class TrickManager : MonoBehaviour
 {
     [SerializeField] private List<Trick> tricksPerformed = new List<Trick>();
     [SerializeField] private List<Trick> availableTricks = new List<Trick>();
-    [SerializeField] private List<Trick> baseTricks = new List<Trick>();    
-    //public Trick lastTrickPerformed;
+    [SerializeField] private List<Trick> baseTricks = new List<Trick>();
+
+    [SerializeField] private List<Trick> wallBaseTricks = new List<Trick>();
+    private Trick lastTrickPerformed;   
 
     [Header("Input")]
     [SerializeField] private KeyCode bodyKey= KeyCode.J;
@@ -24,6 +27,11 @@ public class TrickManager : MonoBehaviour
     [SerializeField] private float trickCooldownTimer;
     private bool onCombo;
     [SerializeField] private float listenInputOffset;
+
+    [Header("KeepTricksVariables")]
+    private bool onKeepTrick;
+    [SerializeField] private float performKeepTrickTime = 0.1f;
+    private float performKeepTrickTimer;
 
     [Header("Timing")]
     [SerializeField] private float trickPerfectTimingPercentage = 0.2f;
@@ -45,6 +53,7 @@ public class TrickManager : MonoBehaviour
 
     [Header("Events")]
     public GameEvent onTrickPerformed;
+    public GameEvent onKeepTrickPerformed;
     public GameEvent onWallSlidePerformed;
     public GameEvent onAvailableTricksReset;
     public GameEvent onComboEnd;
@@ -62,6 +71,11 @@ public class TrickManager : MonoBehaviour
     {
         InitializeInput();
         HandleInput();
+        if (onKeepTrick)
+        {
+            HandleKeepTrick();
+            return;
+        }        
         HandleTrickCooldown();
         HandleWallSlide();
         //HandleBodyTricks();
@@ -75,20 +89,21 @@ public class TrickManager : MonoBehaviour
     }    
     void HandleInput() //Solo se pueden hacer trucos cuando estan disponibles en la lista AvailableTricks
     {
-        if(bodyInput)
+        if(bodyInput && !onKeepTrick)
         {
             CheckAvailable(bodyKey);
         }
-        if(skateInput)
+        if(skateInput && !onKeepTrick)
         {
             CheckAvailable(skateKey);
         }
-        if(keepInputPress)
+        if(keepInputPress && !onKeepTrick)
         {         
             CheckAvailable(keepKey);
         }
-        if(keepInputRelease)
+        if(keepInputRelease && onKeepTrick)
         {
+            onKeepTrick = false;
             //Si el truco es de mantener la tecla, se comprueba tanto al pulsar como al soltar para permitir trucos que se activen al soltar la tecla
         }
     }
@@ -158,8 +173,7 @@ public class TrickManager : MonoBehaviour
         else if (isGreatTiming)
         {
             onTrickPerformed.Raise(this, isGreatTiming);
-        }
-        //Depurar, añadir tiempo de cooldown y isKeepTrick por isStateTrick???
+        }       
         else if (onCombo && !trick.isStateTrick) 
         {
             ResetCombo();
@@ -176,13 +190,25 @@ public class TrickManager : MonoBehaviour
         trickPerfectTime = trickCooldownTime * trickPerfectTimingPercentage; //El momento a partir del cual el jugador tiene un timing perfecto para hacer el siguiente truco
         trickGreatTime = trickCooldownTime * trickGreatTimingPercentage;
                       
-        SetAvailableTricks(trick.comboTricks);        
-    }      
-   
-    void PerformWallSlideTrick()
-    {
+        SetAvailableTricks(trick.comboTricks);
 
-    }
+        lastTrickPerformed = trick;
+        if (trick.isKeepTrick)
+        {
+            onKeepTrick = true;
+        }
+    }          
+
+    //IEnumerator PerformKeepTrick(Trick trick)
+    //{
+    //    onKeepTrick = true;
+    //    while(onKeepTrick) //Sales cuando sueltas el input
+    //    {
+    //        yield return new WaitForSeconds(performKeepTrickTimer);
+    //        onKeepTrickPerformed.Raise(this, trick);
+    //    }
+
+    //}
 
     private void ResetCombo()
     {
@@ -211,6 +237,18 @@ public class TrickManager : MonoBehaviour
             }
         }
     }
+
+    void HandleKeepTrick()
+    {        
+            performKeepTrickTimer += Time.deltaTime;
+            if (performKeepTrickTimer > performKeepTrickTime)
+            {
+                performKeepTrickTimer = 0;
+                onKeepTrickPerformed.Raise(this, lastTrickPerformed);
+            }
+    
+    }
+
     private void SetPerfectTiming(bool isPerfect)
     {
         isPerfectTiming = isPerfect;
@@ -227,7 +265,8 @@ public class TrickManager : MonoBehaviour
     {
         if (data is bool)
         {
-            isOnWall = (bool)data;           
+            isOnWall = (bool)data;
+            onKeepTrick = false;
             if (!isOnWall)
             {
                 //wallScoreTimer = 0f;

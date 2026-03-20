@@ -14106,6 +14106,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6386848285536213876, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6934008127636820641, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: jumpTime
       value: 0.2
@@ -14150,6 +14154,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6946829337765763866, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       insertIndex: 6
       addedObject: {fileID: 1931079483}
+    - targetCorrespondingSourceObject: {fileID: 6946829337765763866, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1931079490}
   m_SourcePrefab: {fileID: 100100000, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
 --- !u!4 &298691428 stripped
 Transform:
@@ -14400,6 +14407,34 @@ MonoBehaviour:
       - m_Target: {fileID: 303266047}
         m_TargetAssemblyTypeName: UIBarController, Assembly-CSharp
         m_MethodName: OnGreatTiming
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &303266057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303266042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c916c113472e22f498c6a6d8f64070c3, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 303266047}
+        m_TargetAssemblyTypeName: UIBarController, Assembly-CSharp
+        m_MethodName: OnTrickPerformed
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17395,6 +17430,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7247337512125913494, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
       insertIndex: -1
       addedObject: {fileID: 303266050}
+    - targetCorrespondingSourceObject: {fileID: 7247337512125913494, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 303266057}
   m_SourcePrefab: {fileID: 100100000, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
 --- !u!1 &711105206
 GameObject:
@@ -18429,6 +18467,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &852904462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852904447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c916c113472e22f498c6a6d8f64070c3, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 852904452}
+        m_TargetAssemblyTypeName: UIBarController, Assembly-CSharp
+        m_MethodName: OnTrickPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &859739592
 GameObject:
   m_ObjectHideFlags: 0
@@ -19251,6 +19317,14 @@ PrefabInstance:
       propertyPath: wallChargeTrick
       value: 
       objectReference: {fileID: 11400000, guid: fcb4e38858e7b5d4f8a916a757886a7c, type: 2}
+    - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
+      propertyPath: onKeepTrickPerformed
+      value: 
+      objectReference: {fileID: 11400000, guid: c916c113472e22f498c6a6d8f64070c3, type: 2}
+    - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
+      propertyPath: onWallSlidePerformed
+      value: 
+      objectReference: {fileID: 11400000, guid: ff4795ef392b41f43ba2ca8600791b5f, type: 2}
     - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
       propertyPath: baseTricks.Array.size
       value: 2
@@ -22562,6 +22636,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameEvent: {fileID: 11400000, guid: ff4795ef392b41f43ba2ca8600791b5f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1316698642}
+        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+        m_MethodName: HandleTrickPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1316698648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316698637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c916c113472e22f498c6a6d8f64070c3, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -33260,6 +33362,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1931079490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931079475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c916c113472e22f498c6a6d8f64070c3, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1931079479}
+        m_TargetAssemblyTypeName: PlayerScoreTextUI, Assembly-CSharp
+        m_MethodName: HandleTrickPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1932996085
 GameObject:
   m_ObjectHideFlags: 0
@@ -34518,6 +34648,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7247337512125913494, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
       insertIndex: -1
       addedObject: {fileID: 852904455}
+    - targetCorrespondingSourceObject: {fileID: 7247337512125913494, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 852904462}
   m_SourcePrefab: {fileID: 100100000, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
 --- !u!224 &2060987937 stripped
 RectTransform:
@@ -36290,6 +36423,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6939734698985194941, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1316698643}
+    - targetCorrespondingSourceObject: {fileID: 6939734698985194941, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1316698648}
   m_SourcePrefab: {fileID: 100100000, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
 --- !u!4 &6955027051720145082 stripped
 Transform:

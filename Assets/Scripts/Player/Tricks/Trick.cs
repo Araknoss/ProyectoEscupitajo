@@ -18,7 +18,7 @@ public class Trick : ScriptableObject
 
     public bool isStateTrick=false; //Si el truco solo se puede activar desde un estado específico, como el wall charge
     public bool isUnlockedAtStart = false;
-
+    public bool isKeepTrick=false;
     //SHOP
     public int cost;    
 }
