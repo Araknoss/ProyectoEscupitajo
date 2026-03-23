@@ -126,4 +126,29 @@ public class GameFeelManager : MonoBehaviour
     {
         PlayImpact(0.08f, 0.18f, 0.22f);
     }
+
+    public void HandleOnTrickPerformed(Component sender, object data)
+    {
+        if(data is Trick)
+        {
+            Trick trick = (Trick)data;
+            if (trick != null)
+            {
+                LightHit();
+            }
+
+        }        
+    }
+
+    public void HandleOnPerfectTiming(Component sender, object data)
+    {
+        if(data is bool)
+        {
+            bool isPerfect = (bool)data;
+            if (isPerfect)
+            {
+                HeavyHit();
+            }
+        }        
+    }
 }

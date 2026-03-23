@@ -20,8 +20,9 @@ MonoBehaviour:
   hardness: 1
   comboTricks:
   - {fileID: 11400000, guid: 8c19680f264561e4f9838e5f7d1def35, type: 2}
-  inputKey: 106
-  listenInputTime: 1.5
+  - {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}
+  inputKey: 107
+  listenInputTime: 1
   comboEnder: 0
   isStateTrick: 0
   isUnlockedAtStart: 1

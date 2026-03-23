@@ -20,7 +20,7 @@ public class WallChargeState : State
         if (chargeAnimation != null)
             animator.Play(chargeAnimation.name);
         _input.onCharge = true;
-        onWallCharge.Raise(this, null);
+        onWallCharge.Raise(this, true);
 
         jumpInputBuffered = false;
     }
@@ -59,7 +59,7 @@ public class WallChargeState : State
         body.velocity = Vector2.zero;
     }
     public override void Exit()
-    {   
-       
+    {       
+        onWallCharge.Raise(this, false);
     }
 }

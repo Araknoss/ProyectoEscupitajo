@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 
@@ -9,7 +10,6 @@ public class TrickManager : MonoBehaviour
     [SerializeField] private List<Trick> tricksPerformed = new List<Trick>();
     [SerializeField] private List<Trick> availableTricks = new List<Trick>();
     [SerializeField] private List<Trick> baseTricks = new List<Trick>();
-
     [SerializeField] private List<Trick> wallBaseTricks = new List<Trick>();
     private Trick lastTrickPerformed;   
 
@@ -186,10 +186,7 @@ public class TrickManager : MonoBehaviour
         onCombo = true;
 
         //Times
-        trickCooldownTime = trick.listenInputTime; //El tiempo en el que el jugador puede pulsar el input para hacer el siguiente truco
-        trickCooldownTimer = trickCooldownTime + listenInputOffset; //El tiempo total que tiene el jugador para hacer el siguiente truco, incluyendo offset general a lo coyote time
-        trickPerfectTime = trickCooldownTime * trickPerfectTimingPercentage; //El momento a partir del cual el jugador tiene un timing perfecto para hacer el siguiente truco
-        trickGreatTime = trickCooldownTime * trickGreatTimingPercentage;
+        ResetTimes(trick);
                       
         SetAvailableTricks(trick.comboTricks);
 
@@ -200,6 +197,13 @@ public class TrickManager : MonoBehaviour
         }
     }          
 
+    private void ResetTimes(Trick trick)
+    {
+        trickCooldownTime = trick.listenInputTime; //El tiempo en el que el jugador puede pulsar el input para hacer el siguiente truco
+        trickCooldownTimer = trickCooldownTime + listenInputOffset; //El tiempo total que tiene el jugador para hacer el siguiente truco, incluyendo offset general a lo coyote time
+        trickPerfectTime = trickCooldownTime * trickPerfectTimingPercentage; //El momento a partir del cual el jugador tiene un timing perfecto para hacer el siguiente truco
+        trickGreatTime = trickCooldownTime * trickGreatTimingPercentage;
+    }
     //IEnumerator PerformKeepTrick(Trick trick)
     //{
     //    onKeepTrick = true;
@@ -213,7 +217,6 @@ public class TrickManager : MonoBehaviour
 
     private void ResetCombo()
     {
-        Debug.Log("Combo reset");
         SetAvailableTricks(baseTricks);
         onCombo = false;
         trickCooldownTimer = trickCooldownTime;
@@ -273,10 +276,12 @@ public class TrickManager : MonoBehaviour
                 //wallScoreTimer = 0f;
                 SetAvailableTricks(baseTricks);                
                 onTrickPerformed.Raise(this, wallSlideTrick.listenInputTime);
-                                
+                ResetTimes(wallSlideTrick);
+
             }
             else //Cuando entras en contacto se triggerea el truco
             {
+                SetAvailableTricks(wallBaseTricks);
                 //PerformTrick(wallSlideTrick);
             }
 
@@ -284,17 +289,26 @@ public class TrickManager : MonoBehaviour
     }
     public void HandleOnWallJump(Component sender, object data)
     {
-        if(data is null)
+        if(data is bool)
         {
-            PerformTrick(wallJumpTrick);
+            bool hasWallJumped = (bool)data;
+            if (hasWallJumped)
+            {
+                PerformTrick(wallJumpTrick);
+            }              
         }
     }
 
     public void HandleOnWallCharge(Component sender, object data)
     {
-        if(data is null)
-        {            
-            PerformTrick(wallChargeTrick);
+        if(data is bool)
+        {         
+            bool isCharging = (bool)data;
+            if (isCharging)
+            {
+                PerformTrick(wallChargeTrick);
+            }
+                
         }
     }
 

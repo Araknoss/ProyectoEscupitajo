@@ -16,6 +16,8 @@ public class SpriteAfterImageTrail : MonoBehaviour
     private float timer;
     private Queue<SpriteGhost> pool = new Queue<SpriteGhost>();
 
+    [SerializeField] private bool ghostEnabled = false;
+
     private void Awake()
     {
         for (int i = 0; i < poolSize; i++)
@@ -35,7 +37,7 @@ public class SpriteAfterImageTrail : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= spawnInterval)
+        if (timer >= spawnInterval && ghostEnabled)
         {
             timer = 0f;
             SpawnGhost();
@@ -63,5 +65,13 @@ public class SpriteAfterImageTrail : MonoBehaviour
         );
 
         pool.Enqueue(ghost);
+    }
+
+    public void HandleOnJump(Component sender, object data)
+    {
+        if(data is bool)
+        {
+            ghostEnabled= (bool)data;
+        }                 
     }
 }

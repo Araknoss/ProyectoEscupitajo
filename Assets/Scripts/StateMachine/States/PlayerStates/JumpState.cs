@@ -18,7 +18,7 @@ public class JumpState : State
         jumpDirection = _input.groundSensor.groundNormal;
         _input.onJump = true;
 
-        onWallJump.Raise(this, null);
+        onWallJump.Raise(this, true);
     }
     public override void Do()
     {
@@ -35,5 +35,6 @@ public class JumpState : State
     public override void Exit() 
     {
         _input.onJump = false;
+        onWallJump.Raise(this, false);
     }
 }

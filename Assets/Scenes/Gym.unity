@@ -14151,6 +14151,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2156958203769207150, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1362960434}
+    - targetCorrespondingSourceObject: {fileID: 2156958203769207150, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1362960435}
     - targetCorrespondingSourceObject: {fileID: 6946829337765763866, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       insertIndex: 6
       addedObject: {fileID: 1931079483}
@@ -14848,8 +14851,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 350067925}
         m_TargetAssemblyTypeName: GameFeelManager, Assembly-CSharp
-        m_MethodName: HeavyHit
-        m_Mode: 1
+        m_MethodName: HandleOnPerfectTiming
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14876,8 +14879,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 350067925}
         m_TargetAssemblyTypeName: GameFeelManager, Assembly-CSharp
-        m_MethodName: LightHit
-        m_Mode: 1
+        m_MethodName: HandleOnTrickPerformed
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19444,6 +19447,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}
     - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
+      propertyPath: wallBaseTricks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
+      propertyPath: wallBaseTricks.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d668943736418748bd14aa828dfe101, type: 2}
+    - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
+      propertyPath: wallBaseTricks.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 331ecc2608e8082439be2d553726e2d1, type: 2}
+    - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
       propertyPath: onTrickPerformedOnPerfectTiming
       value: 
       objectReference: {fileID: 11400000, guid: a30112b20600f6541a3db8bc8dbc3f21, type: 2}
@@ -22969,6 +22984,35 @@ MonoBehaviour:
   ghostColor: {r: 0, g: 0.75355816, b: 1, a: 0.6}
   sortingOrderOffset: -1
   poolSize: 20
+  ghostEnabled: 0
+--- !u!114 &1362960435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362960433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: de8e000ca6376b54f87cec68ccdf0b8d, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1362960434}
+        m_TargetAssemblyTypeName: SpriteAfterImageTrail, Assembly-CSharp
+        m_MethodName: HandleOnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1369867111
 GameObject:
   m_ObjectHideFlags: 0
