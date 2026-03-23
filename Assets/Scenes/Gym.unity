@@ -14780,6 +14780,112 @@ MonoBehaviour:
   pooledObject: {fileID: 3833173835197867263, guid: af7b3ffc93535f64f86716f6af8eb304, type: 3}
   poolAmount: 6
   poolList: []
+--- !u!1 &350067924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 350067926}
+  - component: {fileID: 350067925}
+  - component: {fileID: 350067928}
+  - component: {fileID: 350067927}
+  m_Layer: 0
+  m_Name: GameFeelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &350067925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350067924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f73d59fcf7c45439a571a81191f1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useFreeze: 1
+  useShake: 1
+  cameraTarget: {fileID: 519420032}
+  shakeAffectsZ: 0
+--- !u!4 &350067926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350067924}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &350067927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350067924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a30112b20600f6541a3db8bc8dbc3f21, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 350067925}
+        m_TargetAssemblyTypeName: GameFeelManager, Assembly-CSharp
+        m_MethodName: HeavyHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &350067928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350067924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: efa7df2a394382947ad724f7a33738d3, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 350067925}
+        m_TargetAssemblyTypeName: GameFeelManager, Assembly-CSharp
+        m_MethodName: LightHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &352916616
 GameObject:
   m_ObjectHideFlags: 0
@@ -19337,6 +19443,10 @@ PrefabInstance:
       propertyPath: baseTricks.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}
+    - target: {fileID: 8959599064956223186, guid: db96e9980b441034bbbd2b6747ab088c, type: 3}
+      propertyPath: onTrickPerformedOnPerfectTiming
+      value: 
+      objectReference: {fileID: 11400000, guid: a30112b20600f6541a3db8bc8dbc3f21, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20094,6 +20204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e9fea9ecd7eab45a3a440e46f0d6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perfectTimingFreezeDuration: 0.1
 --- !u!4 &1003317155
 Transform:
   m_ObjectHideFlags: 0
@@ -36883,6 +36994,34 @@ MonoBehaviour:
   fadeOutSpeed: 5
   perfectTimingMessage: Perfect!
   okTimingMessage: OK!
+--- !u!114 &8865668472357352046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865668472357352040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a30112b20600f6541a3db8bc8dbc3f21, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8865668472357352042}
+        m_TargetAssemblyTypeName: TimingTextController, Assembly-CSharp
+        m_MethodName: OnTrickPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &9038745317604345481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37092,6 +37231,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3294742443436727462, guid: 803cf98f35581fc4c844f763a306bcf1, type: 3}
       insertIndex: 3
       addedObject: {fileID: 8865668472357352042}
+    - targetCorrespondingSourceObject: {fileID: 3294742443436727462, guid: 803cf98f35581fc4c844f763a306bcf1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8865668472357352046}
   m_SourcePrefab: {fileID: 100100000, guid: 803cf98f35581fc4c844f763a306bcf1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -37108,6 +37250,7 @@ SceneRoots:
   - {fileID: 935575530}
   - {fileID: 2570971930572158811}
   - {fileID: 984221463}
+  - {fileID: 350067926}
   - {fileID: 111906070}
   - {fileID: 2084135436}
   - {fileID: 1486313387}

@@ -53,6 +53,7 @@ public class TrickManager : MonoBehaviour
 
     [Header("Events")]
     public GameEvent onTrickPerformed;
+    public GameEvent onTrickPerformedOnPerfectTiming;
     public GameEvent onKeepTrickPerformed;
     public GameEvent onWallSlidePerformed;
     public GameEvent onAvailableTricksReset;
@@ -168,7 +169,7 @@ public class TrickManager : MonoBehaviour
     {
         if(isPerfectTiming)
         {
-            onTrickPerformed.Raise(this, isPerfectTiming);
+            onTrickPerformedOnPerfectTiming.Raise(this, isPerfectTiming);
         }
         else if (isGreatTiming)
         {

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+    private Coroutine freezeCoroutine;
+    [SerializeField] private float perfectTimingFreezeDuration = 0.1f;
     private void Awake()
     {
         Time.timeScale = 1f;
@@ -24,5 +26,5 @@ public class TimeManager : MonoBehaviour
         {
             SetTime(1f);
         }
-    }
+    }         
 }

@@ -82,7 +82,10 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     {
         //scoreMultiplier += multiplier;        
         multiplierIndex = Mathf.Clamp(index, 0, multiplierValues.Count-1);
+
         multiplierValue = multiplierValues[multiplierIndex];
+        actualHardnessThreshold = multiplierHardnessTresholds[multiplierIndex];
+
         onMultiplierUpdate.Raise(this, multiplierValue);
     }
 
