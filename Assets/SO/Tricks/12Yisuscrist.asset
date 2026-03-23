@@ -17,7 +17,7 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: d5c401c4e57adeb4fb2586d275041cd1, type: 2}
   trickName: Yisuscrist
   baseScore: 50
-  hardness: 1
+  hardness: 2
   comboTricks:
   - {fileID: 11400000, guid: 89bfba1cbc9e53d4c92ef82c9e498f5e, type: 2}
   - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}

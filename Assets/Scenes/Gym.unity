@@ -16667,7 +16667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   returnAnimationSpeed: 5
-  prefix: 
+  prefix: 0
 --- !u!4 &647785168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6955027053508878081, guid: ff0052824030d384b8c4032df12cfda1, type: 3}
@@ -20401,7 +20401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   returnAnimationSpeed: 5
-  prefix: 
+  prefix: x
 --- !u!114 &1003750735
 MonoBehaviour:
   m_ObjectHideFlags: 0
