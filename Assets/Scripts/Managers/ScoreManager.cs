@@ -11,9 +11,15 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     public GameEvent onScoreUpdate; 
 
     [Header("Multiplier")]
-    [SerializeField] private float scoreMultiplier = 1f;
-    [SerializeField] private float perfectTimingMultiplier = 0.5f;
+    [SerializeField] private int multiplierValue = 1;
+    //[SerializeField] private float perfectTimingMultiplier = 0.5f;
     public GameEvent onMultiplierUpdate;
+
+    [SerializeField] private int multiplierIndex; //0, 1, 2.... C, B , A, S, SS, SSS
+    [SerializeField] private int actualHardness;
+    [SerializeField] private int actualHardnessThreshold;
+    [SerializeField] private List<int> multiplierHardnessTresholds= new List<int>();
+    [SerializeField] private List<int> multiplierValues = new List<int>();
 
 
     [Header("Gold")]
@@ -22,13 +28,25 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     [SerializeField] private int goldConversion; 
 
     void Start()
-    {
+    {        
+        InitializeMultiplier();
         SetScore(0);
     }
 
     void Update()
     {
         //HandlePassiveScore();
+    }
+
+    private void InitializeMultiplier()
+    {
+            multiplierIndex = 0;
+            actualHardness = 0;
+
+            multiplierValue = multiplierValues[multiplierIndex];
+            actualHardnessThreshold = multiplierHardnessTresholds[multiplierIndex];
+
+            onMultiplierUpdate.Raise(this, multiplierValue);
     }
     private void HandlePassiveScore()
     {
@@ -51,10 +69,21 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
         onScoreUpdate.Raise(this, score);
     }
 
-    private void AddMultiplier(float multiplier)
+    private void AddHardness(int hardness)
     {
-        scoreMultiplier += multiplier;
-        onMultiplierUpdate.Raise(this, scoreMultiplier);
+        actualHardness += hardness;
+        if(actualHardness >= actualHardnessThreshold)
+        {
+            actualHardness = 0;
+            UpdateMultiplier(multiplierIndex+1);
+        }
+    }
+    private void UpdateMultiplier(int index) //Pasamos al siguiente multiplicador, 2x, 4x, 6x...
+    {
+        //scoreMultiplier += multiplier;        
+        multiplierIndex = Mathf.Clamp(index, 0, multiplierValues.Count-1);
+        multiplierValue = multiplierValues[multiplierIndex];
+        onMultiplierUpdate.Raise(this, multiplierValue);
     }
 
     public void HandleTrickPerformed(Component sender, object data)
@@ -63,14 +92,14 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
         {
             Trick trick = (Trick)data;
             AddScore(trick.baseScore);
-            AddMultiplier(trick.multiplier);
+            AddHardness(trick.hardness);
         } 
         else if (data is bool) //Cuando se lanza el evento de timing perfecto
         {
             bool onPerfectTiming = (bool)data;
             if (onPerfectTiming)
             {
-                AddMultiplier(perfectTimingMultiplier);
+                //AddMultiplier(perfectTimingMultiplier);
             }
         }
     }
@@ -83,8 +112,8 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
             bool resetMultiplier = (bool)data;
             if (resetMultiplier)
             {
-                scoreMultiplier = 1f;
-                onMultiplierUpdate.Raise(this, scoreMultiplier);
+                UpdateMultiplier(0); //Volvemos al multiplicador base
+                onMultiplierUpdate.Raise(this, multiplierValue);
             }
         }
     }

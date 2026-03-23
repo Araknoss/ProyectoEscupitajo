@@ -17,7 +17,7 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: 10c2e05fcf781ad4eb7e43b36212b728, type: 2}
   trickName: Pabajo
   baseScore: 100
-  multiplier: 0
+  hardness: 1
   comboTricks:
   - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
   inputKey: 106
@@ -25,4 +25,5 @@ MonoBehaviour:
   comboEnder: 0
   isStateTrick: 0
   isUnlockedAtStart: 1
+  isKeepTrick: 0
   cost: 0

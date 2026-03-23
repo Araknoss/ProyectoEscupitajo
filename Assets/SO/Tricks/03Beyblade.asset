@@ -16,8 +16,8 @@ MonoBehaviour:
   id: 112
   animationClip: {fileID: 7400000, guid: f13b12ae99a5ead489cd243a5b23792d, type: 2}
   trickName: Beyblade
-  baseScore: 50
-  multiplier: 0
+  baseScore: 10
+  hardness: 0
   comboTricks:
   - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
   - {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}

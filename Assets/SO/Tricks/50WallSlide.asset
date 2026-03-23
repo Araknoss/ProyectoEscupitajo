@@ -17,7 +17,7 @@ MonoBehaviour:
   animationClip: {fileID: 0}
   trickName: Wall Slide
   baseScore: 5
-  multiplier: 0
+  hardness: 0
   comboTricks:
   - {fileID: 11400000, guid: fcb4e38858e7b5d4f8a916a757886a7c, type: 2}
   inputKey: 0
@@ -25,4 +25,5 @@ MonoBehaviour:
   comboEnder: 0
   isStateTrick: 1
   isUnlockedAtStart: 1
+  isKeepTrick: 0
   cost: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: aebb31a7e57522c47b1786c64fc3d0c5, type: 2}
   trickName: Ok
   baseScore: 50
-  multiplier: 0
+  hardness: 1
   comboTricks:
   - {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}
   - {fileID: 11400000, guid: 2b0f5ea0ca30b744782aed5234304b60, type: 2}
@@ -26,4 +26,5 @@ MonoBehaviour:
   comboEnder: 0
   isStateTrick: 0
   isUnlockedAtStart: 1
+  isKeepTrick: 0
   cost: 0

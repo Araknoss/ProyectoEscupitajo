@@ -15,8 +15,7 @@ public class SpriteGhost : MonoBehaviour
     }
 
     public void Initialize(Sprite sprite, Vector3 position, Quaternion rotation, Vector3 scale, bool flipX, bool flipY, Color color, int sortingOrder)
-    {
-        // 🔴 IMPORTANTE: copiar el sprite en este instante
+    {       
         spriteRenderer.sprite = sprite;
 
         transform.position = position;

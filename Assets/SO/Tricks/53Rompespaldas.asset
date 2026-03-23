@@ -17,7 +17,7 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: 6df55de536afd934e9f06c207b07d4de, type: 2}
   trickName: Rompespaldas
   baseScore: 100
-  multiplier: 0
+  hardness: 1
   comboTricks:
   - {fileID: 11400000, guid: 331ecc2608e8082439be2d553726e2d1, type: 2}
   inputKey: 106
@@ -25,4 +25,5 @@ MonoBehaviour:
   comboEnder: 0
   isStateTrick: 0
   isUnlockedAtStart: 1
+  isKeepTrick: 0
   cost: 0

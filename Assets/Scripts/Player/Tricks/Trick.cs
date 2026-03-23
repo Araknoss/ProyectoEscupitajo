@@ -8,8 +8,11 @@ public class Trick : ScriptableObject
     public int id;
     public AnimationClip animationClip;
     public string trickName;
+
+
     public int baseScore;
-    public float multiplier = 0.5f;
+    public int hardness;
+
     public List<Trick> comboTricks = new List<Trick>();
     public KeyCode inputKey;
 

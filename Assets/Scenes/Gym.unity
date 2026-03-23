@@ -36373,6 +36373,54 @@ PrefabInstance:
       propertyPath: onMultiplierUpdate
       value: 
       objectReference: {fileID: 11400000, guid: 5a6badbffaf0bcc41b7777e4b05f7b6c, type: 2}
+    - target: {fileID: 7560485140360501088, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
+      propertyPath: multiplierValues.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560485140360501088, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
+      propertyPath: multiplierValues.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560485140360501088, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
+      propertyPath: multiplierValues.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560485140360501088, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
+      propertyPath: multiplierValues.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560485140360501088, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
+      propertyPath: multiplierValues.Array.data[3]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560485140360501088, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
+      propertyPath: multiplierValues.Array.data[4]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560485140360501088, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
+      propertyPath: multiplierHardnessTresholds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560485140360501088, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
+      propertyPath: multiplierHardnessTresholds.Array.data[0]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560485140360501088, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
+      propertyPath: multiplierHardnessTresholds.Array.data[1]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560485140360501088, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
+      propertyPath: multiplierHardnessTresholds.Array.data[2]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560485140360501088, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
+      propertyPath: multiplierHardnessTresholds.Array.data[3]
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7560485140360501088, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
+      propertyPath: multiplierHardnessTresholds.Array.data[4]
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 7694490082499756123, guid: a6355bc9aebd80c47a6c6c9841db2eea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.246834

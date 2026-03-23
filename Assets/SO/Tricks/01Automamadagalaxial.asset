@@ -17,7 +17,7 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: 25f383d8898d4874f84980f0c800e406, type: 2}
   trickName: Automamadagalaxial
   baseScore: 50
-  multiplier: 0
+  hardness: 1
   comboTricks:
   - {fileID: 11400000, guid: 5d5ed182f38f5df4e9756e526242f51b, type: 2}
   - {fileID: 11400000, guid: 2de7971ab1fe4774ca6fb796e3146b3f, type: 2}
@@ -26,4 +26,5 @@ MonoBehaviour:
   comboEnder: 0
   isStateTrick: 0
   isUnlockedAtStart: 1
+  isKeepTrick: 0
   cost: 0
