@@ -12,6 +12,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button continueGameButton;
     [SerializeField] private Button deleteDataButton;
+ 
     private void Start()
     {
         if(!DataPersistenceManager.Instance.HasGameData())
@@ -53,5 +54,5 @@ public class MainMenuController : MonoBehaviour
         newGameButton.interactable = false;
         continueGameButton.interactable = false;
         deleteDataButton.interactable = false;
-    }
+    }   
 }
