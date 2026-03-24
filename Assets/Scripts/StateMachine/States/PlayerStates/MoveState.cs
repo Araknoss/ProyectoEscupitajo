@@ -12,8 +12,9 @@ public class MoveState : State
     
     public override void Enter()
     {
-        if(animationClip != null)
-            animator.Play(animationClip.name);
+        //if(animationClip != null)
+        //    animator.Play(animationClip.name);
+        animator.SetBool("Idle", true); 
     }
     public override void Do()
     {
@@ -29,5 +30,8 @@ public class MoveState : State
     {
         body.velocity = moveInput * moveSpeed;
     }
-    public override void Exit() { }
+    public override void Exit() 
+    { 
+        animator.SetBool("Idle", false);
+    }
 }

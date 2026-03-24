@@ -241,7 +241,6 @@ public class TrickManager : MonoBehaviour
             }
         }
     }
-
     void HandleKeepTrick()
     {        
             performKeepTrickTimer += Time.deltaTime;
@@ -275,10 +274,9 @@ public class TrickManager : MonoBehaviour
             {
                 //wallScoreTimer = 0f;
                 SetAvailableTricks(baseTricks);                
-                onTrickPerformed.Raise(this, wallSlideTrick.listenInputTime);
+                //onTrickPerformed.Raise(this, wallSlideTrick.listenInputTime);
                 //onKeepTrickPerformed.Raise(this, wallSlideTrick);
-                ResetTimes(wallSlideTrick);
-
+                //ResetTimes(wallSlideTrick);
             }
             else //Cuando entras en contacto se triggerea el truco
             {

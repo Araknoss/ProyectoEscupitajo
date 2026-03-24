@@ -7,8 +7,10 @@ public class IdleState : State
     [SerializeField] private AnimationClip idleAnimation;
     public override void Enter()
     {
-        if(idleAnimation != null)
-            animator.Play(idleAnimation.name);
+        //if(idleAnimation != null)
+            //animator.Play(idleAnimation.name);
+            animator.SetBool("Idle", true);
+
     }
     public override void Do()
     {
@@ -19,5 +21,8 @@ public class IdleState : State
     {
         body.velocity = Vector2.zero;
     }
-    public override void Exit() { }
+    public override void Exit()
+    {
+            animator.SetBool("Idle", false);
+    }
 }

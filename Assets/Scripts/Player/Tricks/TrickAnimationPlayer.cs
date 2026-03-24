@@ -10,9 +10,15 @@ public class TrickAnimationPlayer : MonoBehaviour
         Trick trick = (Trick)data;
         if (trick.animationClip != null)
         {
+            animator.SetBool("PerformingTrick", true);
             animator.Play(trick.animationClip.name, 0, 0f);
         }
         
+    }
+
+    public void HandleComboEnd(Component sender, object data)
+    {
+        animator.SetBool("PerformingTrick", false);
     }
 }
 
