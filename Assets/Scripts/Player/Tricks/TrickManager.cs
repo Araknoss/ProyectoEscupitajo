@@ -276,6 +276,7 @@ public class TrickManager : MonoBehaviour
                 //wallScoreTimer = 0f;
                 SetAvailableTricks(baseTricks);                
                 onTrickPerformed.Raise(this, wallSlideTrick.listenInputTime);
+                //onKeepTrickPerformed.Raise(this, wallSlideTrick);
                 ResetTimes(wallSlideTrick);
 
             }

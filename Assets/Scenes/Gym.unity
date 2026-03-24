@@ -14050,6 +14050,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 82ae5b5c4061596469fdc81e2e998e45, type: 3}
+    - target: {fileID: 3210375982313003698, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      propertyPath: okColor.b
+      value: 0.54690456
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210375982313003698, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      propertyPath: okColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210375982313003698, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      propertyPath: okColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6296509650438831860, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: m_Name
       value: StateMachinePlayer
@@ -14868,7 +14880,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350067924}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
   m_Name: 
@@ -15765,6 +15777,9 @@ MonoBehaviour:
   returnAnimationSpeed: 5
   text: {fileID: 1900208196}
   canvasGroup: {fileID: 460114071}
+  okColor: {r: 0, g: 1, b: 0, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  perfectColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &460114073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17449,6 +17464,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4997807165067958836, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6048146867069880750, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -18594,7 +18613,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 852904452}
         m_TargetAssemblyTypeName: UIBarController, Assembly-CSharp
-        m_MethodName: OnTrickPerformed
+        m_MethodName: OnKeepTrickPerfomed
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22229,7 +22248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1235235758
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25626,7 +25645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1625767754
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34696,6 +34715,30 @@ PrefabInstance:
     - target: {fileID: 2262378933452004505, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
       propertyPath: m_SortingLayerID
       value: -968290039
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204103401236542238, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
+      propertyPath: keepColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204103401236542238, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
+      propertyPath: keepColor.b
+      value: 0.41268632
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204103401236542238, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
+      propertyPath: keepColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204103401236542238, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
+      propertyPath: keepColor.r
+      value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204103401236542238, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
+      propertyPath: nullColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4997807165067958836, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6048146867069880750, guid: 7d1c37abcf7b0224f8ea3f46f1880345, type: 3}
       propertyPath: m_Pivot.x

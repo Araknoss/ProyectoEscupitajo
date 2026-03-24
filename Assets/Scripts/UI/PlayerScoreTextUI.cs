@@ -19,6 +19,10 @@ public class PlayerScoreTextUI : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
     private Tween currentTween;
 
+    [Header("Color")]
+    [SerializeField] private Color okColor = Color.green;
+    [SerializeField] private Color defaultColor = Color.white;
+    [SerializeField] private Color perfectColor = Color.red;
     private void Update()
     {
         text.transform.localScale = Vector3.Lerp(text.transform.localScale, Vector3.one, Time.deltaTime * returnAnimationSpeed);
@@ -41,7 +45,7 @@ public class PlayerScoreTextUI : MonoBehaviour
             Trick trick = (Trick)data;
             stayDuration = trick.listenInputTime - hideDuration;
 
-            AddTemporaryScore(trick.baseScore); //Habrá que multiplicar por multiplier
+            AddTemporaryScore(trick.baseScore, trick); //Habrá que multiplicar por multiplier
         }
     }
 
@@ -75,13 +79,18 @@ public class PlayerScoreTextUI : MonoBehaviour
         text.gameObject.SetActive(false);
     }
 
-    private void AddTemporaryScore(int score)
+    private void AddTemporaryScore(int score, Trick trick) //Le pedimos Trick para comprobar si es "Ok"
     {
         text.transform.localScale = Vector3.one * 1.3f;
         stayTimer = 0f;
         text.gameObject.SetActive(true);
         text.alpha = 1f;
         temporaryScore += score;
+        if(trick.name == "Ok")
+        {
+            text.text = "Ok";
+            return;
+        }
         text.text = "+" + temporaryScore.ToString();
     }
 }

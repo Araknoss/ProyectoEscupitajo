@@ -19,7 +19,8 @@ public class UIBarController : MonoBehaviour
     [SerializeField] private Color greatColor = Color.green;
     [SerializeField] private Color perfectColor = Color.red;
     [SerializeField] private Color nullColor = Color.gray;
-
+    [SerializeField] private Color noColor = Color.clear;
+    [SerializeField] private Color keepColor;
     void Update()
     {
         if (!isRunning) return;
@@ -43,14 +44,14 @@ public class UIBarController : MonoBehaviour
         }
     }
 
-    public void StartBar(float timeToEmpty)
+    public void StartBar(float timeToEmpty, Color startColor)
     {
         //Debug.Log("StartBar");
         duration = timeToEmpty;
         timer = 0f;
         isRunning = true;
         barImage.fillAmount = 1f;
-        SetBarColor(nullColor);
+        SetBarColor(startColor);
     }
 
     public void RestoreBar()
@@ -59,7 +60,7 @@ public class UIBarController : MonoBehaviour
         barImage.fillAmount = 1f;
         //barImage.color = okColor;
         isRunning = false;
-        SetBarColor(nullColor);  
+        SetBarColor(noColor);  
     }
 
     private void SetBarColor(Color color)
@@ -80,12 +81,12 @@ public class UIBarController : MonoBehaviour
         if(data is Trick)
         {
             Trick trick = (Trick)data;            
-            StartBar(trick.listenInputTime);
+            StartBar(trick.listenInputTime, nullColor);
         }
         if(data is float)
         {
             float listenInputTime = (float)data;
-            StartBar(listenInputTime);
+            StartBar(listenInputTime, nullColor);
         }
     }
 
@@ -99,10 +100,12 @@ public class UIBarController : MonoBehaviour
 
     public void OnKeepTrickPerfomed(Component sennder, object data)
     {
-        //if(data is Trick)
-        //{
-        //    RestoreBar();
-        //}
+        if (data is Trick)
+        {
+            Trick trick = (Trick)data;
+            //RestoreBar();
+            StartBar(trick.listenInputTime, keepColor);
+        }
 
     }
 
