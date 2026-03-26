@@ -56,14 +56,15 @@ public class TrickManager : MonoBehaviour
     [SerializeField] private Trick wallChargeTrick;
     [SerializeField] private float wallScoreTime = 0.1f;
     public bool isOnWall=false;
+    private bool isOnWallSlide=false;
     private bool isOnWallCharge=false;
     private float wallScoreTimer;        
 
     [Header("Events")]
     public GameEvent onTrickPerformed;
     public GameEvent onTrickPerformedOnPerfectTiming;
-    public GameEvent onKeepTrickPerformed;    
-    public GameEvent onWallSlidePerformed;
+    public GameEvent onKeepingTrick;    
+    //public GameEvent onWallSlidePerformed;
     public GameEvent onAvailableTricksReset;
     public GameEvent onComboEnd;
     public GameEvent onPerfectTiming;
@@ -80,14 +81,19 @@ public class TrickManager : MonoBehaviour
     {
         InitializeInput();
         HandleInput();
-        if (onKeepTrick)
+        //if (isOnWallSlide)
+        //{
+        //    HandleWallSlide();
+        //    HandleKeepTiming();
+        //    return;
+        //}
+        if (onKeepTrick || isOnWallSlide)
         {
             HandleKeepTrick();
             HandleKeepTiming();
             return;
         }        
-        HandleTrickCooldown();
-        HandleWallSlide();
+        HandleTrickCooldown();       
         //HandleBodyTricks();
     }
     void InitializeInput()
@@ -204,7 +210,13 @@ public class TrickManager : MonoBehaviour
         {
             onKeepTrick = true;
         }
-    }          
+    }  
+    
+    void PerformWallSlideTrick() //Se ejecuta al entrar en contacto con la pared 1 vez
+    {            
+        onTrickPerformed.Raise(this, wallSlideTrick);
+        SetAvailableTricks(wallBaseTricks);
+    }
 
     private void ResetTimes(Trick trick)
     {
@@ -231,15 +243,14 @@ public class TrickManager : MonoBehaviour
     }
     void HandleWallSlide()
     {
-        if (isOnWall)
-        {
             wallScoreTimer += Time.deltaTime;
             if (wallScoreTimer > wallScoreTime)
             {
                 wallScoreTimer = 0;
-                onWallSlidePerformed.Raise(this, wallSlideTrick);
+                //onWallSlidePerformed.Raise(this, wallSlideTrick);
+                onKeepingTrick.Raise(this, lastTrickPerformed);  
             }
-        }
+   
     }
     void HandleKeepTrick()
     {        
@@ -247,9 +258,8 @@ public class TrickManager : MonoBehaviour
             if (performKeepTrickTimer > performKeepTrickTime)
             {
                 performKeepTrickTimer = 0;
-                onKeepTrickPerformed.Raise(this, lastTrickPerformed);                 
-            }
-    
+                onKeepingTrick.Raise(this, lastTrickPerformed);                 
+            }    
     }
     void HandleKeepTiming()
     {
@@ -284,18 +294,18 @@ public class TrickManager : MonoBehaviour
         if (data is bool)
         {
             isOnWall = (bool)data;
+            isOnWallSlide=(bool)data;
             onKeepTrick = false;
+
             if (!isOnWall)
-            {
-                //wallScoreTimer = 0f;
-                SetAvailableTricks(baseTricks);                
-                //onTrickPerformed.Raise(this, wallSlideTrick.listenInputTime);
-                //onKeepTrickPerformed.Raise(this, wallSlideTrick);
-                //ResetTimes(wallSlideTrick);
+            {                           
+                SetAvailableTricks(baseTricks);        
             }
             else //Cuando entras en contacto se triggerea el truco
             {
-                SetAvailableTricks(wallBaseTricks);
+                //onWallSlidePerformed(this, null);
+                PerformWallSlideTrick();
+                //SetAvailableTricks(wallBaseTricks);
                 //PerformTrick(wallSlideTrick);
             }
 

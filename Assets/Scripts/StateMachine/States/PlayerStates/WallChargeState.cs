@@ -17,7 +17,10 @@ public class WallChargeState : State
     [SerializeField] private float minBufferTime;
     private bool jumpInputBuffered;
 
-   
+    [SerializeField] private float moveSpeed;
+    private Vector2 moveInput;
+
+
     public override void Enter()
     {
         if (chargeAnimation != null)
@@ -29,7 +32,14 @@ public class WallChargeState : State
     }
     public override void Do()
     {
-        if(Input.GetButtonUp("Jump"))
+        moveInput = new Vector2(0, _input.yInput);
+
+        if (moveInput.sqrMagnitude > 1f)
+        {
+            moveInput = moveInput.normalized;
+        }
+
+        if (Input.GetButtonUp("Jump"))
         {
             if(time < minBufferTime)
             {
@@ -64,7 +74,7 @@ public class WallChargeState : State
 
     public override void FixedDo()
     {
-        body.velocity = Vector2.zero;
+        body.velocity = moveInput * moveSpeed;
     }
     public override void Exit()
     {       

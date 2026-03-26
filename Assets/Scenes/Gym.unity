@@ -16536,8 +16536,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 550642511}
         m_TargetAssemblyTypeName: TrickManager, Assembly-CSharp
-        m_MethodName: HandleOnWallCharge
-        m_Mode: 0
+        m_MethodName: ResetCombo
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -18357,11 +18357,12 @@ MonoBehaviour:
   groundSensor: {fileID: 1645853710}
   chargeAnimation: {fileID: 7400000, guid: 7e40ad062f576e5449235d5acd40a274, type: 2}
   onWallCharge: {fileID: 11400000, guid: e96d5d414ca10cb44a3eff92f61dbb66, type: 2}
+  onWallChargeFailed: {fileID: 11400000, guid: d67bfcadeca0c4c47a37eb74dfcbc6f9, type: 2}
   onWallChargeTrick: {fileID: 11400000, guid: fcb4e38858e7b5d4f8a916a757886a7c, type: 2}
   spriteTransform: {fileID: 480647450}
   playerSprite: {fileID: 480647449}
   minBufferTime: 0
-  onWallChargeFailed: {fileID: 0}
+  moveSpeed: 7.5
 --- !u!4 &810238957
 Transform:
   m_ObjectHideFlags: 0
