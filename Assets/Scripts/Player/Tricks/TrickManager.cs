@@ -65,8 +65,9 @@ public class TrickManager : MonoBehaviour
     [Header("Events")]
     public GameEvent onTrickPerformed;
     public GameEvent onTrickPerformedOnPerfectTiming;
-    public GameEvent onKeepingTrick;    
+    public GameEvent onKeepingTrick;
     //public GameEvent onWallSlidePerformed;
+    public GameEvent onWallSlideEnd;
     public GameEvent onAvailableTricksReset;
     public GameEvent onComboEnd;
     public GameEvent onPerfectTiming;
@@ -221,6 +222,13 @@ public class TrickManager : MonoBehaviour
         SetAvailableTricks(wallBaseTricks);
     }
 
+    void WallSlideEnd() //Se ejecuta al salir de la pared o al hacer un wall jump o wall charge
+    {
+        onWallSlideEnd.Raise(this, wallSlideTrick);
+        ResetTimes(wallSlideTrick);
+        isOnWallSlide = false;
+    }
+
     private void ResetTimes(Trick trick)
     {
         trickCooldownTime = trick.listenInputTime; //El tiempo en el que el jugador puede pulsar el input para hacer el siguiente truco
@@ -289,14 +297,16 @@ public class TrickManager : MonoBehaviour
             isOnWallSlide=(bool)data;
             onKeepTrick = false;
 
-            if (!isOnWall)
+            if (!isOnWall /*&& lastTrickPerformed == wallSlideTrick*/) //Asi solo se activa cuando sales de la pared sin usar trucos
             {                           
-                SetAvailableTricks(baseTricks);        
+                SetAvailableTricks(baseTricks);
+                //WallSlideEnd();
+
+
             }
             else //Cuando entras en contacto se triggerea el truco
             {
-                PerformWallSlideTrick();                
-            }
+                PerformWallSlideTrick();                            }
 
         }
     }

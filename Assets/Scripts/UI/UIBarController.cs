@@ -19,9 +19,8 @@ public class UIBarController : MonoBehaviour
     private bool isKeepTrickActive;
     private float indicatorNormalizedPosition; // 0 -> left, 1 -> right    
 
-    [SerializeField] private float barImageWidthPercentageOnCharge=0.7f;
-
-    private float barImageOriginalWidth;
+    [SerializeField] private float barImageWidthOnCharge=0.7f;
+    public float barImageOriginalWidth;
 
     [Header("Color")]
     [SerializeField] private Color greatColor = Color.green;
@@ -82,8 +81,7 @@ public class UIBarController : MonoBehaviour
         barImage.fillAmount = 1f;
         //barImage.color = okColor;
         isRunning = false;
-        SetBarColor(fullBarColor);  
-        SetBarWidth(barImageOriginalWidth);
+        SetBarColor(fullBarColor);          
     }
 
     private void SetBarColor(Color color)
@@ -193,26 +191,55 @@ public class UIBarController : MonoBehaviour
         movingIndicator.anchoredPosition = anchoredPos;
     }
 
-    private void SetBarWidth(float widthPercentage)
+    private void SetBarWidth(float newWidth)
     {
-        if (barImage == null) return;           
-        float newWidth = barImageOriginalWidth * widthPercentage;
-        barImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, widthPercentage);
+        if (barImage == null) return;      
+        Debug.Log(newWidth);
+        barImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
         indicatorArea = barImage.rectTransform;
     }
 
     public void HandleOnWallCharge(Component sender, object data)
     {
         if(data is bool)
-        {
+        {           
             bool isWallCharge = (bool)data;
             if(isWallCharge)
             {
-                SetBarWidth(barImageWidthPercentageOnCharge);
+                SetBarWidth(barImageWidthOnCharge);
             }
             else
             {
                 SetBarWidth(barImageOriginalWidth);
+            }
+        }
+    }
+
+
+    public void HandleOnWallChargeFailed(Component sender, object data)
+    {
+        RestoreBar(nullColor);
+        SetBarWidth(barImageOriginalWidth);
+        if (isKeepTrickActive)
+        {
+            StopKeepIndicator();
+
+        }
+    }
+
+    public void HandleOnWallSlideEnd(Component sender, object data)
+    {
+        if(data is Trick)
+        {
+            Trick trick = (Trick)data;
+            if (trick!=null)
+            {
+                //SetBarWidth(barImageOriginalWidth);
+                StartBar(trick.listenInputTime, nullColor);
+                if (isKeepTrickActive)
+                {
+                    StopKeepIndicator();
+                }
             }
         }
     }
