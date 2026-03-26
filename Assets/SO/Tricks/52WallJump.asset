@@ -24,7 +24,7 @@ MonoBehaviour:
   inputKey: 32
   listenInputTime: 1
   comboEnder: 0
-  isStateTrick: 0
+  isStateTrick: 1
   isUnlockedAtStart: 1
   isKeepTrick: 0
   cost: 0

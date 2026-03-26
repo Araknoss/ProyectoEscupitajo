@@ -100,12 +100,7 @@ public class UIBarController : MonoBehaviour
             if (trick.isKeepTrick)
             {
                 RestoreBar(keepColor);                
-                StartKeepIndicator();      
-                if(trick.trickName == "Wall Charge")
-                {
-                    Debug.Log("Wall Charge detected, setting bar width to: " + barImageWidthPercentageOnCharge);
-                    SetBarWidth(barImageWidthPercentageOnCharge);
-                }
+                StartKeepIndicator();    
             }
             else
             {
@@ -204,5 +199,21 @@ public class UIBarController : MonoBehaviour
         float newWidth = barImageOriginalWidth * widthPercentage;
         barImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, widthPercentage);
         indicatorArea = barImage.rectTransform;
+    }
+
+    public void HandleOnWallCharge(Component sender, object data)
+    {
+        if(data is bool)
+        {
+            bool isWallCharge = (bool)data;
+            if(isWallCharge)
+            {
+                SetBarWidth(barImageWidthPercentageOnCharge);
+            }
+            else
+            {
+                SetBarWidth(barImageOriginalWidth);
+            }
+        }
     }
 }
