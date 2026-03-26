@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class TrickManager : MonoBehaviour
 {
@@ -32,6 +33,13 @@ public class TrickManager : MonoBehaviour
     private bool onKeepTrick;
     [SerializeField] private float performKeepTrickTime = 0.1f;
     private float performKeepTrickTimer;
+
+    [Header("KeepTrickTiming")]
+    [SerializeField] private float speed = 1f;
+    [SerializeField] private float minRange = 0.4f;
+    [SerializeField] private float maxRange = 0.6f;
+    public float keepTiming { private set; get; }
+    private bool isInsideRange;
 
     [Header("Timing")]
     [SerializeField] private float trickPerfectTimingPercentage = 0.2f;
@@ -75,6 +83,7 @@ public class TrickManager : MonoBehaviour
         if (onKeepTrick)
         {
             HandleKeepTrick();
+            HandleKeepTiming();
             return;
         }        
         HandleTrickCooldown();
@@ -208,11 +217,12 @@ public class TrickManager : MonoBehaviour
     private void ResetCombo()
     {
         SetAvailableTricks(baseTricks);
+
         onCombo = false;
+        onKeepTrick=false;        
+
         trickCooldownTimer = trickCooldownTime;
-
         onComboEnd.Raise(this, true);
-
         //Debug
         if (!isOnWall)
         {
@@ -237,12 +247,26 @@ public class TrickManager : MonoBehaviour
             if (performKeepTrickTimer > performKeepTrickTime)
             {
                 performKeepTrickTimer = 0;
-                onKeepTrickPerformed.Raise(this, lastTrickPerformed);
-                SetPerfectTiming(true); //Para que el jugador tenga un timing perfecto al realizar el truco al soltar el botón
-        }
+                onKeepTrickPerformed.Raise(this, lastTrickPerformed);                 
+            }
     
     }
+    void HandleKeepTiming()
+    {
+        keepTiming = Mathf.PingPong(Time.time * speed, 1f);
+        bool currentlyInside = keepTiming >= minRange && keepTiming <= maxRange;        
+        if (currentlyInside && !isInsideRange)
+        {
+            SetPerfectTiming(true);
+        }
+        
+        if (!currentlyInside && isInsideRange)
+        {
+            SetGreatTiming(true);
+        }
 
+        isInsideRange = currentlyInside;
+    }
     private void SetPerfectTiming(bool isPerfect)
     {
         isPerfectTiming = isPerfect;
@@ -300,6 +324,11 @@ public class TrickManager : MonoBehaviour
             }
                 
         }
+    }
+
+    public void HandleOnWallChargeFailed(Component sender, object data)
+    {
+        ResetCombo();
     }
 
 }

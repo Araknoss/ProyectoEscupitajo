@@ -43,10 +43,12 @@ public class PlayerController : Core
     private void Update()
     {
         InitializeInputs();      
-        SelectState();             
+        SelectState();
+        state.Do();
+        if (onJump || onCharge) return;        
         FlipSprite();   
        
-        state.Do();
+        
     }
     private void FixedUpdate()
     {         

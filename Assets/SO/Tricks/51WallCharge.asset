@@ -25,5 +25,5 @@ MonoBehaviour:
   comboEnder: 0
   isStateTrick: 1
   isUnlockedAtStart: 1
-  isKeepTrick: 0
+  isKeepTrick: 1
   cost: 0

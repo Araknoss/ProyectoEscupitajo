@@ -19,8 +19,7 @@ MonoBehaviour:
   baseScore: 10
   hardness: 0
   comboTricks:
-  - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
-  - {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}
+  - {fileID: 11400000, guid: 60121bb6d0fc0224aa1348bfb29c611b, type: 2}
   inputKey: 32
   listenInputTime: 1.5
   comboEnder: 0

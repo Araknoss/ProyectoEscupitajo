@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIBarController : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private TrickManager trickManager;
     [SerializeField] private Image barImage;
     [SerializeField] private RectTransform movingIndicator;
     [SerializeField] private RectTransform indicatorArea;
@@ -107,16 +108,7 @@ public class UIBarController : MonoBehaviour
             StartBar(listenInputTime, nullColor);
         }
     }
-    public void OnKeepTrickPerfomed(Component sennder, object data)
-    {
-        if (data is Trick)
-        {
-            Trick trick = (Trick)data;
-            //RestoreBar();
-            //StartBar(trick.listenInputTime, keepColor);         
-            Debug.Log("KeepTrickPerformed");
-        }
-    }    
+     
     public void OnComboEnd(Component sender, object data)
     {
         if(data is bool)
@@ -160,42 +152,28 @@ public class UIBarController : MonoBehaviour
     private void StartKeepIndicator()
     {
         isKeepTrickActive = true;
-        ShowIndicator(true);
-
-        // Empieza desde el centro visualmente
-        indicatorNormalizedPosition = 0.5f;
-        UpdateIndicatorPositionInstant();
+        EnableIndicator(true);        
     }
     private void StopKeepIndicator()
     {
         isKeepTrickActive = false;
-        ShowIndicator(false);
+        EnableIndicator(false);
     }
-    private void ShowIndicator(bool isShown)
+    private void EnableIndicator(bool enable)
     {
-        if (movingIndicator != null && isShown)
+        if (movingIndicator != null)
         {
-            movingIndicator.gameObject.SetActive(true);
+            movingIndicator.gameObject.SetActive(enable);
         }        
     }
-    private void UpdateIndicatorPositionInstant()
-    {
-        if (movingIndicator == null || indicatorArea == null) return;
-
-        float width = indicatorArea.rect.width;
-        float xPos = Mathf.Lerp(-width * 0.5f, width * 0.5f, indicatorNormalizedPosition);
-
-        Vector2 anchoredPos = movingIndicator.anchoredPosition;
-        anchoredPos.x = xPos;
-        movingIndicator.anchoredPosition = anchoredPos;
-    }
+   
 
     private void UpdateMovingIndicator()
     {
-        if (movingIndicator == null || indicatorArea == null) return;
+        if (movingIndicator == null || indicatorArea == null || trickManager == null) return;
 
         // Movimiento ping-pong entre 0 y 1
-        indicatorNormalizedPosition = Mathf.PingPong(Time.time * indicatorSpeed, 1f);
+        indicatorNormalizedPosition = trickManager.keepTiming;
 
         float width = indicatorArea.rect.width;
         float xPos = Mathf.Lerp(-width * 0.5f, width * 0.5f, indicatorNormalizedPosition);
