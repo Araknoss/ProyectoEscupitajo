@@ -54,7 +54,7 @@ public class TrickManager : MonoBehaviour
     [Header("Events")]
     public GameEvent onTrickPerformed;
     public GameEvent onTrickPerformedOnPerfectTiming;
-    public GameEvent onKeepTrickPerformed;
+    public GameEvent onKeepTrickPerformed;    
     public GameEvent onWallSlidePerformed;
     public GameEvent onAvailableTricksReset;
     public GameEvent onComboEnd;
@@ -98,14 +98,14 @@ public class TrickManager : MonoBehaviour
         {
             CheckAvailable(skateKey);
         }
-        if(keepInputPress && !onKeepTrick)
+        if(keepInputPress && !onKeepTrick) 
         {         
             CheckAvailable(keepKey);
         }
         if(keepInputRelease && onKeepTrick)
         {
             onKeepTrick = false;
-            //Si el truco es de mantener la tecla, se comprueba tanto al pulsar como al soltar para permitir trucos que se activen al soltar la tecla
+            PerformTrick(availableTricks[0]); //Se asume que solo hay un truco al soltar           
         }
     }
     void CheckAvailable(KeyCode input) //Se comprueba si el input corresponde a algun truco disponible
@@ -203,17 +203,7 @@ public class TrickManager : MonoBehaviour
         trickCooldownTimer = trickCooldownTime + listenInputOffset; //El tiempo total que tiene el jugador para hacer el siguiente truco, incluyendo offset general a lo coyote time
         trickPerfectTime = trickCooldownTime * trickPerfectTimingPercentage; //El momento a partir del cual el jugador tiene un timing perfecto para hacer el siguiente truco
         trickGreatTime = trickCooldownTime * trickGreatTimingPercentage;
-    }
-    //IEnumerator PerformKeepTrick(Trick trick)
-    //{
-    //    onKeepTrick = true;
-    //    while(onKeepTrick) //Sales cuando sueltas el input
-    //    {
-    //        yield return new WaitForSeconds(performKeepTrickTimer);
-    //        onKeepTrickPerformed.Raise(this, trick);
-    //    }
-
-    //}
+    }    
 
     private void ResetCombo()
     {
@@ -248,7 +238,8 @@ public class TrickManager : MonoBehaviour
             {
                 performKeepTrickTimer = 0;
                 onKeepTrickPerformed.Raise(this, lastTrickPerformed);
-            }
+                SetPerfectTiming(true); //Para que el jugador tenga un timing perfecto al realizar el truco al soltar el botón
+        }
     
     }
 

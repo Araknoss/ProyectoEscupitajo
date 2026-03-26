@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIBarController : MonoBehaviour
 {
-        [SerializeField] private Image barImage;
-        [SerializeField] private float decreaseSpeed = 0.2f;
+    [Header("References")]
+    [SerializeField] private Image barImage;
+    [SerializeField] private RectTransform movingIndicator;
+    [SerializeField] private RectTransform indicatorArea;
+
+    [Header("Bar Timing")]
     private float timer;
     private bool isRunning;
     private float duration;
 
-        private float currentValue = 1f;
+    private bool isKeepTrickActive;
+    private float indicatorNormalizedPosition; // 0 -> left, 1 -> right
+    [SerializeField] private float indicatorSpeed = 2f;
 
     [Header("Color")]
     [SerializeField] private Color greatColor = Color.green;
@@ -21,26 +25,34 @@ public class UIBarController : MonoBehaviour
     [SerializeField] private Color nullColor = Color.gray;
     [SerializeField] private Color noColor = Color.clear;
     [SerializeField] private Color keepColor;
-    void Update()
+    private void Update()
     {
-        if (!isRunning) return;
+        if (isRunning)
+        {
+            UpdateBarFill();
+        }
+
+        if (isKeepTrickActive)
+        {
+            UpdateMovingIndicator();
+        }
+    }
+
+    private void UpdateBarFill()
+    {
+        if (barImage == null) return;
 
         timer += Time.deltaTime;
 
-        float normalized = 1f - (timer / duration); // 1 -> 0
+        float normalized = 1f - (timer / duration);
         normalized = Mathf.Clamp01(normalized);
 
-        // Tamaño (relleno)
         barImage.fillAmount = normalized;
-
-        // Color (a menos valor, más rojo)
-        //barImage.color = Color.Lerp(emptyColor, fullColor, normalized);
 
         if (timer >= duration)
         {
             isRunning = false;
-            barImage.fillAmount = 0f;
-            //barImage.color = emptyColor;
+            barImage.fillAmount = 0f;           
         }
     }
 
@@ -54,34 +66,40 @@ public class UIBarController : MonoBehaviour
         SetBarColor(startColor);
     }
 
-    public void RestoreBar()
+    public void RestoreBar(Color fullBarColor)
     {
         timer = 0f;
         barImage.fillAmount = 1f;
         //barImage.color = okColor;
         isRunning = false;
-        SetBarColor(noColor);  
+        SetBarColor(fullBarColor);  
     }
 
     private void SetBarColor(Color color)
     {
         barImage.color= color;
     }
-    private void HandleBarWidth(float normalized)
-    {
-        barImage.fillAmount = normalized;
-    }
-    //private void HandleBarColor(float normalized)
-    //{       
-    //    barImage.color = Color.Lerp(emptyColor, fullColor, normalized);
-    //}
-
-    public void OnTrickPerformed(Component sender, object data)
+    
+    public void OnTrickPerformed(Component sender, object data) //Se llama al inicio de los keepTricks y al final
     {       
         if(data is Trick)
         {
-            Trick trick = (Trick)data;            
-            StartBar(trick.listenInputTime, nullColor);
+            Trick trick = (Trick)data;
+
+            if (trick.isKeepTrick)
+            {
+                RestoreBar(keepColor);                
+                StartKeepIndicator();              
+            }
+            else
+            {
+                StartBar(trick.listenInputTime, nullColor);
+                if (isKeepTrickActive)
+                {
+                    StopKeepIndicator();
+                }
+            }
+           
         }
         if(data is float)
         {
@@ -89,26 +107,16 @@ public class UIBarController : MonoBehaviour
             StartBar(listenInputTime, nullColor);
         }
     }
-
-    public void OnWallSlidePerformed(Component sender, object data)
-    {
-        //if (data is Trick)
-        //{
-        //    RestoreBar();
-        //}
-    }
-
     public void OnKeepTrickPerfomed(Component sennder, object data)
     {
         if (data is Trick)
         {
             Trick trick = (Trick)data;
             //RestoreBar();
-            StartBar(trick.listenInputTime, keepColor);
+            //StartBar(trick.listenInputTime, keepColor);         
+            Debug.Log("KeepTrickPerformed");
         }
-
-    }
-
+    }    
     public void OnComboEnd(Component sender, object data)
     {
         if(data is bool)
@@ -116,7 +124,8 @@ public class UIBarController : MonoBehaviour
             bool reset = (bool)data;
             if(reset)
             {
-                RestoreBar();
+                RestoreBar(noColor);
+                StopKeepIndicator();
             }
         }
         //RestoreBar();
@@ -146,5 +155,53 @@ public class UIBarController : MonoBehaviour
                 //Debug.Log("EventoRecibidoTrue");
             }            
         }
+    }
+
+    private void StartKeepIndicator()
+    {
+        isKeepTrickActive = true;
+        ShowIndicator(true);
+
+        // Empieza desde el centro visualmente
+        indicatorNormalizedPosition = 0.5f;
+        UpdateIndicatorPositionInstant();
+    }
+    private void StopKeepIndicator()
+    {
+        isKeepTrickActive = false;
+        ShowIndicator(false);
+    }
+    private void ShowIndicator(bool isShown)
+    {
+        if (movingIndicator != null && isShown)
+        {
+            movingIndicator.gameObject.SetActive(true);
+        }        
+    }
+    private void UpdateIndicatorPositionInstant()
+    {
+        if (movingIndicator == null || indicatorArea == null) return;
+
+        float width = indicatorArea.rect.width;
+        float xPos = Mathf.Lerp(-width * 0.5f, width * 0.5f, indicatorNormalizedPosition);
+
+        Vector2 anchoredPos = movingIndicator.anchoredPosition;
+        anchoredPos.x = xPos;
+        movingIndicator.anchoredPosition = anchoredPos;
+    }
+
+    private void UpdateMovingIndicator()
+    {
+        if (movingIndicator == null || indicatorArea == null) return;
+
+        // Movimiento ping-pong entre 0 y 1
+        indicatorNormalizedPosition = Mathf.PingPong(Time.time * indicatorSpeed, 1f);
+
+        float width = indicatorArea.rect.width;
+        float xPos = Mathf.Lerp(-width * 0.5f, width * 0.5f, indicatorNormalizedPosition);
+
+        Vector2 anchoredPos = movingIndicator.anchoredPosition;
+        anchoredPos.x = xPos;
+        movingIndicator.anchoredPosition = anchoredPos;
     }
 }
