@@ -17,8 +17,11 @@ public class UIBarController : MonoBehaviour
     private float duration;
 
     private bool isKeepTrickActive;
-    private float indicatorNormalizedPosition; // 0 -> left, 1 -> right
-    [SerializeField] private float indicatorSpeed = 2f;
+    private float indicatorNormalizedPosition; // 0 -> left, 1 -> right    
+
+    [SerializeField] private float barImageWidthPercentageOnCharge=0.7f;
+
+    private float barImageOriginalWidth;
 
     [Header("Color")]
     [SerializeField] private Color greatColor = Color.green;
@@ -26,6 +29,12 @@ public class UIBarController : MonoBehaviour
     [SerializeField] private Color nullColor = Color.gray;
     [SerializeField] private Color noColor = Color.clear;
     [SerializeField] private Color keepColor;
+
+    private void Start()
+    {
+        barImageOriginalWidth = barImage.rectTransform.rect.width;
+        indicatorArea=barImage.rectTransform;
+    }
     private void Update()
     {
         if (isRunning)
@@ -74,6 +83,7 @@ public class UIBarController : MonoBehaviour
         //barImage.color = okColor;
         isRunning = false;
         SetBarColor(fullBarColor);  
+        SetBarWidth(barImageOriginalWidth);
     }
 
     private void SetBarColor(Color color)
@@ -90,7 +100,12 @@ public class UIBarController : MonoBehaviour
             if (trick.isKeepTrick)
             {
                 RestoreBar(keepColor);                
-                StartKeepIndicator();              
+                StartKeepIndicator();      
+                if(trick.trickName == "Wall Charge")
+                {
+                    Debug.Log("Wall Charge detected, setting bar width to: " + barImageWidthPercentageOnCharge);
+                    SetBarWidth(barImageWidthPercentageOnCharge);
+                }
             }
             else
             {
@@ -181,5 +196,13 @@ public class UIBarController : MonoBehaviour
         Vector2 anchoredPos = movingIndicator.anchoredPosition;
         anchoredPos.x = xPos;
         movingIndicator.anchoredPosition = anchoredPos;
+    }
+
+    private void SetBarWidth(float widthPercentage)
+    {
+        if (barImage == null) return;           
+        float newWidth = barImageOriginalWidth * widthPercentage;
+        barImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, widthPercentage);
+        indicatorArea = barImage.rectTransform;
     }
 }

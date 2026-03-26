@@ -35,7 +35,9 @@ public class TrickManager : MonoBehaviour
     private float performKeepTrickTimer;
 
     [Header("KeepTrickTiming")]
-    [SerializeField] private float speed = 1f;
+    [SerializeField] private float keepTimingSpeed = 1f;
+    [SerializeField] private float chargeTimingSpeedModifier = 2f;
+    private float originalKeepTimingSpeed;
     [SerializeField] private float minRange = 0.4f;
     [SerializeField] private float maxRange = 0.6f;
     public float keepTiming { private set; get; }
@@ -76,6 +78,7 @@ public class TrickManager : MonoBehaviour
     private void Start()
     {
         SetAvailableTricks(baseTricks);
+        originalKeepTimingSpeed = keepTimingSpeed;
     }
     private void Update()
     {
@@ -240,18 +243,7 @@ public class TrickManager : MonoBehaviour
         {
             animator.SetTrigger("Idle");
         } 
-    }
-    void HandleWallSlide()
-    {
-            wallScoreTimer += Time.deltaTime;
-            if (wallScoreTimer > wallScoreTime)
-            {
-                wallScoreTimer = 0;
-                //onWallSlidePerformed.Raise(this, wallSlideTrick);
-                onKeepingTrick.Raise(this, lastTrickPerformed);  
-            }
-   
-    }
+    }    
     void HandleKeepTrick()
     {        
             performKeepTrickTimer += Time.deltaTime;
@@ -263,7 +255,7 @@ public class TrickManager : MonoBehaviour
     }
     void HandleKeepTiming()
     {
-        keepTiming = Mathf.PingPong(Time.time * speed, 1f);
+        keepTiming = Mathf.PingPong(Time.time * keepTimingSpeed, 1f);
         bool currentlyInside = keepTiming >= minRange && keepTiming <= maxRange;        
         if (currentlyInside && !isInsideRange)
         {
@@ -303,10 +295,7 @@ public class TrickManager : MonoBehaviour
             }
             else //Cuando entras en contacto se triggerea el truco
             {
-                //onWallSlidePerformed(this, null);
-                PerformWallSlideTrick();
-                //SetAvailableTricks(wallBaseTricks);
-                //PerformTrick(wallSlideTrick);
+                PerformWallSlideTrick();                
             }
 
         }
@@ -331,6 +320,11 @@ public class TrickManager : MonoBehaviour
             if (isCharging)
             {
                 PerformTrick(wallChargeTrick);
+                keepTimingSpeed *= chargeTimingSpeedModifier;
+            }
+            else
+            {
+                keepTimingSpeed = originalKeepTimingSpeed;
             }
                 
         }
