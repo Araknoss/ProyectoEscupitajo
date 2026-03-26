@@ -20,6 +20,10 @@ public class WallChargeState : State
     [SerializeField] private float moveSpeed;
     private Vector2 moveInput;
 
+    [SerializeField] private float coyoteTime=0.1f;
+    private float coyoteTimer;
+
+
 
     public override void Enter()
     {
@@ -29,6 +33,8 @@ public class WallChargeState : State
         onWallCharge.Raise(this, true);
 
         jumpInputBuffered = false;
+
+        coyoteTimer = 0;
     }
     public override void Do()
     {
@@ -55,9 +61,13 @@ public class WallChargeState : State
         //}
         if (!groundSensor.grounded)
         {
-            isComplete = true;
-            _input.onCharge = false;
-            onWallChargeFailed.Raise(this, null);
+            coyoteTimer += Time.deltaTime;
+            if(coyoteTimer >= coyoteTime)
+            {
+                isComplete = true;
+                _input.onCharge = false;
+                onWallChargeFailed.Raise(this, null);
+            }            
         }
         if(time > minBufferTime && jumpInputBuffered) //Por si lo mantiene muy poco
         {
@@ -78,6 +88,7 @@ public class WallChargeState : State
     }
     public override void Exit()
     {       
+        coyoteTimer = 0;
         onWallCharge.Raise(this, false);
     }
 }

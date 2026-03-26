@@ -10,7 +10,7 @@ public class TimingTextController : MonoBehaviour
     private float fadeOutTimer =1f;
 
     [SerializeField] private string perfectTimingMessage = "Perfect!";
-    [SerializeField] private string okTimingMessage = "OK!";
+    [SerializeField] private string okTimingMessage = "Great";
     private void Update()
     {
         fadeOutTimer = Mathf.Clamp01( fadeOutTimer - Time.deltaTime);
@@ -25,18 +25,17 @@ public class TimingTextController : MonoBehaviour
         {
             timingText.alpha = 1;
             fadeOutTimer = 1f;
+            timingText.text = okTimingMessage;
+        }       
 
-            bool isPerfectTiming = (bool)data;
-            if(isPerfectTiming)
-            {
-                timingText.text = perfectTimingMessage;
-            }
-            else 
-            { 
-                timingText.text = okTimingMessage;
-            }
-        }
-        
+        //Play animation
+    }
+
+    public void OnTrickPerformedOnPerfectTiming(Component sender, object data)
+    {
+        timingText.alpha = 1;
+        fadeOutTimer = 1f;
+        timingText.text = perfectTimingMessage;
 
         //Play animation
     }
