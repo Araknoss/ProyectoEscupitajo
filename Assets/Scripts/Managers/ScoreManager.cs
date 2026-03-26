@@ -59,7 +59,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     }
     private void AddScore(int points)
     {       
-        score += points;
+        score += points*multiplierValue;
         onScoreUpdate.Raise(this, score);
     }
     

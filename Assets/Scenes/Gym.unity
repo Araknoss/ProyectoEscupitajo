@@ -14254,7 +14254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4735745718199650216, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: m_text
-      value: 9999
+      value: 9999999
       objectReference: {fileID: 0}
     - target: {fileID: 4735745718199650216, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: m_VerticalAlignment
@@ -14270,7 +14270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6300091482664366896, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6349272382980794553, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: m_LocalScale.x
@@ -14324,6 +14324,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6386848285536213876, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: efa7df2a394382947ad724f7a33738d3, type: 2}
     - target: {fileID: 6386848285536213876, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: m_Enabled
       value: 1
