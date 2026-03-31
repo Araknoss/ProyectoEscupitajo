@@ -35,23 +35,23 @@ public class ChunkManager : MonoBehaviour
 
     void Update()
     {
-        if(chunk.transform.position.y >= spawnHeight && newChunk==null)
+        if(chunk.transform.position.y >= spawnHeight/* && newChunk==null*/)
         {           
             SpawnChunk();
         }
-        if(chunk.transform.position.y >= dispawnHeight)
-        {
-            chunk.SetActive(false);
-            chunk = newChunk;
-            newChunk = null;
-        }
+        //if(chunk.transform.position.y >= dispawnHeight)
+        //{
+        //    chunk.SetActive(false);
+        //    chunk = newChunk;
+        //    newChunk = null;
+        //}
     }
 
     private void SpawnChunk()
     {
-        newChunk = _pooler.GetRandomPooledObject(); //Lo activa          
-        newChunk.transform.position = spawnPosition;
-        newChunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
+        chunk = _pooler.GetRandomPooledObject(); //Lo activa          
+        chunk.transform.position = spawnPosition;
+        chunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
 
         chunksCount++;
         if(chunksCount >= chunkThreshold)
