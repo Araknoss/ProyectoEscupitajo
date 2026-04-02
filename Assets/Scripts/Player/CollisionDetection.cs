@@ -9,6 +9,7 @@ public class CollisionDetection : MonoBehaviour
     public GameEvent onPlayerDeath;
     //public GameEvent onWallDetection;
 
+    [SerializeField] private bool invulnerableOnStart = false;
     private bool isInvulnerable = false;
     [SerializeField] private Toggle toggle;
     //private void OnCollisionEnter2D(Collision2D collision)
@@ -31,6 +32,7 @@ public class CollisionDetection : MonoBehaviour
     private void Start()
     {
 #if UNITY_EDITOR
+        if (!invulnerableOnStart) return;
         isInvulnerable = true;
         toggle.isOn = true;
 #endif

@@ -22,7 +22,7 @@ public class SpriteAfterImageTrail : MonoBehaviour
     {
         for (int i = 0; i < poolSize; i++)
         {
-            SpriteGhost ghost = Instantiate(ghostPrefab);
+            SpriteGhost ghost = Instantiate(ghostPrefab, gameObject.transform);
             ghost.gameObject.SetActive(false);
             pool.Enqueue(ghost);
         }

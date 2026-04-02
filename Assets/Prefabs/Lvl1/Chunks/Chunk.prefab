@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8784061966319445921}
   - component: {fileID: 363042190684980526}
-  - component: {fileID: 3271927794019340957}
+  - component: {fileID: 8812909525040700826}
   m_Layer: 0
   m_Name: Chunk
   m_TagString: Untagged
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 3
   direction: {x: 0, y: 1, z: 0}
---- !u!114 &3271927794019340957
+--- !u!114 &8812909525040700826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,7 +56,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7808474230534503808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23d952dd7ae6cde4d9f0ddbbac9e18b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 78503e70d3709454c84a1e8d3cef809f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 8
+  disableYValue: 60

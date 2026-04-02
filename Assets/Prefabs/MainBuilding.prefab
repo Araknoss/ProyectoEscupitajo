@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2829840503974721616}
   - component: {fileID: 4115243623918217935}
   - component: {fileID: 3818924737351670631}
-  - component: {fileID: 8235237069300411567}
+  - component: {fileID: 8158605625793771202}
   m_Layer: 7
   m_Name: MainBuilding
   m_TagString: Wall
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 3
   direction: {x: 0, y: 1, z: 0}
---- !u!114 &8235237069300411567
+--- !u!114 &8158605625793771202
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5355127696940607872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23d952dd7ae6cde4d9f0ddbbac9e18b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 78503e70d3709454c84a1e8d3cef809f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 3
+  disableYValue: 15

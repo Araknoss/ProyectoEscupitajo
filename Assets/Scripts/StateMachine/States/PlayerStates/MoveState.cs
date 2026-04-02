@@ -14,7 +14,8 @@ public class MoveState : State
     {
         //if(animationClip != null)
         //    animator.Play(animationClip.name);
-        animator.SetBool("Idle", true); 
+        animator.SetBool("Idle", false);
+        animator.SetBool("Move", true);
     }
     public override void Do()
     {
@@ -33,5 +34,6 @@ public class MoveState : State
     public override void Exit() 
     { 
         animator.SetBool("Idle", false);
+        animator.SetBool("Move", false);
     }
 }

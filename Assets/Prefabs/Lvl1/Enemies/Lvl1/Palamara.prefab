@@ -50,6 +50,8 @@ MonoBehaviour:
   attackDuration: 1.5
   movementSpeed: 20
   attackTrigger: {fileID: 3419424166599366618}
+  parent1: {fileID: 0}
+  originalPosition: {x: 0, y: 0}
 --- !u!1 &1376532725453186680
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,10 +164,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0112963915, y: -0.014775142}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -176,7 +178,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5074787, y: 0.5547427}
   m_EdgeRadius: 0
 --- !u!1 &3833173835197867263
 GameObject:
@@ -257,7 +259,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -205526923
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 1a872011c0d6f104087d6de7e61433e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -329,7 +331,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15519905, y: -0.09193754}
+  m_Offset: {x: 0.017131202, y: 0.021154478}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -340,7 +342,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.72366524, y: 0.4014597}
+  m_Size: {x: 0.17436124, y: 0.17527568}
   m_EdgeRadius: 0
 --- !u!114 &5784260369995208536
 MonoBehaviour:
