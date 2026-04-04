@@ -15,6 +15,7 @@ public class Trick : ScriptableObject
 
     public List<Trick> comboTricks = new List<Trick>();
     public KeyCode inputKey;
+    public int rewiredActionId;
 
     public float listenInputTime=1f;
     public bool comboEnder=false;

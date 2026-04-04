@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
+using Rewired;
 
 public class TrickManager : MonoBehaviour
 {
@@ -15,11 +15,17 @@ public class TrickManager : MonoBehaviour
     private Trick lastTrickPerformed;   
 
     [Header("Input")]
-    [SerializeField] private KeyCode bodyKey= KeyCode.J;
+    [SerializeField] private int playerId;
+    [SerializeField] private Player rewiredPlayer;
+
+    //[SerializeField] private KeyCode bodyKey= KeyCode.J;
+    [SerializeField] private int bodyTrickActionId;
     private bool bodyInput;
-    [SerializeField] private KeyCode skateKey= KeyCode.K;
+    //[SerializeField] private KeyCode skateKey= KeyCode.K;
+    [SerializeField] private int skateTrickActionId;
     private bool skateInput;
-    [SerializeField] private KeyCode keepKey= KeyCode.Space;    
+    //[SerializeField] private KeyCode keepKey= KeyCode.Space;    
+    [SerializeField] private int keepKeyActionId;
     private bool keepInputPress;
     private bool keepInputRelease;
 
@@ -76,6 +82,10 @@ public class TrickManager : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private Animator animator;
 
+    private void Awake()
+    {
+        rewiredPlayer = ReInput.players.GetPlayer(playerId);
+    }
     private void Start()
     {
         SetAvailableTricks(baseTricks);
@@ -102,24 +112,24 @@ public class TrickManager : MonoBehaviour
     }
     void InitializeInput()
     {
-        bodyInput = Input.GetKeyDown(bodyKey);
-        skateInput= Input.GetKeyDown(skateKey);
-        keepInputPress = Input.GetKeyDown(keepKey);
-        keepInputRelease = Input.GetKeyUp(keepKey);
+        bodyInput = rewiredPlayer.GetButtonDown("BodyTrick");
+        skateInput= rewiredPlayer.GetButtonDown("SkateTrick");
+        keepInputPress = rewiredPlayer.GetButtonDown("KeepTrick");
+        keepInputRelease = rewiredPlayer.GetButtonUp("KeepTrick");
     }    
     void HandleInput() //Solo se pueden hacer trucos cuando estan disponibles en la lista AvailableTricks
     {
         if(bodyInput && !onKeepTrick)
         {
-            CheckAvailable(bodyKey);
+            CheckAvailable(bodyTrickActionId);
         }
         if(skateInput && !onKeepTrick)
         {
-            CheckAvailable(skateKey);
+            CheckAvailable(skateTrickActionId);
         }
         if(keepInputPress && !onKeepTrick) 
         {         
-            CheckAvailable(keepKey);
+            CheckAvailable(keepKeyActionId);
         }
         if(keepInputRelease && onKeepTrick)
         {
@@ -127,13 +137,13 @@ public class TrickManager : MonoBehaviour
             PerformTrick(availableTricks[0]); //Se asume que solo hay un truco al soltar           
         }
     }
-    void CheckAvailable(KeyCode input) //Se comprueba si el input corresponde a algun truco disponible
+    void CheckAvailable(/*KeyCode input*/int actionId) //Se comprueba si el input corresponde a algun truco disponible
     {
         if(availableTricks.Any())
         {
             for(int i=0;i<availableTricks.Count;i++)
             {
-                if(availableTricks[i].inputKey == input)
+                if(availableTricks[i].rewiredActionId == actionId)
                 {
                     if (!availableTricks[i].isStateTrick) //Para que los trucos de estado solo se activen desde los estados
                     {

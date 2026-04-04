@@ -21,6 +21,7 @@ MonoBehaviour:
   comboTricks:
   - {fileID: 11400000, guid: 60121bb6d0fc0224aa1348bfb29c611b, type: 2}
   inputKey: 32
+  rewiredActionId: 4
   listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 0

@@ -45,7 +45,7 @@ public class WallChargeState : State
             moveInput = moveInput.normalized;
         }
 
-        if (Input.GetButtonUp("Jump"))
+        if (_input.releaseJumpInput)
         {
             if(time < minBufferTime)
             {

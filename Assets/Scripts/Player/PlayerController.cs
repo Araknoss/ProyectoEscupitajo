@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
-using UnityEditor;
 using UnityEngine;
+using Rewired;
 
 public class PlayerController : Core
 {
@@ -18,11 +17,14 @@ public class PlayerController : Core
     public bool onCharge;
 
     [Header("Inputs")]
-    [SerializeField] private PlayerController playerInputs;   
+    //[SerializeField] private PlayerController playerInputs;   
+    [SerializeField] private int playerId;
+    private Player rewiredPlayer;
     public float xInput { get; private set; }
     public float yInput { get; private set; }
     public bool startJumpInput { get; private set; }
-    public bool jumpInput { get; private set; }   
+    public bool jumpInput { get; private set; }
+    public bool releaseJumpInput { get; private set; }
     public bool lookingRight { get; private set; }
 
     [Header("Ground Sensor")]
@@ -32,13 +34,22 @@ public class PlayerController : Core
     public GameObject spriteObject;
 
     private void Awake()
-    {
+    {       
         lookingRight = false;
     }
     private void Start()
-    {        
+    {       
+        
         SetupInstances();             
         Set(idleState);
+
+
+        if (!ReInput.isReady)
+        {
+            Debug.LogError("Rewired is not ready. Make sure to initialize Rewired before using it.");
+            return;
+        }
+        rewiredPlayer = ReInput.players.GetPlayer(playerId);
     }
     private void Update()
     {
@@ -91,10 +102,11 @@ public class PlayerController : Core
     }
     void InitializeInputs()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput=Input.GetAxisRaw("Vertical");
-        startJumpInput = Input.GetButtonDown("Jump");
-        jumpInput = Input.GetButton("Jump");
+        xInput = rewiredPlayer.GetAxisRaw("HorizontalMovement");
+        yInput= rewiredPlayer.GetAxisRaw("VerticalMovement");
+        startJumpInput = rewiredPlayer.GetButtonDown("KeepTrick");
+        jumpInput = rewiredPlayer.GetButton("KeepTrick");
+        releaseJumpInput = rewiredPlayer.GetButtonUp("KeepTrick");
     }         
 
     private void FlipSprite()

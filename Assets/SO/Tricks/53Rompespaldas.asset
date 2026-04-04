@@ -22,6 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 331ecc2608e8082439be2d553726e2d1, type: 2}
   - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
   inputKey: 106
+  rewiredActionId: 2
   listenInputTime: 1
   comboEnder: 0
   isStateTrick: 0
