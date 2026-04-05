@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8115762317687998546}
   - component: {fileID: 2492262356933576803}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ObstacleTrigger (6)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2716175, y: 0.013627008}
+  m_Size: {x: 1.22, y: 0.013627008}
   m_EdgeRadius: 0
 --- !u!1 &6487785345812858277
 GameObject:
@@ -89,9 +89,9 @@ GameObject:
   - component: {fileID: 311867386022838462}
   - component: {fileID: 2521340602692000075}
   - component: {fileID: 7055181275997375417}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 700x100
-  m_TagString: Wall
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

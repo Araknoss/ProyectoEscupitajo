@@ -130,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 10.869295}
+  m_Size: {x: 0.7, y: 10.869295}
   m_EdgeRadius: 0
 --- !u!50 &76098459013564135
 Rigidbody2D:
@@ -169,7 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2373164111923566060}
   - component: {fileID: 7605427648080388384}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: ObstacleTrigger (2)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0043323785, y: 0.49018598}
+  m_Offset: {x: 0, y: 0.49018598}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -234,5 +234,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1385296, y: 0.012005717}
+  m_Size: {x: 0.02, y: 0.012005717}
   m_EdgeRadius: 0
