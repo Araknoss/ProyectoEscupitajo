@@ -874,7 +874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb18c264d4b43ef4b9b5d0f130dac86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: 03034853d99631e46bef4bbfc501502d, type: 2}
   _input: {fileID: 7606790498281543376}
   moveSpeed: 12
 --- !u!1 &3528761925758319530
@@ -6007,7 +6007,7 @@ MonoBehaviour:
   jumpState: {fileID: 6934008127636820641}
   onJump: 0
   onCharge: 0
-  playerInputs: {fileID: 7606790498281543376}
+  playerId: 0
   groundSensor: {fileID: 1847219939473657867}
   spriteObject: {fileID: 2156958203769207150}
 --- !u!50 &2360695428872088125

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8959599064956223186}
   - component: {fileID: 738504626614170699}
   - component: {fileID: 6808472886406564595}
+  - component: {fileID: 2211573459567106093}
+  - component: {fileID: 4985518844077738631}
   m_Layer: 3
   m_Name: TrickManager
   m_TagString: Untagged
@@ -49,21 +51,42 @@ MonoBehaviour:
   tricksPerformed: []
   availableTricks: []
   baseTricks:
-  - {fileID: 11400000, guid: 1c8020f2de7eef44aaab217d06615c5a, type: 2}
-  bodyKey: 106
-  skateKey: 107
+  - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
+  - {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}
+  - {fileID: 11400000, guid: 39fb464e5503d164f845c160d8018abc, type: 2}
+  wallBaseTricks:
+  - {fileID: 11400000, guid: 0d668943736418748bd14aa828dfe101, type: 2}
+  - {fileID: 11400000, guid: 331ecc2608e8082439be2d553726e2d1, type: 2}
+  playerId: 0
+  bodyTrickActionId: 2
+  skateTrickActionId: 3
+  keepKeyActionId: 4
   trickCooldownTime: 0.5
   trickCooldownTimer: 0
   listenInputOffset: 0
+  performKeepTrickTime: 0.1
+  keepTimingSpeed: 1
+  chargeTimingSpeedModifier: 4
+  minRange: 0.3
+  maxRange: 0.7
   trickPerfectTimingPercentage: 0.2
   trickPerfectTime: 0
+  trickGreatTimingPercentage: 0.5
+  trickGreatTime: 0
   wallSlideTrick: {fileID: 11400000, guid: 1f6dd524df5f1f4499666b0ca25dda17, type: 2}
   wallJumpTrick: {fileID: 11400000, guid: d91cba3fefa56e04fac53b027afc7474, type: 2}
+  wallChargeTrick: {fileID: 11400000, guid: fcb4e38858e7b5d4f8a916a757886a7c, type: 2}
   wallScoreTime: 0.1
+  isOnWall: 0
   onTrickPerformed: {fileID: 11400000, guid: efa7df2a394382947ad724f7a33738d3, type: 2}
+  onTrickPerformedOnPerfectTiming: {fileID: 11400000, guid: a30112b20600f6541a3db8bc8dbc3f21, type: 2}
+  onKeepingTrick: {fileID: 11400000, guid: c916c113472e22f498c6a6d8f64070c3, type: 2}
+  onWallSlideEnd: {fileID: 11400000, guid: ff4795ef392b41f43ba2ca8600791b5f, type: 2}
   onAvailableTricksReset: {fileID: 11400000, guid: ea83c3bde698a37468a4340346d8969b, type: 2}
   onComboEnd: {fileID: 11400000, guid: b9a8e1d810d21a743b4537f0c62e9a07, type: 2}
   onPerfectTiming: {fileID: 11400000, guid: 87c6228edd1a5104f8f4eb63cfec229e, type: 2}
+  onGreatTiming: {fileID: 11400000, guid: f36ce8727d8fddd4c99eea5936b959c8, type: 2}
+  animator: {fileID: 0}
 --- !u!114 &738504626614170699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +135,62 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TrickManager, Assembly-CSharp
         m_MethodName: HandleOnWallJump
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2211573459567106093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918170895285684174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e96d5d414ca10cb44a3eff92f61dbb66, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8959599064956223186}
+        m_TargetAssemblyTypeName: TrickManager, Assembly-CSharp
+        m_MethodName: HandleOnWallCharge
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4985518844077738631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918170895285684174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: d67bfcadeca0c4c47a37eb74dfcbc6f9, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8959599064956223186}
+        m_TargetAssemblyTypeName: TrickManager, Assembly-CSharp
+        m_MethodName: ResetCombo
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

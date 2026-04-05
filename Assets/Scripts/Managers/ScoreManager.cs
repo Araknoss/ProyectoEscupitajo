@@ -57,6 +57,11 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
             updateTimer = 0f;
         }
     }
+    void AddTemporaryScore(int points)
+    {
+        score += points;
+        onScoreUpdate.Raise(this, score);
+    }
     private void AddScore(int points)
     {       
         score += points*multiplierValue;

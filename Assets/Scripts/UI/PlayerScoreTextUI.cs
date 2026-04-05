@@ -93,4 +93,13 @@ public class PlayerScoreTextUI : MonoBehaviour
         }
         text.text = "+" + temporaryScore.ToString();
     }
+
+    void HandleAddTemporaryScore(Component sender, object data)
+    {
+        if (data is int)
+        {
+            int score = (int)data;
+            AddTemporaryScore(score, null);
+        }
+    }
 }

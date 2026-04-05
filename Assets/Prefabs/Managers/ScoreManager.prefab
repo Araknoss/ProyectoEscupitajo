@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 4080581695272043769}
   - component: {fileID: 6041461284503644543}
   - component: {fileID: 3411876497713561934}
+  - component: {fileID: 2206704951242541261}
+  - component: {fileID: 1009536145327581537}
+  - component: {fileID: 7099448898066636181}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -49,6 +52,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateTime: 0.2
   onScoreUpdate: {fileID: 11400000, guid: d0169634b8d299a4d8097d01613493da, type: 2}
+  multiplierValue: 1
+  onMultiplierUpdate: {fileID: 11400000, guid: 5a6badbffaf0bcc41b7777e4b05f7b6c, type: 2}
+  multiplierIndex: 0
+  actualHardness: 0
+  actualHardnessThreshold: 0
+  multiplierHardnessTresholds: 080000000c000000120000001800000020000000
+  multiplierValues: 0100000002000000040000000600000008000000
   gold: 0
   onGoldUpdate: {fileID: 11400000, guid: 4c5e054561dab0e4ba2c9123d5255e96, type: 2}
   goldConversion: 100
@@ -127,6 +137,90 @@ MonoBehaviour:
       - m_Target: {fileID: 7560485140360501088}
         m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
         m_MethodName: OnPlayerDeath
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2206704951242541261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939734698985194941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: b9a8e1d810d21a743b4537f0c62e9a07, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7560485140360501088}
+        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+        m_MethodName: HandleComboEnd
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1009536145327581537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939734698985194941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: ff4795ef392b41f43ba2ca8600791b5f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7560485140360501088}
+        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+        m_MethodName: HandleTrickPerformed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7099448898066636181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939734698985194941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c916c113472e22f498c6a6d8f64070c3, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7560485140360501088}
+        m_TargetAssemblyTypeName: ScoreManager, Assembly-CSharp
+        m_MethodName: HandleTrickPerformed
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
