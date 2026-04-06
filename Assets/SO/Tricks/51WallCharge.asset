@@ -17,7 +17,7 @@ MonoBehaviour:
   animationClip: {fileID: 0}
   trickName: Wall Charge
   baseScore: 20
-  hardness: 1
+  hardness: 0
   comboTricks:
   - {fileID: 11400000, guid: d91cba3fefa56e04fac53b027afc7474, type: 2}
   inputKey: 32

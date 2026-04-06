@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 using Rewired;
@@ -264,11 +263,21 @@ public class TrickManager : MonoBehaviour
     }    
     void HandleKeepTrick()
     {        
-            performKeepTrickTimer += Time.deltaTime;
+        if(keepInputPress)
+        {
+                performKeepTrickTimer = 0;
+        }
+        performKeepTrickTimer += Time.deltaTime;
             if (performKeepTrickTimer > performKeepTrickTime)
             {
                 performKeepTrickTimer = 0;
+                if (isOnWallSlide)
+                {
+                   onKeepingTrick.Raise(this, wallSlideTrick);
+                   return;
+                }
                 onKeepingTrick.Raise(this, lastTrickPerformed);                 
+                Debug.Log("KeepTrick performed");
             }    
     }
     void HandleKeepTiming()
