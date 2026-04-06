@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 121
   animationClip: {fileID: 7400000, guid: cd506e6297d4bad42918b7317907902f, type: 2}
   trickName: Culitoculito
-  baseScore: 50
+  baseScore: 250
   hardness: 2
   comboTricks:
   - {fileID: 11400000, guid: dfb5cea8c07a3be46a4d651df7ebce79, type: 2}

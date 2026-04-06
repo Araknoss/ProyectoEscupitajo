@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 101
   animationClip: {fileID: 7400000, guid: 25f383d8898d4874f84980f0c800e406, type: 2}
   trickName: Automamadagalaxial
-  baseScore: 50
+  baseScore: 10
   hardness: 1
   comboTricks:
   - {fileID: 11400000, guid: 5d5ed182f38f5df4e9756e526242f51b, type: 2}

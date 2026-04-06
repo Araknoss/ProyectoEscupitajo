@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8328593453648809346}
   - component: {fileID: 2557949488246791051}
+  - component: {fileID: 7510897657538724358}
   m_Layer: 0
   m_Name: ChargedAttackState
   m_TagString: Untagged
@@ -44,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c30dfb2502351b449395b8925b34f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackSound: {fileID: 7510897657538724358}
   animationClip: {fileID: 7400000, guid: 7e6d7917074a4e84bbd1f99ea3cb4ac9, type: 2}
   detectedClip: {fileID: 7400000, guid: 41826e8e0deb65e478892f0938bbfb4d, type: 2}
   attackDelay: 1
@@ -52,6 +54,37 @@ MonoBehaviour:
   attackTrigger: {fileID: 3419424166599366618}
   parent1: {fileID: 0}
   originalPosition: {x: 0, y: 0}
+--- !u!114 &7510897657538724358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783992987371202232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 461734947
+      Data2: 1074081116
+      Data3: -1903435342
+      Data4: -1389801313
+    Path: event:/Pamara
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1376532725453186680
 GameObject:
   m_ObjectHideFlags: 0

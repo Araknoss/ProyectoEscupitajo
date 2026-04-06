@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 122
   animationClip: {fileID: 7400000, guid: 79f8f665dab183a4ba2ed1ea2078087c, type: 2}
   trickName: Despaldas
-  baseScore: 50
+  baseScore: 400
   hardness: 1
   comboTricks:
   - {fileID: 11400000, guid: e2d537cecde11a149b1d973e46f893b7, type: 2}

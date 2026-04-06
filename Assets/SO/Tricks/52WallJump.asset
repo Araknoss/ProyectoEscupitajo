@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 52
   animationClip: {fileID: 0}
   trickName: Wall Jump
-  baseScore: 100
+  baseScore: 250
   hardness: 3
   comboTricks:
   - {fileID: 11400000, guid: 0d668943736418748bd14aa828dfe101, type: 2}

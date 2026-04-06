@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour, IDataPersistence
 {
     [Header("Score")]
-    private int score;
+    public int score;
     private float updateTimer = 0f;
     [SerializeField] private float updateTime;
     public GameEvent onScoreUpdate;
@@ -157,12 +157,13 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
 
     public void OnPlayerDeath(Component sender, object data)
     {
-        StartCoroutine(ScoreToGoldCo());
+        //StartCoroutine(ScoreToGoldCo()); //Desactivado para la demo
     }
 
     IEnumerator ScoreToGoldCo()
     {
         /*int goldEarned = score / goldConversion; */// Ejemplo: cada 10 puntos de score se convierte en 1 de oro
+
         int scoreToConvert = score;        
         while (scoreToConvert > 0)
         {

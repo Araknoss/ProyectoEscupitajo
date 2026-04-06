@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 500
   animationClip: {fileID: 7400000, guid: 974cf0bf426609e4ebf97b17d9b700e5, type: 2}
   trickName: 
-  baseScore: 0
+  baseScore: 750
   hardness: 4
   comboTricks:
   - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}

@@ -16,11 +16,11 @@ MonoBehaviour:
   id: 201
   animationClip: {fileID: 7400000, guid: 77267ef159fd0134d937a9703affd056, type: 2}
   trickName: Pataanormal
-  baseScore: 50
+  baseScore: 10
   hardness: 1
   comboTricks:
-  - {fileID: 11400000, guid: 60121bb6d0fc0224aa1348bfb29c611b, type: 2}
   - {fileID: 11400000, guid: 2afa0fdd44f41b442a4781f76cfceaa5, type: 2}
+  - {fileID: 11400000, guid: 60121bb6d0fc0224aa1348bfb29c611b, type: 2}
   inputKey: 107
   rewiredActionId: 3
   listenInputTime: 1.5

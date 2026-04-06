@@ -15,9 +15,63 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 639109906537722461
+  lastModified: 639111116606088240
   FileSizes: []
   Exists: 1
+--- !u!114 &-1398797286759354520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/MusicIntro
+  m_EditorClassIdentifier: 
+  Path: event:/MusicIntro
+  Guid:
+    Data1: -1553873899
+    Data2: 1231965185
+    Data3: 2038253497
+    Data4: 587938467
+  Banks:
+  - {fileID: -1443204307528009100}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-539566147086278526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Pamara
+  m_EditorClassIdentifier: 
+  Path: event:/Pamara
+  Guid:
+    Data1: 461734947
+    Data2: 1074081116
+    Data3: -1903435342
+    Data4: -1389801313
+  Banks:
+  - {fileID: -1443204307528009100}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36,16 +90,22 @@ MonoBehaviour:
   - {fileID: 6822536928279771683}
   EditorEvents:
   - {fileID: 4039914179211296854}
+  - {fileID: -1398797286759354520}
+  - {fileID: -539566147086278526}
   EditorParameters: []
   MasterBanks:
   - {fileID: 6822536928279771683}
   StringsBanks:
   - {fileID: 1192040155656516333}
   cacheVersion: 131858
-  cacheTime: 639109906537722461
+  cacheTime: 639111116606283768
   SerializableEventsDict:
   - key: event:/MainTheme
     index: 0
+  - key: event:/MusicIntro
+    index: 1
+  - key: event:/Pamara
+    index: 2
 --- !u!114 &1192040155656516333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,10 +121,10 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639109906537382442
+  lastModified: 639111116606283768
   FileSizes:
   - Name: 
-    Value: 818
+    Value: 920
   Exists: 1
 --- !u!114 &4039914179211296854
 MonoBehaviour:
@@ -88,11 +148,11 @@ MonoBehaviour:
   - {fileID: -1443204307528009100}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 129645
+  Length: 141792
 --- !u!114 &6822536928279771683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +168,6 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639109906537357225
+  lastModified: 639111116606258668
   FileSizes: []
   Exists: 1

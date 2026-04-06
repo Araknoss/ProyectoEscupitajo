@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 11
   animationClip: {fileID: 7400000, guid: f242517a4697ab947bf66caaa01646e1, type: 2}
   trickName: Webos
-  baseScore: 50
+  baseScore: 350
   hardness: 2
   comboTricks:
   - {fileID: 11400000, guid: 3f8d5f2f5ffdf724b9d7f3fb469ef6e7, type: 2}

@@ -22,6 +22,7 @@ public class ChunkManager : MonoBehaviour
     private float originalChunkSpeed;
 
     private bool canSpawn = true;
+    public bool demoEnd = false;
 
     void Start()
     {
@@ -69,10 +70,13 @@ public class ChunkManager : MonoBehaviour
 
     private void DemoEnd()
     {
-        canSpawn = false;
-        chunk = _pooler.GetLastChunk(); //Lo activa          
-        chunk.transform.position = spawnPosition;
-        chunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
+        if (demoEnd)
+        {
+            canSpawn = false;
+            chunk = _pooler.GetLastChunk(); //Lo activa          
+            chunk.transform.position = spawnPosition;
+            chunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
+        }        
     }
 
     public void SetChunkSpeed(Component sender, object data)

@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 54
   animationClip: {fileID: 7400000, guid: 155c237e92c003641b7bc1a2c0fb88ca, type: 2}
   trickName: Mototruco
-  baseScore: 100
+  baseScore: 300
   hardness: 1
   comboTricks:
   - {fileID: 11400000, guid: 8c19680f264561e4f9838e5f7d1def35, type: 2}

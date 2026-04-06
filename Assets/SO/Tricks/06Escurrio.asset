@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 131
   animationClip: {fileID: 7400000, guid: ca13127205f21ad47a4fbe95a9a192c4, type: 2}
   trickName: Escurrio
-  baseScore: 50
+  baseScore: 200
   hardness: 1
   comboTricks:
   - {fileID: 11400000, guid: 9b7cda8cfeead3841a945ffcb4674c2a, type: 2}

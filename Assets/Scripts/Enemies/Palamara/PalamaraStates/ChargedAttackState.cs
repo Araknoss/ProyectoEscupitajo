@@ -1,9 +1,11 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ChargedAttackState : State
 {
+    [SerializeField] private StudioEventEmitter attackSound;
     [SerializeField] private AnimationClip animationClip;
     [SerializeField] private AnimationClip detectedClip;
 
@@ -18,6 +20,7 @@ public class ChargedAttackState : State
 
     public override void Enter()
     {
+        attackSound.Play();
         animator.Play(detectedClip.name);
         attackTrigger.SetActive(true);
         onAttack = false;

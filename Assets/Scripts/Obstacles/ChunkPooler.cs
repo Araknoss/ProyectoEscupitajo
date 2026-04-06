@@ -52,6 +52,7 @@ public class ChunkPooler : MonoBehaviour
 
     public GameObject GetLastChunk()
     {
+        lastChunk.SetActive(true);
         return lastChunk;
     }
 }
