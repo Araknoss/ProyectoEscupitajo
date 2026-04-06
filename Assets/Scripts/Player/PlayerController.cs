@@ -15,6 +15,7 @@ public class PlayerController : Core
     [Header("Internal Variables")]
     public bool onJump;
     public bool onCharge;
+    public bool onWall;
 
     [Header("Inputs")]
     //[SerializeField] private PlayerController playerInputs;   
@@ -25,7 +26,7 @@ public class PlayerController : Core
     public bool startJumpInput { get; private set; }
     public bool jumpInput { get; private set; }
     public bool releaseJumpInput { get; private set; }
-    public bool lookingRight { get; private set; }
+    public bool lookingRight;
 
     [Header("Ground Sensor")]
     public GroundSensor groundSensor;
@@ -43,20 +44,13 @@ public class PlayerController : Core
         SetupInstances();             
         Set(idleState);
 
-
-        if (!ReInput.isReady)
-        {
-            Debug.LogError("Rewired is not ready. Make sure to initialize Rewired before using it.");
-            return;
-        }
         rewiredPlayer = ReInput.players.GetPlayer(playerId);
     }
     private void Update()
     {
         InitializeInputs();      
         SelectState();
-        state.Do();
-        if (onJump || onCharge) return;        
+        state.Do();               
         FlipSprite();   
        
         
@@ -109,8 +103,9 @@ public class PlayerController : Core
         releaseJumpInput = rewiredPlayer.GetButtonUp("KeepTrick");
     }         
 
-    private void FlipSprite()
-    {        
+    public void FlipSprite()
+    {
+        if (onJump || onCharge || onWall) return;        
         if (xInput > 0 && !lookingRight)
         {
             lookingRight = true;

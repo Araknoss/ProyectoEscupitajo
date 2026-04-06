@@ -8,7 +8,11 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     private int score;
     private float updateTimer = 0f;
     [SerializeField] private float updateTime;
-    public GameEvent onScoreUpdate; 
+    public GameEvent onScoreUpdate;
+
+    [Header("Temporary Score")]
+    private int temporaryScore;
+    public GameEvent onTemporaryScoreUpdate;
 
     [Header("Multiplier")]
     [SerializeField] private int multiplierValue = 1;
@@ -59,8 +63,12 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     }
     void AddTemporaryScore(int points)
     {
-        score += points;
-        onScoreUpdate.Raise(this, score);
+        temporaryScore += points*multiplierValue;  
+        onTemporaryScoreUpdate.Raise(this, temporaryScore);
+    }
+    void ResetTemporaryScore()
+    {
+        temporaryScore = 0;
     }
     private void AddScore(int points)
     {       
@@ -99,6 +107,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
         if (data is Trick)
         {
             Trick trick = (Trick)data;
+            AddTemporaryScore(trick.baseScore);
             AddScore(trick.baseScore);
             AddHardness(trick.hardness);
         } 
@@ -121,6 +130,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
             if (resetMultiplier)
             {
                 UpdateMultiplier(0); //Volvemos al multiplicador base
+                ResetTemporaryScore();
                 onMultiplierUpdate.Raise(this, multiplierValue);
             }
         }

@@ -11,8 +11,7 @@ public class PlayerScoreTextUI : MonoBehaviour
     [SerializeField] private float stayDuration = 1f;
     [SerializeField] private float hideDuration = 0.2f;
     [SerializeField] private float returnAnimationSpeed = 5f;
-    private float stayTimer=0;
-    private float temporaryScore = 0f;
+    private float stayTimer=0;    
 
     [Header("References")]    
     [SerializeField] private TextMeshProUGUI text;
@@ -42,17 +41,15 @@ public class PlayerScoreTextUI : MonoBehaviour
     {
         if (data is Trick)
         {
-            Trick trick = (Trick)data;
-            stayDuration = trick.listenInputTime - hideDuration;
-
-            AddTemporaryScore(trick.baseScore, trick); //Habrá que multiplicar por multiplier
+            //Trick trick = (Trick)data;
+            //stayDuration = trick.listenInputTime - hideDuration;
+            //AddTemporaryScore(trick.baseScore, trick); 
         }
     }
 
     public void HandleComboEnd(Component sender, object data)
     {
-        stayTimer = stayDuration;
-        temporaryScore = 0f;        
+        stayTimer = stayDuration;              
     }
     //private void PlayAnimation()
     //{       
@@ -74,32 +71,25 @@ public class PlayerScoreTextUI : MonoBehaviour
 
     private void EndAnimation()
     {        
-        text.alpha = 0f;
-        temporaryScore = 0f;        
+        text.alpha = 0f;               
         text.gameObject.SetActive(false);
     }
 
-    private void AddTemporaryScore(int score, Trick trick) //Le pedimos Trick para comprobar si es "Ok"
+    private void AddTemporaryScore(int score) 
     {
         text.transform.localScale = Vector3.one * 1.3f;
         stayTimer = 0f;
         text.gameObject.SetActive(true);
-        text.alpha = 1f;
-        temporaryScore += score;
-        if(trick.name == "Ok")
-        {
-            text.text = "Ok";
-            return;
-        }
-        text.text = "+" + temporaryScore.ToString();
+        text.alpha = 1f;           
+        text.text = "+" + score.ToString();
     }
 
-    void HandleAddTemporaryScore(Component sender, object data)
+    public void HandleAddTemporaryScore(Component sender, object data)
     {
         if (data is int)
         {
             int score = (int)data;
-            AddTemporaryScore(score, null);
+            AddTemporaryScore(score);
         }
     }
 }

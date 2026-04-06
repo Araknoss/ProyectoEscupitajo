@@ -7,7 +7,7 @@ public class WallState : State
 {
     [SerializeField] private AnimationClip wallSlideAnimation;
     //[SerializeField] private AnimationClip idleAnimation;
-    [SerializeField] private PlayerController _input;
+    [SerializeField] private PlayerController _input;    
     [SerializeField] private float moveSpeed;
     private Vector2 moveInput;
 
@@ -18,11 +18,23 @@ public class WallState : State
 
     public override void Enter()
     {
+        _input.onWall = true;
+
         animator.SetBool("OnWall", true);       
         animator.Play(wallSlideAnimation.name);
 
         onWallDetection.Raise(this, true);        
-
+       
+        if(_input.groundSensor.groundNormal.x > 0)
+        {
+            playerSprite.transform.localScale = new Vector3(1, 1, 1);
+            _input.lookingRight = false;
+        }
+        if(_input.groundSensor.groundNormal.x < 0)
+        {
+            playerSprite.transform.localScale = new Vector3(-1, 1, 1);      
+            _input.lookingRight = true;
+        }
         //originalPlayerSpriteScale = playerSprite.localScale;
         //if (_input.groundSensor.groundNormal.x > 0)
         //{
@@ -48,7 +60,9 @@ public class WallState : State
         body.velocity = moveInput * moveSpeed;
     }
     public override void Exit()
-    {
+    {     
+        _input.onWall = false;
+
         onWallDetection.Raise(this, false);
 
         animator.SetBool("OnWall", false);

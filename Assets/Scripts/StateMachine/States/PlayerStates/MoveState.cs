@@ -7,11 +7,13 @@ public class MoveState : State
 {
     [SerializeField] private AnimationClip animationClip;
     [SerializeField] private PlayerController _input;
+    [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private float moveSpeed;
     private Vector2 moveInput;
     
     public override void Enter()
     {
+        playerSprite.flipX = false;
         //if(animationClip != null)
         //    animator.Play(animationClip.name);
         animator.SetBool("Idle", false);

@@ -459,6 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleAnimation: {fileID: 0}
+  playerSprite: {fileID: 2310452226147934507}
 --- !u!1 &1334619376028965086
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,6 +877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationClip: {fileID: 7400000, guid: 03034853d99631e46bef4bbfc501502d, type: 2}
   _input: {fileID: 7606790498281543376}
+  playerSprite: {fileID: 2310452226147934507}
   moveSpeed: 12
 --- !u!1 &3528761925758319530
 GameObject:
@@ -6008,6 +6010,7 @@ MonoBehaviour:
   onJump: 0
   onCharge: 0
   playerId: 0
+  lookingRight: 0
   groundSensor: {fileID: 1847219939473657867}
   spriteObject: {fileID: 2156958203769207150}
 --- !u!50 &2360695428872088125
@@ -6379,7 +6382,6 @@ GameObject:
   - component: {fileID: 6386848285536213876}
   - component: {fileID: 8387925382896922732}
   - component: {fileID: 9052258525889438695}
-  - component: {fileID: 6116512581508574863}
   m_Layer: 3
   m_Name: PlayerScoreTextCanvas
   m_TagString: Untagged
@@ -6502,13 +6504,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: efa7df2a394382947ad724f7a33738d3, type: 2}
+  gameEvent: {fileID: 11400000, guid: 896c217c2a48b9c4baad5509e131a10c, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3210375982313003698}
         m_TargetAssemblyTypeName: PlayerScoreTextUI, Assembly-CSharp
-        m_MethodName: HandleTrickPerformed
+        m_MethodName: HandleAddTemporaryScore
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6558,34 +6560,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &6116512581508574863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6946829337765763866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: c916c113472e22f498c6a6d8f64070c3, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3210375982313003698}
-        m_TargetAssemblyTypeName: PlayerScoreTextUI, Assembly-CSharp
-        m_MethodName: HandleTrickPerformed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7349102284362014254
 GameObject:
   m_ObjectHideFlags: 0
@@ -6651,7 +6625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onPlayerDeath: {fileID: 11400000, guid: d6cb7279f45b4534ab12b4977b9cca83, type: 2}
-  invulnerableOnStart: 0
+  invulnerableOnStart: 1
   toggle: {fileID: 0}
 --- !u!58 &4854938948117430088
 CircleCollider2D:
