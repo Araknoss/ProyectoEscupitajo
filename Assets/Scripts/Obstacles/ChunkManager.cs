@@ -13,13 +13,15 @@ public class ChunkManager : MonoBehaviour
     [SerializeField] private float chunkSpeed;
 
     [Header("Level Transitions")]
-    [SerializeField] private List<ChunkPooler> levelChunkPoolers;
+    [SerializeField] private List<ChunkPooler> levelChunkPoolers;    
     [SerializeField] private int chunkThreshold = 5;
     public int chunksCount = 0;
     public int currentLevelIndex = 0;
 
     [SerializeField] private float onWallSlowdownFactor = 0.8f;
     private float originalChunkSpeed;
+
+    private bool canSpawn = true;
 
     void Start()
     {
@@ -35,7 +37,7 @@ public class ChunkManager : MonoBehaviour
 
     void Update()
     {
-        if(chunk.transform.position.y >= spawnHeight/* && newChunk==null*/)
+        if(chunk.transform.position.y >= spawnHeight/* && newChunk==null*/ && canSpawn)
         {           
             SpawnChunk();
         }
@@ -49,16 +51,28 @@ public class ChunkManager : MonoBehaviour
 
     private void SpawnChunk()
     {
+        if (chunksCount >= chunkThreshold)
+        {
+            chunksCount = 0;
+            DemoEnd();
+            //TransitionToNextLevel();
+            return;
+        }
+
         chunk = _pooler.GetRandomPooledObject(); //Lo activa          
         chunk.transform.position = spawnPosition;
         chunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
 
         chunksCount++;
-        if(chunksCount >= chunkThreshold)
-        {
-            chunksCount = 0;
-            TransitionToNextLevel();
-        }
+       
+    }
+
+    private void DemoEnd()
+    {
+        canSpawn = false;
+        chunk = _pooler.GetLastChunk(); //Lo activa          
+        chunk.transform.position = spawnPosition;
+        chunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
     }
 
     public void SetChunkSpeed(Component sender, object data)
