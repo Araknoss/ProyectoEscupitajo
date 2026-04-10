@@ -1082,7 +1082,6 @@ GameObject:
   - component: {fileID: 61408489}
   - component: {fileID: 61408487}
   - component: {fileID: 61408490}
-  - component: {fileID: 61408491}
   m_Layer: 0
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -1195,20 +1194,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &61408491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61408485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61575df0277e7a744ba18347c7a4c855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indicator: {fileID: 240541890}
-  offset: {x: -40, y: 0}
 --- !u!4 &63802490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8701082125422639350, guid: 7268de9b46fcd2642b6a847dffb7b81a, type: 3}
@@ -18349,6 +18334,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 562473516}
+  - component: {fileID: 562473518}
+  - component: {fileID: 562473517}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -18371,6 +18358,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &562473517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562473515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: bed7d37e46fb4d947b4f21be6635431b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 562473518}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: OnGamePause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &562473518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562473515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce18c8db3f6d83478c2cfd5c31f3d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterVolume: 1
+  pauseSnapshot:
+    Guid:
+      Data1: -269384913
+      Data2: 1265000257
+      Data3: 1923505292
+      Data4: -1232085349
+    Path: snapshot:/PauseSnapshot
 --- !u!4 &570656108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4498833231828548051, guid: c8b349840f6c9464898060d1aed0be92, type: 3}
@@ -21880,7 +21915,6 @@ GameObject:
   - component: {fileID: 903999425}
   - component: {fileID: 903999424}
   - component: {fileID: 903999427}
-  - component: {fileID: 903999428}
   m_Layer: 5
   m_Name: No
   m_TagString: Untagged
@@ -22023,20 +22057,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &903999428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903999422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61575df0277e7a744ba18347c7a4c855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indicator: {fileID: 469037969}
-  offset: {x: -40, y: 0}
 --- !u!1 &911598596
 GameObject:
   m_ObjectHideFlags: 0
@@ -23848,6 +23868,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1018726745}
   - component: {fileID: 1018726746}
+  - component: {fileID: 1018726747}
   m_Layer: 0
   m_Name: MainTheme
   m_TagString: Untagged
@@ -23901,6 +23922,34 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &1018726747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018726743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: d6cb7279f45b4534ab12b4977b9cca83, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1018726746}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1022434767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27604,7 +27653,6 @@ GameObject:
   - component: {fileID: 1415352806}
   - component: {fileID: 1415352805}
   - component: {fileID: 1415352808}
-  - component: {fileID: 1415352809}
   m_Layer: 5
   m_Name: Yes
   m_TagString: Untagged
@@ -27747,20 +27795,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1415352809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415352803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61575df0277e7a744ba18347c7a4c855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indicator: {fileID: 469037969}
-  offset: {x: -40, y: 0}
 --- !u!4 &1431668213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9176467668758298669, guid: a9ff8f30c385ceb458e3af5365abbe70, type: 3}
@@ -35473,7 +35507,6 @@ GameObject:
   - component: {fileID: 2068567340}
   - component: {fileID: 2068567338}
   - component: {fileID: 2068567341}
-  - component: {fileID: 2068567342}
   m_Layer: 0
   m_Name: Resume
   m_TagString: Untagged
@@ -35586,20 +35619,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2068567342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2068567336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61575df0277e7a744ba18347c7a4c855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indicator: {fileID: 240541890}
-  offset: {x: -40, y: 0}
 --- !u!1 &2079736374
 GameObject:
   m_ObjectHideFlags: 0

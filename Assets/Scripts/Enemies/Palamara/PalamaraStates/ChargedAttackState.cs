@@ -18,6 +18,7 @@ public class ChargedAttackState : State
     public Transform parent1;
     public Vector2 originalPosition;
 
+    private bool goRight;
     public override void Enter()
     {
         attackSound.Play();
@@ -26,6 +27,8 @@ public class ChargedAttackState : State
         onAttack = false;
         parent1 = core.gameObject.transform.parent;
         originalPosition = core.gameObject.transform.localPosition;
+
+        SelectAttackDirection();
     }
     public override void Do()
     {
@@ -33,7 +36,15 @@ public class ChargedAttackState : State
         {
             core.gameObject.transform.SetParent(null);
             float playerPosY = FindAnyObjectByType<PlayerController>().gameObject.transform.position.y;
-            core.gameObject.transform.position = new Vector3(15, playerPosY, core.gameObject.transform.position.z);
+
+            if(goRight)
+            {
+                core.gameObject.transform.position = new Vector3(-15, playerPosY, core.gameObject.transform.position.z);
+            }
+            else
+            {
+                core.gameObject.transform.position = new Vector3(15, playerPosY, core.gameObject.transform.position.z);
+            }               
             onAttack = true;            
         }
         else if(onAttack)
@@ -53,10 +64,30 @@ public class ChargedAttackState : State
     
     private void Attack()
     {
-        core.gameObject.transform.position += movementSpeed * Time.deltaTime * Vector3.left;
+        if (goRight)
+        {
+            core.gameObject.transform.position += movementSpeed * Time.deltaTime * Vector3.right;
+        }            
+        else
+        {
+            core.gameObject.transform.position += movementSpeed * Time.deltaTime * Vector3.left;
+        }
+            
         if (time >= detectedClip.length + attackDelay + attackDuration)
         {
             isComplete = true;
+        }
+    }
+
+    private void SelectAttackDirection()
+    {       
+        if (core.gameObject.transform.position.x<0)
+        {
+            goRight = true;           
+        }
+        else
+        {
+            goRight = false;
         }
     }
 }
