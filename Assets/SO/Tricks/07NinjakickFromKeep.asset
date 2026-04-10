@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: 01AutomamadagalaxialKeep
+  m_Name: 07NinjakickFromKeep
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 5988d41e9304bdf4dae7cb899aa3492e, type: 3}
-  id: 101
-  animationClip: {fileID: 7400000, guid: fd244a613dd6b974ba5f5f03c1df4a50, type: 2}
-  trickName: AutomamadagalaxialKeep
-  baseScore: 5
-  hardness: 0
+  sprite: {fileID: 21300000, guid: dbe2c73bf910de34282f9cfdc30f98ab, type: 3}
+  id: 132
+  animationClip: {fileID: 7400000, guid: 02265f97c36428c43a43d6d686ac7403, type: 2}
+  trickName: Ninjakick
+  baseScore: 50
+  hardness: 1
   comboTricks:
-  - {fileID: 11400000, guid: 055b581b6568e934caa4c11dc63e3e4d, type: 2}
+  - {fileID: 11400000, guid: 7aae292c755b568499d162118cfb3608, type: 2}
+  - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
   inputKey: 32
   rewiredActionId: 4
   listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 0
   isUnlockedAtStart: 1
-  isKeepTrick: 1
+  isKeepTrick: 0
   cost: 0

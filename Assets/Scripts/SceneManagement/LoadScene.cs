@@ -2,14 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 public class LoadScene : MonoBehaviour
 {
     [SerializeField] private float delayDuration = 1f;
     [SerializeField] private string MainMenuSceneName = "MainMenu";
+
+    [SerializeField] private Player rewiredPlayer;
+    [SerializeField] private int playerId=0;
+
+    private void Start()
+    {
+        rewiredPlayer = ReInput.players.GetPlayer(playerId);
+    }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        if(rewiredPlayer.GetButtonDown("Restart"))
         {
             ResetLevel();
         }
@@ -20,17 +29,17 @@ public class LoadScene : MonoBehaviour
     }
     public void LoadByIndexAfterDelay(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
+        //SceneManager.LoadScene(sceneIndex);
         StartCoroutine(LoadSceneAfterDelayCo(sceneIndex));
     }
     private IEnumerator LoadSceneAfterDelayCo(int sceneIndex)
     {
-        yield return new WaitForSeconds(delayDuration);
+        yield return new WaitForSecondsRealtime(delayDuration);
         SceneManager.LoadScene(sceneIndex);
     }
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene(MainMenuSceneName);
+        StartCoroutine(LoadSceneAfterDelayCo(0));        
     }
 }

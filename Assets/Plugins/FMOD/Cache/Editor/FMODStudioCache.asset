@@ -92,13 +92,14 @@ MonoBehaviour:
   - {fileID: 4039914179211296854}
   - {fileID: -1398797286759354520}
   - {fileID: -539566147086278526}
+  - {fileID: 3556374935415826399}
   EditorParameters: []
   MasterBanks:
   - {fileID: 6822536928279771683}
   StringsBanks:
   - {fileID: 1192040155656516333}
   cacheVersion: 131858
-  cacheTime: 639111116606283768
+  cacheTime: 639114227039618135
   SerializableEventsDict:
   - key: event:/MainTheme
     index: 0
@@ -106,6 +107,8 @@ MonoBehaviour:
     index: 1
   - key: event:/Pamara
     index: 2
+  - key: snapshot:/PauseSnapshot
+    index: 3
 --- !u!114 &1192040155656516333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,11 +124,38 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639111116606283768
+  lastModified: 639114227039618135
   FileSizes:
   - Name: 
-    Value: 920
+    Value: 974
   Exists: 1
+--- !u!114 &3556374935415826399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/PauseSnapshot
+  m_EditorClassIdentifier: 
+  Path: snapshot:/PauseSnapshot
+  Guid:
+    Data1: -269384913
+    Data2: 1265000257
+    Data3: 1923505292
+    Data4: -1232085349
+  Banks:
+  - {fileID: 6822536928279771683}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &4039914179211296854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +198,6 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639111116606258668
+  lastModified: 639114227039611761
   FileSizes: []
   Exists: 1
