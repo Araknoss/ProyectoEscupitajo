@@ -25,8 +25,7 @@ public class MultiplierTextController : MonoBehaviour
         if (targetText != null)
         {
             if (data is int) //Para el multiplier
-            {       
-                Debug.Log("multiplier"+data);
+            {     
                 int multiplierValue = (int)data;
                 if (multiplierValue == 1)
                 {

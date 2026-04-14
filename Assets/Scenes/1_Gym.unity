@@ -14947,6 +14947,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 4122011837149494655, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4735745718199650216, guid: 25fd822fb465b9e468e7868e80dcf336, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -15763,17 +15767,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340453649}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.10357371, w: 0.9946219}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 389312252}
   m_Father: {fileID: 1814121945}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -11.89}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 2.75, y: 0.85}
+  m_AnchoredPosition: {x: 2.22, y: 0.6}
   m_SizeDelta: {x: 3, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &340453651
@@ -15837,7 +15841,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -968290039
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!1 &342532753
 GameObject:
@@ -16550,11 +16554,12 @@ GameObject:
   - component: {fileID: 389312252}
   - component: {fileID: 389312258}
   - component: {fileID: 389312257}
+  - component: {fileID: 389312259}
   - component: {fileID: 389312255}
   - component: {fileID: 389312254}
   - component: {fileID: 389312253}
   m_Layer: 5
-  m_Name: MultiplierText
+  m_Name: TimingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16591,10 +16596,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e7da9328efc464685b12e0f68544e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stayDuration: 0.5
+  hideDuration: 0.2
+  returnAnimationSpeed: 5
+  scaleUpAmount: 1.2
   timingText: {fileID: 389312257}
-  fadeOutSpeed: 1
-  perfectTimingMessage: Perfect!
+  greatColor: {r: 0, g: 1, b: 0, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  perfectColor: {r: 1, g: 0, b: 0, a: 1}
   greatTimingMessage: Great
+  perfectTimingMessage: Perfect!
 --- !u!114 &389312254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16680,8 +16691,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -16704,8 +16715,8 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -16748,6 +16759,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389312251}
   m_CullTransparentMesh: 1
+--- !u!114 &389312259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389312251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: b9a8e1d810d21a743b4537f0c62e9a07, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 389312253}
+        m_TargetAssemblyTypeName: TimingTextController, Assembly-CSharp
+        m_MethodName: HandleComboEnd
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &400832618
 GameObject:
   m_ObjectHideFlags: 0
@@ -17618,6 +17657,7 @@ MonoBehaviour:
   stayDuration: 1
   hideDuration: 0.2
   returnAnimationSpeed: 5
+  scaleUpAmount: 1.2
   text: {fileID: 1900208196}
   canvasGroup: {fileID: 460114071}
   okColor: {r: 0, g: 1, b: 0, a: 1}

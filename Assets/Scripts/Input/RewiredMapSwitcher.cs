@@ -31,16 +31,14 @@ public class RewiredMapSwitcher : MonoBehaviour
     {
         player.controllers.maps.SetMapsEnabled(false, "UI");
         player.controllers.maps.SetMapsEnabled(true, "Gameplay");
-        currentMapName = "Gameplay";
-        Debug.Log("Gameplay Enabled");
+        currentMapName = "Gameplay";        
     }
 
     public void EnableUI()
     {
         player.controllers.maps.SetMapsEnabled(false, "Gameplay");
         player.controllers.maps.SetMapsEnabled(true, "UI");
-        currentMapName = "UI";
-        Debug.Log("UI Enabled");
+        currentMapName = "UI";       
     }
 
     public void OnGamePause(Component sender, object data)

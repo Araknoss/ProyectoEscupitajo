@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,41 +6,74 @@ using UnityEngine;
 
 public class TimingTextController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI timingText;
-    [SerializeField] private float fadeOutSpeed = 1f;
-    [SerializeField] private float fadeOutTime =0.3f;
+    [Header("Animation")]
+    [SerializeField] private float stayDuration = 1f;
+    [SerializeField] private float hideDuration = 0.2f;
+    [SerializeField] private float returnAnimationSpeed = 5f;
+    private float stayTimer = 0;
+    [SerializeField] private float scaleUpAmount = 1.2f;
 
+    [Header("References")]
+    [SerializeField] private TextMeshProUGUI timingText;    
+
+    [Header("Color")]
+    [SerializeField] private Color greatColor = Color.green;
+    [SerializeField] private Color defaultColor = Color.white;
+    [SerializeField] private Color perfectColor = Color.red;
+
+    [Header("Messages")]
+    [SerializeField] private string greatTimingMessage = "Great!";
     [SerializeField] private string perfectTimingMessage = "Perfect!";
-    [SerializeField] private string greatTimingMessage = "Great";
     private void Update()
     {
-        fadeOutTime = Mathf.Clamp01( fadeOutTime - Time.deltaTime);
-        if(fadeOutTime <= 0)
+        timingText.transform.localScale = Vector3.Lerp(timingText.transform.localScale, Vector3.one, Time.deltaTime * returnAnimationSpeed);
+
+        stayTimer += Time.deltaTime;
+
+        if (stayTimer > stayDuration)
         {
-            timingText.alpha = 0;
+            timingText.alpha = Mathf.Lerp(timingText.alpha, 0f, Time.deltaTime * 20);
         }
+        if (stayTimer >= stayDuration + hideDuration)
+        {
+            EndAnimation();
+        }
+    }    
+
+    public void HandleComboEnd(Component sender, object data)
+    {
+        stayTimer = stayDuration;
+    }    
+
+    private void EndAnimation()
+    {
+        timingText.alpha = 0f;
+        //timingText.gameObject.SetActive(false);
     }
+
+    private void PlayTextAnimation(string newTimingText, Color color)
+    {
+        timingText.transform.localScale = Vector3.one * scaleUpAmount;
+        stayTimer = 0f;
+        timingText.text = newTimingText;
+        timingText.gameObject.SetActive(true);
+        timingText.color = color;           
+    }    
     public void OnTrickPerformedOnGreatTiming(Component sender, object data)
     {        
         if(data is bool)   
         {
-            timingText.alpha = 1;
-            fadeOutTime = 1f;
-            timingText.text = greatTimingMessage;
+            PlayTextAnimation(greatTimingMessage, greatColor);
+            Debug.Log("Great Timing TEXT!");
         }       
-
-        //Play animation
+        
     }
 
     public void OnTrickPerformedOnPerfectTiming(Component sender, object data)
     {
         if(data is bool)
-        {
-            timingText.alpha = 1;
-            fadeOutTime = 1f;
-            timingText.text = perfectTimingMessage;
-        }           
-
-        //Play animation
+        {                      
+            PlayTextAnimation(perfectTimingMessage, perfectColor);
+        }         
     }
 }

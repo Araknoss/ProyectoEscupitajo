@@ -11,7 +11,8 @@ public class PlayerScoreTextUI : MonoBehaviour
     [SerializeField] private float stayDuration = 1f;
     [SerializeField] private float hideDuration = 0.2f;
     [SerializeField] private float returnAnimationSpeed = 5f;
-    private float stayTimer=0;    
+    private float stayTimer=0;
+    [SerializeField] private float scaleUpAmount = 1.2f;
 
     [Header("References")]    
     [SerializeField] private TextMeshProUGUI text;
@@ -36,38 +37,12 @@ public class PlayerScoreTextUI : MonoBehaviour
         {
             EndAnimation();
         }
-    }
-    public void HandleTrickPerformed(Component sender, object data)
-    {
-        if (data is Trick)
-        {
-            //Trick trick = (Trick)data;
-            //stayDuration = trick.listenInputTime - hideDuration;
-            //AddTemporaryScore(trick.baseScore, trick); 
-        }
-    }
+    }    
 
     public void HandleComboEnd(Component sender, object data)
     {
         stayTimer = stayDuration;              
-    }
-    //private void PlayAnimation()
-    //{       
-    //    //Reset state
-    //    currentTween?.Kill();
-
-    //    text.gameObject.SetActive(true);        
-    //    canvasGroup.alpha = 1f;
-    //    text.transform.localScale = Vector3.one * 1.3f;        
-
-    //    Sequence seq = DOTween.Sequence();
-
-    //    seq.AppendInterval(stayDuration)
-    //       .Append(canvasGroup.DOFade(0f, hideDuration))
-    //       .OnComplete(() => EndAnimation());
-
-    //    currentTween = seq;
-    //}
+    }    
 
     private void EndAnimation()
     {        
@@ -77,7 +52,7 @@ public class PlayerScoreTextUI : MonoBehaviour
 
     private void AddTemporaryScore(int score) 
     {
-        text.transform.localScale = Vector3.one * 1.3f;
+        text.transform.localScale = Vector3.one * scaleUpAmount;
         stayTimer = 0f;
         text.gameObject.SetActive(true);
         text.alpha = 1f;           
