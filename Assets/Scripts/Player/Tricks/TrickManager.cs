@@ -70,6 +70,7 @@ public class TrickManager : MonoBehaviour
     [Header("Events")]
     public GameEvent onTrickPerformed;
     public GameEvent onTrickPerformedOnPerfectTiming;
+    public GameEvent onTrickPerformedOnGreatTiming;
     public GameEvent onKeepingTrick;
     //public GameEvent onWallSlidePerformed;
     public GameEvent onWallSlideEnd;
@@ -201,7 +202,7 @@ public class TrickManager : MonoBehaviour
         }
         else if (isGreatTiming)
         {
-            onTrickPerformed.Raise(this, isGreatTiming);
+            onTrickPerformedOnGreatTiming.Raise(this, isGreatTiming);
         }       
         else if (onCombo && !trick.isStateTrick) 
         {
