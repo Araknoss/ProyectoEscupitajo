@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 03Beyblade
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 2c3ff5f297d1d064aa2266d6fcb3c53e, type: 3}
-  id: 112
+  id: 3
   animationClip: {fileID: 7400000, guid: f13b12ae99a5ead489cd243a5b23792d, type: 2}
   trickName: Beyblade
   baseScore: 7

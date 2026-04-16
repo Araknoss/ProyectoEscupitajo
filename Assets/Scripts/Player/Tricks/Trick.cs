@@ -7,6 +7,7 @@ public class Trick : ScriptableObject
     public Sprite sprite;
     public int id;
     public AnimationClip animationClip;
+    public AnimationClip uiClip;
     public string trickName;
 
 

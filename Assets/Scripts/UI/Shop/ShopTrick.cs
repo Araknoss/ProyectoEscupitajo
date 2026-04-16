@@ -2,48 +2,67 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ShopTrick : MonoBehaviour
+public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 {
-    [SerializeField] private Trick trickSO;
-    [SerializeField] private TextMeshProUGUI trickNameText;
-    [SerializeField] private TextMeshProUGUI trickPriceText;
-    private Button button;
+    [SerializeField] private Button button;
+    [SerializeField] private Color lockedColor;
 
-    [SerializeField] private string purchasedText;
+    [Header("Trick Info")]  
+    public Trick shopTrickSO;    
+    [SerializeField] private TextMeshProUGUI trickPriceText;
+    [SerializeField] private Image trickImage;
+    [SerializeField] private Image trickBackgroundImage;
 
     [Header("Events")]
-    public GameEvent onTrickUnlocked;   
-    private void Start()
+    public GameEvent onTrickUnlocked;
+    public GameEvent onShopTrickSelected;
+    
+    public void InitializeTrick(Trick trick)
     {
-        button = gameObject.GetComponent<Button>();        
-        
-        if (trickSO == null)
+        shopTrickSO = trick;
+        if (shopTrickSO == null)
         {
             SetLocked(true);
             return;
         }
-
-        CheckIfTrickUnlocked();       
+        trickPriceText.text = shopTrickSO.cost.ToString() + " G";
+        trickImage.sprite = shopTrickSO.sprite;
+        if(trickBackgroundImage != null)
+        {
+            trickBackgroundImage.sprite = shopTrickSO.sprite;
+        }            
+        CheckIfTrickUnlocked();
     }
 
     private void CheckIfTrickUnlocked()
     {
-        if (UnlockablesManager.Instance.HasUnlockedTrick(trickSO))
+        if (UnlockablesManager.Instance.HasUnlockedTrick(shopTrickSO) || shopTrickSO.isUnlockedAtStart)
         {
-            SetLocked(true);        
+            SetLocked(false);            
         }
         else
         {
-            SetLocked(false);
-            trickNameText.text = trickSO.trickName;
-            trickPriceText.text = trickSO.cost.ToString() + " G";
+            SetLocked(true);
         }
     }
     private void SetLocked(bool isLocked)
-    {     
-        button.interactable = !isLocked;
+    {
+        //button.interactable = !isLocked;
+        if (isLocked)
+        {
+            trickImage.color = lockedColor;
+            trickPriceText.gameObject.SetActive(true);
+            trickPriceText.text = shopTrickSO.cost.ToString() + " G";
+        }
+        else
+        {
+            trickPriceText.gameObject.SetActive(false);
+            trickImage.color = Color.white;       
+        }
+
     }
 
     public void TryToBuy()
@@ -58,4 +77,21 @@ public class ShopTrick : MonoBehaviour
         //    onTrickUnlocked.Raise(this, trickSO.id);
         //}
     }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        TriggerEvent();
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        TriggerEvent();
+    }
+
+    private void TriggerEvent()
+    {        
+        Debug.Log("Selected trick: " + shopTrickSO.trickName);
+        onShopTrickSelected.Raise(this, shopTrickSO);
+    }
+
 }

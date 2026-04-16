@@ -407,6 +407,7 @@ MonoBehaviour:
   - Master
   Banks:
   - Level
+  - Player
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

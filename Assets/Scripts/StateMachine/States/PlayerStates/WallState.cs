@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
+using FMODUnity;
 
 public class WallState : State
 {
@@ -15,6 +16,8 @@ public class WallState : State
 
     [SerializeField] private SpriteRenderer playerSprite;
     private Vector3 originalPlayerSpriteScale;
+
+    [SerializeField] private StudioEventEmitter wallSlideSoundEmitter;
 
     public override void Enter()
     {
@@ -35,6 +38,8 @@ public class WallState : State
             playerSprite.transform.localScale = new Vector3(-1, 1, 1);      
             _input.lookingRight = true;
         }
+
+        wallSlideSoundEmitter.Play();
         //originalPlayerSpriteScale = playerSprite.localScale;
         //if (_input.groundSensor.groundNormal.x > 0)
         //{
@@ -67,6 +72,7 @@ public class WallState : State
 
         animator.SetBool("OnWall", false);
 
+        wallSlideSoundEmitter.Stop();
         //animator.Play(idleAnimation.name);       
 
         //playerSprite.localScale = originalPlayerSpriteScale;

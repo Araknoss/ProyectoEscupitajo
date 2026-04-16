@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: 04Culitoculito
+  m_Name: 01Escurrio
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 4d52a199a68d60c42a2c00f60c77de79, type: 3}
-  id: 121
-  animationClip: {fileID: 7400000, guid: cd506e6297d4bad42918b7317907902f, type: 2}
-  trickName: Culitoculito
-  baseScore: 250
-  hardness: 2
+  sprite: {fileID: 21300000, guid: 9f1397f0d039faa41a156bb018211180, type: 3}
+  id: 1
+  animationClip: {fileID: 7400000, guid: ca13127205f21ad47a4fbe95a9a192c4, type: 2}
+  trickName: Escurrio
+  baseScore: 200
+  hardness: 1
   comboTricks:
-  - {fileID: 11400000, guid: dfb5cea8c07a3be46a4d651df7ebce79, type: 2}
+  - {fileID: 11400000, guid: 9b7cda8cfeead3841a945ffcb4674c2a, type: 2}
+  - {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}
   - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
   inputKey: 106
   rewiredActionId: 2

@@ -10,22 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: 00Pataanormal
+  m_Name: 00AutomamadagalaxialKeep
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 6449591c4e461b646a46e664bb481bbf, type: 3}
-  id: 201
-  animationClip: {fileID: 7400000, guid: 77267ef159fd0134d937a9703affd056, type: 2}
-  trickName: Pataanormal
-  baseScore: 10
-  hardness: 1
+  sprite: {fileID: 21300000, guid: 5988d41e9304bdf4dae7cb899aa3492e, type: 3}
+  id: 0
+  animationClip: {fileID: 7400000, guid: fd244a613dd6b974ba5f5f03c1df4a50, type: 2}
+  trickName: AutomamadagalaxialKeep
+  baseScore: 5
+  hardness: 0
   comboTricks:
-  - {fileID: 11400000, guid: 2afa0fdd44f41b442a4781f76cfceaa5, type: 2}
-  - {fileID: 11400000, guid: 60121bb6d0fc0224aa1348bfb29c611b, type: 2}
-  inputKey: 107
-  rewiredActionId: 3
+  - {fileID: 11400000, guid: 055b581b6568e934caa4c11dc63e3e4d, type: 2}
+  inputKey: 32
+  rewiredActionId: 4
   listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 0
   isUnlockedAtStart: 1
-  isKeepTrick: 0
+  isKeepTrick: 1
   cost: 0

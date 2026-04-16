@@ -45,6 +45,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-764989050860353992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Player.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/AudioBanks/Desktop/Player.bank
+  Name: Player
+  StudioPath: bank:/Player
+  lastModified: 639119237148289172
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-539566147086278526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,18 +106,20 @@ MonoBehaviour:
   - {fileID: 1192040155656516333}
   - {fileID: -1443204307528009100}
   - {fileID: 6822536928279771683}
+  - {fileID: -764989050860353992}
   EditorEvents:
   - {fileID: 4039914179211296854}
   - {fileID: -1398797286759354520}
   - {fileID: -539566147086278526}
   - {fileID: 3556374935415826399}
+  - {fileID: 2588528047979215598}
   EditorParameters: []
   MasterBanks:
   - {fileID: 6822536928279771683}
   StringsBanks:
   - {fileID: 1192040155656516333}
   cacheVersion: 131858
-  cacheTime: 639114227039618135
+  cacheTime: 639119237148289172
   SerializableEventsDict:
   - key: event:/MainTheme
     index: 0
@@ -109,6 +129,8 @@ MonoBehaviour:
     index: 2
   - key: snapshot:/PauseSnapshot
     index: 3
+  - key: event:/SkateRoll
+    index: 4
 --- !u!114 &1192040155656516333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,11 +146,38 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639114227039618135
+  lastModified: 639119237146812850
   FileSizes:
   - Name: 
-    Value: 974
+    Value: 1050
   Exists: 1
+--- !u!114 &2588528047979215598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SkateRoll
+  m_EditorClassIdentifier: 
+  Path: event:/SkateRoll
+  Guid:
+    Data1: 456537553
+    Data2: 1285765430
+    Data3: 615061665
+    Data4: 1248387721
+  Banks:
+  - {fileID: -764989050860353992}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1548
 --- !u!114 &3556374935415826399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +247,6 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639114227039611761
+  lastModified: 639119237146797715
   FileSizes: []
   Exists: 1
