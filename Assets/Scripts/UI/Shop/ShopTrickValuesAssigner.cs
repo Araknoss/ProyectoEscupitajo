@@ -25,9 +25,9 @@ public class ShopTrickValuesAssigner : MonoBehaviour
             trickBaseScoreText.text = trick.baseScore.ToString();
             trickHardnessText.text = trick.hardness.ToString();
 
-            //animator.Rebind();
-            //if (trick.uiClip != null)
-            //    animator.Play(trick.uiClip.name);
+            animator.Rebind();
+            if (trick.uiClip != null)
+                animator.Play(trick.uiClip.name);
         }       
     }
 }
