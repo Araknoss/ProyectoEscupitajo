@@ -50,8 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70b9502e994ad64da50ce1a7f88adb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   updateTime: 0.2
   onScoreUpdate: {fileID: 11400000, guid: d0169634b8d299a4d8097d01613493da, type: 2}
+  onTemporaryScoreUpdate: {fileID: 11400000, guid: 896c217c2a48b9c4baad5509e131a10c, type: 2}
   multiplierValue: 1
   onMultiplierUpdate: {fileID: 11400000, guid: 5a6badbffaf0bcc41b7777e4b05f7b6c, type: 2}
   multiplierIndex: 0
