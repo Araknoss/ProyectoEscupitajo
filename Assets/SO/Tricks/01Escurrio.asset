@@ -15,6 +15,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 9f1397f0d039faa41a156bb018211180, type: 3}
   id: 1
   animationClip: {fileID: 7400000, guid: ca13127205f21ad47a4fbe95a9a192c4, type: 2}
+  uiClip: {fileID: 0}
   trickName: Escurrio
   baseScore: 200
   hardness: 1
@@ -29,4 +30,4 @@ MonoBehaviour:
   isStateTrick: 0
   isUnlockedAtStart: 1
   isKeepTrick: 0
-  cost: 0
+  cost: 100

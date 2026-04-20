@@ -15,11 +15,13 @@ MonoBehaviour:
   sprite: {fileID: 0}
   id: 2
   animationClip: {fileID: 7400000, guid: ee2941a426742f94694ed84e698ed004, type: 2}
+  uiClip: {fileID: 0}
   trickName: Supernova Flip
   baseScore: 300
   hardness: 1
   comboTricks: []
   inputKey: 107
+  rewiredActionId: 0
   listenInputTime: 1
   comboEnder: 0
   isStateTrick: 0

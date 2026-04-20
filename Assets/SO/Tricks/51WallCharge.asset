@@ -15,6 +15,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 2b67174adc73c074bb5443b19f492b28, type: 3}
   id: 51
   animationClip: {fileID: 0}
+  uiClip: {fileID: 0}
   trickName: Wall Charge
   baseScore: 20
   hardness: 0
@@ -27,4 +28,4 @@ MonoBehaviour:
   isStateTrick: 1
   isUnlockedAtStart: 1
   isKeepTrick: 1
-  cost: 0
+  cost: 100

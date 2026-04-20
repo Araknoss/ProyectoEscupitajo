@@ -15,15 +15,17 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 0cbc8c85d928d41479617673810055f8, type: 3}
   id: 50
   animationClip: {fileID: 0}
+  uiClip: {fileID: 0}
   trickName: Wall Slide
   baseScore: 5
   hardness: 0
   comboTricks:
   - {fileID: 11400000, guid: fcb4e38858e7b5d4f8a916a757886a7c, type: 2}
   inputKey: 0
+  rewiredActionId: 0
   listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 1
   isUnlockedAtStart: 1
   isKeepTrick: 1
-  cost: 0
+  cost: 100

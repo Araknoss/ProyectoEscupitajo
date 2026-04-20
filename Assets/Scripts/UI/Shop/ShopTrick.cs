@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,6 +10,10 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 {
     [SerializeField] private Button button;
     [SerializeField] private Color lockedColor;
+    [SerializeField] private Animator animator;
+    [SerializeField] private AnimatorController unlockedAnimator;
+    [SerializeField] private AnimatorController lockedAnimator;
+    public bool isLocked = true;
 
     [Header("Trick Info")]  
     public Trick shopTrickSO;    
@@ -48,34 +53,38 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
             SetLocked(true);
         }
     }
-    private void SetLocked(bool isLocked)
+    private void SetLocked(bool trickLocked)
     {
         //button.interactable = !isLocked;
-        if (isLocked)
-        {
+        isLocked=trickLocked;
+        if (trickLocked)
+        {            
             trickImage.color = lockedColor;
             trickPriceText.gameObject.SetActive(true);
             trickPriceText.text = shopTrickSO.cost.ToString() + " G";
+            animator.runtimeAnimatorController = lockedAnimator;
+
         }
         else
         {
             trickPriceText.gameObject.SetActive(false);
             trickImage.color = Color.white;       
+            animator.runtimeAnimatorController = unlockedAnimator;
         }
 
     }
 
     public void TryToBuy()
     {
-        //if (ScoreManager.Instance.gold >= trickSO.cost)
-        //{
-        //    ScoreManager.Instance.Buy(trickSO.cost);
-        //    SetLocked(true);            
-        //    trickNameText.text = purchasedText;
-        //    trickPriceText.text="";
-
-        //    onTrickUnlocked.Raise(this, trickSO.id);
-        //}
+        if (GoldManager.Instance.gold >= shopTrickSO.cost)
+        {
+            if (isLocked)
+            {
+                GoldManager.Instance.Buy(shopTrickSO.cost);
+                SetLocked(false);
+                UnlockablesManager.Instance.UnlockTrick(this, shopTrickSO.id);
+            }            
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -86,8 +95,7 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     public void OnSelect(BaseEventData eventData)
     {
         TriggerEvent();
-    }
-
+    }  
     private void TriggerEvent()
     {        
         Debug.Log("Selected trick: " + shopTrickSO.trickName);

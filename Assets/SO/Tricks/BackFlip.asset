@@ -15,15 +15,17 @@ MonoBehaviour:
   sprite: {fileID: 0}
   id: 0
   animationClip: {fileID: 7400000, guid: 98db49118c5b1bd47bd015cb979341ba, type: 2}
+  uiClip: {fileID: 0}
   trickName: Back Flip
   baseScore: 100
   hardness: 1
   comboTricks:
   - {fileID: 11400000, guid: e49246bfea67d604abecbee1a48c577c, type: 2}
   inputKey: 106
+  rewiredActionId: 0
   listenInputTime: 1
   comboEnder: 0
   isStateTrick: 0
   isUnlockedAtStart: 0
   isKeepTrick: 0
-  cost: 50
+  cost: 100

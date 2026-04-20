@@ -15,6 +15,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   id: 1
   animationClip: {fileID: 7400000, guid: ee2941a426742f94694ed84e698ed004, type: 2}
+  uiClip: {fileID: 0}
   trickName: Horizontal Flip
   baseScore: 30
   hardness: 1
@@ -22,9 +23,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 30c6e2d5478c3554394902c83d677333, type: 2}
   - {fileID: 11400000, guid: e49246bfea67d604abecbee1a48c577c, type: 2}
   inputKey: 106
+  rewiredActionId: 0
   listenInputTime: 2
   comboEnder: 0
   isStateTrick: 0
   isUnlockedAtStart: 0
   isKeepTrick: 0
-  cost: 0
+  cost: 100

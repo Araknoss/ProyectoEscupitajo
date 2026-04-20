@@ -15,6 +15,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: abae497dcdd46d143afa19b89a81683d, type: 3}
   id: 53
   animationClip: {fileID: 7400000, guid: 6df55de536afd934e9f06c207b07d4de, type: 2}
+  uiClip: {fileID: 0}
   trickName: Rompespaldas
   baseScore: 150
   hardness: 1
@@ -28,4 +29,4 @@ MonoBehaviour:
   isStateTrick: 0
   isUnlockedAtStart: 1
   isKeepTrick: 0
-  cost: 0
+  cost: 100

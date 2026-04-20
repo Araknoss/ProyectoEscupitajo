@@ -15,6 +15,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: a1f1841859b47964da4f13b224494709, type: 3}
   id: 111
   animationClip: {fileID: 7400000, guid: 25a45bc4e004a9b4987f8a1d6a50fbe8, type: 2}
+  uiClip: {fileID: 0}
   trickName: Adan
   baseScore: 75
   hardness: 1
@@ -28,4 +29,4 @@ MonoBehaviour:
   isStateTrick: 0
   isUnlockedAtStart: 1
   isKeepTrick: 0
-  cost: 0
+  cost: 100
