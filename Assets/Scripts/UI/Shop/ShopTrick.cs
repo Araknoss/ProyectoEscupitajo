@@ -76,15 +76,7 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 
     public void TryToBuy()
     {
-        if (GoldManager.Instance.gold >= shopTrickSO.cost)
-        {
-            if (isLocked)
-            {
-                GoldManager.Instance.Buy(shopTrickSO.cost);
-                SetLocked(false);
-                UnlockablesManager.Instance.UnlockTrick(this, shopTrickSO.id);
-            }            
-        }
+        //En shoptrickvaluesassigner
     }
 
     public void OnPointerEnter(PointerEventData eventData)

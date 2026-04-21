@@ -7,27 +7,52 @@ using UnityEngine.UI;
 
 public class ShopTrickValuesAssigner : MonoBehaviour
 {
+    [Header("Trick Info")]
+    [SerializeField] private Trick actualTrick;
+
     [SerializeField] private TextMeshProUGUI trickNameText;
     [SerializeField] private TextMeshProUGUI trickPriceText;
     [SerializeField] private Image trickSprite;
     [SerializeField] private TextMeshProUGUI trickBaseScoreText;
     [SerializeField] private TextMeshProUGUI trickHardnessText;
 
+    [Header("References")]
     [SerializeField] private Animator animator;
+    [SerializeField] private Button buyButton;
     public void AssignValues(Component sender, object data)
     {
         if(data is Trick)
         {
-            Trick trick = (Trick)data;
-            trickNameText.text = trick.trickName;
-            trickPriceText.text = trick.cost.ToString() + " G";
-            trickSprite.sprite = trick.sprite;
-            trickBaseScoreText.text = trick.baseScore.ToString();
-            trickHardnessText.text = trick.hardness.ToString();
+            actualTrick = (Trick)data;
+            trickNameText.text = actualTrick.trickName;
+            trickPriceText.text = actualTrick.cost.ToString() + " G";
+            trickSprite.sprite = actualTrick.sprite;
+            trickBaseScoreText.text = actualTrick.baseScore.ToString();
+            trickHardnessText.text = actualTrick.hardness.ToString();
 
-            //animator.Rebind();
-            //if (trick.uiClip != null)
-            //    animator.Play(trick.uiClip.name);
+            if (UnlockablesManager.Instance.HasUnlockedTrick(actualTrick) || actualTrick.isUnlockedAtStart)
+            {
+                buyButton.gameObject.SetActive(false);
+                trickPriceText.gameObject.SetActive(false);
+            }
+            else
+            {
+                buyButton.gameObject.SetActive(true);
+                trickPriceText.gameObject.SetActive(true);
+            }
         }       
+    }
+
+    public void TryBuyActualTrick()
+    {
+        if (GoldManager.Instance.gold >= actualTrick.cost)
+        {
+            if (UnlockablesManager.Instance.HasUnlockedTrick(actualTrick) || actualTrick.isUnlockedAtStart)
+            {
+                GoldManager.Instance.Buy(actualTrick.cost);                
+                UnlockablesManager.Instance.UnlockTrick(this, actualTrick.id);
+            }            
+        }
+
     }
 }
