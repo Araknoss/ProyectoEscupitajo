@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8359919772319458334}
   - component: {fileID: 51367404669256309}
   - component: {fileID: 7391983133641098714}
+  - component: {fileID: 8561281338009248417}
   m_Layer: 5
   m_Name: ShopTrick1
   m_TagString: Untagged
@@ -145,12 +146,40 @@ MonoBehaviour:
   animator: {fileID: 51367404669256309}
   unlockedAnimator: {fileID: 9100000, guid: 39b8581962a07bc47a02d65bd275b1f5, type: 2}
   lockedAnimator: {fileID: 9100000, guid: 38145df9ce5b6d74ca2d4335e618f2fa, type: 2}
+  isLocked: 1
   shopTrickSO: {fileID: 0}
   trickPriceText: {fileID: 3222943968674095836}
   trickImage: {fileID: 8535429997541432046}
   trickBackgroundImage: {fileID: 2266514339611528191}
-  onTrickUnlocked: {fileID: 11400000, guid: 53b16171e753b414499b64cb7972a48b, type: 2}
   onShopTrickSelected: {fileID: 11400000, guid: 20ce417d1962c084c817cd497e10c465, type: 2}
+--- !u!114 &8561281338009248417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661960663011036859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 53b16171e753b414499b64cb7972a48b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7391983133641098714}
+        m_TargetAssemblyTypeName: ShopTrick, Assembly-CSharp
+        m_MethodName: HandleOnTrickUnlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1007876333134173269
 GameObject:
   m_ObjectHideFlags: 0

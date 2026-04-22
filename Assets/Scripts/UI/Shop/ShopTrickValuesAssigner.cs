@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,6 +18,7 @@ public class ShopTrickValuesAssigner : MonoBehaviour
     [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] private Button buyButton;
+    [SerializeField] private GameEvent onTrickUnlocked;
     public void AssignValues(Component sender, object data)
     {
         if(data is Trick)
@@ -32,25 +32,33 @@ public class ShopTrickValuesAssigner : MonoBehaviour
 
             if (UnlockablesManager.Instance.HasUnlockedTrick(actualTrick) || actualTrick.isUnlockedAtStart)
             {
-                buyButton.gameObject.SetActive(false);
-                trickPriceText.gameObject.SetActive(false);
+                SetBuyButtonActive(false);
             }
             else
             {
-                buyButton.gameObject.SetActive(true);
-                trickPriceText.gameObject.SetActive(true);
+                SetBuyButtonActive(true);
             }
         }       
+    }
+
+    public void SetBuyButtonActive(bool isActive)
+    {
+        buyButton.gameObject.SetActive(isActive);
+        trickPriceText.gameObject.SetActive(isActive);
     }
 
     public void TryBuyActualTrick()
     {
         if (GoldManager.Instance.gold >= actualTrick.cost)
         {
-            if (UnlockablesManager.Instance.HasUnlockedTrick(actualTrick) || actualTrick.isUnlockedAtStart)
+            Debug.Log("Attempting to buy trick: " + actualTrick.trickName);
+            if (!UnlockablesManager.Instance.HasUnlockedTrick(actualTrick) && !actualTrick.isUnlockedAtStart)
             {
+                Debug.Log("Buying trick: " + actualTrick.trickName);
                 GoldManager.Instance.Buy(actualTrick.cost);                
                 UnlockablesManager.Instance.UnlockTrick(this, actualTrick.id);
+                onTrickUnlocked.Raise(this, actualTrick);
+                SetBuyButtonActive(false);
             }            
         }
 
