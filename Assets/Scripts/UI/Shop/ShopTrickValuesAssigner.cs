@@ -21,16 +21,34 @@ public class ShopTrickValuesAssigner : MonoBehaviour
     [SerializeField] private GameEvent onTrickUnlocked;
     public void AssignValues(Component sender, object data)
     {
-        if(data is Trick)
+        if (data is Trick)
         {
             actualTrick = (Trick)data;
-            trickNameText.text = actualTrick.trickName;
-            trickPriceText.text = actualTrick.cost.ToString() + " G";
-            trickSprite.sprite = actualTrick.sprite;
-            trickBaseScoreText.text = actualTrick.baseScore.ToString();
-            trickHardnessText.text = actualTrick.hardness.ToString();
+            if (actualTrick == null) return;
 
-            if (UnlockablesManager.Instance.HasUnlockedTrick(actualTrick) || actualTrick.isUnlockedAtStart)
+            // Seguridad: comprobar cada componente antes de asignar
+            if (trickNameText != null)
+                trickNameText.text = actualTrick.trickName ?? string.Empty;
+
+            if (trickPriceText != null)
+                trickPriceText.text = actualTrick.cost.ToString() + " G";
+
+            if (trickSprite != null)
+                trickSprite.sprite = actualTrick.sprite;
+
+            if (trickBaseScoreText != null)
+                trickBaseScoreText.text = actualTrick.baseScore.ToString();
+
+            if (trickHardnessText != null)
+                trickHardnessText.text = actualTrick.hardness.ToString();
+
+            bool isUnlocked = false;
+            if (UnlockablesManager.Instance != null)
+            {
+                isUnlocked = UnlockablesManager.Instance.HasUnlockedTrick(actualTrick);
+            }
+
+            if (isUnlocked || actualTrick.isUnlockedAtStart)
             {
                 SetBuyButtonActive(false);
             }
@@ -38,28 +56,34 @@ public class ShopTrickValuesAssigner : MonoBehaviour
             {
                 SetBuyButtonActive(true);
             }
-        }       
+        }
     }
 
     public void SetBuyButtonActive(bool isActive)
     {
-        buyButton.gameObject.SetActive(isActive);
-        trickPriceText.gameObject.SetActive(isActive);
+        if (buyButton != null)
+            buyButton.gameObject.SetActive(isActive);
+
+        if (trickPriceText != null)
+            trickPriceText.gameObject.SetActive(isActive);
     }
 
     public void TryBuyActualTrick()
     {
-        if (GoldManager.Instance.gold >= actualTrick.cost)
+        if (actualTrick == null) return;
+
+        if (GoldManager.Instance != null && GoldManager.Instance.gold >= actualTrick.cost)
         {
             Debug.Log("Attempting to buy trick: " + actualTrick.trickName);
-            if (!UnlockablesManager.Instance.HasUnlockedTrick(actualTrick) && !actualTrick.isUnlockedAtStart)
+            if (UnlockablesManager.Instance != null && !UnlockablesManager.Instance.HasUnlockedTrick(actualTrick) && !actualTrick.isUnlockedAtStart)
             {
                 Debug.Log("Buying trick: " + actualTrick.trickName);
-                GoldManager.Instance.Buy(actualTrick.cost);                
+                GoldManager.Instance.Buy(actualTrick.cost);
                 UnlockablesManager.Instance.UnlockTrick(this, actualTrick.id);
-                onTrickUnlocked.Raise(this, actualTrick);
+                if (onTrickUnlocked != null)
+                    onTrickUnlocked.Raise(this, actualTrick);
                 SetBuyButtonActive(false);
-            }            
+            }
         }
 
     }

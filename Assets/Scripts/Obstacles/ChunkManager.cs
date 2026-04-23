@@ -9,7 +9,7 @@ public class ChunkManager : MonoBehaviour
     private GameObject newChunk;
     [SerializeField] private Vector3 spawnPosition;
     [SerializeField] private float spawnHeight = 50f;
-    [SerializeField] private float dispawnHeight = 70f;
+    //[SerializeField] private float dispawnHeight = 70f;
     [SerializeField] private float chunkSpeed;
 
     [Header("Level Transitions")]

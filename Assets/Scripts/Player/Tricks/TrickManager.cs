@@ -64,8 +64,8 @@ public class TrickManager : MonoBehaviour
     [SerializeField] private float wallScoreTime = 0.1f;
     public bool isOnWall=false;
     private bool isOnWallSlide=false;
-    private bool isOnWallCharge=false;
-    private float wallScoreTimer;        
+    //private bool isOnWallCharge=false;
+    //private float wallScoreTimer;        
 
     [Header("Events")]
     public GameEvent onTrickPerformed;

@@ -7,7 +7,7 @@ using Rewired;
 public class LoadScene : MonoBehaviour
 {
     [SerializeField] private float delayDuration = 1f;
-    [SerializeField] private string MainMenuSceneName = "MainMenu";
+    //[SerializeField] private string MainMenuSceneName = "MainMenu";
 
     [SerializeField] private Player rewiredPlayer;
     [SerializeField] private int playerId=0;
