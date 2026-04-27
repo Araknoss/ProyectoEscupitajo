@@ -29,7 +29,7 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
         shopTrickSO = trick;
         if (shopTrickSO == null)
         {
-            SetLocked(true);
+            SetNull();
             return;
         }
         trickPriceText.text = shopTrickSO.cost.ToString() + " G";
@@ -73,6 +73,14 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 
     }
 
+    private void SetNull()
+    {
+        isLocked = true;
+        trickImage.color = Color.clear;
+        trickPriceText.gameObject.SetActive(false);
+        animator.runtimeAnimatorController = lockedAnimator;
+    }
+
     public void TryToBuy()
     {
         //En shoptrickvaluesassigner
@@ -94,7 +102,7 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     }  
     private void TriggerEvent()
     {        
-        Debug.Log("Selected trick: " + shopTrickSO.trickName);
+        //Debug.Log("Selected trick: " + shopTrickSO.trickName);
         onShopTrickSelected.Raise(this, shopTrickSO);
     }
 
