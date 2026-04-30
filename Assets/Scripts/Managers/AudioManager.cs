@@ -16,7 +16,11 @@ public class AudioManager : MonoBehaviour
     [Header("Snapshots")]
     private EventInstance snapshotInstance;
     [SerializeField] private EventReference pauseSnapshot;
-    private EventInstance pauseSnapshotInstance;    
+    private EventInstance pauseSnapshotInstance;
+
+    [Header("EventsReferences")]
+    [SerializeField] private EventReference UIhoverSound;
+    [SerializeField] private EventReference UIpressSound;
 
     void Awake()
     {
@@ -131,10 +135,20 @@ public class AudioManager : MonoBehaviour
             StopSound(pauseSnapshotInstance);
         }
     }
-
+     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StopSound(snapshotInstance);
+    }
+
+    public void PlayHoverSound()
+    {
+        PlaySound2D(UIhoverSound);
+    }
+
+    public void PlayButtonPressSound()
+    {
+        PlaySound2D(UIpressSound);
     }
 }
 

@@ -1,5 +1,104 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7717495914242008369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UnlockTrick
+  m_EditorClassIdentifier: 
+  Path: event:/UnlockTrick
+  Guid:
+    Data1: -74052027
+    Data2: 1106636087
+    Data3: -17082702
+    Data4: -827413676
+  Banks:
+  - {fileID: -6812677077556649526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-7163712539518919357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/OnButtonHighlight
+  m_EditorClassIdentifier: 
+  Path: event:/OnButtonHighlight
+  Guid:
+    Data1: 59701542
+    Data2: 1232923822
+    Data3: 753015692
+    Data4: -2132490779
+  Banks:
+  - {fileID: -6812677077556649526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-6812677077556649526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/UI.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/AudioBanks/Desktop/UI.bank
+  Name: UI
+  StudioPath: bank:/UI
+  lastModified: 639131727148618592
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-2519941880184718122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SkateGrind
+  m_EditorClassIdentifier: 
+  Path: event:/SkateGrind
+  Guid:
+    Data1: 1378655737
+    Data2: 1309550663
+    Data3: -2029445245
+    Data4: 995231020
+  Banks:
+  - {fileID: -764989050860353992}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1019
 --- !u!114 &-1443204307528009100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +159,7 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 639119237148289172
+  lastModified: 639131683064937590
   FileSizes: []
   Exists: 1
 --- !u!114 &-539566147086278526
@@ -107,19 +206,26 @@ MonoBehaviour:
   - {fileID: -1443204307528009100}
   - {fileID: 6822536928279771683}
   - {fileID: -764989050860353992}
+  - {fileID: -6812677077556649526}
   EditorEvents:
   - {fileID: 4039914179211296854}
   - {fileID: -1398797286759354520}
   - {fileID: -539566147086278526}
   - {fileID: 3556374935415826399}
   - {fileID: 2588528047979215598}
+  - {fileID: -2519941880184718122}
+  - {fileID: 592594762872429605}
+  - {fileID: -7163712539518919357}
+  - {fileID: -7717495914242008369}
+  - {fileID: 2498927413047156562}
+  - {fileID: 3249241918491919343}
   EditorParameters: []
   MasterBanks:
   - {fileID: 6822536928279771683}
   StringsBanks:
   - {fileID: 1192040155656516333}
   cacheVersion: 131858
-  cacheTime: 639119237148289172
+  cacheTime: 639131727148618592
   SerializableEventsDict:
   - key: event:/MainTheme
     index: 0
@@ -131,6 +237,45 @@ MonoBehaviour:
     index: 3
   - key: event:/SkateRoll
     index: 4
+  - key: event:/SkateGrind
+    index: 5
+  - key: event:/OnButtonPressed
+    index: 6
+  - key: event:/OnButtonHighlight
+    index: 7
+  - key: event:/UnlockTrick
+    index: 8
+  - key: event:/OnButtonHighlight2
+    index: 9
+  - key: event:/OnCancel
+    index: 10
+--- !u!114 &592594762872429605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/OnButtonPressed
+  m_EditorClassIdentifier: 
+  Path: event:/OnButtonPressed
+  Guid:
+    Data1: 556188705
+    Data2: 1323729320
+    Data3: 1087333528
+    Data4: 2130827579
+  Banks:
+  - {fileID: -6812677077556649526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &1192040155656516333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,11 +291,38 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639119237146812850
+  lastModified: 639131683062937483
   FileSizes:
   - Name: 
-    Value: 1050
+    Value: 1364
   Exists: 1
+--- !u!114 &2498927413047156562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/OnButtonHighlight2
+  m_EditorClassIdentifier: 
+  Path: event:/OnButtonHighlight2
+  Guid:
+    Data1: -220552343
+    Data2: 1144123639
+    Data3: -808715093
+    Data4: -96750307
+  Banks:
+  - {fileID: -6812677077556649526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &2588528047979215598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +350,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1548
+--- !u!114 &3249241918491919343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/OnCancel
+  m_EditorClassIdentifier: 
+  Path: event:/OnCancel
+  Guid:
+    Data1: -868987536
+    Data2: 1153132163
+    Data3: 1111502491
+    Data4: -446199931
+  Banks:
+  - {fileID: -6812677077556649526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &3556374935415826399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +446,6 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639119237146797715
+  lastModified: 639131683062911779
   FileSizes: []
   Exists: 1
