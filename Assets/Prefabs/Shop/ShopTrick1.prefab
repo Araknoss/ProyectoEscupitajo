@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 51367404669256309}
   - component: {fileID: 7391983133641098714}
   - component: {fileID: 8561281338009248417}
-  - component: {fileID: 7620215199887879013}
   m_Layer: 5
   m_Name: ShopTrick1
   m_TagString: Untagged
@@ -109,7 +108,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7620215199887879013}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIButtonHighlightSound, Assembly-CSharp
         m_MethodName: PlayButtonPressSound
         m_Mode: 1
@@ -193,20 +192,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7620215199887879013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 661960663011036859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbb6cab49b0a2d542b6ea3c86bace632, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playHoverSoundOnSelect: 1
-  playPressSoundOnClick: 0
 --- !u!1 &1007876333134173269
 GameObject:
   m_ObjectHideFlags: 0

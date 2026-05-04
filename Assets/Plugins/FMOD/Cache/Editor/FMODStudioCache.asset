@@ -69,7 +69,7 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 639131727148618592
+  lastModified: 639134913569538296
   FileSizes: []
   Exists: 1
 --- !u!114 &-2519941880184718122
@@ -225,7 +225,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 1192040155656516333}
   cacheVersion: 131858
-  cacheTime: 639131727148618592
+  cacheTime: 639134913569538296
   SerializableEventsDict:
   - key: event:/MainTheme
     index: 0

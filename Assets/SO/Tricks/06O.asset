@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
   m_Name: 06O
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 42343d8382fba174d8d167185f9ed942, type: 3}
+  sprite: {fileID: 21300000, guid: 8e4bd09a1227b2c40b7fd07c7b292b9b, type: 3}
   id: 6
   animationClip: {fileID: 7400000, guid: bab85d07c1a53c0458391d83813a3261, type: 2}
   uiClip: {fileID: 0}

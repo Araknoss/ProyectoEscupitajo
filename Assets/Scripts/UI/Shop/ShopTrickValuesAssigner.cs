@@ -19,6 +19,13 @@ public class ShopTrickValuesAssigner : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Button buyButton;
     [SerializeField] private GameEvent onTrickUnlocked;
+    [SerializeField] private GameEvent onCantBuyTrick;
+    [SerializeField] private Trick initialTrick;
+
+    private void OnEnable()
+    {
+        AssignValues(this, initialTrick);
+    }
     public void AssignValues(Component sender, object data)
     {
         if (data is Trick)
@@ -85,6 +92,11 @@ public class ShopTrickValuesAssigner : MonoBehaviour
                 SetBuyButtonActive(false);
             }
         }
-
+        else
+        {
+                      
+            if (onCantBuyTrick != null)
+                onCantBuyTrick.Raise(this, actualTrick);
+        }
     }
 }

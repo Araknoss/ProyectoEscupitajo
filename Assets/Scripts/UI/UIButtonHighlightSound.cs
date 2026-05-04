@@ -16,7 +16,7 @@ public class UIButtonHighlightSound : MonoBehaviour, ISelectHandler, IPointerEnt
         PlayHoverSound();
     }
 
-    private void PlayHoverSound()
+    public void PlayHoverSound() 
     {
         if (!playHoverSoundOnSelect) return;
         AudioManager.Instance.PlayHoverSound();
@@ -26,5 +26,10 @@ public class UIButtonHighlightSound : MonoBehaviour, ISelectHandler, IPointerEnt
     {
         if (!playPressSoundOnClick) return;
         AudioManager.Instance.PlayButtonPressSound();
+    }
+
+    public void HandleOnShopTrickSelected(Component sender, object data) //Se le da al play desde MMFEEDBACK
+    {
+        AudioManager.Instance.PlayHoverSound();
     }
 }

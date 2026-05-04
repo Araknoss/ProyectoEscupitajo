@@ -15,6 +15,10 @@ public class UIAutoSelectOnController : MonoBehaviour
         {
             ReInput.controllers.AddLastActiveControllerChangedDelegate(OnControllerChanged);
             isSubscribed = true;
+            if(ReInput.controllers.GetLastActiveController() != null)
+            {
+                StartCoroutine(SelectNextFrame(ReInput.controllers.GetLastActiveController().type));
+            }
         }
     }
 

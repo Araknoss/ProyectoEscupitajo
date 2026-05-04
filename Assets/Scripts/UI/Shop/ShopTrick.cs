@@ -84,18 +84,14 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     public void TryToBuy()
     {
         //En shoptrickvaluesassigner
-    }
+    }  
 
     public void OnPointerEnter(PointerEventData eventData)
-    {
+    {   
+        if (EventSystem.current.currentSelectedGameObject == gameObject) return;
         TriggerEvent();
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
-
     public void OnSelect(BaseEventData eventData)
     {
         TriggerEvent();
