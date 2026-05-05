@@ -10,6 +10,8 @@ public class ShopTrickAssigner : MonoBehaviour
     [SerializeField] private int currentListIndex = 0;
 
     private List<ShopTrick> childrenShopTrick = new List<ShopTrick>();
+
+    [SerializeField] private DynamicButtonNavigation _gridNavigation;
     private void Start()
     {
         AssignChildren();
@@ -69,5 +71,7 @@ public class ShopTrickAssigner : MonoBehaviour
                 childrenShopTrick[i].InitializeTrick(null); // Si no hay truco, inicializar con null para bloquearlo
             }
         }
+
+        _gridNavigation.RefreshNavigation();
     }
 }

@@ -265,6 +265,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e436eec68eeb449808b2c51d60e27b, type: 3}
+--- !u!114 &98440144 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8652041061993714497, guid: f04d1a3002c88ce4db01f14a972e0c23, type: 3}
+  m_PrefabInstance: {fileID: 710193933}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &189045571 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8484454942733480738, guid: d08fdcd5ede62a5489bb37027b8ec0b6, type: 3}
@@ -1958,6 +1969,14 @@ PrefabInstance:
       propertyPath: m_Navigation.m_Mode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1862341234174094041, guid: f04d1a3002c88ce4db01f14a972e0c23, type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 914872832}
+    - target: {fileID: 1862341234174094041, guid: f04d1a3002c88ce4db01f14a972e0c23, type: 3}
+      propertyPath: actionName
+      value: UICancel
+      objectReference: {fileID: 0}
     - target: {fileID: 2008608053488981050, guid: f04d1a3002c88ce4db01f14a972e0c23, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2280,6 +2299,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1090059915}
+    - target: {fileID: 7279972143377493907, guid: f04d1a3002c88ce4db01f14a972e0c23, type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 1539593727}
+    - target: {fileID: 7279972143377493907, guid: f04d1a3002c88ce4db01f14a972e0c23, type: 3}
+      propertyPath: actionName
+      value: UIR2
+      objectReference: {fileID: 0}
     - target: {fileID: 7324879513197271119, guid: f04d1a3002c88ce4db01f14a972e0c23, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -2299,6 +2326,14 @@ PrefabInstance:
     - target: {fileID: 7324879513197271119, guid: f04d1a3002c88ce4db01f14a972e0c23, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7661655025349838715, guid: f04d1a3002c88ce4db01f14a972e0c23, type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 98440144}
+    - target: {fileID: 7661655025349838715, guid: f04d1a3002c88ce4db01f14a972e0c23, type: 3}
+      propertyPath: actionName
+      value: UIL2
       objectReference: {fileID: 0}
     - target: {fileID: 8594622022928825257, guid: f04d1a3002c88ce4db01f14a972e0c23, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -3404,6 +3439,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8783217876100873193, guid: 648ddacb3440c3a4eab3603d0d618883, type: 3}
   m_PrefabInstance: {fileID: 3570324011033317578}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &914872832 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 835926092369411811, guid: f04d1a3002c88ce4db01f14a972e0c23, type: 3}
+  m_PrefabInstance: {fileID: 710193933}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &928477327
 GameObject:
   m_ObjectHideFlags: 0
@@ -5078,6 +5124,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518766349}
   m_CullTransparentMesh: 1
+--- !u!114 &1539593727 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8594622022928825257, guid: f04d1a3002c88ce4db01f14a972e0c23, type: 3}
+  m_PrefabInstance: {fileID: 710193933}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1574597106
 GameObject:
   m_ObjectHideFlags: 0

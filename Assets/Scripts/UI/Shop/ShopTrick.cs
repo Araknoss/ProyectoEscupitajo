@@ -30,9 +30,15 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
         if (shopTrickSO == null)
         {
             SetNull();
+            button.interactable = false;
             return;
         }
-        trickPriceText.text = shopTrickSO.cost.ToString() + " G";
+        else
+        {
+            button.interactable = true;
+        }
+
+            trickPriceText.text = shopTrickSO.cost.ToString() + " G";
         trickImage.sprite = shopTrickSO.sprite;
         if(trickBackgroundImage != null)
         {
@@ -78,7 +84,7 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
         isLocked = true;
         trickImage.color = Color.clear;
         trickPriceText.gameObject.SetActive(false);
-        animator.runtimeAnimatorController = lockedAnimator;
+        animator.runtimeAnimatorController = lockedAnimator;        
     }
 
     public void TryToBuy()
