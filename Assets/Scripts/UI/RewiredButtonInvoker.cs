@@ -20,8 +20,8 @@ public class RewiredButtonInvoker : MonoBehaviour
         if (button == null || player == null)
             return;
 
-        if (!button.interactable)
-            return;
+        //if (!button.interactable)
+        //    return;
 
         if (player.GetButtonDown(actionName))
         {
