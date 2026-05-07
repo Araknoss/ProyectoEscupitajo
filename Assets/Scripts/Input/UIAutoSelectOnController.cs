@@ -39,7 +39,8 @@ public class UIAutoSelectOnController : MonoBehaviour
 
     public void SelectDefaultIfController()
     {
-        SelectNextFrame(ReInput.controllers.GetLastActiveController().type);
+        //SelectNextFrame(ReInput.controllers.GetLastActiveController().type);
+        EventSystem.current.SetSelectedGameObject(defaultSelected);
     }
 
     private IEnumerator SelectNextFrame(ControllerType controllerType)
@@ -53,10 +54,12 @@ public class UIAutoSelectOnController : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(defaultSelected);
+            Debug.Log("aaaa");
         }
         else
         {
             EventSystem.current.SetSelectedGameObject(null);
+            Debug.Log("bbbb");
         }
         
     }

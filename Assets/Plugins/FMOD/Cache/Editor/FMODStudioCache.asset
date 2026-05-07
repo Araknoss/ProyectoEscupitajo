@@ -114,7 +114,7 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 639111116606088240
+  lastModified: 639137472371806164
   FileSizes: []
   Exists: 1
 --- !u!114 &-1398797286759354520
@@ -219,13 +219,14 @@ MonoBehaviour:
   - {fileID: -7717495914242008369}
   - {fileID: 2498927413047156562}
   - {fileID: 3249241918491919343}
+  - {fileID: 273040124938042810}
   EditorParameters: []
   MasterBanks:
   - {fileID: 6822536928279771683}
   StringsBanks:
   - {fileID: 1192040155656516333}
   cacheVersion: 131858
-  cacheTime: 639134913569538296
+  cacheTime: 639137472372071997
   SerializableEventsDict:
   - key: event:/MainTheme
     index: 0
@@ -249,6 +250,36 @@ MonoBehaviour:
     index: 9
   - key: event:/OnCancel
     index: 10
+  - key: event:/ShopTheme
+    index: 11
+--- !u!114 &273040124938042810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ShopTheme
+  m_EditorClassIdentifier: 
+  Path: event:/ShopTheme
+  Guid:
+    Data1: -27079083
+    Data2: 1335948303
+    Data3: 500174522
+    Data4: -737076988
+  Banks:
+  - {fileID: -1443204307528009100}
+  - {fileID: 6822536928279771683}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 102456
 --- !u!114 &592594762872429605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,10 +322,10 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639131683062937483
+  lastModified: 639137472372071997
   FileSizes:
   - Name: 
-    Value: 1364
+    Value: 1414
   Exists: 1
 --- !u!114 &2498927413047156562
 MonoBehaviour:
@@ -446,6 +477,6 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639131683062911779
+  lastModified: 639137472372051911
   FileSizes: []
   Exists: 1

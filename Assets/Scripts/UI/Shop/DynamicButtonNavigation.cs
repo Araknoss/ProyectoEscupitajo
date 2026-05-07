@@ -179,11 +179,11 @@ public class DynamicButtonNavigation : MonoBehaviour
 
     private void SelectDefaultOrFirstAvailableButton()
     {
-        if (IsValidButton(defaultButton))
-        {
-            EventSystem.current.SetSelectedGameObject(defaultButton.gameObject);
-            return;
-        }
+        //if (IsValidButton(defaultButton))
+        //{
+        //    EventSystem.current.SetSelectedGameObject(defaultButton.gameObject);
+        //    return;
+        //}
 
         //foreach (ButtonRow row in rows)
         //{
