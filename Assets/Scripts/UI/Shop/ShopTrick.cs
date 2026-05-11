@@ -13,7 +13,9 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     [SerializeField] private Animator animator;
     [SerializeField] private AnimatorController unlockedAnimator;
     [SerializeField] private AnimatorController lockedAnimator;
+    [SerializeField] private Image unknownImage;
     public bool isLocked = true;
+    private bool isUnknown = false;
 
     [Header("Trick Info")]  
     public Trick shopTrickSO;    
@@ -27,7 +29,7 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     public void InitializeTrick(Trick trick)
     {
         shopTrickSO = trick;
-        if (shopTrickSO == null)
+        if (shopTrickSO == null) //Para cuando no haya truco asignado, como en los espacios vacíos de la tienda
         {
             SetNull();
             button.interactable = false;
@@ -55,7 +57,18 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
         }
         else
         {
-            SetLocked(true);
+            Trick previousTrick = button.navigation.selectOnUp.GetComponent<ShopTrick>().shopTrickSO;
+            if (previousTrick != null && !UnlockablesManager.Instance.HasUnlockedTrick(previousTrick) && !previousTrick.isUnlockedAtStart)
+            {
+                
+                    SetUnknown();
+                    return;
+                                
+            }
+            else
+            {
+                SetLocked(true);
+            }              
         }
     }
     private void SetLocked(bool trickLocked)
@@ -68,6 +81,8 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
             trickPriceText.gameObject.SetActive(true);
             trickPriceText.text = shopTrickSO.cost.ToString() + " G";
             animator.runtimeAnimatorController = lockedAnimator;
+            unknownImage.gameObject.SetActive(false);
+            button.interactable = true;
 
         }
         else
@@ -75,8 +90,21 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
             trickPriceText.gameObject.SetActive(false);
             trickImage.color = Color.white;       
             animator.runtimeAnimatorController = unlockedAnimator;
+            unknownImage.gameObject.SetActive(false);
+            button.interactable = true;
         }
 
+
+    }
+
+    private void SetUnknown()
+    {
+        isLocked = true;
+        trickImage.color = Color.clear;
+        trickPriceText.gameObject.SetActive(false);
+        animator.runtimeAnimatorController = lockedAnimator;
+        unknownImage.gameObject.SetActive(true);       
+        button.interactable = false;
     }
 
     private void SetNull()
@@ -95,11 +123,13 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     public void OnPointerEnter(PointerEventData eventData)
     {   
         if (EventSystem.current.currentSelectedGameObject == gameObject) return;
+        if (!button.interactable) return;
         TriggerEvent();
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
     public void OnSelect(BaseEventData eventData)
     {
+        if(!button.interactable) return;
         TriggerEvent();
     }  
     private void TriggerEvent()
@@ -115,6 +145,7 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
             if(unlockedTrick == shopTrickSO)
             {
                 SetLocked(false);
+
             }
         }
     }

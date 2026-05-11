@@ -18,6 +18,11 @@ public class ShopTrickAssigner : MonoBehaviour
         AssignTricks(GetCurrentTrickList());        
     }
 
+    public void RefreshTricks()
+    {
+        AssignTricks(GetCurrentTrickList());
+    }
+
     public void AddIndex()
     {
         currentListIndex = (currentListIndex + 1) % 3; // Asumiendo que solo hay 3 listas
@@ -58,7 +63,7 @@ public class ShopTrickAssigner : MonoBehaviour
     public void AssignTricks(List<Trick> newTricks)
     {
         // 1. Ordenar por ID
-        newTricks.Sort((a, b) => a.id.CompareTo(b.id));
+        //newTricks.Sort((a, b) => a.id.CompareTo(b.id));
 
         for (int i = 0; i < childrenShopTrick.Count; i++)
         {            

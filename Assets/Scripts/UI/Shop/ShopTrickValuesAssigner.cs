@@ -22,6 +22,10 @@ public class ShopTrickValuesAssigner : MonoBehaviour
     [SerializeField] private GameEvent onCantBuyTrick;
     [SerializeField] private Trick initialTrick;
 
+    [Header("Variables")]
+    [SerializeField] private Color lockedColor;
+    [SerializeField] private Color unlockedColor = Color.white;
+
     private void OnEnable()
     {
         AssignValues(this, initialTrick);
@@ -57,10 +61,14 @@ public class ShopTrickValuesAssigner : MonoBehaviour
 
             if (isUnlocked || actualTrick.isUnlockedAtStart)
             {
+                if(trickSprite != null)
+                    trickSprite.color = unlockedColor;
                 SetBuyButtonActive(false);
             }
             else
             {
+                if (trickSprite != null)
+                    trickSprite.color = lockedColor;
                 SetBuyButtonActive(true);
             }
         }
