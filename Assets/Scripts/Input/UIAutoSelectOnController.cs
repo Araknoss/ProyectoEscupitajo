@@ -33,14 +33,17 @@ public class UIAutoSelectOnController : MonoBehaviour
 
     private void OnControllerChanged(Controller controller)
     {
-        if (controller == null) return;              
+        if (controller == null) return;
         StartCoroutine(SelectNextFrame(controller.type));
     }
 
     public void SelectDefaultIfController()
     {
         //SelectNextFrame(ReInput.controllers.GetLastActiveController().type);
-        EventSystem.current.SetSelectedGameObject(defaultSelected);
+        if(ReInput.controllers.GetLastActiveController().type == ControllerType.Joystick)
+        {
+            EventSystem.current.SetSelectedGameObject(defaultSelected);
+        }       
     }
 
     private IEnumerator SelectNextFrame(ControllerType controllerType)
