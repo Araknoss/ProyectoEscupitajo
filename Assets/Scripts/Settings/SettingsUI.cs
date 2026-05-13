@@ -77,7 +77,7 @@ public class SettingsUI : MonoBehaviour
         SettingsManager.Instance.Apply();
     }
 
-    void OnResetClicked()
+    public void OnResetClicked()
     {
         Data.ResetToDefaults();
         SettingsManager.Instance.Apply();
