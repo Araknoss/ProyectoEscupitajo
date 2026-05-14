@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsUI : MonoBehaviour
+public class SettingsUI : UIPanel
 {
     [Header("Audio")]
     [SerializeField] private Slider _masterSlider;
@@ -21,7 +21,11 @@ public class SettingsUI : MonoBehaviour
 
     private SettingsData Data => SettingsManager.Instance.Data;
 
-    void OnEnable()
+    [Header("Panel Content")]
+    [SerializeField] private GameObject _panelContent;
+    protected override GameObject PanelContent => _panelContent;
+
+    public override void Open()
     {
         RefreshAllControls();
     }
@@ -83,5 +87,15 @@ public class SettingsUI : MonoBehaviour
         SettingsManager.Instance.Apply();
         SettingsManager.Instance.Save();
         RefreshAllControls();
+    }
+
+    public void OnBackClicked()
+    {
+        UIManager.Instance.PopPanel();
+    }
+
+    public override void OnCancel()
+    {
+        UIManager.Instance.PopPanel();
     }
 }
