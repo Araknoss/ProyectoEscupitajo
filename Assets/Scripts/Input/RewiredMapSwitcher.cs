@@ -30,27 +30,16 @@ public class RewiredMapSwitcher : MonoBehaviour
     public void EnableGameplay()
     {
         player.controllers.maps.SetMapsEnabled(false, "UI");
-        player.controllers.maps.SetMapsEnabled(true, "Gameplay");
-        player.controllers.maps.SetMapsEnabled(false, "UnlockablePanel");
+        player.controllers.maps.SetMapsEnabled(true, "Gameplay");        
         currentMapName = "Gameplay";        
     }
 
     public void EnableUI()
     {
         player.controllers.maps.SetMapsEnabled(false, "Gameplay");
-        player.controllers.maps.SetMapsEnabled(true, "UI");
-        player.controllers.maps.SetMapsEnabled(false, "UnlockablePanel");
+        player.controllers.maps.SetMapsEnabled(true, "UI");        
         currentMapName = "UI";       
     }
-
-    public void EnableUnlockable()
-    {
-        player.controllers.maps.SetMapsEnabled(false, "Gameplay");
-        player.controllers.maps.SetMapsEnabled(false, "UI");
-        player.controllers.maps.SetMapsEnabled(true, "UnlockablePanel");
-        currentMapName = "UnlockablePanel";
-    }
-
     public void OnGamePause(Component sender, object data)
     {
         if(data is bool isPaused)
@@ -64,10 +53,5 @@ public class RewiredMapSwitcher : MonoBehaviour
                 EnableGameplay();
             }
         }
-    }
-
-    public void OnTrickUnlocked(Component sender, object data)
-    {
-        EnableUnlockable();
-    }
+    }   
 }

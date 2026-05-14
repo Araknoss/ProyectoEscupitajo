@@ -1,8 +1,9 @@
-// SettingsUI.cs
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsUI : MonoBehaviour
+public class UISettingsScreen : UIScreen
 {
     [Header("Audio")]
     [SerializeField] private Slider _masterSlider;
@@ -19,7 +20,7 @@ public class SettingsUI : MonoBehaviour
     [SerializeField] private Slider _shakeSlider;
     [SerializeField] private Toggle _flashToggle;
 
-    private SettingsData Data => SettingsManager.Instance.Data;    
+    private SettingsData Data => SettingsManager.Instance.Data;
 
     void OnEnable()
     {
@@ -83,5 +84,5 @@ public class SettingsUI : MonoBehaviour
         SettingsManager.Instance.Apply();
         SettingsManager.Instance.Save();
         RefreshAllControls();
-    }   
+    }
 }
