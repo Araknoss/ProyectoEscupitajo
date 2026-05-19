@@ -1,7 +1,6 @@
-// UIManager.cs
-
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -10,9 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<UIScreen> screens;
 
     private Dictionary<Type, UIScreen> screenMap;
-
     private UINavigationService navigation;
-
     public UIScreen CurrentScreen => navigation.CurrentScreen;
 
     private void Awake()
@@ -20,13 +17,11 @@ public class UIManager : MonoBehaviour
         navigation = new UINavigationService();
 
         screenMap = new Dictionary<Type, UIScreen>();
-
         foreach (UIScreen screen in screens)
         {
             screenMap.Add(screen.GetType(), screen);
-
             screen.Hide();
-        }
+        }              
     }
 
     private void Start()
@@ -37,7 +32,6 @@ public class UIManager : MonoBehaviour
     public void Open<T>() where T : UIScreen
     {
         Type type = typeof(T);
-
         if (screenMap.TryGetValue(type, out UIScreen screen))
         {
             navigation.Push(screen);
@@ -47,7 +41,6 @@ public class UIManager : MonoBehaviour
     public void Replace<T>() where T : UIScreen
     {
         Type type = typeof(T);
-
         if (screenMap.TryGetValue(type, out UIScreen screen))
         {
             navigation.Replace(screen);
@@ -56,8 +49,7 @@ public class UIManager : MonoBehaviour
 
     public void Back(Component sender, object data)
     {
-        navigation.Pop();
-        Debug.Log("Back" +CurrentScreen);  
+        navigation.Pop();       
     }
 
     // ---------- EVENTS ----------
@@ -75,5 +67,10 @@ public class UIManager : MonoBehaviour
     public void OpenMainMenu(Component sender, object data)
     {
         Replace<UIMainMenuScreen>();
+    }       
+
+    public void OpenUnlockScreen(Component sender, object data)
+    {
+        Open<UIUnlockScreen>();
     }
 }
