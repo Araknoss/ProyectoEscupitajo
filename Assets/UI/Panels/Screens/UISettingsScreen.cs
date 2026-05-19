@@ -1,88 +1,115 @@
-using System.Collections;
-using System.Collections.Generic;
+using Rewired;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UISettingsScreen : UIScreen
 {
-    [Header("Audio")]
-    [SerializeField] private Slider _masterSlider;
-    [SerializeField] private Slider _musicSlider;
-    [SerializeField] private Slider _sfxSlider;
-    [SerializeField] private Toggle _muteToggle;
-
-    [Header("Gráficos")]
-    [SerializeField] private Toggle _fullscreenToggle;
-    [SerializeField] private Toggle _vsyncToggle;
-    [SerializeField] private Slider _fpsSlider;
-
-    [Header("Gameplay")]
-    [SerializeField] private Slider _shakeSlider;
-    [SerializeField] private Toggle _flashToggle;
-
-    private SettingsData Data => SettingsManager.Instance.Data;
-
-    void OnEnable()
+    [System.Serializable]
+    public class SettingsTabView
     {
-        RefreshAllControls();
+        public SettingsTabDataSO data;
+
+        [Space]
+
+        public GameObject content;
+
+        [Space]
+
+        public GameObject defaultSelected;
     }
 
-    void RefreshAllControls()
+    [Header("Tabs")]
+    [SerializeField] private SettingsTabView[] tabs;
+
+    [Header("UI")]
+    [SerializeField] private TMP_Text tabNameText;
+
+    [Header("Input")]
+    [SerializeField] private string nextTabAction = "UIR1";
+
+    [SerializeField] private string previousTabAction = "UIL1";
+
+    private int currentTab;
+
+    protected override void OnShow()
     {
-        // Desconectar listeners para que asignar .value no dispare OnValueChanged
-        UnregisterListeners();
+        base.OnShow();
 
-        _masterSlider.value = Data.masterVolume;
-        _musicSlider.value = Data.musicVolume;
-        _sfxSlider.value = Data.sfxVolume;
-        _muteToggle.isOn = Data.muteAll;
-        _fullscreenToggle.isOn = Data.fullscreen;
-        _vsyncToggle.isOn = Data.vsync;
-        _fpsSlider.value = Data.targetFPS;
-        //_shakeSlider.value = Data.cameraShakeIntensity;
-        //_flashToggle.isOn = Data.screenFlash;
-
-        RegisterListeners();
+        RefreshTabs();
     }
 
-    void RegisterListeners()
+    public override void HandleInput(Player player)
     {
-        _masterSlider?.onValueChanged.AddListener(v => { Data.masterVolume = v; Apply(); });
-        _musicSlider?.onValueChanged.AddListener(v => { Data.musicVolume = v; Apply(); });
-        _sfxSlider?.onValueChanged.AddListener(v => { Data.sfxVolume = v; Apply(); });
-        _muteToggle?.onValueChanged.AddListener(v => { Data.muteAll = v; Apply(); });
+        if (player.GetButtonDown(nextTabAction))
+        {
+            NextTab();
+        }
 
-        _fullscreenToggle?.onValueChanged.AddListener(v => { Data.fullscreen = v; Apply(); });
-        _vsyncToggle?.onValueChanged.AddListener(v => { Data.vsync = v; Apply(); });
-        _fpsSlider?.onValueChanged.AddListener(v => { Data.targetFPS = Mathf.RoundToInt(v); Apply(); });
-
-        //_shakeSlider?.onValueChanged.AddListener(v => { Data.cameraShakeIntensity = v; Apply(); });
-        //_flashToggle?.onValueChanged.AddListener(v => { Data.screenFlash = v; Apply(); });
+        if (player.GetButtonDown(previousTabAction))
+        {
+            PreviousTab();
+        }
     }
 
-    void UnregisterListeners()
+    private void NextTab()
     {
-        _masterSlider?.onValueChanged.RemoveAllListeners();
-        _musicSlider?.onValueChanged.RemoveAllListeners();
-        _sfxSlider?.onValueChanged.RemoveAllListeners();
-        _muteToggle?.onValueChanged.RemoveAllListeners();
-        _fullscreenToggle?.onValueChanged.RemoveAllListeners();
-        _vsyncToggle?.onValueChanged.RemoveAllListeners();
-        _fpsSlider?.onValueChanged.RemoveAllListeners();
-        //_shakeSlider?.onValueChanged.RemoveAllListeners();
-        //_flashToggle?.onValueChanged.RemoveAllListeners();
+        currentTab++;
+
+        if (currentTab >= tabs.Length)
+        {
+            currentTab = 0;
+        }
+
+        RefreshTabs();
     }
 
-    void Apply()
+    private void PreviousTab()
     {
-        SettingsManager.Instance.Apply();
+        currentTab--;
+
+        if (currentTab < 0)
+        {
+            currentTab = tabs.Length - 1;
+        }
+
+        RefreshTabs();
     }
 
-    public void OnResetClicked()
+    private void RefreshTabs()
     {
-        Data.ResetToDefaults();
-        SettingsManager.Instance.Apply();
-        SettingsManager.Instance.Save();
-        RefreshAllControls();
+        for (int i = 0; i < tabs.Length; i++)
+        {
+            bool isCurrent = i == currentTab;
+
+            if (tabs[i].content != null)
+            {
+                tabs[i].content.SetActive(isCurrent);
+            }
+        }
+
+        RefreshCurrentTabUI();
+
+        SelectDefault();
+    }
+
+    private void RefreshCurrentTabUI()
+    {
+        if (tabNameText != null)
+        {
+            tabNameText.text = tabs[currentTab].data.tabName;
+        }
+    }
+
+    private void SelectDefault()
+    {
+        GameObject target = tabs[currentTab].defaultSelected;
+
+        if (target == null)
+            return;
+
+        EventSystem.current.SetSelectedGameObject(null);
+
+        EventSystem.current.SetSelectedGameObject(target);
     }
 }

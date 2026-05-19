@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 public class UIScreen : UIPanel
 {
-    // Start is called before the first frame update
+    public override bool CanGoBack => true;
+    
+    private Player player;
+
     void Start()
     {
         

@@ -1,9 +1,14 @@
+// UIInputRouter.cs
+
 using Rewired;
 using UnityEngine;
 
 public class UIInputRouter : MonoBehaviour
-{  
+{
     private Player player;
+
+    [Header("References")]
+    [SerializeField] private UIManager uiManager;
 
     [Header("GameEvents")]
     [SerializeField] private GameEvent backEvent;
@@ -11,22 +16,25 @@ public class UIInputRouter : MonoBehaviour
     private void Awake()
     {
         player = ReInput.players.GetPlayer(0);
-
-        Debug.Log("UIInputRouter initialized. Player: " + player.name);
     }
 
     private void Update()
     {
+        if (player == null)
+            return;
+
+        // -------- GLOBAL INPUT --------
+
         if (player.GetButtonDown("UICancel"))
         {
-            Debug.Log("Back button pressed");
             backEvent.Raise(this, null);
         }
-        
-        
-        if (player.GetButtonDown("UISubmit"))
+
+        // -------- LOCAL SCREEN INPUT --------
+
+        if (uiManager.CurrentScreen != null)
         {
-            //UIManager.HandleSubmit();
+            uiManager.CurrentScreen.HandleInput(player);
         }
     }
 }

@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class UINavigationService : MonoBehaviour
+using System.Collections.Generic;
+using System.Diagnostics;
+
+
+public class UINavigationService
 {
     private readonly Stack<UIScreen> screenStack = new();
 
@@ -12,13 +13,13 @@ public class UINavigationService : MonoBehaviour
     public void Push(UIScreen screen)
     {
         if (CurrentScreen != null)
+        {
             CurrentScreen.Hide();
+        }
 
         screenStack.Push(screen);
 
         screen.Show();
-
-        Debug.Log($"Pushed screen: {screen.name}. Stack count: {screenStack.Count}");
     }
 
     public void Pop()
@@ -31,7 +32,7 @@ public class UINavigationService : MonoBehaviour
         if (!current.CanGoBack)
             return;
 
-        current.Hide();
+        current.Hide();        
 
         screenStack.Pop();
 
@@ -41,11 +42,17 @@ public class UINavigationService : MonoBehaviour
         }
     }
 
-    public void Clear()
+    public void Replace(UIScreen screen)
     {
-        while (screenStack.Count > 0)
+        if (screenStack.Count > 0)
         {
-            screenStack.Pop().Hide();
+            UIScreen current = screenStack.Pop();
+
+            current.Hide();
         }
+
+        screenStack.Push(screen);
+
+        screen.Show();
     }
 }

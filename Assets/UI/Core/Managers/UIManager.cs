@@ -1,43 +1,79 @@
-using Rewired;
+// UIManager.cs
+
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     [Header("Screens")]
-    [SerializeField] private UIMainMenuScreen mainMenu;
-    [SerializeField] private UISettingsScreen settings;
-    //[SerializeField] private UIShopScreen shop;
+    [SerializeField] private List<UIScreen> screens;
 
-    private UINavigationService navigation;    
+    private Dictionary<Type, UIScreen> screenMap;
+
+    private UINavigationService navigation;
+
+    public UIScreen CurrentScreen => navigation.CurrentScreen;
 
     private void Awake()
     {
-        navigation = new UINavigationService();        
+        navigation = new UINavigationService();
+
+        screenMap = new Dictionary<Type, UIScreen>();
+
+        foreach (UIScreen screen in screens)
+        {
+            screenMap.Add(screen.GetType(), screen);
+
+            screen.Hide();
+        }
     }
-    
+
     private void Start()
     {
-        navigation.Push(mainMenu);
+        Open<UIMainMenuScreen>();
     }
 
-    public void HandleOpenSettings(Component sender, object data)
+    public void Open<T>() where T : UIScreen
     {
-        navigation.Push(settings);
+        Type type = typeof(T);
+
+        if (screenMap.TryGetValue(type, out UIScreen screen))
+        {
+            navigation.Push(screen);
+        }
     }
 
-    public void OpenShop()
+    public void Replace<T>() where T : UIScreen
     {
-        //navigation.Push(shop);
+        Type type = typeof(T);
+
+        if (screenMap.TryGetValue(type, out UIScreen screen))
+        {
+            navigation.Replace(screen);
+        }
     }
 
-    public void HandleBack(Component sender, object data)
+    public void Back(Component sender, object data)
     {
         navigation.Pop();
+        Debug.Log("Back" +CurrentScreen);  
     }
-   
 
-    public static void HandleSubmit()
+    // ---------- EVENTS ----------
+
+    public void OpenSettings(Component sender, object data)
     {
-        //
+        Open<UISettingsScreen>();
+    }
+
+    public void OpenShop(Component sender, object data)
+    {
+        Open<UIShopScreen>();
+    }
+
+    public void OpenMainMenu(Component sender, object data)
+    {
+        Replace<UIMainMenuScreen>();
     }
 }
