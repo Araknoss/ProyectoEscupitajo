@@ -8,4 +8,5 @@ using UnityEngine;
 public class ShopTreeDataSO : ScriptableObject
 {
     public string treeName;
+    public List<Trick> tricksInTree;
 }
