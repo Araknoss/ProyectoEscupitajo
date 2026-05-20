@@ -25499,7 +25499,7 @@ MonoBehaviour:
         Owner: {fileID: 151410715347584883}
         DebugActive: 0
         TargetTMPText: {fileID: 1454567093404604095}
-        AlphaMode: 1
+        AlphaMode: 2
         Duration: 0.1
         InstantAlpha: 1
         Curve:
@@ -25732,7 +25732,7 @@ MonoBehaviour:
         Owner: {fileID: 151410715347584883}
         DebugActive: 0
         BoundImage: {fileID: 2849680278046884785}
-        Mode: 0
+        Mode: 2
         Duration: 0.2
         AllowAdditivePlays: 0
         InstantAlpha: 1
@@ -25767,7 +25767,7 @@ MonoBehaviour:
         CurveRemapZero: 0
         CurveRemapOne: 1
         DestinationAlpha: 1
-        DisableOnStop: 0
+        DisableOnStop: 1
     - rid: 2286835277070598224
       type: {class: MMF_Particles, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:

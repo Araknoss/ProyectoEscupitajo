@@ -41,7 +41,8 @@ public class UIUnlockScreen : UIScreen
 
     protected override void OnHide()
     {
-        backButton.gameObject.SetActive(false);
+        unlockFeedback?.StopFeedbacks();
+        backButton.gameObject.SetActive(false);        
     }
 
     public void AssignUnlockTrickValues(Component sender, object data)
