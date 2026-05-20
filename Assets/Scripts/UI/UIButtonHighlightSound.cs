@@ -5,7 +5,7 @@ using FMODUnity;
 public class UIButtonHighlightSound : MonoBehaviour, ISelectHandler, IPointerEnterHandler
 {
     [SerializeField] private bool playHoverSoundOnSelect = true;
-    [SerializeField] private bool playPressSoundOnClick = true;
+    [SerializeField] private bool playPressSoundOnClick = true;  
     public void OnSelect(BaseEventData eventData)
     {
         PlayHoverSound();
@@ -13,6 +13,8 @@ public class UIButtonHighlightSound : MonoBehaviour, ISelectHandler, IPointerEnt
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (EventSystem.current.currentSelectedGameObject == gameObject)
+            return;
         PlayHoverSound();
     }
 
@@ -32,4 +34,5 @@ public class UIButtonHighlightSound : MonoBehaviour, ISelectHandler, IPointerEnt
     {
         AudioManager.Instance.PlayHoverSound();
     }
+    
 }
