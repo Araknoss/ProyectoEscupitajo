@@ -41,5 +41,5 @@ public class UIShopTreeTricksAssigner : MonoBehaviour
                 childrenShopTrick[i].InitializeTrick(null); // Si no hay truco, inicializar con null para bloquearlo
             }
         }      
-    }
+    }   
 }

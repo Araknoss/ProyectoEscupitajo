@@ -24,8 +24,8 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     [SerializeField] private Image trickBackgroundImage;
 
     [Header("Events")]    
-    public GameEvent onShopTrickSelected;
-    
+    public GameEvent onShopTrickSelected; 
+       
     public void InitializeTrick(Trick trick)
     {
         shopTrickSO = trick;
@@ -49,7 +49,12 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
         CheckIfTrickUnlocked();
     }
 
-    private void CheckIfTrickUnlocked()
+    private void OnEnable()
+    {
+        CheckIfTrickUnlocked();
+    }
+
+    public void CheckIfTrickUnlocked()
     {
         if (UnlockablesManager.Instance.HasUnlockedTrick(shopTrickSO) || shopTrickSO.isUnlockedAtStart)
         {
@@ -140,12 +145,11 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 
     public void HandleOnTrickUnlocked(Component sender, object data)
     {
-        if(data is Trick unlockedTrick)
+        if (data is Trick unlockedTrick)
         {
-            if(unlockedTrick == shopTrickSO)
+            if (unlockedTrick == shopTrickSO)
             {
-                SetLocked(false);
-
+                SetLocked(false);                
             }
         }
     }
