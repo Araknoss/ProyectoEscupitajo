@@ -4938,6 +4938,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5618595603543500565, guid: ef76e3ed4cd6a1448b4bb3231eafe789, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6787643675734528297, guid: ef76e3ed4cd6a1448b4bb3231eafe789, type: 3}
       propertyPath: m_Name
       value: R1Glyph
@@ -7646,7 +7650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 673100941}
   - component: {fileID: 673100942}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UIInputRouter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9143,7 +9147,7 @@ MonoBehaviour:
   m_allowMouseInput: 1
   m_allowMouseInputIfTouchSupported: 1
   m_allowTouchInput: 1
-  m_deselectIfBackgroundClicked: 1
+  m_deselectIfBackgroundClicked: 0
   m_deselectBeforeSelecting: 1
   m_ForceModuleActive: 0
 --- !u!114 &775952597
@@ -11651,13 +11655,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013193959}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11694,9 +11698,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a80bd6a4bfdb92f408611e8b717904d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backButton: {fileID: 5223328312941643572}
   trickNameText: {fileID: 3397568906357336854}
   trickImage: {fileID: 4385986849978275500}
   unlockFeedback: {fileID: 151410715347584883}
+  defaultSelected: {fileID: 7250433783306343679}
+  backEvent: {fileID: 11400000, guid: 3041424e39b8b794689c58d28dff28b7, type: 2}
 --- !u!114 &1013193965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11725,6 +11732,149 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1015338388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1015338392}
+  - component: {fileID: 1015338389}
+  - component: {fileID: 1015338391}
+  - component: {fileID: 1015338390}
+  m_Layer: 0
+  m_Name: UICamera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!20 &1015338389
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015338388}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 5
+  m_Depth: 1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 32
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!114 &1015338390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015338388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
+--- !u!114 &1015338391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015338388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 1
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+--- !u!4 &1015338392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015338388}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1015932399 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 665950940258288851, guid: a4342eb48316f244ebf11bfbba1ac364, type: 3}
@@ -12410,10 +12560,10 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 479
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -12456,7 +12606,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 1015338389}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -15795,7 +15946,7 @@ GameObject:
   - component: {fileID: 1445553657}
   - component: {fileID: 1445553660}
   - component: {fileID: 1445553661}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16440,6 +16591,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5618595603543500565, guid: ef76e3ed4cd6a1448b4bb3231eafe789, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5752125296940663067, guid: ef76e3ed4cd6a1448b4bb3231eafe789, type: 3}
       propertyPath: _actionName
       value: UIL1
@@ -16472,7 +16627,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1479622285}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UIRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17725,7 +17880,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1642194736}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UINavigationService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18712,7 +18867,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1692879190}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UIFeedbackSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20362,6 +20517,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5418987220582717817, guid: 66ae5dd14259fbb4c9ccbb2c9ef365e2, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21599,6 +21758,10 @@ PrefabInstance:
     - target: {fileID: 5051079161161386918, guid: 66ae5dd14259fbb4c9ccbb2c9ef365e2, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418987220582717817, guid: 66ae5dd14259fbb4c9ccbb2c9ef365e2, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5530985524737414530, guid: 66ae5dd14259fbb4c9ccbb2c9ef365e2, type: 3}
       propertyPath: _actionName
@@ -22914,8 +23077,8 @@ Canvas:
   m_GameObject: {fileID: 2086036468}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1015338389}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -26441,21 +26604,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4459038446545868730}
   m_CullTransparentMesh: 1
---- !u!114 &606973310595507507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7250433783306343679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daf1b7eba3a08504a8069ebed55afbc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerId: 0
-  actionName: UICancel
-  button: {fileID: 5223328312941643572}
 --- !u!114 &616652728229802672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31221,7 +31369,7 @@ GameObject:
   - component: {fileID: 8882986451651683379}
   - component: {fileID: 151410715347584883}
   - component: {fileID: 8488269276699341648}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UnlockingTrickFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31953,7 +32101,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: -0.000061035156, y: 43.199997}
   m_SizeDelta: {x: 512, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2917904041507213591
@@ -37584,7 +37732,7 @@ GameObject:
   - component: {fileID: 5957786994206772069}
   - component: {fileID: 3898922192552612882}
   - component: {fileID: 9213974756063452362}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Unity UI Player Controller Element Glyph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39363,7 +39511,7 @@ GameObject:
   - component: {fileID: 7838300631416996889}
   - component: {fileID: 5149378651138070004}
   - component: {fileID: 1208996888869606372}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Unity UI Player Controller Element Glyph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39431,7 +39579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3380688743442847785}
   - component: {fileID: 5254468407579325946}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DebugGameEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39847,7 +39995,7 @@ GameObject:
   - component: {fileID: 8300263004745074494}
   - component: {fileID: 5015228377003710901}
   - component: {fileID: 6955949045449824383}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Unity UI Player Controller Element Glyph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40115,71 +40263,11 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 2849680278046884785}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4093067150246105555}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3116975836126005154}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ShopTrickAssigner, Assembly-CSharp
-        m_MethodName: RefreshTricks
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RewiredMapSwitcher, Assembly-CSharp
-        m_MethodName: EnableUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &5244407085939155362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42924,21 +43012,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140391302512597064}
   m_CullTransparentMesh: 1
---- !u!114 &6502474707500684046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7250433783306343679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daf1b7eba3a08504a8069ebed55afbc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerId: 0
-  actionName: UISubmit
-  button: {fileID: 5223328312941643572}
 --- !u!114 &6520165076764951211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44304,10 +44377,8 @@ GameObject:
   - component: {fileID: 2849680278046884785}
   - component: {fileID: 5223328312941643572}
   - component: {fileID: 6845946663294244808}
-  - component: {fileID: 6502474707500684046}
-  - component: {fileID: 606973310595507507}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50214,7 +50285,7 @@ GameObject:
   - component: {fileID: 1183812930157421851}
   - component: {fileID: 8419533591072176748}
   - component: {fileID: 4403795977450500788}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Unity UI Player Controller Element Glyph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51656,7 +51727,7 @@ GameObject:
   - component: {fileID: 8633484786597580478}
   - component: {fileID: 9096406063572776101}
   - component: {fileID: 4941788824667943864}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Unity UI Player Controller Element Glyph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51870,7 +51941,7 @@ GameObject:
   - component: {fileID: 5923310985261784062}
   - component: {fileID: 4020490324363978700}
   - component: {fileID: 5502960820310011713}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NotEnoughGoldFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52001,7 +52072,7 @@ GameObject:
   - component: {fileID: 1550253638770279438}
   - component: {fileID: 7509374869060157296}
   - component: {fileID: 4350753239499129305}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SelectingTrickFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52375,6 +52446,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1090059916}
+  - {fileID: 1015338392}
   - {fileID: 1051291488}
   - {fileID: 5653914158974211907}
   - {fileID: 5663726318403312369}

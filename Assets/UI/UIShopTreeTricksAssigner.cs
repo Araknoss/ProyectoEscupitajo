@@ -22,7 +22,7 @@ public class UIShopTreeTricksAssigner : MonoBehaviour
             }
         }
 
-        AssignTricksToChildren(shopTreeData.tricksInTree);
+        //AssignTricksToChildren(shopTreeData.tricksInTree);
     }
 
     public void AssignTricksToChildren(List<Trick> newTricks)
@@ -42,4 +42,12 @@ public class UIShopTreeTricksAssigner : MonoBehaviour
             }
         }      
     }   
+
+    private void OnEnable()
+    {
+        if (shopTreeData != null)
+        {
+            AssignTricksToChildren(shopTreeData.tricksInTree);
+        }
+    }
 }

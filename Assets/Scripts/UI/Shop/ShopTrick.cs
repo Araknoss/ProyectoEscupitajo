@@ -49,10 +49,10 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
         CheckIfTrickUnlocked();
     }
 
-    private void OnEnable()
-    {
-        CheckIfTrickUnlocked();
-    }
+    //private void OnEnable()
+    //{
+    //    CheckIfTrickUnlocked();
+    //}
 
     public void CheckIfTrickUnlocked()
     {

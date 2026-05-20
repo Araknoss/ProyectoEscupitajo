@@ -24,7 +24,7 @@ public class UIMainMenuScreen : UIScreen
 
     protected override void Awake()
     {
-        base.Awake();
+        //base.Awake();
 
         playButton.onClick.AddListener(OnPlayPressed);
         settingsButton.onClick.AddListener(OnSettingsPressed);
