@@ -1,21 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Animations;
 
 public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 {
     [SerializeField] private Button button;
     [SerializeField] private Color lockedColor;
     [SerializeField] private Animator animator;
-    [SerializeField] private AnimatorController unlockedAnimator;
-    [SerializeField] private AnimatorController lockedAnimator;
+    [SerializeField] private RuntimeAnimatorController unlockedAnimator;
+    [SerializeField] private RuntimeAnimatorController lockedAnimator;
     [SerializeField] private Image unknownImage;
-    public bool isLocked = true;
-    private bool isUnknown = false;
+    public bool isLocked = true;    
 
     [Header("Trick Info")]  
     public Trick shopTrickSO;    

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a7ad75a58ed8b49bbb45b3f478d2f2, type: 3}
   m_Name: SettingsData
   m_EditorClassIdentifier: 
-  masterVolume: 1
-  musicVolume: 0.8
-  sfxVolume: 1
-  muteAll: 0
-  fullscreen: 1
-  vsync: 1
-  targetFPS: 60
+  masterVolume: 0.79999995
+  musicVolume: 0.19999993
+  sfxVolume: 0.2
+  muteAll: 1
+  fullscreen: 0
+  vsync: 0
+  targetFPS: 0
   resolutionIndex: 0
   cameraShakeIntensity: 1
   screenFlash: 1

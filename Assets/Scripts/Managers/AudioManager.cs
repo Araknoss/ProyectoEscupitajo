@@ -9,9 +9,14 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    [Range(0.0f, 1.0f)]
-    public float masterVolume = 1.0f;
-    private Bus masterBus;
+    [Header("Buses")]
+    [SerializeField] private string _masterBusPath = "bus:/";
+    [SerializeField] private string _musicBusPath = "bus:/Music";
+    [SerializeField] private string _sfxBusPath = "bus:/SFX";
+
+    private Bus _masterBus;
+    private Bus _musicBus;
+    private Bus _sfxBus;
 
     [Header("Snapshots")]
     private EventInstance snapshotInstance;
@@ -34,20 +39,10 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject); // Evita duplicados
         }
 
-        masterBus = RuntimeManager.GetBus("bus:/");
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    public void SetMasterVolume(float volume)
-    {
-        masterBus.setVolume(volume);
-        PlayerPrefs.SetFloat("MasterVolume", volume);
-    }
+        _masterBus = RuntimeManager.GetBus(_masterBusPath);
+        _musicBus = RuntimeManager.GetBus(_musicBusPath);
+        _sfxBus = RuntimeManager.GetBus(_sfxBusPath);
+    }        
 
     public void PlaySound2D(EventReference eventReference)
     {
@@ -134,13 +129,7 @@ public class AudioManager : MonoBehaviour
         {
             StopSound(pauseSnapshotInstance);
         }
-    }
-     
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        StopSound(snapshotInstance);
-    }
-
+    }     
     public void PlayHoverSound()
     {
         PlaySound2D(UIhoverSound);
@@ -149,6 +138,40 @@ public class AudioManager : MonoBehaviour
     public void PlayButtonPressSound()
     {
         PlaySound2D(UIpressSound);
+    }
+
+    
+    //SETTINGS 
+
+    public void HandleOnMasterVolumeChanged(Component sender, object data)
+    {
+        float value = (float)data;
+
+        _masterBus.setVolume(value);
+    }
+
+    public void HandleOnMusicVolumeChanged(Component sender, object data)
+    {
+        float value = (float)data;
+
+        _musicBus.setVolume(value);
+    }
+
+    public void HandleOnSFXVolumeChanged(Component sender, object data)
+    {
+        float value = (float)data;
+
+        _sfxBus.setVolume(value);
+    }
+
+    public void HandleOnMuteChanged(Component sender, object data)
+    {
+        Debug.Log(data);
+        Debug.Log(data.GetType());
+
+        bool muted = (bool)data;
+
+        FMODUnity.RuntimeManager.MuteAllEvents(muted);
     }
 }
 

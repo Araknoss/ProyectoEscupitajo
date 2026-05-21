@@ -232,9 +232,6 @@ MonoBehaviour:
       - _enabled: 0
         _categoryId: 1
         _layoutId: 0
-      - _enabled: 0
-        _categoryId: 2
-        _layoutId: 0
       _defaultMouseMaps:
       - _enabled: 1
         _categoryId: 0
@@ -243,14 +240,11 @@ MonoBehaviour:
         _categoryId: 1
         _layoutId: 0
       _defaultKeyboardMaps:
-      - _enabled: 0
+      - _enabled: 1
         _categoryId: 0
         _layoutId: 0
-      - _enabled: 1
-        _categoryId: 1
-        _layoutId: 0
       - _enabled: 0
-        _categoryId: 2
+        _categoryId: 1
         _layoutId: 0
       _defaultCustomControllerMaps: []
       _startingCustomControllers: []
@@ -1184,7 +1178,7 @@ MonoBehaviour:
         _elementIdentifierId: -1
         _axisRange: 0
         _invert: 0
-        _axisContribution: 1
+        _axisContribution: 0
         _keyboardKeyCode: 100
         _modifierKey1: 0
         _modifierKey2: 0
