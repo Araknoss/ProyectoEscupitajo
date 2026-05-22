@@ -21,7 +21,6 @@ public class UIShopTreeTricksAssigner : MonoBehaviour
                 childrenShopTrick.Add(st);
             }
         }
-
         //AssignTricksToChildren(shopTreeData.tricksInTree);
     }
 

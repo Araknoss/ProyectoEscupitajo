@@ -12,13 +12,15 @@ public class LoadScene : MonoBehaviour
     [SerializeField] private Player rewiredPlayer;
     [SerializeField] private int playerId=0;
 
+    [SerializeField] private bool mainMenu = false;
+
     private void Start()
     {
         rewiredPlayer = ReInput.players.GetPlayer(playerId);
     }
     private void Update()
     {
-        if(rewiredPlayer.GetButtonDown("Restart"))
+        if(rewiredPlayer.GetButtonDown("Restart") && !mainMenu)
         {
             ResetLevel();
         }
@@ -26,6 +28,12 @@ public class LoadScene : MonoBehaviour
     public void ResetLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadNextLevel()
+    {
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextSceneIndex);
     }
     public void LoadByIndexAfterDelay(int sceneIndex)
     {

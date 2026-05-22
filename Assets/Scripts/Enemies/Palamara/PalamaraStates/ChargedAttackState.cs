@@ -28,6 +28,7 @@ public class ChargedAttackState : State
         parent1 = core.gameObject.transform.parent;
         originalPosition = core.gameObject.transform.localPosition;
 
+        
         SelectAttackDirection();
     }
     public override void Do()
@@ -54,7 +55,7 @@ public class ChargedAttackState : State
     }
     public override void Exit() 
     {
-        animator.Play(animationClip.name);
+        //animator.Play(animationClip.name);
         attackTrigger.SetActive(false);
         onAttack = false;
         core.gameObject.transform.SetParent(parent1);
@@ -64,6 +65,10 @@ public class ChargedAttackState : State
     
     private void Attack()
     {
+        if(animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != animationClip.name)
+        {
+            animator.Play(animationClip.name);
+        }
         if (goRight)
         {
             core.gameObject.transform.position += movementSpeed * Time.deltaTime * Vector3.right;

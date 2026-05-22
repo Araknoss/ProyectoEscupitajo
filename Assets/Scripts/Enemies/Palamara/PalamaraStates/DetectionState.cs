@@ -18,6 +18,8 @@ public class DetectionState : State
     {
         animator.Play(animationClip.name);
         detectionCollider.enabled = false;
+
+        SelectLookingAt();
     }
     public override void Do()
     {
@@ -38,5 +40,17 @@ public class DetectionState : State
     private bool Detected()
     {
         return detectionCollider.IsTouchingLayers(detectionLayer);
+    }
+
+    private void SelectLookingAt()
+    {        
+        if (core.gameObject.transform.position.x<0)
+        {
+            core.gameObject.transform.localScale = new Vector3(1, -1, 1);
+        }
+        else
+        {
+            core.gameObject.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 }
