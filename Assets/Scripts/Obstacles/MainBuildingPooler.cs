@@ -1,114 +1,73 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MainBuildingPooler : MonoBehaviour
 {
-    [Header("Pool Lists")]
-    [SerializeField] private List<GameObject> poolList1 = new List<GameObject>();
-    [SerializeField] private List<GameObject> poolList2 = new List<GameObject>();
-    [SerializeField] private List<GameObject> poolList3 = new List<GameObject>();
-    [SerializeField] private List<GameObject> poolList4 = new List<GameObject>();
+    [Header("Pools")]
+    [SerializeField] private List<GameObject> poolListA = new List<GameObject>();
+    [SerializeField] private List<GameObject> poolListB = new List<GameObject>();
+    [SerializeField] private List<GameObject> poolListC = new List<GameObject>();
+    [SerializeField] private List<GameObject> poolListD = new List<GameObject>();
 
-    [SerializeField] private int poolSize = 5;
+    private int lastPoolIndex = -1;
 
-    public GameObject lastChunk;
-
-    private int lastUsedList = -1;
-
-    //void Awake()
-    //{
-    //    CreatePool();
-    //}
-
-    //private void CreatePool()
-    //{
-    //    for (int i = 0; i < transform.childCount; i++)
-    //    {
-    //        GameObject obj = transform.GetChild(i).gameObject;
-
-    //        obj.SetActive(false);
-
-    //        int listIndex = i % 4;
-
-    //        switch (listIndex)
-    //        {
-    //            case 0:
-    //                poolList1.Add(obj);
-    //                break;
-
-    //            case 1:
-    //                poolList2.Add(obj);
-    //                break;
-
-    //            case 2:
-    //                poolList3.Add(obj);
-    //                break;
-
-    //            case 3:
-    //                poolList4.Add(obj);
-    //                break;
-    //        }
-    //    }
-    //}
-
-    public GameObject GetRandomPooledObject()
+    private void Awake()
     {
-        List<List<GameObject>> availableLists = new List<List<GameObject>>();
-        List<int> availableIndexes = new List<int>();
+        InitializePool(poolListA);
+        InitializePool(poolListB);
+        InitializePool(poolListC);
+        InitializePool(poolListD);
+    }
 
-        // Añade todas las listas excepto la última usada
-        if (lastUsedList != 0)
+    private void InitializePool(List<GameObject> pool)
+    {
+        foreach (GameObject obj in pool)
         {
-            availableLists.Add(poolList1);
-            availableIndexes.Add(0);
+            obj.SetActive(false);
         }
+    }
 
-        if (lastUsedList != 1)
+    public GameObject GetChunk()
+    {
+        List<List<GameObject>> allPools = new List<List<GameObject>>
         {
-            availableLists.Add(poolList2);
-            availableIndexes.Add(1);
-        }
+            poolListA,
+            poolListB,
+            poolListC,
+            poolListD
+        };
 
-        if (lastUsedList != 2)
+        // Crear lista de pools válidas (que no sean la última usada)
+        List<int> validPools = new List<int>();
+
+        for (int i = 0; i < allPools.Count; i++)
         {
-            availableLists.Add(poolList3);
-            availableIndexes.Add(2);
-        }
-
-        if (lastUsedList != 3)
-        {
-            availableLists.Add(poolList4);
-            availableIndexes.Add(3);
-        }
-
-        // Elegimos una lista aleatoria válida
-        int selectedListIndex = Random.Range(0, availableLists.Count);
-
-        List<GameObject> selectedList = availableLists[selectedListIndex];
-
-        // Buscamos un objeto inactivo dentro de esa lista
-        for (int i = 0; i < selectedList.Count; i++)
-        {
-            int randomObjectIndex = Random.Range(0, selectedList.Count);
-
-            if (!selectedList[randomObjectIndex].activeInHierarchy)
+            if (i != lastPoolIndex && allPools[i].Count > 0)
             {
-                selectedList[randomObjectIndex].SetActive(true);
-
-                // Guardamos qué lista se ha usado
-                lastUsedList = availableIndexes[selectedListIndex];
-
-                return selectedList[randomObjectIndex];
+                validPools.Add(i);
             }
         }
 
-        return null;
-    }
+        // Elegir una pool aleatoria válida
+        int selectedPoolIndex = validPools[Random.Range(0, validPools.Count)];
+        List<GameObject> selectedPool = allPools[selectedPoolIndex];
 
-    public GameObject GetLastChunk()
-    {
-        lastChunk.SetActive(true);
-        return lastChunk;
+        // Elegir objeto aleatorio dentro de la pool
+        for(int i = 0; i < selectedPool.Count; i++)
+        {
+            int randomIndex = Random.Range(0, selectedPool.Count);
+            if (!selectedPool[randomIndex].activeInHierarchy)
+            {
+                selectedPool[randomIndex].SetActive(true);
+                lastPoolIndex = selectedPoolIndex;
+                return selectedPool[randomIndex];
+            }
+        }
+        //GameObject selectedObject = selectedPool[Random.Range(0, selectedPool.Count)];
+
+        //lastPoolIndex = selectedPoolIndex;
+
+        //selectedObject.SetActive(true);
+        return null;
     }
 }

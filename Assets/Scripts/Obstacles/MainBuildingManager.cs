@@ -29,7 +29,7 @@ public class MainBuildingManager : MonoBehaviour
         //_pooler=gameObject.GetComponent<ChunkPooler>();
         _pooler = levelChunkPoolers[currentLevelIndex];
 
-        chunk = _pooler.GetRandomPooledObject(); //Lo activa antes de usarlo
+        chunk = _pooler.GetChunk(); //Lo activa antes de usarlo
         chunk.transform.position = spawnPosition;
         chunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
 
@@ -38,7 +38,11 @@ public class MainBuildingManager : MonoBehaviour
 
     void Update()
     {
-        if(chunk.transform.position.y >= spawnHeight/* && newChunk==null*/ && canSpawn)
+        if(chunk == null)
+        {
+            return;
+        }
+        if (chunk.transform.position.y >= spawnHeight/* && newChunk==null*/ && canSpawn)
         {           
             SpawnChunk();
         }
@@ -54,29 +58,17 @@ public class MainBuildingManager : MonoBehaviour
     {
         if (chunksCount >= chunkThreshold)
         {
-            chunksCount = 0;
-            DemoEnd();
+            chunksCount = 0;           
             //TransitionToNextLevel();
             return;
         }
 
-        chunk = _pooler.GetRandomPooledObject(); //Lo activa          
+        chunk = _pooler.GetChunk(); //Lo activa          
         chunk.transform.position = spawnPosition;
         chunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
 
         chunksCount++;
        
-    }
-
-    private void DemoEnd()
-    {
-        if (demoEnd)
-        {
-            canSpawn = false;
-            chunk = _pooler.GetLastChunk(); //Lo activa          
-            chunk.transform.position = spawnPosition;
-            chunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
-        }        
     }
 
     public void SetChunkSpeed(Component sender, object data)
