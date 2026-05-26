@@ -29,7 +29,7 @@ public class MainBuildingPooler : MonoBehaviour
 
     public GameObject GetChunk()
     {
-        List<List<GameObject>> allPools = new List<List<GameObject>>
+        List<List<GameObject>> allPools = new()
         {
             poolListA,
             poolListB,
@@ -37,37 +37,63 @@ public class MainBuildingPooler : MonoBehaviour
             poolListD
         };
 
-        // Crear lista de pools válidas (que no sean la última usada)
-        List<int> validPools = new List<int>();
+        List<int> validPools = new();
 
+        // Buscar pools válidas
         for (int i = 0; i < allPools.Count; i++)
         {
-            if (i != lastPoolIndex && allPools[i].Count > 0)
+            // Evitar repetir la última pool
+            if (i == lastPoolIndex)
+                continue;
+
+            // Comprobar si tiene algún objeto libre
+            bool hasInactiveObject = false;
+
+            foreach (GameObject obj in allPools[i])
+            {
+                if (!obj.activeInHierarchy)
+                {
+                    hasInactiveObject = true;
+                    break;
+                }
+            }
+
+            if (hasInactiveObject)
             {
                 validPools.Add(i);
             }
         }
 
-        // Elegir una pool aleatoria válida
+        // No hay pools disponibles
+        if (validPools.Count == 0)
+        {
+            Debug.LogWarning("No hay pools con objetos disponibles.");
+            return null;
+        }
+
+        // Elegir pool aleatoria válida
         int selectedPoolIndex = validPools[Random.Range(0, validPools.Count)];
         List<GameObject> selectedPool = allPools[selectedPoolIndex];
 
-        // Elegir objeto aleatorio dentro de la pool
-        for(int i = 0; i < selectedPool.Count; i++)
+        // Buscar objetos libres
+        List<GameObject> availableObjects = new();
+
+        foreach (GameObject obj in selectedPool)
         {
-            int randomIndex = Random.Range(0, selectedPool.Count);
-            if (!selectedPool[randomIndex].activeInHierarchy)
+            if (!obj.activeInHierarchy)
             {
-                selectedPool[randomIndex].SetActive(true);
-                lastPoolIndex = selectedPoolIndex;
-                return selectedPool[randomIndex];
+                availableObjects.Add(obj);
             }
         }
-        //GameObject selectedObject = selectedPool[Random.Range(0, selectedPool.Count)];
 
-        //lastPoolIndex = selectedPoolIndex;
+        // Elegir objeto aleatorio
+        GameObject selectedObject =
+            availableObjects[Random.Range(0, availableObjects.Count)];
 
-        //selectedObject.SetActive(true);
-        return null;
+        selectedObject.SetActive(true);
+
+        lastPoolIndex = selectedPoolIndex;
+
+        return selectedObject;
     }
 }

@@ -63,12 +63,16 @@ public class MainBuildingManager : MonoBehaviour
             return;
         }
 
-        chunk = _pooler.GetChunk(); //Lo activa          
+        chunk = _pooler.GetChunk(); //Lo activa
+        if(chunk == null)
+        {
+            
+            return;
+        }
         chunk.transform.position = spawnPosition;
         chunk.GetComponent<TransformMovement>()?.SetSpeed(chunkSpeed);
 
-        chunksCount++;
-       
+        chunksCount++;       
     }
 
     public void SetChunkSpeed(Component sender, object data)
