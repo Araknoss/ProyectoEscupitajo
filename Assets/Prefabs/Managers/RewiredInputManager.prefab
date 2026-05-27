@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3304123251368690231}
   - component: {fileID: 8602787741381505104}
   - component: {fileID: 8274833805863344342}
+  - component: {fileID: 2691142411192445290}
   m_Layer: 0
   m_Name: RewiredInputManager
   m_TagString: Untagged
@@ -1409,3 +1410,20 @@ MonoBehaviour:
   mainMenuSceneIndex: 0
   playerId: 0
   currentMapName: UI
+--- !u!114 &2691142411192445290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731890095964281552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c2c3042f98981439ed20fd65097629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefetch: 1
+  _glyphSetCollections:
+  - {fileID: 11400000, guid: 1c11465d09750664cba0df47bd175eb4, type: 2}
+  - {fileID: 11400000, guid: 0cda3787c05e8b843a94f4f2d5f35e25, type: 2}
+  - {fileID: 11400000, guid: 8c2975a4f7c11284d86437b6caa7187d, type: 2}

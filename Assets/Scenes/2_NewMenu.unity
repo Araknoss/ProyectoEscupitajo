@@ -22826,23 +22826,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6731890095964281552, guid: dd2def582f58ca04ab8ec9dcc281309f, type: 3}
   m_PrefabInstance: {fileID: 8782253553919262701}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1973481684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973481678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10c2c3042f98981439ed20fd65097629, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefetch: 1
-  _glyphSetCollections:
-  - {fileID: 11400000, guid: 1c11465d09750664cba0df47bd175eb4, type: 2}
-  - {fileID: 11400000, guid: 0cda3787c05e8b843a94f4f2d5f35e25, type: 2}
-  - {fileID: 11400000, guid: 8c2975a4f7c11284d86437b6caa7187d, type: 2}
 --- !u!114 &1973481685 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8274833805863344342, guid: dd2def582f58ca04ab8ec9dcc281309f, type: 3}
@@ -52403,9 +52386,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6731890095964281552, guid: dd2def582f58ca04ab8ec9dcc281309f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1973481684}
     - targetCorrespondingSourceObject: {fileID: 6731890095964281552, guid: dd2def582f58ca04ab8ec9dcc281309f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1973481690}

@@ -1,87 +1,67 @@
+using Rewired;
+using Rewired.Glyphs.UnityUI;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.TextCore;
 using UnityEngine.UI;
-using Rewired;
 
 public class UpdateAvailableTricksTextOnGameEvent : MonoBehaviour
 {
-    [SerializeField] private List<Image> trickImages;
-    [SerializeField] private List<Image> inputImages;
+    [SerializeField] private List<GameObject> childrenGameObjects = new List<GameObject>();
+    [SerializeField] private List<TextMeshProUGUI> trickNames=new List<TextMeshProUGUI>();
+    [SerializeField] private List<Image> trickBackgrounds = new List<Image>();
 
-    [SerializeField] private Sprite bodyInputImage;
-    [SerializeField] private Sprite skateInputImage;
-    [SerializeField] private Sprite keepInputImage;
+    [SerializeField] private Color keepTrickColor;
+    [SerializeField] private Color trickColor;
 
-    [SerializeField] private Sprite bodyInputImageController;
-    [SerializeField] private Sprite skateInputImageController;
-    [SerializeField] private Sprite keepInputImageController;
+    [Header("Glyphs")]
+    [SerializeField] private List<UnityUIPlayerControllerElementGlyph> glyphs = new List<UnityUIPlayerControllerElementGlyph>();   
+
 
     private void Update()
     {
         
     }
     public void UpdateScoreText(Component sender, object data)
-    {        
-            foreach(Image image in trickImages)
+    {         
+            foreach(GameObject child in childrenGameObjects)
             {
-                 image.sprite = null;
-                 image.color=Color.clear;
-        }
-            foreach(Image img in inputImages)
-            {
-                img.enabled = false;
-            }
+                child.SetActive(false);
+             }
+
         if (data is List<Trick>) //Para los trucos disponibles
             {
-            List<Trick> tricks = (List<Trick>)data;
-            for (int i = 0; i < tricks.Count; i++)
+            List<Trick> availableTricks = (List<Trick>)data;
+            for (int i = 0; i < availableTricks.Count; i++)
             {
-                //trickImages[i].sprite = tricks[i].sprite;
-                //trickImages[i].color = Color.white;
-                //inputImages[i].enabled = true;
-
-                //if(InputDeviceDetector.Instance.CurrentInput == InputDeviceDetector.InputType.Controller)
-                //{
-                //    if (tricks[i].rewiredActionId == 2)
-                //    {
-
-                //        inputImages[i].sprite = bodyInputImageController;
-                //    }
-                //    else if (tricks[i].rewiredActionId == 3)
-                //    {
-                //        inputImages[i].sprite = skateInputImageController;  
-                //    }
-                //    else if (tricks[i].rewiredActionId == 4)
-                //    {
-                //        inputImages[i].sprite = keepInputImageController;
-                //    }
-                //    else
-                //    {
-                //        inputImages[i].sprite = null;
-                //    }
-                //}
-                //else if(InputDeviceDetector.Instance.CurrentInput == InputDeviceDetector.InputType.KeyboardMouse)
-                //{
-                //    if (tricks[i].rewiredActionId == 2)
-                //    {
-                //        inputImages[i].sprite = bodyInputImage;
-                //    }
-                //    else if (tricks[i].rewiredActionId == 3)
-                //    {
-                //        inputImages[i].sprite = skateInputImage;  
-                //    }
-                //    else if (tricks[i].rewiredActionId == 4)
-                //    {
-                //        inputImages[i].sprite = keepInputImage;
-                //    }
-                //    else
-                //    {
-                //        inputImages[i].sprite = null;
-                //    }
-                //}
-        }       
+                childrenGameObjects[i].SetActive(true);
+                trickNames[i].text = availableTricks[i].trickName;
+                ChangeGlyphById(availableTricks[i].rewiredActionId, glyphs[i]);
+                if (availableTricks[i].isKeepTrick)
+                {
+                    trickBackgrounds[i].color = keepTrickColor;
+                }
+                else
+                {
+                    trickBackgrounds[i].color = trickColor;
+                }
+               
+            }       
     }
 }
+    
+
+    public void ChangeGlyphById(int id, UnityUIPlayerControllerElementGlyph glyph)
+    {       
+        glyph.actionId = id;
+        ForceRefresh(glyph);
+    }
+
+    private void ForceRefresh(UnityUIPlayerControllerElementGlyph glyph)
+    {        
+        glyph.enabled = false;
+        glyph.enabled = true;
+    }
 }
