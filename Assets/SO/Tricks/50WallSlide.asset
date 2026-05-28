@@ -20,6 +20,8 @@ MonoBehaviour:
   baseScore: 5
   hardness: 0
   comboTricks:
+  - {fileID: 11400000, guid: 0d668943736418748bd14aa828dfe101, type: 2}
+  - {fileID: 11400000, guid: 331ecc2608e8082439be2d553726e2d1, type: 2}
   - {fileID: 11400000, guid: fcb4e38858e7b5d4f8a916a757886a7c, type: 2}
   inputKey: 0
   rewiredActionId: 0

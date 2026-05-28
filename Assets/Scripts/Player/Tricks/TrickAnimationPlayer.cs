@@ -20,5 +20,10 @@ public class TrickAnimationPlayer : MonoBehaviour
     {
         animator.SetBool("PerformingTrick", false);
     }
+
+    public void HandleOnWallSlideEnd(Component sender, object data)
+    {
+        animator.SetBool("PerformingTrick", false);
+    }
 }
 

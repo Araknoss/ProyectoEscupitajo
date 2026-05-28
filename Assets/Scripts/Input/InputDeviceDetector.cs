@@ -1,5 +1,6 @@
-using UnityEngine;
 using Rewired;
+using UnityEditor.VersionControl;
+using UnityEngine;
 
 public class InputDeviceDetector : MonoBehaviour
 {
@@ -56,13 +57,15 @@ public class InputDeviceDetector : MonoBehaviour
 
         if (controller.type == ControllerType.Joystick)
         {
-            Debug.Log("Controller");
+            //Debug.Log("Controller");
             Cursor.visible = false;
         }
         else
         {
-            Debug.Log("Keyboard/Mouse");
+            //Debug.Log("Keyboard/Mouse");
             Cursor.visible = true;
         }
     }
+
+   
 }

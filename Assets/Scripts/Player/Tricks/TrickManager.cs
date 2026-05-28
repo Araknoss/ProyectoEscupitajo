@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Rewired;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using System.Linq;
+using UnityEditor.VersionControl;
 using UnityEngine;
-using Rewired;
 
 public class TrickManager : MonoBehaviour
 {
@@ -31,6 +33,7 @@ public class TrickManager : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private float trickCooldownTime=0.2f; //Este tiempo depende de cada truco
     [SerializeField] private float trickCooldownTimer;
+    [SerializeField] private float trickAnimationTimer;
     private bool onCombo;
     [SerializeField] private float listenInputOffset;
 
@@ -78,6 +81,7 @@ public class TrickManager : MonoBehaviour
     public GameEvent onComboEnd;
     public GameEvent onPerfectTiming;
     public GameEvent onGreatTiming;
+    public GameEvent onTrickAnimationEnd;
 
     [Header("Debug")]
     [SerializeField] private Animator animator;
@@ -108,6 +112,7 @@ public class TrickManager : MonoBehaviour
             return;
         }        
         HandleTrickCooldown();       
+        HandleTrickAnimationTimer();
         //HandleBodyTricks();
     }
     void InitializeInput()
@@ -160,7 +165,7 @@ public class TrickManager : MonoBehaviour
         {
             //if (!isOnWall)
             //{
-            trickCooldownTimer -= Time.deltaTime;
+            trickCooldownTimer -= Time.deltaTime;            
             //}
             if (trickCooldownTimer < trickGreatTime && !isGreatTiming)
             {
@@ -174,6 +179,19 @@ public class TrickManager : MonoBehaviour
         else if(onCombo) //Cuando el cooldown termina se resetean los trucos disponibles
         {            
             ResetCombo();
+        }
+    }
+
+    void HandleTrickAnimationTimer()
+    {
+        if(trickAnimationTimer > 0f)
+        {
+            trickAnimationTimer -= Time.deltaTime;
+        }
+        else
+        {
+            trickAnimationTimer= trickCooldownTime;
+            onTrickAnimationEnd.Raise(this, null);
         }
     }
 
@@ -229,19 +247,23 @@ public class TrickManager : MonoBehaviour
     void PerformWallSlideTrick() //Se ejecuta al entrar en contacto con la pared 1 vez
     {            
         onTrickPerformed.Raise(this, wallSlideTrick);
-        SetAvailableTricks(wallBaseTricks);
+        lastTrickPerformed = wallSlideTrick;
+        SetAvailableTricks(wallSlideTrick.comboTricks);
     }
 
     void WallSlideEnd() //Se ejecuta al salir de la pared o al hacer un wall jump o wall charge
     {
         onWallSlideEnd.Raise(this, wallSlideTrick);
         ResetTimes(wallSlideTrick);
+        SetAvailableTricks(wallBaseTricks);
+
         isOnWallSlide = false;
     }
 
     private void ResetTimes(Trick trick)
     {
-        trickCooldownTime = trick.listenInputTime; //El tiempo en el que el jugador puede pulsar el input para hacer el siguiente truco
+        trickCooldownTime = trick.listenInputTime; //El tiempo en el que el jugador puede pulsar el input para hacer el siguiente truco        
+        trickAnimationTimer = trickCooldownTime;
         trickCooldownTimer = trickCooldownTime + listenInputOffset; //El tiempo total que tiene el jugador para hacer el siguiente truco, incluyendo offset general a lo coyote time
         trickPerfectTime = trickCooldownTime * trickPerfectTimingPercentage; //El momento a partir del cual el jugador tiene un timing perfecto para hacer el siguiente truco
         trickGreatTime = trickCooldownTime * trickGreatTimingPercentage;
@@ -255,12 +277,7 @@ public class TrickManager : MonoBehaviour
         onKeepTrick=false;        
 
         trickCooldownTimer = trickCooldownTime;
-        onComboEnd.Raise(this, true);
-        //Debug
-        if (!isOnWall)
-        {
-            animator.SetTrigger("Idle");
-        } 
+        onComboEnd.Raise(this, true);        
     }    
     void HandleKeepTrick()
     {        
@@ -319,9 +336,12 @@ public class TrickManager : MonoBehaviour
 
             if (!isOnWall /*&& lastTrickPerformed == wallSlideTrick*/) //Asi solo se activa cuando sales de la pared sin usar trucos
             {                           
-                SetAvailableTricks(baseTricks);
+                //SetAvailableTricks(baseTricks);
                 //WallSlideEnd();
-
+                if(lastTrickPerformed == wallSlideTrick)
+                {
+                    WallSlideEnd();
+                }               
 
             }
             else //Cuando entras en contacto se triggerea el truco
@@ -363,6 +383,22 @@ public class TrickManager : MonoBehaviour
     public void HandleOnWallChargeFailed(Component sender, object data)
     {
         ResetCombo();
+    }
+
+    //private void ResetTimeOnExitWall()
+    //{
+    //    Debug.Log("Reset times on exit wall");
+    //    Trick trick = wallSlideTrick;
+    //    trickCooldownTime = trick.listenInputTime; //El tiempo en el que el jugador puede pulsar el input para hacer el siguiente truco
+    //    trickCooldownTimer = trickCooldownTime + listenInputOffset; //El tiempo total que tiene el jugador para hacer el siguiente truco, incluyendo offset general a lo coyote time
+    //    trickPerfectTime = trickCooldownTime * trickPerfectTimingPercentage; //El momento a partir del cual el jugador tiene un timing perfecto para hacer el siguiente truco
+    //    trickGreatTime = trickCooldownTime * trickGreatTimingPercentage;
+    //}
+
+    private void OnGUI()
+    {
+        if(lastTrickPerformed != null)
+            GUI.Label(new Rect(10, 10, 300, 30), lastTrickPerformed.name);
     }
 
 }

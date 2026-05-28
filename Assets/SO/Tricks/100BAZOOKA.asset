@@ -16,7 +16,7 @@ MonoBehaviour:
   id: 500
   animationClip: {fileID: 7400000, guid: 974cf0bf426609e4ebf97b17d9b700e5, type: 2}
   uiClip: {fileID: 0}
-  trickName: 
+  trickName: Bazooka
   baseScore: 750
   hardness: 4
   comboTricks:
