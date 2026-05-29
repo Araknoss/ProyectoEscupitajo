@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIPopup : UIPanel
+public class UIPauseScreen : MonoBehaviour
 {
-    public virtual bool BlocksInput => true;
+    // Start is called before the first frame update
     void Start()
     {
         

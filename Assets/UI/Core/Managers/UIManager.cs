@@ -9,6 +9,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<UIScreen> screens;
 
     private Dictionary<Type, UIScreen> screenMap;
+    private UIPopupService popupService;
+    public UIPopup CurrentPopup => popupService.CurrentPopup;
+
     private UINavigationService navigation;
     public UIScreen CurrentScreen => navigation.CurrentScreen;
 
@@ -49,7 +52,21 @@ public class UIManager : MonoBehaviour
 
     public void Back(Component sender, object data)
     {
-        navigation.Pop();       
+        // ----------------------------
+        // POPUP PRIORITY
+        // ----------------------------
+
+        if (popupService.HasPopup)
+        {
+            popupService.Close();
+            return;
+        }
+
+        // ----------------------------
+        // SCREEN NAVIGATION
+        // ----------------------------
+
+        navigation.Pop();
     }
 
     // ---------- EVENTS ----------

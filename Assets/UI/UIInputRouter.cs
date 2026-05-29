@@ -23,6 +23,14 @@ public class UIInputRouter : MonoBehaviour
         if (player == null)
             return;
 
+        // -------- POPUP PRIORITY --------
+
+        if (uiManager.CurrentPopup != null)
+        {
+            uiManager.CurrentPopup.HandleInput(player);
+            return;
+        }
+
         // -------- GLOBAL INPUT --------
 
         if (player.GetButtonDown("UICancel"))
@@ -30,7 +38,7 @@ public class UIInputRouter : MonoBehaviour
             backEvent.Raise(this, null);
         }
 
-        // -------- LOCAL SCREEN INPUT --------
+        // -------- LOCAL SCREEN INPUT --------        
 
         if (uiManager.CurrentScreen != null)
         {

@@ -144,11 +144,11 @@ public class TrickManager : MonoBehaviour
     }
     void CheckAvailable(/*KeyCode input*/int actionId) //Se comprueba si el input corresponde a algun truco disponible
     {
-        if(availableTricks.Any())
+        if (availableTricks.Any())
         {
-            for(int i=0;i<availableTricks.Count;i++)
+            for (int i = 0; i < availableTricks.Count; i++)
             {
-                if(availableTricks[i].rewiredActionId == actionId)
+                if (availableTricks[i].rewiredActionId == actionId)
                 {
                     if (!availableTricks[i].isStateTrick) //Para que los trucos de estado solo se activen desde los estados
                     {
@@ -157,7 +157,18 @@ public class TrickManager : MonoBehaviour
                     }
                 }
             }
-        }        
+
+            //Cuando no hay truco disponible se usa uno de los trucos base
+            for (int i = 0; i < baseTricks.Count; i++)
+            {
+                if (baseTricks[i].rewiredActionId == actionId)
+                {
+                    PerformTrick(baseTricks[i]);
+                    return;
+                }
+
+            }
+        }
     }    
     void HandleTrickCooldown()
     {
