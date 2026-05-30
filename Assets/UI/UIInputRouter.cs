@@ -12,6 +12,7 @@ public class UIInputRouter : MonoBehaviour
 
     [Header("GameEvents")]
     [SerializeField] private GameEvent backEvent;
+    [SerializeField] private GameEvent pauseEvent;
 
     private void Awake()
     {
@@ -43,6 +44,14 @@ public class UIInputRouter : MonoBehaviour
         if (uiManager.CurrentScreen != null)
         {
             uiManager.CurrentScreen.HandleInput(player);
+            return;
+        }
+
+        // -------- GAMEPLAY --------
+
+        if (player.GetButtonDown("Pause"))
+        {
+            pauseEvent.Raise(this, null);
         }
     }
 }

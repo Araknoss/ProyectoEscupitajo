@@ -17,14 +17,11 @@ public class TimeManager : MonoBehaviour
 
     public void HandleOnGamePause(Component sender, object data)
     {
-        bool isPaused = (bool)data;
-        if (isPaused)
-        {
-            SetTime(0f);
-        }
-        else
-        {
-            SetTime(1f);
-        }
+        SetTime(0f);
     }         
+
+    public void HandleOnGameResume(Component sender, object data)
+    {
+        SetTime(1f);
+    }
 }

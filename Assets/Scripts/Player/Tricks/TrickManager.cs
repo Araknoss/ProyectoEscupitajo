@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 //using System.Diagnostics;
 using System.Linq;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class TrickManager : MonoBehaviour
@@ -266,7 +265,7 @@ public class TrickManager : MonoBehaviour
     {
         onWallSlideEnd.Raise(this, wallSlideTrick);
         ResetTimes(wallSlideTrick);
-        SetAvailableTricks(wallBaseTricks);
+        SetAvailableTricks(baseTricks);
 
         isOnWallSlide = false;
     }

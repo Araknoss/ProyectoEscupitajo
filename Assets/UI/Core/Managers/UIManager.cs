@@ -8,6 +8,9 @@ public class UIManager : MonoBehaviour
     [Header("Screens")]
     [SerializeField] private List<UIScreen> screens;
 
+    [Header("Initial Screen")]
+    [SerializeField] private UIScreen initialScreen;
+
     private Dictionary<Type, UIScreen> screenMap;
     private UIPopupService popupService;
     public UIPopup CurrentPopup => popupService.CurrentPopup;
@@ -18,6 +21,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         navigation = new UINavigationService();
+        popupService = new UIPopupService();
 
         screenMap = new Dictionary<Type, UIScreen>();
         foreach (UIScreen screen in screens)
@@ -29,7 +33,10 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        Open<UIMainMenuScreen>();
+        if (initialScreen != null)
+        {
+            Open(initialScreen);
+        }
     }
 
     public void Open<T>() where T : UIScreen
@@ -40,6 +47,14 @@ public class UIManager : MonoBehaviour
             navigation.Push(screen);
         }
     }
+    public void Open(UIScreen screen)
+    {
+        if (screen == null)
+            return;
+
+        navigation.Push(screen);
+    }
+
 
     public void Replace<T>() where T : UIScreen
     {
@@ -89,5 +104,18 @@ public class UIManager : MonoBehaviour
     public void OpenUnlockScreen(Component sender, object data)
     {
         Open<UIUnlockScreen>();
+    }
+
+    public void OpenPauseMenu(Component sender, object data)
+    {
+        Open<UIPauseScreen>();
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }

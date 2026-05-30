@@ -63,3 +63,12 @@ TagManager:
   - name: Foreground
     uniqueID: 851980669
     locked: 0
+  - name: Overlay
+    uniqueID: 3615682905
+    locked: 0
+  - name: Screen
+    uniqueID: 191847185
+    locked: 0
+  - name: Popup
+    uniqueID: 1001779147
+    locked: 0

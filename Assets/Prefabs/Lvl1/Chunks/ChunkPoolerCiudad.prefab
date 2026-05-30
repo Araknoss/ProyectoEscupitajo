@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6276344187757992679}
-  - component: {fileID: 218863176334526262}
   m_Layer: 0
   m_Name: ChunkPoolerCiudad
   m_TagString: Untagged
@@ -46,20 +45,6 @@ Transform:
   - {fileID: 7807235024627248702}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &218863176334526262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6294455661294297488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a83bbdc012fc56449ab47eb8c0cb9ea9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolList: []
-  poolSize: 14
 --- !u!1001 &833302628776298581
 PrefabInstance:
   m_ObjectHideFlags: 0

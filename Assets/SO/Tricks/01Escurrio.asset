@@ -28,6 +28,6 @@ MonoBehaviour:
   listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 0
-  isUnlockedAtStart: 0
+  isUnlockedAtStart: 1
   isKeepTrick: 0
   cost: 100

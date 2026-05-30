@@ -45,3 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 80468982ca3bd0f4381eb4f70590bda4, type: 2}
+  _onMasterVolumeChanged: {fileID: 11400000, guid: c17904fe6bc4eca43a751136c037be7c, type: 2}
+  _onMusicVolumeChanged: {fileID: 11400000, guid: ba1e8e676f6a05d49a7bea38ba0a2d7f, type: 2}
+  _onSFXVolumeChanged: {fileID: 11400000, guid: 81e1a3673f04d2744adf5ed0c02590a3, type: 2}
+  _onMuteChanged: {fileID: 11400000, guid: 82840c5cd023ad746a234d80a12a4a19, type: 2}
+  _onFullscreenChanged: {fileID: 11400000, guid: b5d8500c8492d8542b33dac641d35403, type: 2}
+  _onVSyncChanged: {fileID: 11400000, guid: a2c56483a2f5788489cc7e48404f2208, type: 2}
+  _onTargetFPSChanged: {fileID: 11400000, guid: c6310283845ad4b479596ef184ce2ad0, type: 2}

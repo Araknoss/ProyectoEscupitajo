@@ -1,5 +1,4 @@
 using Rewired;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class InputDeviceDetector : MonoBehaviour
