@@ -37,6 +37,15 @@ public class UIInputRouter : MonoBehaviour
         if (player.GetButtonDown("UICancel"))
         {
             backEvent.Raise(this, null);
+            Debug.Log("Back button pressed");
+            return;
+        }
+
+        if(player.GetButtonDown("Pause"))
+        {
+            Debug.Log("Pause pressed");
+            pauseEvent.Raise(this, null);
+            return;
         }
 
         // -------- LOCAL SCREEN INPUT --------        
@@ -49,9 +58,9 @@ public class UIInputRouter : MonoBehaviour
 
         // -------- GAMEPLAY --------
 
-        if (player.GetButtonDown("Pause"))
-        {
-            pauseEvent.Raise(this, null);
-        }
+        //if (player.GetButtonDown("Pause"))
+        //{
+        //    pauseEvent.Raise(this, null);
+        //}
     }
 }

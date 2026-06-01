@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UIPauseScreen : UIScreen
 {
-    public override bool CanGoBack => false;
+    //public override bool CanGoBack => true;
     [Header("Buttons")]
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button settingsButton;
@@ -17,7 +17,7 @@ public class UIPauseScreen : UIScreen
     [SerializeField] private GameObject defaultSelected;
 
     [Header("Game Events")]    
-    //[SerializeField] private GameEvent resumeEvent;
+    [SerializeField] private GameEvent resumeEvent;
     [SerializeField] private GameEvent openSettingsEvent;
     [SerializeField] private GameEvent mainMenuEvent;
     [SerializeField] private GameEvent openQuitEvent;
@@ -37,9 +37,9 @@ public class UIPauseScreen : UIScreen
         SelectDefaultButton();        
     }
 
-    private void OnResumePressed() //El resume lo hace el gameplayScreen al activarse
+    private void OnResumePressed() 
     {       
-        Hide();
+        resumeEvent?.Raise(this, null);
     }
 
     private void OnSettingsPressed()

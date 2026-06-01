@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -17,6 +16,9 @@ public class UIManager : MonoBehaviour
 
     private UINavigationService navigation;
     public UIScreen CurrentScreen => navigation.CurrentScreen;
+
+    [SerializeField] private GameEvent onGameResumed;
+    [SerializeField] private GameEvent onGamePaused;
 
     private void Awake()
     {
@@ -81,7 +83,12 @@ public class UIManager : MonoBehaviour
         // SCREEN NAVIGATION
         // ----------------------------
 
+        if(CurrentScreen is UIPauseScreen)
+        {
+            ResumeGame(this, null);
+        }
         navigation.Pop();
+        Debug.Log("POP" );
     }
 
     // ---------- EVENTS ----------
@@ -108,7 +115,18 @@ public class UIManager : MonoBehaviour
 
     public void OpenPauseMenu(Component sender, object data)
     {
+        onGamePaused.Raise(this, null); //Envia señal al sistema de tiempo y input para pausar el juego
         Open<UIPauseScreen>();
+    }
+
+    public void ResumeGame(Component sender, object data) //Envia señal al sistema de tiempo y input para reanudar el juego
+    {
+        if (!(CurrentScreen is UIGameplayScreen))
+        {
+            navigation.Pop();
+        }
+
+        onGameResumed.Raise(this, null);
     }
 
     public void Quit()

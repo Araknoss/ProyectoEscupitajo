@@ -44,14 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce18c8db3f6d83478c2cfd5c31f3d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterVolume: 1
+  _masterBusPath: bus:/
+  _musicBusPath: bus:/Music
+  _sfxBusPath: bus:/SFX
   pauseSnapshot:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -269384913
+      Data2: 1265000257
+      Data3: 1923505292
+      Data4: -1232085349
+    Path: snapshot:/PauseSnapshot
   UIhoverSound:
     Guid:
       Data1: 59701542

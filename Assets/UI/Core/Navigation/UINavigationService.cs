@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-
 public class UINavigationService
 {
     private readonly Stack<UIScreen> screenStack = new();
@@ -28,7 +27,8 @@ public class UINavigationService
             return;
 
         UIScreen current = screenStack.Peek();
-
+        
+        
         if (!current.CanGoBack)
             return;
 

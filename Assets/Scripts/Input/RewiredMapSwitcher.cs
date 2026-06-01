@@ -41,17 +41,12 @@ public class RewiredMapSwitcher : MonoBehaviour
         currentMapName = "UI";       
     }
     public void OnGamePause(Component sender, object data)
+    {           
+         EnableUI();               
+    } 
+    
+    public void OnGameResume(Component sender, object data)
     {
-        if(data is bool isPaused)
-        {
-            if (isPaused)
-            {
-                EnableUI();
-            }
-            else
-            {
-                EnableGameplay();
-            }
-        }
-    }   
+        EnableGameplay();
+    }
 }

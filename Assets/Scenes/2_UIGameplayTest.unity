@@ -1070,6 +1070,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6731890095964281552, guid: dd2def582f58ca04ab8ec9dcc281309f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1245909149}
+    - targetCorrespondingSourceObject: {fileID: 6731890095964281552, guid: dd2def582f58ca04ab8ec9dcc281309f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1245909157}
   m_SourcePrefab: {fileID: 100100000, guid: dd2def582f58ca04ab8ec9dcc281309f, type: 3}
 --- !u!1 &45616755 stripped
 GameObject:
@@ -17989,7 +17992,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299231381126096465, guid: ea99923232898254baa791a8b70167fb, type: 3}
       propertyPath: offset.x
-      value: -45
+      value: -55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299231381126096465, guid: ea99923232898254baa791a8b70167fb, type: 3}
+      propertyPath: offset.y
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7299231381126096465, guid: ea99923232898254baa791a8b70167fb, type: 3}
       propertyPath: indicator
@@ -22051,13 +22058,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1579565117}
     m_Modifications:
+    - target: {fileID: 65011904774521149, guid: 648ddacb3440c3a4eab3603d0d618883, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2384979596971676645, guid: 648ddacb3440c3a4eab3603d0d618883, type: 3}
       propertyPath: m_Name
       value: UIHoverIndicator
       objectReference: {fileID: 0}
     - target: {fileID: 2384979596971676645, guid: 648ddacb3440c3a4eab3603d0d618883, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8783217876100873193, guid: 648ddacb3440c3a4eab3603d0d618883, type: 3}
       propertyPath: m_Pivot.x
@@ -22488,7 +22499,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299231381126096465, guid: ea99923232898254baa791a8b70167fb, type: 3}
       propertyPath: offset.x
-      value: -45
+      value: -55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299231381126096465, guid: ea99923232898254baa791a8b70167fb, type: 3}
+      propertyPath: offset.y
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7299231381126096465, guid: ea99923232898254baa791a8b70167fb, type: 3}
       propertyPath: indicator
@@ -22848,103 +22863,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2160d358182ec84994e5c4d48d99b18, type: 3}
---- !u!1 &562473515
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 562473516}
-  - component: {fileID: 562473518}
-  - component: {fileID: 562473517}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &562473516
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562473515}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5582151, y: 0.74063694, z: -0.1238932}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &562473517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562473515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: bed7d37e46fb4d947b4f21be6635431b, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 562473518}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: OnGamePause
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &562473518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562473515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce18c8db3f6d83478c2cfd5c31f3d20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _masterBusPath: bus:/
-  _musicBusPath: bus:/Music
-  _sfxBusPath: bus:/SFX
-  pauseSnapshot:
-    Guid:
-      Data1: -269384913
-      Data2: 1265000257
-      Data3: 1923505292
-      Data4: -1232085349
-    Path: snapshot:/PauseSnapshot
-  UIhoverSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  UIpressSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
 --- !u!4 &570656108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4498833231828548051, guid: c8b349840f6c9464898060d1aed0be92, type: 3}
@@ -30161,7 +30079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &741919881
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30193,7 +30111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88569cae72b087149a8420ec3ad01739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resumeEvent: {fileID: 11400000, guid: 60b5a1066e0e99f4aa0cc4bf35999c6b, type: 2}
 --- !u!1 &742131811
 GameObject:
   m_ObjectHideFlags: 0
@@ -30395,6 +30312,7 @@ GameObject:
   - component: {fileID: 759014592}
   - component: {fileID: 759014591}
   - component: {fileID: 759014596}
+  - component: {fileID: 759014597}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -30418,6 +30336,8 @@ MonoBehaviour:
   - {fileID: 1597744380}
   - {fileID: 222291995}
   initialScreen: {fileID: 0}
+  onGameResumed: {fileID: 11400000, guid: 60b5a1066e0e99f4aa0cc4bf35999c6b, type: 2}
+  onGamePaused: {fileID: 11400000, guid: bed7d37e46fb4d947b4f21be6635431b, type: 2}
 --- !u!114 &759014591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30557,13 +30477,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: bed7d37e46fb4d947b4f21be6635431b, type: 2}
+  gameEvent: {fileID: 11400000, guid: 28e377e505cbbc54bafa475c43838cd1, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 759014590}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OpenPauseMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &759014597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759014589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 28e377e505cbbc54bafa475c43838cd1, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 759014590}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ResumeGame
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -31147,7 +31095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 759014590}
   backEvent: {fileID: 11400000, guid: 3041424e39b8b794689c58d28dff28b7, type: 2}
-  pauseEvent: {fileID: 11400000, guid: bed7d37e46fb4d947b4f21be6635431b, type: 2}
+  pauseEvent: {fileID: 11400000, guid: 28e377e505cbbc54bafa475c43838cd1, type: 2}
 --- !u!1 &791096332
 GameObject:
   m_ObjectHideFlags: 0
@@ -31817,7 +31765,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299231381126096465, guid: ea99923232898254baa791a8b70167fb, type: 3}
       propertyPath: offset.x
-      value: -45
+      value: -55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299231381126096465, guid: ea99923232898254baa791a8b70167fb, type: 3}
+      propertyPath: offset.y
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7299231381126096465, guid: ea99923232898254baa791a8b70167fb, type: 3}
       propertyPath: indicator
@@ -39627,6 +39579,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1245909157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988382166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 60b5a1066e0e99f4aa0cc4bf35999c6b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1245909150}
+        m_TargetAssemblyTypeName: RewiredMapSwitcher, Assembly-CSharp
+        m_MethodName: OnGameResume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &1250726704 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4751991425635481253, guid: 66ae5dd14259fbb4c9ccbb2c9ef365e2, type: 3}
@@ -43685,7 +43665,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299231381126096465, guid: ea99923232898254baa791a8b70167fb, type: 3}
       propertyPath: offset.x
-      value: -45
+      value: -55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299231381126096465, guid: ea99923232898254baa791a8b70167fb, type: 3}
+      propertyPath: offset.y
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7299231381126096465, guid: ea99923232898254baa791a8b70167fb, type: 3}
       propertyPath: indicator
@@ -45659,6 +45643,7 @@ MonoBehaviour:
   mainMenuButton: {fileID: 131420470}
   quitButton: {fileID: 1174807226}
   defaultSelected: {fileID: 1075965623}
+  resumeEvent: {fileID: 11400000, guid: 346bd3adc4dc5e24ca58b98cd13b2918, type: 2}
   openSettingsEvent: {fileID: 11400000, guid: 7b8462eef38c46e4fa83d8b34f7c57c4, type: 2}
   mainMenuEvent: {fileID: 11400000, guid: 3ca81567242d7fc4b979530f625059d1, type: 2}
   openQuitEvent: {fileID: 11400000, guid: 8a922534ac44d45438e3261acce2c0a2, type: 2}
@@ -55355,6 +55340,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2484925956134971487, guid: a0061fb42c2eb3947aad53b4f3ee2b8c, type: 3}
   m_PrefabInstance: {fileID: 1584445754392927979}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1988215581181940128
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2744648461303998641, guid: cce88b02878a7f7499d321e2c015eadb, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868574335740981631, guid: cce88b02878a7f7499d321e2c015eadb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 283.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868574335740981631, guid: cce88b02878a7f7499d321e2c015eadb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 159.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868574335740981631, guid: cce88b02878a7f7499d321e2c015eadb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868574335740981631, guid: cce88b02878a7f7499d321e2c015eadb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868574335740981631, guid: cce88b02878a7f7499d321e2c015eadb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868574335740981631, guid: cce88b02878a7f7499d321e2c015eadb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868574335740981631, guid: cce88b02878a7f7499d321e2c015eadb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868574335740981631, guid: cce88b02878a7f7499d321e2c015eadb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868574335740981631, guid: cce88b02878a7f7499d321e2c015eadb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868574335740981631, guid: cce88b02878a7f7499d321e2c015eadb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cce88b02878a7f7499d321e2c015eadb, type: 3}
 --- !u!1001 &1992350829594724625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57335,7 +57377,7 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1018726745}
   - {fileID: 944395661}
-  - {fileID: 562473516}
+  - {fileID: 1988215581181940128}
   - {fileID: 39810510}
   - {fileID: 7781380486280052892}
   - {fileID: 957606588}
