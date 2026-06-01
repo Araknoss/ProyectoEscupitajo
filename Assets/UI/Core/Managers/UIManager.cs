@@ -103,10 +103,10 @@ public class UIManager : MonoBehaviour
         Open<UIShopScreen>();
     }
 
-    public void OpenMainMenu(Component sender, object data)
-    {
-        Replace<UIMainMenuScreen>();
-    }       
+    //public void OpenMainMenu(Component sender, object data)
+    //{
+    //    Replace<UIMainMenuScreen>();
+    //}       
 
     public void OpenUnlockScreen(Component sender, object data)
     {

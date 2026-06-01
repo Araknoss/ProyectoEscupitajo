@@ -11243,7 +11243,9 @@ MonoBehaviour:
   - {fileID: 1459794555}
   - {fileID: 1167266519}
   - {fileID: 1013193964}
-  initialScreen: {fileID: 0}
+  initialScreen: {fileID: 1701576855}
+  onGameResumed: {fileID: 0}
+  onGamePaused: {fileID: 0}
 --- !u!114 &1445553657
 MonoBehaviour:
   m_ObjectHideFlags: 0
