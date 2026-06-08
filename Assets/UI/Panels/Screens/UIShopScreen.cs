@@ -2,6 +2,7 @@ using Rewired;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class UIShopScreen : UIScreen
 {
@@ -87,6 +88,27 @@ public class UIShopScreen : UIScreen
         if (target == null) return;
 
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(target);
+        StartCoroutine(DelayedSelect(target));
+
+    }
+
+    IEnumerator DelayedSelect(GameObject targetSelection)
+    {
+        yield return new WaitForEndOfFrame();
+        EventSystem.current.SetSelectedGameObject(targetSelection);
+    }
+
+    private void OnGUI()
+    {
+        if (EventSystem.current == null)
+            return;
+
+        GameObject selected = EventSystem.current.currentSelectedGameObject;
+
+        string selectedName = selected != null
+            ? selected.name
+            : "NONE";
+
+        GUI.Label(new Rect(10, 10, 400, 30), "Selected UI: " + selectedName);
     }
 }

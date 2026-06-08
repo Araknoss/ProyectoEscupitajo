@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 8602787741381505104}
   - component: {fileID: 8274833805863344342}
   - component: {fileID: 2691142411192445290}
+  - component: {fileID: 2134210072619596517}
+  - component: {fileID: 5596376695456819016}
+  - component: {fileID: 5615469266590197441}
   m_Layer: 0
   m_Name: RewiredInputManager
   m_TagString: Untagged
@@ -484,7 +487,7 @@ MonoBehaviour:
       _buttonRepeatDelay: 0
     mapCategories:
     - _name: Default
-      _descriptiveName: Default
+      _descriptiveName: Gameplay
       _key: 
       _tag: 
       _id: 0
@@ -778,7 +781,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: -1
+        _actionId: 8
         _elementType: 1
         _elementIdentifierId: 14
         _axisRange: 0
@@ -789,7 +792,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 9
+        _actionId: -1
         _elementType: 1
         _elementIdentifierId: 15
         _axisRange: 0
@@ -1207,17 +1210,6 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 9
-        _elementType: 1
-        _elementIdentifierId: -1
-        _axisRange: 0
-        _invert: 0
-        _axisContribution: 0
-        _keyboardKeyCode: 27
-        _modifierKey1: 0
-        _modifierKey2: 0
-        _modifierKey3: 0
-      - _actionCategoryId: 0
         _actionId: 7
         _elementType: 1
         _elementIdentifierId: -1
@@ -1427,3 +1419,87 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c11465d09750664cba0df47bd175eb4, type: 2}
   - {fileID: 11400000, guid: 0cda3787c05e8b843a94f4f2d5f35e25, type: 2}
   - {fileID: 11400000, guid: 8c2975a4f7c11284d86437b6caa7187d, type: 2}
+--- !u!114 &2134210072619596517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731890095964281552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: bed7d37e46fb4d947b4f21be6635431b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8274833805863344342}
+        m_TargetAssemblyTypeName: RewiredMapSwitcher, Assembly-CSharp
+        m_MethodName: OnGamePause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5596376695456819016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731890095964281552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: d6cb7279f45b4534ab12b4977b9cca83, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8274833805863344342}
+        m_TargetAssemblyTypeName: RewiredMapSwitcher, Assembly-CSharp
+        m_MethodName: EnableUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5615469266590197441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731890095964281552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 60b5a1066e0e99f4aa0cc4bf35999c6b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8274833805863344342}
+        m_TargetAssemblyTypeName: RewiredMapSwitcher, Assembly-CSharp
+        m_MethodName: OnGameResume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

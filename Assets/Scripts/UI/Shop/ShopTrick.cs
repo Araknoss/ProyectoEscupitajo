@@ -140,6 +140,7 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     {        
         //Debug.Log("Selected trick: " + shopTrickSO.trickName);
         onShopTrickSelected.Raise(this, shopTrickSO);
+      
     }
 
     public void HandleOnTrickUnlocked(Component sender, object data)

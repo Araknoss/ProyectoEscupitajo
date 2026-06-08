@@ -5,32 +5,42 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [Header("Screens")]
-    [SerializeField] private List<UIScreen> screens;
-
-    [Header("Initial Screen")]
     [SerializeField] private UIScreen initialScreen;
-
+    [SerializeField] private List<UIScreen> screens;    
     private Dictionary<Type, UIScreen> screenMap;
-    private UIPopupService popupService;
-    public UIPopup CurrentPopup => popupService.CurrentPopup;
-
-    private UINavigationService navigation;
     public UIScreen CurrentScreen => navigation.CurrentScreen;
+    private UINavigationService navigation;
+
+    [Header("Popups")]
+    [SerializeField] private List<UIPopup> popups;    
+    private Dictionary<Type, UIPopup> popupMap;
+    public UIPopup CurrentPopup => popupService.CurrentPopup;
+    private UIPopupService popupService;
 
     [SerializeField] private GameEvent onGameResumed;
     [SerializeField] private GameEvent onGamePaused;
 
     private void Awake()
     {
-        navigation = new UINavigationService();
-        popupService = new UIPopupService();
+        navigation = new UINavigationService();        
 
         screenMap = new Dictionary<Type, UIScreen>();
         foreach (UIScreen screen in screens)
         {
             screenMap.Add(screen.GetType(), screen);
             screen.Hide();
-        }              
+        }
+
+        popupService = new UIPopupService();
+
+        popupMap = new Dictionary<Type, UIPopup>();
+
+        foreach (UIPopup popup in popups)
+        {
+            popupMap.Add(popup.GetType(), popup);
+
+            popup.Hide();
+        }
     }
 
     private void Start()
@@ -49,12 +59,34 @@ public class UIManager : MonoBehaviour
             navigation.Push(screen);
         }
     }
+    public void OpenPopup<T>() where T : UIPopup
+    {
+        Type type = typeof(T);
+
+        if (popupMap.TryGetValue(type, out UIPopup popup))
+        {
+            CurrentScreen?.CacheSelection();
+
+            popupService.Show(popup);
+        }
+    }
     public void Open(UIScreen screen)
     {
         if (screen == null)
             return;
 
         navigation.Push(screen);
+    }
+
+    public void ClosePopup()
+    {
+        popupService.Close();
+
+        // --------------------------------
+        // RESTORE FOCUS
+        // --------------------------------
+
+        CurrentScreen?.RestoreFocus();
     }
 
 
@@ -75,7 +107,11 @@ public class UIManager : MonoBehaviour
 
         if (popupService.HasPopup)
         {
-            popupService.Close();
+            ClosePopup();
+            //if(CurrentScreen is UIPauseScreen) //Para recuperar el foco
+            //{
+            //    Open<UIPauseScreen>();
+            //}
             return;
         }
 
@@ -85,7 +121,7 @@ public class UIManager : MonoBehaviour
 
         if(CurrentScreen is UIPauseScreen)
         {
-            ResumeGame(this, null);
+            HandleOnResumePressed(this, null);
         }
         navigation.Pop();
         Debug.Log("POP" );
@@ -93,12 +129,12 @@ public class UIManager : MonoBehaviour
 
     // ---------- EVENTS ----------
 
-    public void OpenSettings(Component sender, object data)
+    public void HandleOnSettingsPressed(Component sender, object data)
     {
         Open<UISettingsScreen>();
     }
 
-    public void OpenShop(Component sender, object data)
+    public void HandleOnShopPressed(Component sender, object data)
     {
         Open<UIShopScreen>();
     }
@@ -108,18 +144,22 @@ public class UIManager : MonoBehaviour
     //    Replace<UIMainMenuScreen>();
     //}       
 
-    public void OpenUnlockScreen(Component sender, object data)
+    public void HandleOnTrickUnlocked(Component sender, object data)
     {
         Open<UIUnlockScreen>();
     }
 
-    public void OpenPauseMenu(Component sender, object data)
+    public void HandleOnPausePressed(Component sender, object data)
     {
         onGamePaused.Raise(this, null); //Envia señal al sistema de tiempo y input para pausar el juego
+        if(CurrentPopup != null)
+        {
+            popupService.CloseAll();
+        }
         Open<UIPauseScreen>();
     }
 
-    public void ResumeGame(Component sender, object data) //Envia señal al sistema de tiempo y input para reanudar el juego
+    public void HandleOnResumePressed(Component sender, object data) //Envia señal al sistema de tiempo y input para reanudar el juego
     {
         if (!(CurrentScreen is UIGameplayScreen))
         {
@@ -127,6 +167,11 @@ public class UIManager : MonoBehaviour
         }
 
         onGameResumed.Raise(this, null);
+    }
+
+    public void HandleOnQuitPressed(Component sender, object data)
+    {
+        OpenPopup<UIQuitPopup>();
     }
 
     public void Quit()

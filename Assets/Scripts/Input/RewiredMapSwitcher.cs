@@ -20,6 +20,7 @@ public class RewiredMapSwitcher : MonoBehaviour
         if(SceneManager.GetActiveScene().buildIndex== mainMenuSceneIndex)
         {
             EnableUI();
+            Debug.Log("Main Menu Scene detected. Enabling UI map.");
         }
         else
         {
@@ -30,13 +31,13 @@ public class RewiredMapSwitcher : MonoBehaviour
     public void EnableGameplay()
     {
         player.controllers.maps.SetMapsEnabled(false, "UI");
-        player.controllers.maps.SetMapsEnabled(true, "Gameplay");        
+        player.controllers.maps.SetMapsEnabled(true, "Default");        
         currentMapName = "Gameplay";        
     }
 
     public void EnableUI()
     {
-        player.controllers.maps.SetMapsEnabled(false, "Gameplay");
+        player.controllers.maps.SetMapsEnabled(false, "Default");
         player.controllers.maps.SetMapsEnabled(true, "UI");        
         currentMapName = "UI";       
     }

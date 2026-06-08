@@ -13,8 +13,8 @@ public class UIPauseScreen : UIScreen
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button quitButton;
 
-    [Header("Default Selection")]
-    [SerializeField] private GameObject defaultSelected;
+    //[Header("Default Selection")]
+    //[SerializeField] private GameObject defaultSelected;
 
     [Header("Game Events")]    
     [SerializeField] private GameEvent resumeEvent;

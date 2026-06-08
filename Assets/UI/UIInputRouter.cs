@@ -28,8 +28,7 @@ public class UIInputRouter : MonoBehaviour
 
         if (uiManager.CurrentPopup != null)
         {
-            uiManager.CurrentPopup.HandleInput(player);
-            return;
+            uiManager.CurrentPopup.HandleInput(player);            
         }
 
         // -------- GLOBAL INPUT --------

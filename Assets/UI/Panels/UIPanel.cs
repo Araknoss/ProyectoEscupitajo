@@ -2,9 +2,13 @@
 
 using Rewired;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public abstract class UIPanel : MonoBehaviour
 {
+    [Header("Navigation")]
+    [SerializeField] protected GameObject defaultSelected;
+    protected GameObject lastSelected;
     public bool IsVisible { get; private set; }    
 
     protected virtual void Awake()
@@ -43,4 +47,24 @@ public abstract class UIPanel : MonoBehaviour
     }
 
     public virtual bool CanGoBack => true;
+
+    public virtual void RestoreFocus()
+    {
+        GameObject target =
+        lastSelected != null
+        ? lastSelected
+        : defaultSelected;
+
+        if (target == null)
+            return;
+
+        EventSystem.current.SetSelectedGameObject(null);
+
+        EventSystem.current.SetSelectedGameObject(target);
+    }
+
+    public virtual void CacheSelection()
+    {
+        lastSelected = EventSystem.current.currentSelectedGameObject;
+    }
 }
