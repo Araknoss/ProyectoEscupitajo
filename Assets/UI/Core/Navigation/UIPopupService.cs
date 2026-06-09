@@ -34,6 +34,11 @@ public class UIPopupService
         if (popupStack.Count == 0)
             return;
 
+        UIPopup current = popupStack.Peek();
+
+        if (!current.CanGoBack)
+            return;
+
         UIPopup popup = popupStack.Pop();
 
         popup.Hide();

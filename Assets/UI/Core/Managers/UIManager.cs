@@ -68,6 +68,8 @@ public class UIManager : MonoBehaviour
             CurrentScreen?.CacheSelection();
 
             popupService.Show(popup);
+
+            Debug.Log("OPEN POPUP: " + popup.name);
         }
     }
     public void Open(UIScreen screen)
@@ -174,6 +176,10 @@ public class UIManager : MonoBehaviour
         OpenPopup<UIQuitPopup>();
     }
 
+    public void HandleOnDeath(Component sender, object data)
+    {
+        OpenPopup<UIDeathPopup>();
+    }
     public void Quit()
     {
         Application.Quit();

@@ -13,8 +13,8 @@ public class UIMainMenuScreen : UIScreen
     [SerializeField] private Button shopButton;
     [SerializeField] private Button quitButton;
 
-    [Header("Default Selection")]
-    [SerializeField] private GameObject defaultSelected;
+    //[Header("Default Selection")]
+    //[SerializeField] private GameObject defaultSelected;
 
     [Header("Game Events")]
     [SerializeField] private GameEvent playEvent;

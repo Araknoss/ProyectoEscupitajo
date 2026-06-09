@@ -83,7 +83,7 @@ public class TutorialManager : MonoBehaviour
             onFourthTutorialStepCompleted.Invoke();
         }
 
-        Debug.Log($"Completed step {currentStepIndex}");
+
     }
 
 }

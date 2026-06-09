@@ -14,26 +14,30 @@ public class LoadScene : MonoBehaviour
 
     [SerializeField] private bool mainMenu = false;
 
+    [SerializeField] private Animator transitionAnimator;
+
     private void Start()
     {
         rewiredPlayer = ReInput.players.GetPlayer(playerId);
     }
     private void Update()
     {
+#if UNITY_EDITOR
         if(rewiredPlayer.GetButtonDown("Restart") && !mainMenu)
         {
             ResetLevel();
         }
-    }    
+#endif
+    }
     public void ResetLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LoadByIndexAfterDelay(SceneManager.GetActiveScene().buildIndex);        
     }
 
     public void LoadNextLevel()
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex);
+        LoadByIndexAfterDelay(nextSceneIndex);
     }
     public void LoadByIndexAfterDelay(int sceneIndex)
     {
@@ -42,6 +46,10 @@ public class LoadScene : MonoBehaviour
     }
     private IEnumerator LoadSceneAfterDelayCo(int sceneIndex)
     {
+        if(transitionAnimator != null)
+        {
+            transitionAnimator.SetTrigger("Out");
+        }              
         yield return new WaitForSecondsRealtime(delayDuration);
         SceneManager.LoadScene(sceneIndex);
     }
