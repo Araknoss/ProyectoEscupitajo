@@ -15,6 +15,7 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     [SerializeField] private RuntimeAnimatorController lockedAnimator;
     [SerializeField] private Image unknownImage;
     public bool isLocked = true;    
+    private bool isUnknown = false;
 
     [Header("Trick Info")]  
     public Trick shopTrickSO;    
@@ -30,9 +31,9 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
         shopTrickSO = trick;
         if (shopTrickSO == null) //Para cuando no haya truco asignado, como en los espacios vacíos de la tienda
         {
-            SetNull();
-            button.interactable = false;
-            return;
+            //SetNull();
+            //button.interactable = false;
+            //return;
         }
         else
         {
@@ -78,7 +79,8 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     private void SetLocked(bool trickLocked)
     {
         //button.interactable = !isLocked;
-        isLocked=trickLocked;
+        isUnknown = false;
+        isLocked =trickLocked;
         if (trickLocked)
         {            
             trickImage.color = lockedColor;
@@ -108,7 +110,8 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
         trickPriceText.gameObject.SetActive(false);
         animator.runtimeAnimatorController = lockedAnimator;
         unknownImage.gameObject.SetActive(true);       
-        button.interactable = false;
+        isUnknown = true;
+        //button.interactable = false;
     }
 
     private void SetNull()
@@ -137,8 +140,13 @@ public class ShopTrick : MonoBehaviour, IPointerEnterHandler, ISelectHandler
         TriggerEvent();
     }  
     private void TriggerEvent()
-    {        
+    {
         //Debug.Log("Selected trick: " + shopTrickSO.trickName);
+        if (isUnknown)
+        {
+            onShopTrickSelected.Raise(this, null);
+             return;
+        }
         onShopTrickSelected.Raise(this, shopTrickSO);
       
     }

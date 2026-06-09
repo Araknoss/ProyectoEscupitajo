@@ -21,6 +21,8 @@ public class GoldManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        onGoldUpdate.Raise(this, gold);
     }
     public void AddGold(int amount)
     {
@@ -38,4 +40,14 @@ public class GoldManager : MonoBehaviour
         int amount = (int)data;
         AddGold(amount);
     }
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            AddGold(100);
+        }
+    }
+#endif
 }

@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: 09Ok
+  m_Name: 41O
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: a3b0c1387bb89ec48a2a6cad3f604775, type: 3}
-  id: 9
-  animationClip: {fileID: 7400000, guid: aebb31a7e57522c47b1786c64fc3d0c5, type: 2}
+  sprite: {fileID: 21300000, guid: 8e4bd09a1227b2c40b7fd07c7b292b9b, type: 3}
+  id: 41
+  animationClip: {fileID: 7400000, guid: bab85d07c1a53c0458391d83813a3261, type: 2}
   uiClip: {fileID: 0}
-  trickName: Ok
+  trickName: Cagaste
   baseScore: 500
-  hardness: 3
+  hardness: 4
   comboTricks:
   - {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}
-  - {fileID: 11400000, guid: 2b0f5ea0ca30b744782aed5234304b60, type: 2}
+  - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
   inputKey: 107
   rewiredActionId: 3
-  listenInputTime: 2.5
+  listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 0
-  isUnlockedAtStart: 1
+  isUnlockedAtStart: 0
   isKeepTrick: 0
   cost: 100

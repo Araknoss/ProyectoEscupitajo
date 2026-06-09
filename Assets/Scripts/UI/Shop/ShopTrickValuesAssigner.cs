@@ -26,6 +26,11 @@ public class ShopTrickValuesAssigner : MonoBehaviour
     [SerializeField] private Color lockedColor;
     [SerializeField] private Color unlockedColor = Color.white;
 
+    [Header("UnknownVariables")]
+    [SerializeField] private string unknownName = "???";
+    [SerializeField] private Sprite unknownSprite;
+
+
     private void OnEnable()
     {
         AssignValues(this, initialTrick);
@@ -72,6 +77,27 @@ public class ShopTrickValuesAssigner : MonoBehaviour
                 SetBuyButtonActive(true);
             }
         }
+        else
+        {
+            actualTrick = null;
+
+            if (trickNameText != null)
+                trickNameText.text = unknownName;
+
+            if (trickPriceText != null)
+                trickPriceText.text = string.Empty;
+
+            if (trickSprite != null)
+                trickSprite.sprite = unknownSprite;
+
+            if (trickBaseScoreText != null)
+                trickBaseScoreText.text = string.Empty;
+
+            if (trickHardnessText != null)
+                trickHardnessText.text = string.Empty;
+
+            SetBuyButtonActive(false);
+        }
     }
 
     public void SetBuyButtonActive(bool isActive)
@@ -101,8 +127,7 @@ public class ShopTrickValuesAssigner : MonoBehaviour
             }
         }
         else
-        {
-                      
+        {                      
             if (onCantBuyTrick != null)
                 onCantBuyTrick.Raise(this, actualTrick);
         }

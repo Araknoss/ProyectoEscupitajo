@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: 20Pataanormal
+  m_Name: 212Adan
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 6449591c4e461b646a46e664bb481bbf, type: 3}
-  id: 201
-  animationClip: {fileID: 7400000, guid: 77267ef159fd0134d937a9703affd056, type: 2}
+  sprite: {fileID: 21300000, guid: a1f1841859b47964da4f13b224494709, type: 3}
+  id: 212
+  animationClip: {fileID: 7400000, guid: 25a45bc4e004a9b4987f8a1d6a50fbe8, type: 2}
   uiClip: {fileID: 0}
-  trickName: Pataanormal
-  baseScore: 10
+  trickName: Adan
+  baseScore: 75
   hardness: 1
   comboTricks:
-  - {fileID: 11400000, guid: 2afa0fdd44f41b442a4781f76cfceaa5, type: 2}
-  - {fileID: 11400000, guid: 60121bb6d0fc0224aa1348bfb29c611b, type: 2}
+  - {fileID: 11400000, guid: 7aae292c755b568499d162118cfb3608, type: 2}
+  - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
   inputKey: 107
   rewiredActionId: 3
   listenInputTime: 1.5

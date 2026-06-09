@@ -10,23 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: 52WallJump
+  m_Name: 112WallCharge
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 1271ab3e4917a904bbc5b4e8bc17af49, type: 3}
-  id: 52
+  sprite: {fileID: 21300000, guid: 2b67174adc73c074bb5443b19f492b28, type: 3}
+  id: 112
   animationClip: {fileID: 0}
   uiClip: {fileID: 0}
-  trickName: Wall Jump
-  baseScore: 250
-  hardness: 3
+  trickName: Wall Charge
+  baseScore: 20
+  hardness: 0
   comboTricks:
-  - {fileID: 11400000, guid: 0d668943736418748bd14aa828dfe101, type: 2}
-  - {fileID: 11400000, guid: 331ecc2608e8082439be2d553726e2d1, type: 2}
+  - {fileID: 11400000, guid: d91cba3fefa56e04fac53b027afc7474, type: 2}
   inputKey: 32
   rewiredActionId: 4
   listenInputTime: 1
   comboEnder: 0
   isStateTrick: 1
-  isUnlockedAtStart: 1
-  isKeepTrick: 0
+  isUnlockedAtStart: 0
+  isKeepTrick: 1
   cost: 100

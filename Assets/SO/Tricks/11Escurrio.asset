@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: 54Mototruco
+  m_Name: 11Escurrio
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 1271ab3e4917a904bbc5b4e8bc17af49, type: 3}
-  id: 54
-  animationClip: {fileID: 7400000, guid: 155c237e92c003641b7bc1a2c0fb88ca, type: 2}
+  sprite: {fileID: 21300000, guid: 9f1397f0d039faa41a156bb018211180, type: 3}
+  id: 11
+  animationClip: {fileID: 7400000, guid: ca13127205f21ad47a4fbe95a9a192c4, type: 2}
   uiClip: {fileID: 0}
-  trickName: Mototruco
-  baseScore: 300
+  trickName: Escurrio
+  baseScore: 200
   hardness: 1
   comboTricks:
-  - {fileID: 11400000, guid: 8c19680f264561e4f9838e5f7d1def35, type: 2}
+  - {fileID: 11400000, guid: 9b7cda8cfeead3841a945ffcb4674c2a, type: 2}
   - {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}
-  inputKey: 107
-  rewiredActionId: 3
-  listenInputTime: 1
+  - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
+  inputKey: 106
+  rewiredActionId: 2
+  listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 0
   isUnlockedAtStart: 1

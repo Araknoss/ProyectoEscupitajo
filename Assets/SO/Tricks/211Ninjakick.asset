@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: 04Webos
+  m_Name: 211Ninjakick
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 1c0978da47f66414caa81749bf02b0a8, type: 3}
-  id: 4
-  animationClip: {fileID: 7400000, guid: f242517a4697ab947bf66caaa01646e1, type: 2}
+  sprite: {fileID: 21300000, guid: dbe2c73bf910de34282f9cfdc30f98ab, type: 3}
+  id: 211
+  animationClip: {fileID: 7400000, guid: 02265f97c36428c43a43d6d686ac7403, type: 2}
   uiClip: {fileID: 0}
-  trickName: Webos
-  baseScore: 350
-  hardness: 2
+  trickName: Ninjakick
+  baseScore: 50
+  hardness: 1
   comboTricks:
-  - {fileID: 11400000, guid: 3f8d5f2f5ffdf724b9d7f3fb469ef6e7, type: 2}
-  - {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}
+  - {fileID: 11400000, guid: 7aae292c755b568499d162118cfb3608, type: 2}
+  - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
   inputKey: 106
   rewiredActionId: 2
   listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 0
-  isUnlockedAtStart: 1
+  isUnlockedAtStart: 0
   isKeepTrick: 0
   cost: 100

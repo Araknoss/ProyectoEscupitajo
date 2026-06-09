@@ -23282,7 +23282,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5e5b9b39c7826564783283df68b9bf9f, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -44006,7 +44006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20bde853ab19084285206e80e32444d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayDuration: 0.5
+  delayDuration: 1
   playerId: 0
   mainMenu: 0
   transitionAnimator: {fileID: 663145100}

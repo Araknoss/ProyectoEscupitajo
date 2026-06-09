@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: 02Despaldas
+  m_Name: 101WallSlide
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: f03ddde3a739415459a9f151fb988027, type: 3}
-  id: 2
-  animationClip: {fileID: 7400000, guid: 79f8f665dab183a4ba2ed1ea2078087c, type: 2}
+  sprite: {fileID: 21300000, guid: 0cbc8c85d928d41479617673810055f8, type: 3}
+  id: 101
+  animationClip: {fileID: 0}
   uiClip: {fileID: 0}
-  trickName: Despaldas
-  baseScore: 400
-  hardness: 1
+  trickName: Wall Slide
+  baseScore: 5
+  hardness: 0
   comboTricks:
-  - {fileID: 11400000, guid: e2d537cecde11a149b1d973e46f893b7, type: 2}
-  - {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}
-  inputKey: 107
-  rewiredActionId: 3
+  - {fileID: 11400000, guid: 8c19680f264561e4f9838e5f7d1def35, type: 2}
+  - {fileID: 11400000, guid: fcb4e38858e7b5d4f8a916a757886a7c, type: 2}
+  inputKey: 0
+  rewiredActionId: 0
   listenInputTime: 1.5
   comboEnder: 0
-  isStateTrick: 0
+  isStateTrick: 1
   isUnlockedAtStart: 1
-  isKeepTrick: 0
+  isKeepTrick: 1
   cost: 100

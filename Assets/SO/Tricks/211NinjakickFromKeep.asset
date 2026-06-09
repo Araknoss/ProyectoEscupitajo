@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: 53Rompespaldas
+  m_Name: 211NinjakickFromKeep
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: abae497dcdd46d143afa19b89a81683d, type: 3}
-  id: 53
-  animationClip: {fileID: 7400000, guid: 6df55de536afd934e9f06c207b07d4de, type: 2}
+  sprite: {fileID: 21300000, guid: dbe2c73bf910de34282f9cfdc30f98ab, type: 3}
+  id: 211
+  animationClip: {fileID: 7400000, guid: 02265f97c36428c43a43d6d686ac7403, type: 2}
   uiClip: {fileID: 0}
-  trickName: Rompespaldas
-  baseScore: 150
+  trickName: Ninjakick
+  baseScore: 50
   hardness: 1
   comboTricks:
-  - {fileID: 11400000, guid: 331ecc2608e8082439be2d553726e2d1, type: 2}
+  - {fileID: 11400000, guid: 7aae292c755b568499d162118cfb3608, type: 2}
   - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
-  inputKey: 106
-  rewiredActionId: 2
-  listenInputTime: 1
+  inputKey: 32
+  rewiredActionId: 4
+  listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 0
-  isUnlockedAtStart: 1
+  isUnlockedAtStart: 0
   isKeepTrick: 0
   cost: 100

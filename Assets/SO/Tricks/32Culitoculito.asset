@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: 21Adan
+  m_Name: 32Culitoculito
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: a1f1841859b47964da4f13b224494709, type: 3}
-  id: 111
-  animationClip: {fileID: 7400000, guid: 25a45bc4e004a9b4987f8a1d6a50fbe8, type: 2}
+  sprite: {fileID: 21300000, guid: 4d52a199a68d60c42a2c00f60c77de79, type: 3}
+  id: 32
+  animationClip: {fileID: 7400000, guid: cd506e6297d4bad42918b7317907902f, type: 2}
   uiClip: {fileID: 0}
-  trickName: Adan
-  baseScore: 75
-  hardness: 1
+  trickName: Culitoculito
+  baseScore: 250
+  hardness: 2
   comboTricks:
-  - {fileID: 11400000, guid: 7aae292c755b568499d162118cfb3608, type: 2}
+  - {fileID: 11400000, guid: dfb5cea8c07a3be46a4d651df7ebce79, type: 2}
   - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
-  inputKey: 107
-  rewiredActionId: 3
+  inputKey: 106
+  rewiredActionId: 2
   listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 0
-  isUnlockedAtStart: 1
+  isUnlockedAtStart: 0
   isKeepTrick: 0
   cost: 100

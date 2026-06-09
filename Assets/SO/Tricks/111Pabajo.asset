@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35a0ef4ac9f27146a7bb1b5d213c37f, type: 3}
-  m_Name: 03Beyblade
+  m_Name: 111Pabajo
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 2c3ff5f297d1d064aa2266d6fcb3c53e, type: 3}
-  id: 3
-  animationClip: {fileID: 7400000, guid: f13b12ae99a5ead489cd243a5b23792d, type: 2}
+  sprite: {fileID: 21300000, guid: dbf3e04131192d6439d58352bb259253, type: 3}
+  id: 111
+  animationClip: {fileID: 7400000, guid: 10c2e05fcf781ad4eb7e43b36212b728, type: 2}
   uiClip: {fileID: 0}
-  trickName: Beyblade
-  baseScore: 7
-  hardness: 0
+  trickName: Pabajo
+  baseScore: 100
+  hardness: 1
   comboTricks:
-  - {fileID: 11400000, guid: f3adc3b1323e2bf49b2ca4663e7744de, type: 2}
-  inputKey: 32
-  rewiredActionId: 4
+  - {fileID: 11400000, guid: 0d668943736418748bd14aa828dfe101, type: 2}
+  inputKey: 106
+  rewiredActionId: 2
   listenInputTime: 1.5
   comboEnder: 0
   isStateTrick: 0
   isUnlockedAtStart: 1
-  isKeepTrick: 1
+  isKeepTrick: 0
   cost: 100

@@ -138,6 +138,11 @@ public class TrickManager : MonoBehaviour
         if(keepInputRelease && onKeepTrick)
         {
             onKeepTrick = false;
+            if (!UnlockablesManager.Instance.HasUnlockedTrick(availableTricks[0]))
+            {
+                PerformTrick(baseTricks[1]); 
+                return;
+            }
             PerformTrick(availableTricks[0]); //Se asume que solo hay un truco al soltar           
         }
     }

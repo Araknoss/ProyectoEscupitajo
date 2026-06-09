@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   treeName: Extreme
   tricksInTree:
-  - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
-  - {fileID: 11400000, guid: 5d5ed182f38f5df4e9756e526242f51b, type: 2}
-  - {fileID: 11400000, guid: 2de7971ab1fe4774ca6fb796e3146b3f, type: 2}
-  - {fileID: 11400000, guid: 9b7cda8cfeead3841a945ffcb4674c2a, type: 2}
-  - {fileID: 11400000, guid: e2d537cecde11a149b1d973e46f893b7, type: 2}
-  - {fileID: 11400000, guid: 3f8d5f2f5ffdf724b9d7f3fb469ef6e7, type: 2}
-  - {fileID: 11400000, guid: dfb5cea8c07a3be46a4d651df7ebce79, type: 2}
+  - {fileID: 11400000, guid: 092014038f6a9a04fba3be37af755bfa, type: 2}
+  - {fileID: 11400000, guid: 60121bb6d0fc0224aa1348bfb29c611b, type: 2}
+  - {fileID: 11400000, guid: 2afa0fdd44f41b442a4781f76cfceaa5, type: 2}
+  - {fileID: 11400000, guid: 7aae292c755b568499d162118cfb3608, type: 2}
+  - {fileID: 11400000, guid: 89bfba1cbc9e53d4c92ef82c9e498f5e, type: 2}
+  - {fileID: 11400000, guid: 2b0f5ea0ca30b744782aed5234304b60, type: 2}

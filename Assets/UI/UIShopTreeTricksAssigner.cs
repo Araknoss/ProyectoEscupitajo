@@ -31,6 +31,7 @@ public class UIShopTreeTricksAssigner : MonoBehaviour
 
         for (int i = 0; i < childrenShopTrick.Count; i++)
         {
+
             if (childrenShopTrick != null && i < newTricks.Count)
             {
                 childrenShopTrick[i].InitializeTrick(newTricks[i]);
