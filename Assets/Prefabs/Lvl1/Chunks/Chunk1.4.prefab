@@ -324,6 +324,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1288111954683872000}
     m_Modifications:
+    - target: {fileID: 2514357205972633303, guid: 9b4db3389c0f4914b8bfd16444a1f6c3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5866861670580579230, guid: 9b4db3389c0f4914b8bfd16444a1f6c3, type: 3}
       propertyPath: m_Name
       value: 500x100 (2)

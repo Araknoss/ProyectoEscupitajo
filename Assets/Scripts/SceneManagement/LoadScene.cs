@@ -46,8 +46,10 @@ public class LoadScene : MonoBehaviour
     }
     private IEnumerator LoadSceneAfterDelayCo(int sceneIndex)
     {
-        if(transitionAnimator != null)
+        DataPersistenceManager.Instance.SaveGame(); // Guardamos el progreso antes de cargar la nueva escena
+        if (transitionAnimator != null)
         {
+            transitionAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
             transitionAnimator.SetTrigger("Out");
         }              
         yield return new WaitForSecondsRealtime(delayDuration);

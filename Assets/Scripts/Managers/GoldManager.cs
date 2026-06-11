@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldManager : MonoBehaviour
+public class GoldManager : MonoBehaviour, IDataPersistence
 {
     public static GoldManager Instance;
 
     public int gold;
     public GameEvent onGoldUpdate;
-    [SerializeField] private int goldConversion;
+    [SerializeField] private int goldConversion = 100;
+    public int goldFromScore; 
 
     private void Awake()
     {
@@ -28,6 +29,14 @@ public class GoldManager : MonoBehaviour
     {
         gold += amount;
         onGoldUpdate.Raise(this, gold);
+    }
+    public void AddGoldFromScore(int score)
+    {
+        int goldToAdd = score / goldConversion;
+        Debug.Log("Adding " + goldToAdd + " gold from score: " + score);
+
+        goldFromScore = goldToAdd; //Para mostrarlo en UI
+        AddGold(goldToAdd);
     }
     public void Buy(int price)
     {
@@ -50,4 +59,16 @@ public class GoldManager : MonoBehaviour
         }
     }
 #endif
+
+    public void LoadData(GameData data)
+    {
+        gold = data.gold;
+        onGoldUpdate.Raise(this, gold);
+        Debug.Log("Gold loaded: " + gold);
+    }
+    public void SaveData(GameData data)
+    {
+        data.gold = gold;
+        Debug.Log("Gold saved: " + gold);
+    }
 }

@@ -32,27 +32,41 @@ public class DataPersistenceManager : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
+        //SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            NewGame();
+        }        
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        //SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
     }  
-    private void OnSceneUnloaded(Scene scene)
-    {
-        SaveGame();
-    }
+    //private void OnSceneUnloaded(Scene scene)
+    //{
+    //    Debug.Log("Scene unloaded: " + scene.name + ". Saving game data.");
+    //    SaveGame();
+    //}
     public void NewGame()
     {
         dataHandler.Delete(); 
         this.gameData = new GameData();
+
+        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+        {
+            dataPersistenceObj.LoadData(gameData);
+        }
     }
     public void LoadGame()
     {

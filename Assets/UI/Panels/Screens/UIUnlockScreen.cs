@@ -17,10 +17,7 @@ public class UIUnlockScreen : UIScreen
     [SerializeField] private Image trickImage;
 
     [Header("Feedback")]
-    [SerializeField] private MMF_Player unlockFeedback;
-
-    [Header("Default Selection")]
-    [SerializeField] private GameObject defaultSelected;
+    [SerializeField] private MMF_Player unlockFeedback;   
 
     [Header("Game Events")]
     [SerializeField] private GameEvent backEvent;

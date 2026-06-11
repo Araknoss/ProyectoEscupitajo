@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour, IDataPersistence
+public class ScoreManager : MonoBehaviour/*, IDataPersistence*/
 {
     [Header("Score")]
     public int score;
@@ -26,10 +26,10 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     [SerializeField] private List<int> multiplierValues = new List<int>();
 
 
-    [Header("Gold")]
-    public int gold;
-    public GameEvent onGoldUpdate;
-    [SerializeField] private int goldConversion; 
+    //[Header("Gold")]
+    //public int gold;
+    //public GameEvent onGoldUpdate;
+    //[SerializeField] private int goldConversion; 
 
     void Start()
     {        
@@ -39,7 +39,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
 
     void Update()
     {
-        //HandlePassiveScore();
+        HandlePassiveScore();
     }
 
     private void InitializeMultiplier()
@@ -136,56 +136,45 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void Buy(int price)
-    {
-        gold -= price;
-        onGoldUpdate.Raise(this, gold);
-    }
-
-    public void AddGold(int amount)
-    {
-        gold += amount;
-        onGoldUpdate.Raise(this, gold);
-    }
-
-    public void OnAddGold(Component sender, object data) //Para el menu principal, usa para añadir oro al hacer click en un botón de recompensa
-    {
-        if (data is not int) return;
-        int amount = (int)data;
-        AddGold(amount);
-    }   
+    //public void Buy(int price)
+    //{
+    //    gold -= price;
+    //    onGoldUpdate.Raise(this, gold);
+    //}   
 
     public void OnPlayerDeath(Component sender, object data)
     {
+        if(GoldManager.Instance == null) return;
+        GoldManager.Instance.AddGoldFromScore(score);
         //StartCoroutine(ScoreToGoldCo()); //Desactivado para la demo
     }
 
-    IEnumerator ScoreToGoldCo()
-    {
-        /*int goldEarned = score / goldConversion; */// Ejemplo: cada 10 puntos de score se convierte en 1 de oro
+    //IEnumerator ScoreToGoldCo()
+    //{
+    //    /*int goldEarned = score / goldConversion; */// Ejemplo: cada 10 puntos de score se convierte en 1 de oro
 
-        int scoreToConvert = score;        
-        while (scoreToConvert > 0)
-        {
-            AddGold(1);
-            scoreToConvert -= goldConversion;
-            SetScore(scoreToConvert);
-            yield return new WaitForSecondsRealtime(0.1f); // Pequeña pausa para el efecto visual
-        }
-        yield return null;
-    }
-    public void LoadData(GameData data)
-    {        
-        this.gold = data.gold;
-        onScoreUpdate.Raise(this, score);
-        onGoldUpdate.Raise(this, gold);
-        Debug.Log("Loaded gold: " + data.gold);
-    }
+    //    int scoreToConvert = score;        
+    //    while (scoreToConvert > 0)
+    //    {
+    //        AddGold(1);
+    //        scoreToConvert -= goldConversion;
+    //        SetScore(scoreToConvert);
+    //        yield return new WaitForSecondsRealtime(0.1f); // Pequeña pausa para el efecto visual
+    //    }
+    //    yield return null;
+    //}
+    //public void LoadData(GameData data)
+    //{        
+    //    this.gold = data.gold;
+    //    onScoreUpdate.Raise(this, score);
+    //    onGoldUpdate.Raise(this, gold);
+    //    Debug.Log("Loaded gold: " + data.gold);
+    //}
 
-    public void SaveData(/*ref*/ GameData data)
-    {
-        data.gold = this.gold;
-        Debug.Log("Saved gold: " + data.gold);
-    }
+    //public void SaveData(/*ref*/ GameData data)
+    //{
+    //    data.gold = this.gold;
+    //    Debug.Log("Saved gold: " + data.gold);
+    //}
 
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TutorialManager : MonoBehaviour
+public class TutorialManager : MonoBehaviour, IDataPersistence
 {
     [SerializeField]
     private List<TutorialStep> steps;
@@ -11,14 +11,23 @@ public class TutorialManager : MonoBehaviour
 
     public TutorialStep CurrentStep;
 
+    [SerializeField] UnityEvent onTutorialStart;
     [SerializeField] UnityEvent onFirstTutorialStepCompleted;
     [SerializeField] UnityEvent onSecondTutorialStepCompleted;
     [SerializeField] UnityEvent onThirdTutorialStepCompleted;
     [SerializeField] UnityEvent onFourthTutorialStepCompleted;
     [SerializeField] UnityEvent onTutorialCompleted;
 
+    private bool tutorialCompleted = false;
+
     private void Start()
     {
+        if(tutorialCompleted)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        onTutorialStart.Invoke();
         currentStepIndex = 0;
         CurrentStep = steps[currentStepIndex];
         StartStep(0);
@@ -61,6 +70,7 @@ public class TutorialManager : MonoBehaviour
     private void FinishTutorial()
     {
         onTutorialCompleted.Invoke();
+        tutorialCompleted = true;
         Debug.Log("Tutorial Complete");
     }
 
@@ -84,6 +94,15 @@ public class TutorialManager : MonoBehaviour
         }
 
 
+    }
+
+    public void LoadData(GameData data)
+    {
+        tutorialCompleted = data.tutorialCompleted;
+    }
+    public void SaveData(GameData data)
+    {
+        data.tutorialCompleted = tutorialCompleted;
     }
 
 }

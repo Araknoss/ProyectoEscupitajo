@@ -1,35 +1,49 @@
+using DG.Tweening;
 using Rewired;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GlyphButtonFeedback : MonoBehaviour
 {
-    [SerializeField] private int playerId = 0;
-    [SerializeField] private string actionName = "Jump";
+    [SerializeField] private RectTransform target;
+    [SerializeField] private Image image;
 
-    private Player player;
+    [SerializeField] private float pressedScale = 0.9f;
+    [SerializeField] private float duration = 0.08f;
 
-    private Vector3 normalScale;
-    private bool wasPressed;
+    private Vector3 originalScale;
+    private Color originalColor;
 
     private void Awake()
     {
-        player = ReInput.players.GetPlayer(playerId);
-        normalScale = transform.localScale;
+        originalScale = target.localScale;
+
+        if (image != null)
+            originalColor = image.color;
     }
 
-    private void Update()
+    private void Start()
     {
-        bool pressed = player.GetButton(actionName);
+        target.DOScale(1.08f, 0.6f)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine)
+            .SetUpdate(true);
+    }
 
-        if (pressed && !wasPressed)
-        {
-            transform.localScale = normalScale * 0.85f;
-        }
-        else if (!pressed && wasPressed)
-        {
-            transform.localScale = normalScale;
-        }
+    public void Press()
+    {
+        target.DOKill();
 
-        wasPressed = pressed;
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(target.DOScale(pressedScale, duration));
+
+        if (image != null)
+            seq.Join(image.DOFade(0.7f, duration));
+
+        seq.Append(target.DOScale(originalScale, duration));
+
+        if (image != null)
+            seq.Join(image.DOFade(1f, duration));
     }
 }

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: 0
   onGoldUpdate: {fileID: 11400000, guid: 4c5e054561dab0e4ba2c9123d5255e96, type: 2}
-  goldConversion: 0
+  goldConversion: 100
 --- !u!114 &785971255348227750
 MonoBehaviour:
   m_ObjectHideFlags: 0

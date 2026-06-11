@@ -48,7 +48,7 @@ MonoBehaviour:
   attackSound: {fileID: 7510897657538724358}
   animationClip: {fileID: 7400000, guid: 7e6d7917074a4e84bbd1f99ea3cb4ac9, type: 2}
   detectedClip: {fileID: 7400000, guid: 41826e8e0deb65e478892f0938bbfb4d, type: 2}
-  attackDelay: 1
+  attackDelay: 0.3
   attackDuration: 1.5
   movementSpeed: 20
   attackTrigger: {fileID: 3419424166599366618}

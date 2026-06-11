@@ -21,7 +21,6 @@ MonoBehaviour:
   hardness: 2
   comboTricks:
   - {fileID: 11400000, guid: 89bfba1cbc9e53d4c92ef82c9e498f5e, type: 2}
-  - {fileID: 11400000, guid: 414bc8567c73e694c98e63fd1f684a84, type: 2}
   inputKey: 107
   rewiredActionId: 3
   listenInputTime: 1.5

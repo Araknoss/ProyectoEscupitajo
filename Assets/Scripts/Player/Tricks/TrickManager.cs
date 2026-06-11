@@ -63,7 +63,7 @@ public class TrickManager : MonoBehaviour
     [SerializeField] private Trick wallSlideTrick;
     [SerializeField] private Trick wallJumpTrick;
     [SerializeField] private Trick wallChargeTrick;
-    [SerializeField] private float wallScoreTime = 0.1f;
+    //[SerializeField] private float wallScoreTime = 0.1f;
     public bool isOnWall=false;
     private bool isOnWallSlide=false;
     //private bool isOnWallCharge=false;
@@ -163,15 +163,15 @@ public class TrickManager : MonoBehaviour
             }
 
             //Cuando no hay truco disponible se usa uno de los trucos base
-            for (int i = 0; i < baseTricks.Count; i++)
-            {
-                if (baseTricks[i].rewiredActionId == actionId)
-                {
-                    PerformTrick(baseTricks[i]);
-                    return;
-                }
+            //for (int i = 0; i < baseTricks.Count; i++)
+            //{
+            //    if (baseTricks[i].rewiredActionId == actionId)
+            //    {
+            //        PerformTrick(baseTricks[i]);
+            //        return;
+            //    }
 
-            }
+            //}
         }
     }    
     void HandleTrickCooldown()
