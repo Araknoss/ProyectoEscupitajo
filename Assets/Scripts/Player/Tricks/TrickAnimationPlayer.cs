@@ -25,5 +25,13 @@ public class TrickAnimationPlayer : MonoBehaviour
     {
         animator.SetBool("PerformingTrick", false);
     }
+
+    public void HandleOnPlayerDeath(Component sender, object data)
+    {        
+        animator.SetBool("Idle", false);
+        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        animator.SetTrigger("Death");
+        Debug.Log("Player Death Animation Triggered");
+    }
 }
 

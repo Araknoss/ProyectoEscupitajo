@@ -85,6 +85,7 @@ public class UIDeathPopup : UIPopup
         // Mostrar score inicial       
         coinsText.text = "0";
 
+        yield return new WaitForSecondsRealtime(1f);
         // Animación de entrada
         if (popupIntroFeedback != null)
         {

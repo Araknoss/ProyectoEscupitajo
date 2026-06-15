@@ -257,6 +257,10 @@ public class TrickManager : MonoBehaviour
         {
             onKeepTrick = true;
         }
+        if(isOnWallSlide && trick != wallSlideTrick)
+        {
+            WallSlideEnd();
+        }
     }  
     
     void PerformWallSlideTrick() //Se ejecuta al entrar en contacto con la pared 1 vez
