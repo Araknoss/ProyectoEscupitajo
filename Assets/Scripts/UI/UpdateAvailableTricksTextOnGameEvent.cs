@@ -24,7 +24,7 @@ public class UpdateAvailableTricksTextOnGameEvent : MonoBehaviour
     {
         
     }
-    public void UpdateScoreText(Component sender, object data)
+    public void UpdateText(Component sender, object data)
     {         
             foreach(GameObject child in childrenGameObjects)
             {

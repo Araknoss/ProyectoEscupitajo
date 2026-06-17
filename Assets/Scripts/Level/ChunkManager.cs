@@ -35,6 +35,9 @@ public class ChunkManager : MonoBehaviour
     private bool canSpawn = true;
     public bool demoEnd = false;
 
+    [SerializeField] private bool addRandomness=false;
+    [SerializeField] private float heightSpawnRandomness= 30f;
+    [SerializeField] private float randomSpawnHeight;
     private void Start()
     {
         InitializeCurrentPooler();
@@ -42,12 +45,14 @@ public class ChunkManager : MonoBehaviour
         SpawnChunk();
 
         originalChunkSpeed = chunkSpeed;
+
+        randomSpawnHeight = spawnHeight;
     }
 
     private void Update()
     {
         if (chunk != null &&
-            chunk.transform.position.y >= spawnHeight &&
+            chunk.transform.position.y >= randomSpawnHeight &&
             canSpawn)
         {
             SpawnChunk();
@@ -86,6 +91,11 @@ public class ChunkManager : MonoBehaviour
 
         chunksCount++;
         chunksInCurrentPooler++;
+
+        if(addRandomness)
+        {
+            randomSpawnHeight = Random.Range(spawnHeight - heightSpawnRandomness, spawnHeight + heightSpawnRandomness);           
+        }
     }
 
     private void CheckPoolerTransition()

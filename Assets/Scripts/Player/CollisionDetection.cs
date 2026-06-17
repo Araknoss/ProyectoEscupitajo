@@ -38,6 +38,18 @@ public class CollisionDetection : MonoBehaviour
 #endif
     }
 
+    private void Update()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.F6))
+        {
+            isInvulnerable = !isInvulnerable;
+            toggle.isOn = isInvulnerable;
+            Debug.Log("Invulnerability toggled: " + isInvulnerable);
+        }
+#endif
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Obstacle") && !isInvulnerable)

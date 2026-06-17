@@ -49,13 +49,6 @@ public class UnlockablesManager : MonoBehaviour, IDataPersistence
         }        
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.U)) // Solo para pruebas, eliminar después
-        {
-            DeleteTricksUnlockedData(); // Desbloquea el truco con ID 1 para pruebas
-        }
-    }
     public void DeleteTricksUnlockedData()
     {
         unlockedTricks.Clear();        
