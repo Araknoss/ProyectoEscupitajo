@@ -25,6 +25,7 @@ public class UIDeathPopup : UIPopup
     [Header("Feedbacks")]
     [SerializeField] private MMF_Player popupIntroFeedback;
     [SerializeField] private MMF_Player buttonsAppearFeedback;
+    [SerializeField] private MMF_Player scoreToCoinsFeedback;
 
     [Header("Game Events")]
     [SerializeField] private GameEvent quitEvent;
@@ -130,9 +131,17 @@ public class UIDeathPopup : UIPopup
 
             coinsText.text = displayedCoins.ToString();
 
+            PlayScoreToCoinsFeedback();
+
             yield return null;
         }
 
         coinsText.text = targetCoins.ToString();
+    }
+
+    private void PlayScoreToCoinsFeedback()
+    {
+        scoreToCoinsFeedback.PlayFeedbacks();
+        AudioManager.Instance.PlayHoverSound();
     }
 }
