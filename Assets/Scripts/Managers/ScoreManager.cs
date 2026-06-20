@@ -57,7 +57,7 @@ public class ScoreManager : MonoBehaviour/*, IDataPersistence*/
         updateTimer += Time.deltaTime;
         if (updateTimer >= updateTime)
         {
-            AddScore(1);
+            AddPassiveScore(1);
             updateTimer = 0f;
         }
     }
@@ -75,7 +75,13 @@ public class ScoreManager : MonoBehaviour/*, IDataPersistence*/
         score += points*multiplierValue;
         onScoreUpdate.Raise(this, score);
     }
-    
+
+    private void AddPassiveScore(int points)
+    {
+        score += points;
+        onScoreUpdate.Raise(this, score);
+    }
+
     private void SetScore(int points)
     {        
         score = Mathf.Clamp(points,0,points);

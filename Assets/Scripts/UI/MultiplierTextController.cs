@@ -1,16 +1,19 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MultiplierTextController : MonoBehaviour
+public class MultiplierTextController : MonoBehaviour, IFeedback
 {
     [SerializeField] private TextMeshProUGUI targetText;
     [SerializeField] private float returnAnimationSpeed = 5f;
     [SerializeField] private string prefix;
 
     [SerializeField] private GameObject background;
-    
+
+    [SerializeField] private MMF_Player feedback;
+
     void Awake()
     {
         targetText.alpha = 0f; // Asegura que el texto comience invisible
@@ -38,8 +41,13 @@ public class MultiplierTextController : MonoBehaviour
                     transform.localScale = Vector3.one * 1.5f; // Aumentar el tamaño del texto
                     string multiplierText = data.ToString() + "x";
                     targetText.text = multiplierText;               
-                
+                    PlayFeedback(); // Reproducir feedback cuando el multiplicador cambia
             }
         }
+    }
+
+    public void PlayFeedback()
+    {
+        feedback?.PlayFeedbacks();
     }
 }
