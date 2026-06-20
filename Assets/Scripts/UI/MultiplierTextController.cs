@@ -49,5 +49,6 @@ public class MultiplierTextController : MonoBehaviour, IFeedback
     public void PlayFeedback()
     {
         feedback?.PlayFeedbacks();
+        AudioManager.Instance.PlayButtonPressSound();
     }
 }
