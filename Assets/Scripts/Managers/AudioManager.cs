@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
     [Header("EventsReferences")]
     [SerializeField] private EventReference UIhoverSound;
     [SerializeField] private EventReference UIpressSound;
+    [SerializeField] private EventReference UIScoreToCoinSound;
 
     void Awake()
     {
@@ -140,7 +141,13 @@ public class AudioManager : MonoBehaviour
         PlaySound2D(UIpressSound);
     }
 
-    
+    public void PlayScoreToCoinSound()
+    {
+        PlaySound2D(UIScoreToCoinSound);
+    }
+
+
+
     //SETTINGS 
 
     public void HandleOnMasterVolumeChanged(Component sender, object data)
