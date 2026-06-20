@@ -69,7 +69,7 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 639167763753249181
+  lastModified: 639149723147317056
   FileSizes: []
   Exists: 1
 --- !u!114 &-2519941880184718122
@@ -114,7 +114,7 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Level.bank
   Name: Level
   StudioPath: bank:/Level
-  lastModified: 639175607197537232
+  lastModified: 639149723146107814
   FileSizes: []
   Exists: 1
 --- !u!114 &-1398797286759354520
@@ -159,7 +159,7 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 639167763753249181
+  lastModified: 639149723146884422
   FileSizes: []
   Exists: 1
 --- !u!114 &-539566147086278526
@@ -226,7 +226,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 1192040155656516333}
   cacheVersion: 131858
-  cacheTime: 639175607197537232
+  cacheTime: 639149723147317056
   SerializableEventsDict:
   - key: event:/MainTheme
     index: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639167763753249181
+  lastModified: 639149723146493254
   FileSizes:
   - Name: 
     Value: 1484
@@ -477,6 +477,6 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639167763753249181
+  lastModified: 639149723146473238
   FileSizes: []
   Exists: 1
