@@ -141,7 +141,6 @@ public class UIDeathPopup : UIPopup
 
     private void PlayScoreToCoinsFeedback()
     {
-        scoreToCoinsFeedback.PlayFeedbacks();
-        AudioManager.Instance.PlayHoverSound();
+        scoreToCoinsFeedback.PlayFeedbacks();        
     }
 }

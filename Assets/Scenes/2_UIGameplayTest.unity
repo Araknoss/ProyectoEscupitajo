@@ -29409,6 +29409,63 @@ MonoBehaviour:
   prefix: x
   background: {fileID: 1798284770}
   feedback: {fileID: 1754551798}
+--- !u!1001 &1004691818
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1981660132391355767, guid: 42e436eec68eeb449808b2c51d60e27b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 235.57402
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981660132391355767, guid: 42e436eec68eeb449808b2c51d60e27b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 171.68799
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981660132391355767, guid: 42e436eec68eeb449808b2c51d60e27b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.2988948
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981660132391355767, guid: 42e436eec68eeb449808b2c51d60e27b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981660132391355767, guid: 42e436eec68eeb449808b2c51d60e27b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981660132391355767, guid: 42e436eec68eeb449808b2c51d60e27b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981660132391355767, guid: 42e436eec68eeb449808b2c51d60e27b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981660132391355767, guid: 42e436eec68eeb449808b2c51d60e27b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981660132391355767, guid: 42e436eec68eeb449808b2c51d60e27b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981660132391355767, guid: 42e436eec68eeb449808b2c51d60e27b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836450095780708518, guid: 42e436eec68eeb449808b2c51d60e27b, type: 3}
+      propertyPath: m_Name
+      value: GoldManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42e436eec68eeb449808b2c51d60e27b, type: 3}
 --- !u!1 &1005831895
 GameObject:
   m_ObjectHideFlags: 0
@@ -34812,7 +34869,7 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - rid: 6994376349768744965
+  - rid: 6049946644159660039
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   StopFeedbacksOnDisable: 0
@@ -34820,12 +34877,12 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6994376349768744965
-      type: {class: MMF_TMPCountTo, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
+    - rid: 6049946644159660039
+      type: {class: MMF_ScaleSpring, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
         Active: 1
-        UniqueID: -2133769265
-        Label: TMP Count To
+        UniqueID: -1990502378
+        Label: Scale Spring
         ChannelMode: 0
         Channel: 0
         MMChannelDefinition: {fileID: 0}
@@ -34894,50 +34951,19 @@ MonoBehaviour:
           ButtonText: 
         Owner: {fileID: 1291837850}
         DebugActive: 0
-        TargetTMPText: {fileID: 657558418}
-        CountFrom: 0
-        CountTo: 10
-        CountingCurve:
-          MMTweenDefinitionType: 1
-          MMTweenCurve: 4
-          Curve:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: 0
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 0.3
-              value: 1
-              inSlope: 0
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 1
-              value: 0
-              inSlope: 0
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-          Initialized: 0
-        Duration: 5
-        Format: 00.00
-        FloorValues: 1
-        MinRefreshFrequency: 0
+        AnimateScaleTarget: {fileID: 657558417}
+        DeclaredDuration: 0
+        DampingX: 0.4
+        FrequencyX: 6
+        DampingY: 0.4
+        FrequencyY: 6
+        DampingZ: 0.4
+        FrequencyZ: 6
+        Mode: 2
+        MoveToScaleMin: {x: 1, y: 1, z: 1}
+        MoveToScaleMax: {x: 2, y: 2, z: 2}
+        BumpScaleMin: {x: 20, y: 20, z: 20}
+        BumpScaleMax: {x: 30, y: 30, z: 30}
 --- !u!1 &1295201962
 GameObject:
   m_ObjectHideFlags: 0
@@ -54383,6 +54409,7 @@ MonoBehaviour:
   coinsText: {fileID: 657558418}
   popupIntroFeedback: {fileID: 635245322}
   buttonsAppearFeedback: {fileID: 144751334}
+  scoreToCoinsFeedback: {fileID: 1291837850}
   quitEvent: {fileID: 11400000, guid: 8a922534ac44d45438e3261acce2c0a2, type: 2}
   retryEvent: {fileID: 11400000, guid: 2d568a5eca9fc334fa05605073534595, type: 2}
   mainMenuEvent: {fileID: 11400000, guid: 3ca81567242d7fc4b979530f625059d1, type: 2}
@@ -60212,6 +60239,7 @@ SceneRoots:
   - {fileID: 7781380486280052892}
   - {fileID: 957606588}
   - {fileID: 1949664882}
+  - {fileID: 1004691818}
   - {fileID: 5178498678594032479}
   - {fileID: 1003317155}
   - {fileID: 935575530}
