@@ -120,6 +120,8 @@ public class UIDeathPopup : UIPopup
         float duration = 1.0f;
         float elapsed = 0f;
 
+        AudioManager.Instance.PlayScoreToCoinSound();
+
         while (elapsed < duration)
         {
             elapsed += Time.unscaledDeltaTime;
@@ -131,16 +133,10 @@ public class UIDeathPopup : UIPopup
 
             coinsText.text = displayedCoins.ToString();
 
-            PlayScoreToCoinsFeedback();
-
             yield return null;
         }
 
         coinsText.text = targetCoins.ToString();
     }
 
-    private void PlayScoreToCoinsFeedback()
-    {
-        scoreToCoinsFeedback.PlayFeedbacks();        
-    }
 }

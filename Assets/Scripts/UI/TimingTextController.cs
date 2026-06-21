@@ -1,4 +1,5 @@
 using DG.Tweening;
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -24,20 +25,24 @@ public class TimingTextController : MonoBehaviour
     [Header("Messages")]
     [SerializeField] private string greatTimingMessage = "Great!";
     [SerializeField] private string perfectTimingMessage = "Perfect!";
+
+    [Header("Feedbacks")]
+    [SerializeField] private MMF_Player greatFeedback;
+    [SerializeField] private MMF_Player perfectFeedback;
     private void Update()
     {
-        timingText.transform.localScale = Vector3.Lerp(timingText.transform.localScale, Vector3.one, Time.deltaTime * returnAnimationSpeed);
+        //timingText.transform.localScale = Vector3.Lerp(timingText.transform.localScale, Vector3.one, Time.deltaTime * returnAnimationSpeed);
 
-        stayTimer += Time.deltaTime;
+        //stayTimer += Time.deltaTime;
 
-        if (stayTimer > stayDuration)
-        {
-            timingText.alpha = Mathf.Lerp(timingText.alpha, 0f, Time.deltaTime * 20);
-        }
-        if (stayTimer >= stayDuration + hideDuration)
-        {
-            EndAnimation();
-        }
+        //if (stayTimer > stayDuration)
+        //{
+        //    timingText.alpha = Mathf.Lerp(timingText.alpha, 0f, Time.deltaTime * 20);
+        //}
+        //if (stayTimer >= stayDuration + hideDuration)
+        //{
+        //    EndAnimation();
+        //}
     }    
 
     public void HandleComboEnd(Component sender, object data)
@@ -63,7 +68,9 @@ public class TimingTextController : MonoBehaviour
     {        
         if(data is bool)   
         {
-            PlayTextAnimation(greatTimingMessage, greatColor);
+            //PlayTextAnimation(greatTimingMessage, greatColor);
+            timingText.text = greatTimingMessage;
+            greatFeedback.PlayFeedbacks();
             Debug.Log("Great Timing TEXT!");
         }       
         
@@ -73,7 +80,9 @@ public class TimingTextController : MonoBehaviour
     {
         if(data is bool)
         {                      
-            PlayTextAnimation(perfectTimingMessage, perfectColor);
+            timingText.text = perfectTimingMessage;
+            perfectFeedback.PlayFeedbacks();
+            //PlayTextAnimation(perfectTimingMessage, perfectColor);
         }         
     }
 }
