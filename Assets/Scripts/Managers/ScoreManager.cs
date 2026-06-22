@@ -135,6 +135,7 @@ public class ScoreManager : MonoBehaviour/*, IDataPersistence*/
             bool resetMultiplier = (bool)data;
             if (resetMultiplier)
             {
+                actualHardness = 0;
                 UpdateMultiplier(0); //Volvemos al multiplicador base
                 ResetTemporaryScore();
                 onMultiplierUpdate.Raise(this, multiplierValue);

@@ -26,17 +26,29 @@ namespace TMPro.Examples
         {
             // Subscribe to event fired when text object has been regenerated.
             TMPro_EventManager.TEXT_CHANGED_EVENT.Add(ON_TEXT_CHANGED);
+            StartVertexAnimation();
         }
 
         void OnDisable()
         {
             TMPro_EventManager.TEXT_CHANGED_EVENT.Remove(ON_TEXT_CHANGED);
+            StopVertexAnimation();
         }
 
 
         void Start()
         {
+            //StartCoroutine(AnimateVertexColors());
+        }
+
+        public void StartVertexAnimation()
+        {
             StartCoroutine(AnimateVertexColors());
+        }
+
+        public void StopVertexAnimation()
+        {
+            StopCoroutine(AnimateVertexColors());
         }
 
 
