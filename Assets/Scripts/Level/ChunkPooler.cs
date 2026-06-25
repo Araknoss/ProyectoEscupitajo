@@ -6,6 +6,7 @@ public class ChunkPooler : MonoBehaviour
 {   
     [SerializeField] private List<GameObject> poolList = new List<GameObject>();
     [SerializeField] private int poolSize = 5;
+    public GameObject obstaclePooler;
 
     public GameObject lastChunk;
     void Awake()

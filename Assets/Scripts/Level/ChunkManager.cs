@@ -14,7 +14,7 @@ public class ChunkManager : MonoBehaviour
 
     [Header("Levels")]
     [SerializeField] private List<LevelData> levels;
-    [SerializeField] private LevelData tutorialLevel;
+    [SerializeField] private LevelData tutorialLevel;    
 
     [Tooltip("Chunks totales antes de pasar al siguiente nivel")]
     [SerializeField] private int chunkThreshold = 12;
@@ -120,6 +120,10 @@ public class ChunkManager : MonoBehaviour
         }
 
         _pooler = currentLevel.chunkPoolers[currentPoolerIndex];
+        if(_pooler.obstaclePooler!=null)
+        {
+            _pooler.obstaclePooler.SetActive(true);
+        }
     }
 
     private void TransitionToNextLevel()

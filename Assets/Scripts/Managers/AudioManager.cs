@@ -143,7 +143,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayScoreToCoinSound()
     {
-        PlaySound2D(UIScoreToCoinSound);
+        //PlaySound2D(UIScoreToCoinSound);
     }
 
 

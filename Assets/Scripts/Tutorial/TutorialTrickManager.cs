@@ -83,6 +83,10 @@ public class TutorialTrickManager : MonoBehaviour
     public GameEvent onGreatTiming;
     public GameEvent onTrickAnimationEnd;
 
+    public GameEvent tutorialFirstTrickPerformed;
+    public GameEvent tutorialSecondTrickPerformed;
+    public GameEvent tutorialThirdTrickPerformed;
+
     [Header("Debug")]
     [SerializeField] private Animator animator;
 
@@ -123,46 +127,40 @@ public class TutorialTrickManager : MonoBehaviour
     }
     void HandleInput() 
     {
-        if (bodyInput && !onKeepTrick)
+        if (tutorialTrickIndex == 0 && bodyInput)
         {
-            CheckAvailable(bodyTrickActionId);
+            PerformTrick(tutorialTricks[0]);
+            Debug.Log("Tutorial Trick performed: " + tutorialTricks[0].trickName);
         }
-        if (skateInput && !onKeepTrick)
+        if(tutorialTrickIndex == 1 && skateInput)
         {
-            CheckAvailable(skateTrickActionId);
+            PerformTrick(tutorialTricks[1]);
+            Debug.Log("Tutorial Trick performed: " + tutorialTricks[1].trickName);
         }
-        if (keepInputPress && !onKeepTrick)
-        {
-            CheckAvailable(keepKeyActionId);
+            //if (bodyInput && !onKeepTrick)
+            //{
+            //    CheckAvailable(bodyTrickActionId);
+            //}
+            //if (skateInput && !onKeepTrick)
+            //{
+            //    CheckAvailable(skateTrickActionId);
+            //}
+            //if (keepInputPress && !onKeepTrick)
+            //{
+            //    CheckAvailable(keepKeyActionId);
+            //}
+            //if (keepInputRelease && onKeepTrick)
+            //{
+            //    onKeepTrick = false;
+            //    if (!UnlockablesManager.Instance.HasUnlockedTrick(availableTricks[0]))
+            //    {
+            //        PerformTrick(baseTricks[1]);
+            //        return;
+            //    }
+            //    PerformTrick(availableTricks[0]); //Se asume que solo hay un truco al soltar           
+            //}
         }
-        if (keepInputRelease && onKeepTrick)
-        {
-            onKeepTrick = false;
-            if (!UnlockablesManager.Instance.HasUnlockedTrick(availableTricks[0]))
-            {
-                PerformTrick(baseTricks[1]);
-                return;
-            }
-            PerformTrick(availableTricks[0]); //Se asume que solo hay un truco al soltar           
-        }
-    }
-    void CheckAvailable(int actionId) 
-    {
-        if (availableTricks.Any())
-        {
-            for (int i = 0; i < availableTricks.Count; i++)
-            {
-                if (availableTricks[i].rewiredActionId == actionId)
-                {
-                    if (!availableTricks[i].isStateTrick) //Para que los trucos de estado solo se activen desde los estados
-                    {
-                        PerformTrick(availableTricks[i]);
-                        return;
-                    }
-                }
-            }           
-        }
-    }
+   
     void HandleTrickCooldown()
     {
         if (trickCooldownTimer > 0f && onCombo)
@@ -216,14 +214,22 @@ public class TutorialTrickManager : MonoBehaviour
         SetGreatTiming(false);
     }
 
+    public void InitializeAvailableTricks()
+    {
+        tutorialTrickIndex = 0;
+        availableTricks.Clear();
+        availableTricks.Add(tutorialTricks[tutorialTrickIndex]);
+        onAvailableTricksReset.Raise(this, availableTricks);
+    }
     public void SetTutorialTrickAvailable()
     {
         if (tutorialTrickIndex < tutorialTricks.Count)
         {
+            tutorialTrickIndex++;
             availableTricks.Clear();
             availableTricks.Add(tutorialTricks[tutorialTrickIndex]);
             onAvailableTricksReset.Raise(this, availableTricks);
-            tutorialTrickIndex++;
+            //PerformTrick(tutorialTricks[tutorialTrickIndex]);            
         }
     }
 
@@ -237,11 +243,11 @@ public class TutorialTrickManager : MonoBehaviour
         {
             onTrickPerformedOnGreatTiming.Raise(this, isGreatTiming);
         }
-        else if (onCombo && !trick.isStateTrick)
-        {
-            ResetCombo();
-            return;
-        }
+        //else if (onCombo && !trick.isStateTrick)
+        //{
+        //    ResetCombo();
+        //    return;
+        //}
         onTrickPerformed.Raise(this, trick);
 
         Debug.Log("Tutorial Trick performed: " + trick.trickName);
@@ -271,11 +277,11 @@ public class TutorialTrickManager : MonoBehaviour
 
     void WallSlideEnd() //Se ejecuta al salir de la pared o al hacer un wall jump o wall charge
     {
-        onWallSlideEnd.Raise(this, wallSlideTrick);
-        ResetTimes(wallSlideTrick);
-        SetAvailableTricks(baseTricks);
+        //onWallSlideEnd.Raise(this, wallSlideTrick);
+        //ResetTimes(wallSlideTrick);
+        //SetAvailableTricks(baseTricks);
 
-        isOnWallSlide = false;
+        //isOnWallSlide = false;
     }
 
     private void ResetTimes(Trick trick)
