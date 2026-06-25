@@ -11,6 +11,7 @@ public class UIPauseScreen : UIScreen
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button mainMenuButton;
+    [SerializeField] private Button shopButton;
     [SerializeField] private Button quitButton;
 
     //[Header("Default Selection")]
@@ -20,6 +21,7 @@ public class UIPauseScreen : UIScreen
     [SerializeField] private GameEvent resumeEvent;
     [SerializeField] private GameEvent openSettingsEvent;
     [SerializeField] private GameEvent mainMenuEvent;
+    [SerializeField] private GameEvent shopEvent;
     [SerializeField] private GameEvent openQuitEvent;
 
     protected override void Awake()
@@ -29,6 +31,7 @@ public class UIPauseScreen : UIScreen
         resumeButton.onClick.AddListener(OnResumePressed);
         settingsButton.onClick.AddListener(OnSettingsPressed);
         mainMenuButton.onClick.AddListener(OnMainMenuPressed);
+        shopButton.onClick.AddListener(OnShopPressed);
         quitButton.onClick.AddListener(OnQuitPressed);
     }
 
@@ -50,6 +53,11 @@ public class UIPauseScreen : UIScreen
     private void OnMainMenuPressed()
     {
         mainMenuEvent?.Raise(this, null);
+    }
+
+    private void OnShopPressed()
+    {
+        shopEvent?.Raise(this, null);
     }
 
     private void OnQuitPressed()

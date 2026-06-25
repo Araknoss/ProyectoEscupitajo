@@ -37,7 +37,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F5))
+        if (Input.GetKeyDown(KeyCode.F2))
         {
             NewGame();
         }        

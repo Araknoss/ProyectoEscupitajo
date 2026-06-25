@@ -28,4 +28,4 @@ MonoBehaviour:
   isStateTrick: 0
   isUnlockedAtStart: 0
   isKeepTrick: 0
-  cost: 100
+  cost: 60

@@ -14,6 +14,7 @@ public class ChunkManager : MonoBehaviour
 
     [Header("Levels")]
     [SerializeField] private List<LevelData> levels;
+    [SerializeField] private LevelData tutorialLevel;
 
     [Tooltip("Chunks totales antes de pasar al siguiente nivel")]
     [SerializeField] private int chunkThreshold = 12;
@@ -38,6 +39,7 @@ public class ChunkManager : MonoBehaviour
     [SerializeField] private bool addRandomness=false;
     [SerializeField] private float heightSpawnRandomness= 30f;
     [SerializeField] private float randomSpawnHeight;
+
     private void Start()
     {
         InitializeCurrentPooler();
@@ -136,7 +138,13 @@ public class ChunkManager : MonoBehaviour
     }
 
     private void InitializeCurrentPooler()
-    {
+    {        
+        if(GameManager.Instance.onTutorial)
+        {
+            _pooler = tutorialLevel.chunkPoolers[0];
+            return;
+        }       
+
         LevelData currentLevel = levels[currentLevelIndex];
 
         if (currentLevel.chunkPoolers.Count == 0)
@@ -145,6 +153,8 @@ public class ChunkManager : MonoBehaviour
             return;
         }
 
+        chunkThreshold = (int)currentLevel.chunkTreshold;
+        chunksPerPooler = (int)currentLevel.chunksPerPooler;
         _pooler = currentLevel.chunkPoolers[currentPoolerIndex];
     }
 

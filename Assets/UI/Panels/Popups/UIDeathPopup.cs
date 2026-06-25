@@ -14,6 +14,7 @@ public class UIDeathPopup : UIPopup
     [SerializeField] private Button retryButton;
     [SerializeField] private Button menuButton;
     [SerializeField] private Button quitButton;
+    [SerializeField] private Button shopButton;
 
     [Header("Buttons Container")]
     [SerializeField] private CanvasGroup buttonsGroup;
@@ -21,6 +22,7 @@ public class UIDeathPopup : UIPopup
     [Header("Texts")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text coinsText;
+    [SerializeField] private TMP_Text demoText;
 
     [Header("Feedbacks")]
     [SerializeField] private MMF_Player popupIntroFeedback;
@@ -31,12 +33,14 @@ public class UIDeathPopup : UIPopup
     [SerializeField] private GameEvent quitEvent;
     [SerializeField] private GameEvent retryEvent;
     [SerializeField] private GameEvent mainMenuEvent;
+    [SerializeField] private GameEvent shopEvent;
 
 
     protected override void Awake()
     {
         retryButton.onClick.AddListener(OnRetryPressed);
         menuButton.onClick.AddListener(OnMenuPressed);
+        shopButton.onClick.AddListener(OnShopPressed);
         quitButton.onClick.AddListener(OnQuitPressed);
 
     }
@@ -56,6 +60,10 @@ public class UIDeathPopup : UIPopup
         quitEvent?.Raise(this, null);
     }
 
+    private void OnShopPressed()
+    {
+        shopEvent?.Raise(this, null);
+    }
     private void OnMenuPressed()
     {
         mainMenuEvent?.Raise(this, null);
@@ -137,6 +145,14 @@ public class UIDeathPopup : UIPopup
         }
 
         coinsText.text = targetCoins.ToString();
+    }
+
+    public void HandleOnDemoEnd(Component sender, object data)
+    {
+        if (popupIntroFeedback != null)
+        {
+            demoText.text = "DEMO END";
+        }
     }
 
 }
