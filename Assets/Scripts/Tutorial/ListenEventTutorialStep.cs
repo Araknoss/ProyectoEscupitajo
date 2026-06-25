@@ -14,7 +14,12 @@ public class ListenEventTutorialStep : TutorialStep
             if(data is bool)
             {
                 completed = (bool)data;
-            }                       
+            }             
+            
+            if(data is Trick)
+            {
+                completed = true;
+            }
         }
     }
     public override bool IsCompleted()

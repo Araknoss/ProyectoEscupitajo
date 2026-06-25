@@ -16,6 +16,7 @@ public class TutorialManager : MonoBehaviour, IDataPersistence
     [SerializeField] UnityEvent onSecondTutorialStepCompleted;
     [SerializeField] UnityEvent onThirdTutorialStepCompleted;
     [SerializeField] UnityEvent onFourthTutorialStepCompleted;
+    [SerializeField] UnityEvent onFifthTutorialStepCompleted;
     [SerializeField] UnityEvent onTutorialCompleted;
 
     private bool tutorialCompleted = false;
@@ -71,6 +72,7 @@ public class TutorialManager : MonoBehaviour, IDataPersistence
     {
         onTutorialCompleted.Invoke();
         tutorialCompleted = true;
+        gameObject.SetActive(false);
         Debug.Log("Tutorial Complete");
     }
 
@@ -92,6 +94,10 @@ public class TutorialManager : MonoBehaviour, IDataPersistence
         {
             onFourthTutorialStepCompleted.Invoke();
         }
+        //if (currentStepIndex == 4)
+        //{
+        //    onFifthTutorialStepCompleted.Invoke();
+        //}
 
 
     }

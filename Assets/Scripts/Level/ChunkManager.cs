@@ -138,12 +138,7 @@ public class ChunkManager : MonoBehaviour
     }
 
     private void InitializeCurrentPooler()
-    {        
-        if(GameManager.Instance.onTutorial)
-        {
-            _pooler = tutorialLevel.chunkPoolers[0];
-            return;
-        }       
+    {      
 
         LevelData currentLevel = levels[currentLevelIndex];
 
