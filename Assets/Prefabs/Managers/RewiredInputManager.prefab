@@ -1321,7 +1321,7 @@ MonoBehaviour:
       _tag: 
       _rules: []
     playerIdCounter: 2
-    actionIdCounter: 13
+    actionIdCounter: 14
     actionCategoryIdCounter: 3
     inputBehaviorIdCounter: 2
     mapCategoryIdCounter: 3
