@@ -50,15 +50,15 @@ public class GoldManager : MonoBehaviour, IDataPersistence
         AddGold(amount);
     }
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F2))
+        if (Input.GetKeyDown(KeyCode.F4))
         {
             AddGold(100);
         }
     }
-#endif
+//#endif
 
     public void LoadData(GameData data)
     {

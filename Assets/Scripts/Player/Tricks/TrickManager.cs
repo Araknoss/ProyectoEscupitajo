@@ -81,6 +81,7 @@ public class TrickManager : MonoBehaviour
     public GameEvent onPerfectTiming;
     public GameEvent onGreatTiming;
     public GameEvent onTrickAnimationEnd;
+    public GameEvent onTrickFailed;
 
     [Header("Debug")]
     [SerializeField] private Animator animator;
@@ -162,6 +163,10 @@ public class TrickManager : MonoBehaviour
                 }
             }
 
+            FailTrick();
+            
+            //FailCombo();
+
             //Cuando no hay truco disponible se usa uno de los trucos base
             //for (int i = 0; i < baseTricks.Count; i++)
             //{
@@ -212,19 +217,23 @@ public class TrickManager : MonoBehaviour
 
     void SetAvailableTricks(List<Trick> newAvailableTricks)
     {
-        availableTricks.Clear();        
+        availableTricks.Clear();
 
-        for (int i=0;i< newAvailableTricks.Count;i++)
+        if(newAvailableTricks!=null && newAvailableTricks.Count > 0)
         {
-            if (UnlockablesManager.Instance.HasUnlockedTrick(newAvailableTricks[i]) || newAvailableTricks[i].isUnlockedAtStart) //Si el truco es base siempre lo puedes usar
+            for (int i = 0; i < newAvailableTricks.Count; i++)
             {
-                availableTricks.Add(newAvailableTricks[i]);
-            }            
+                if (UnlockablesManager.Instance.HasUnlockedTrick(newAvailableTricks[i]) || newAvailableTricks[i].isUnlockedAtStart) //Si el truco es base siempre lo puedes usar
+                {
+                    availableTricks.Add(newAvailableTricks[i]);
+                }
+            }
         }
-        onAvailableTricksReset.Raise(this, availableTricks);
-
-        SetPerfectTiming(false);
-        SetGreatTiming(false);
+        
+            SetPerfectTiming(false);
+            SetGreatTiming(false);
+            onAvailableTricksReset.Raise(this, availableTricks);
+        
     }
 
     void PerformTrick(Trick trick)
@@ -239,7 +248,7 @@ public class TrickManager : MonoBehaviour
         }       
         else if (onCombo && !trick.isStateTrick) 
         {
-            ResetCombo();
+            FailTrick();
             return;
         }
         onTrickPerformed.Raise(this, trick);
@@ -288,16 +297,29 @@ public class TrickManager : MonoBehaviour
         trickGreatTime = trickCooldownTime * trickGreatTimingPercentage;
     }    
 
+    private void FailTrick()
+    {
+        onTrickFailed.Raise(this, null);
+        ResetCombo();
+    }
     private void ResetCombo()
     {
-        SetAvailableTricks(baseTricks);
+        SetAvailableTricks(null);
 
         onCombo = false;
         onKeepTrick=false;        
 
         trickCooldownTimer = trickCooldownTime;
         onComboEnd.Raise(this, true);        
+
+        StartCoroutine(ResetComboCo());
     }    
+
+    IEnumerator ResetComboCo()
+    {
+        yield return new WaitForSeconds(trickCooldownTime);
+        SetAvailableTricks(baseTricks);
+    }
     void HandleKeepTrick()
     {        
         if(keepInputPress)

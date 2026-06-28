@@ -1,7 +1,5 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
+using MoreMountains.Feedbacks;
 using TMPro;
 using UnityEngine;
 
@@ -23,6 +21,9 @@ public class PlayerScoreTextUI : MonoBehaviour
     [SerializeField] private Color okColor = Color.green;
     [SerializeField] private Color defaultColor = Color.white;
     [SerializeField] private Color perfectColor = Color.red;
+
+    [Header("Feedback")]
+    [SerializeField] private MMF_Player comboEndFeedback;
     private void Update()
     {
         text.transform.localScale = Vector3.Lerp(text.transform.localScale, Vector3.one, Time.deltaTime * returnAnimationSpeed);
@@ -41,13 +42,22 @@ public class PlayerScoreTextUI : MonoBehaviour
 
     public void HandleComboEnd(Component sender, object data)
     {
-        stayTimer = stayDuration;              
+        stayTimer = stayDuration;            
     }    
+
+    public void HandleOnTrickFailed(Component sender, object data)
+    {
+        //stayTimer = stayDuration;
+        if (comboEndFeedback != null)
+        {
+            comboEndFeedback.PlayFeedbacks();
+        }
+    }
 
     private void EndAnimation()
     {        
         text.alpha = 0f;               
-        text.gameObject.SetActive(false);
+        //text.gameObject.SetActive(false);
     }
 
     private void AddTemporaryScore(int score) 
