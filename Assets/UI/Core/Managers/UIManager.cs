@@ -110,6 +110,7 @@ public class UIManager : MonoBehaviour
         if (popupService.HasPopup)
         {
             ClosePopup();
+            Debug.Log("CLOSE POPUP");
             //if(CurrentScreen is UIPauseScreen) //Para recuperar el foco
             //{
             //    Open<UIPauseScreen>();
@@ -179,6 +180,11 @@ public class UIManager : MonoBehaviour
     public void HandleOnDeath(Component sender, object data)
     {
         OpenPopup<UIDeathPopup>();
+    }
+
+    public void HandleOnTutorialPopup()
+    {
+        OpenPopup<UITutorialPopup>();
     }
     public void Quit()
     {
