@@ -14015,7 +14015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steps:
   - {fileID: 1318837704}
-  - {fileID: 1770155658}
+  - {fileID: 1746001704}
   - {fileID: 252466299}
   - {fileID: 741816269}
   currentStepIndex: 0
@@ -50677,9 +50677,9 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - rid: 6994376349768744963
-  - rid: 7566420329031532546
-  - rid: 7566420329031532548
+  - rid: 7566420329031532550
+  - rid: 7566420329031532551
+  - rid: 7566420329031532552
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   StopFeedbacksOnDisable: 0
@@ -50687,11 +50687,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6994376349768744963
+    - rid: 7566420329031532550
       type: {class: MMF_DestinationTransform, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
         Active: 1
-        UniqueID: -1638194170
+        UniqueID: 702198715
         Label: Destination
         ChannelMode: 0
         Channel: 0
@@ -50708,7 +50708,7 @@ MonoBehaviour:
           NumberOfRepeats: 0
           RepeatForever: 0
           DelayBetweenRepeats: 1
-          PlayCount: 0
+          PlayCount: 2
           LimitPlayCount: 0
           MaxPlayCount: 3
           SetPlayCountToZeroOnReset: 0
@@ -50942,12 +50942,12 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    - rid: 7566420329031532546
-      type: {class: MMF_HoldingPause, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
+    - rid: 7566420329031532551
+      type: {class: MMF_Pause, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
         Active: 1
-        UniqueID: 1221661607
-        Label: Holding Pause
+        UniqueID: 556087991
+        Label: Pause
         ChannelMode: 0
         Channel: 0
         MMChannelDefinition: {fileID: 0}
@@ -50963,7 +50963,7 @@ MonoBehaviour:
           NumberOfRepeats: 0
           RepeatForever: 0
           DelayBetweenRepeats: 1
-          PlayCount: 0
+          PlayCount: 2
           LimitPlayCount: 0
           MaxPlayCount: 3
           SetPlayCountToZeroOnReset: 0
@@ -51016,7 +51016,7 @@ MonoBehaviour:
           ButtonText: 
         Owner: {fileID: 1737547045}
         DebugActive: 0
-        PauseDuration: 0.1
+        PauseDuration: 1.2
         RandomizePauseDuration: 0
         MinPauseDuration: 1
         MaxPauseDuration: 3
@@ -51024,11 +51024,11 @@ MonoBehaviour:
         ScriptDriven: 0
         AutoResume: 0
         AutoResumeAfter: 0.25
-    - rid: 7566420329031532548
+    - rid: 7566420329031532552
       type: {class: MMF_CanvasGroup, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
         Active: 1
-        UniqueID: 2090001777
+        UniqueID: 354296963
         Label: CanvasGroup
         ChannelMode: 0
         Channel: 0
@@ -51045,7 +51045,7 @@ MonoBehaviour:
           NumberOfRepeats: 0
           RepeatForever: 0
           DelayBetweenRepeats: 1
-          PlayCount: 0
+          PlayCount: 2
           LimitPlayCount: 0
           MaxPlayCount: 3
           SetPlayCountToZeroOnReset: 0
@@ -51779,6 +51779,57 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
+--- !u!1 &1746001702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1746001703}
+  - component: {fileID: 1746001704}
+  m_Layer: 0
+  m_Name: InputTutorialStep2 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1746001703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746001702}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.000013828278, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1964100641}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1746001704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746001702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c31d78acff684469d9835c8038a280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepText: 
+  openPopupEvent: {fileID: 11400000, guid: fd41d620325b9014aab7fbd5f5beb630, type: 2}
+  closePopupEvent: {fileID: 11400000, guid: e3c53da8ed1f682429f771b25b8042a3, type: 2}
+  onGamePause: {fileID: 11400000, guid: bed7d37e46fb4d947b4f21be6635431b, type: 2}
+  onGameResume: {fileID: 11400000, guid: 60b5a1066e0e99f4aa0cc4bf35999c6b, type: 2}
+  actionName: UISubmit
+  waitTime: 2
 --- !u!4 &1751794782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4320756097841745346, guid: 3fdd38e554e2e7548b4677824a684ef1, type: 3}
@@ -56338,6 +56389,62 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1919632452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919632433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e3c53da8ed1f682429f771b25b8042a3, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 759014590}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: HandleOnTutorialPopupClose
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1919632453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919632433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: fd41d620325b9014aab7fbd5f5beb630, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 759014590}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: HandleOnTutorialPopup
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1919874963
 GameObject:
   m_ObjectHideFlags: 0
@@ -57017,6 +57124,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1318837705}
+  - {fileID: 1746001703}
   - {fileID: 1770155657}
   - {fileID: 1848745176}
   - {fileID: 252466301}
@@ -65555,6 +65663,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1093592735603314740, guid: 0cd0274e7396eff4cbbba343ff6c05f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1919632443}
+    - targetCorrespondingSourceObject: {fileID: 1093592735603314740, guid: 0cd0274e7396eff4cbbba343ff6c05f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1919632453}
+    - targetCorrespondingSourceObject: {fileID: 1093592735603314740, guid: 0cd0274e7396eff4cbbba343ff6c05f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1919632452}
   m_SourcePrefab: {fileID: 100100000, guid: 0cd0274e7396eff4cbbba343ff6c05f3, type: 3}
 --- !u!222 &7066710593876750200
 CanvasRenderer:

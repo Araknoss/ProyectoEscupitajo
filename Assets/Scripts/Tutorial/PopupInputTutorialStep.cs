@@ -6,6 +6,8 @@ public class PopupInputTutorialStep : TutorialStep
     [Header("Popup Events")]
     [SerializeField] private GameEvent openPopupEvent;
     [SerializeField] private GameEvent closePopupEvent;
+    [SerializeField] private GameEvent onGamePause;
+    [SerializeField] private GameEvent onGameResume;
 
     [Header("Input")]
     [SerializeField] private string actionName = "UISubmit";
@@ -31,11 +33,14 @@ public class PopupInputTutorialStep : TutorialStep
         waitElapsed = false;
 
         openPopupEvent?.Raise(this, null);
+        onGamePause?.Raise(this, null);
+
     }
 
     public override void ExitStep()
     {
         closePopupEvent?.Raise(this, null);
+        onGameResume?.Raise(this, null);
 
         base.ExitStep();
     }
@@ -44,7 +49,7 @@ public class PopupInputTutorialStep : TutorialStep
     {
         if (!waitElapsed)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
 
             if (timer < waitTime)
                 return false;

@@ -182,9 +182,13 @@ public class UIManager : MonoBehaviour
         OpenPopup<UIDeathPopup>();
     }
 
-    public void HandleOnTutorialPopup()
+    public void HandleOnTutorialPopup(Component sender, object data)
     {
         OpenPopup<UIKTutorialPopup>();
+    }
+    public void HandleOnTutorialPopupClose(Component sender, object data)
+    {
+        ClosePopup();
     }
     public void Quit()
     {
