@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using Rewired;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +19,8 @@ public class UITutorialPopup : UIPopup
     [SerializeField] private GameEvent quitEvent;
     [SerializeField] private GameEvent backEvent;
 
-    [SerializeField] private int inputActionId;
+    [SerializeField] private MMF_Player popupIntroFeedback;
+    [SerializeField] private MMF_Player popupOutroFeedback;
 
     protected override void Awake()
     {
@@ -30,6 +32,10 @@ public class UITutorialPopup : UIPopup
     protected override void OnShow()
     {
         SelectDefaultButton();
+        if (popupIntroFeedback != null)
+        {
+            popupIntroFeedback.PlayFeedbacks();
+        }
     }
 
     private void OnQuitPressed()
@@ -54,13 +60,12 @@ public class UITutorialPopup : UIPopup
     protected override void OnHide()
     {
         //resumeEvent.Raise(this, null);
+        popupOutroFeedback?.PlayFeedbacks();
     }
 
     public override void HandleInput(Player player)
     {
-        if(player.GetButtonDown(inputActionId))
-        {
-            OnBackPressed();
-        }
+        
     }
+    
 }

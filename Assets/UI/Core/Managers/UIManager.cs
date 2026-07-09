@@ -184,7 +184,7 @@ public class UIManager : MonoBehaviour
 
     public void HandleOnTutorialPopup()
     {
-        OpenPopup<UITutorialPopup>();
+        OpenPopup<UIKTutorialPopup>();
     }
     public void Quit()
     {

@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using Rewired;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,23 +7,22 @@ using UnityEngine.EventSystems;
 
 public class UIKTutorialPopup : UIPopup
 {
-
     [Header("Game Events")]
     [SerializeField] private GameEvent quitEvent;
     [SerializeField] private GameEvent backEvent;
 
     [SerializeField] private int inputActionId;
 
-    protected override void Awake()
-    {
-        //backButton.onClick.AddListener(OnBackPressed);
-        //quitButton.onClick.AddListener(OnQuitPressed);
-
-    }
+    [SerializeField] private MMF_Player popupIntroFeedback;
+    [SerializeField] private MMF_Player popupOutroFeedback;
 
     protected override void OnShow()
     {
         SelectDefaultButton();
+        if (popupIntroFeedback != null)
+        {
+            popupIntroFeedback.PlayFeedbacks();
+        }
     }
 
     private void OnQuitPressed()
@@ -47,13 +47,27 @@ public class UIKTutorialPopup : UIPopup
     protected override void OnHide()
     {
         //resumeEvent.Raise(this, null);
+        if (popupIntroFeedback != null)
+        {
+            popupOutroFeedback.PlayFeedbacks();
+        }
     }
 
     public override void HandleInput(Player player)
     {
-        if (player.GetButtonDown(inputActionId))
+        if (!player.GetButtonDown(inputActionId))
+            return;
+
+        // -------- SKIP INTRO ANIMATION --------
+        // Si la animación de entrada aún se está reproduciendo,
+        // este UICancel solo la completa, sin cerrar el popup todavía.
+
+        if (popupIntroFeedback != null && popupIntroFeedback.HasFeedbackStillPlaying())
         {
-            OnBackPressed();
+            popupIntroFeedback.SkipToTheEnd();
+            return;
         }
+
+        OnBackPressed();
     }
 }
