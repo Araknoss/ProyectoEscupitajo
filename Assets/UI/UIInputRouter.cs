@@ -41,8 +41,14 @@ public class UIInputRouter : MonoBehaviour
             return;
         }
 
-        if(player.GetButtonDown("Pause"))
+        if (player.GetButtonDown("Pause"))
         {
+            if (GameStateManager.Instance != null && !GameStateManager.Instance.CanPause())
+            {
+                Debug.Log("Pause bloqueado: tutorial o carga en curso");
+                return;
+            }
+
             Debug.Log("Pause pressed");
             pauseEvent.Raise(this, null);
             return;
