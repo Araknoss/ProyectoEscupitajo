@@ -31,7 +31,7 @@ public class GameStateManager : MonoBehaviour
     /// </summary>
     public bool CanPause()
     {
-        return !isTutorialActive && !isLoading;
+        return !isTutorialActive;
     }
 
     // -------- TUTORIAL --------
@@ -48,15 +48,15 @@ public class GameStateManager : MonoBehaviour
 
     // -------- LOADING --------
 
-    public void HandleOnLoadingStart(Component sender, object data)
-    {
-        isLoading = true;
-    }
+    //public void HandleOnLoadingStart(Component sender, object data)
+    //{
+    //    isLoading = true;
+    //}
 
-    public void HandleOnLoadingEnd(Component sender, object data)
-    {
-        isLoading = false;
-    }
+    //public void HandleOnLoadingEnd(Component sender, object data)
+    //{
+    //    isLoading = false;
+    //}
 
     // -------- PAUSE --------
 

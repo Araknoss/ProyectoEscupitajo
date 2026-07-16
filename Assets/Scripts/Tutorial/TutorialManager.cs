@@ -21,6 +21,9 @@ public class TutorialManager : MonoBehaviour, IDataPersistence
 
     private bool tutorialCompleted = false;
 
+    [SerializeField] private GameEvent tutorialStartEvent;
+    [SerializeField] private GameEvent tutorialCompletedEvent;
+
     private void Start()
     {
         if(tutorialCompleted)
@@ -28,6 +31,9 @@ public class TutorialManager : MonoBehaviour, IDataPersistence
             gameObject.SetActive(false);
             return;
         }
+
+        tutorialStartEvent.Raise(this, null);
+
         onTutorialStart.Invoke();
         currentStepIndex = 0;
         CurrentStep = steps[currentStepIndex];
@@ -74,6 +80,8 @@ public class TutorialManager : MonoBehaviour, IDataPersistence
         tutorialCompleted = true;
         gameObject.SetActive(false);
         Debug.Log("Tutorial Complete");
+
+        tutorialCompletedEvent.Raise(this, null);
     }
 
     private void StepEvent()
@@ -98,8 +106,6 @@ public class TutorialManager : MonoBehaviour, IDataPersistence
         //{
         //    onFifthTutorialStepCompleted.Invoke();
         //}
-
-
     }
 
     public void LoadData(GameData data)

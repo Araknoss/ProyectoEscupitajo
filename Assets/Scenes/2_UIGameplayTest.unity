@@ -14389,6 +14389,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  tutorialStartEvent: {fileID: 11400000, guid: 857c1d4da1fdec241b78732cb6b62727, type: 2}
+  tutorialCompletedEvent: {fileID: 11400000, guid: 1edf0c405dda2de4cb639e060f8a84a4, type: 2}
 --- !u!4 &440433367
 Transform:
   m_ObjectHideFlags: 0
@@ -35103,6 +35105,111 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185787397}
   m_CullTransparentMesh: 1
+--- !u!1 &1187634921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1187634923}
+  - component: {fileID: 1187634922}
+  - component: {fileID: 1187634925}
+  - component: {fileID: 1187634924}
+  m_Layer: 0
+  m_Name: GameStateManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1187634922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187634921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea4265cc07bcac4580b58b79b6f2b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTutorialActive: 0
+  isLoading: 0
+  isPaused: 0
+--- !u!4 &1187634923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187634921}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.0707383, y: -8.262492, z: -0.065691896}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1187634924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187634921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 1edf0c405dda2de4cb639e060f8a84a4, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1187634922}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
+        m_MethodName: HandleOnTutorialEnd
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1187634925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187634921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d53ae2ddd141b84b9b84f398fae51b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 857c1d4da1fdec241b78732cb6b62727, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1187634922}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
+        m_MethodName: HandleOnTutorialStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1189485629
 GameObject:
   m_ObjectHideFlags: 0
@@ -48188,6 +48295,7 @@ MonoBehaviour:
   quitEvent: {fileID: 0}
   backEvent: {fileID: 11400000, guid: 3041424e39b8b794689c58d28dff28b7, type: 2}
   inputActionId: 8
+  alternativeInputActionId: 7
   popupIntroFeedback: {fileID: 1737547045}
   popupOutroFeedback: {fileID: 479442688}
 --- !u!114 &1652712790
@@ -51829,6 +51937,7 @@ MonoBehaviour:
   onGamePause: {fileID: 11400000, guid: bed7d37e46fb4d947b4f21be6635431b, type: 2}
   onGameResume: {fileID: 11400000, guid: 60b5a1066e0e99f4aa0cc4bf35999c6b, type: 2}
   actionName: UISubmit
+  alternativeActionName: UICancel
   waitTime: 2
 --- !u!4 &1751794782 stripped
 Transform:
@@ -66834,6 +66943,7 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1018726745}
   - {fileID: 944395661}
+  - {fileID: 1187634923}
   - {fileID: 1988215581181940128}
   - {fileID: 39810510}
   - {fileID: 7781380486280052892}

@@ -12,6 +12,7 @@ public class UIKTutorialPopup : UIPopup
     [SerializeField] private GameEvent backEvent;
 
     [SerializeField] private int inputActionId;
+    [SerializeField] private int alternativeInputActionId = -1;
 
     [SerializeField] private MMF_Player popupIntroFeedback;
     [SerializeField] private MMF_Player popupOutroFeedback;
@@ -55,12 +56,15 @@ public class UIKTutorialPopup : UIPopup
 
     public override void HandleInput(Player player)
     {
-        if (!player.GetButtonDown(inputActionId))
+        bool primaryPressed = player.GetButtonDown(inputActionId);
+        bool alternativePressed = alternativeInputActionId >= 0 && player.GetButtonDown(alternativeInputActionId);
+
+        if (!primaryPressed && !alternativePressed)
             return;
 
         // -------- SKIP INTRO ANIMATION --------
         // Si la animación de entrada aún se está reproduciendo,
-        // este UICancel solo la completa, sin cerrar el popup todavía.
+        // cualquiera de estos inputs solo la completa, sin cerrar el popup todavía.
 
         if (popupIntroFeedback != null && popupIntroFeedback.HasFeedbackStillPlaying())
         {

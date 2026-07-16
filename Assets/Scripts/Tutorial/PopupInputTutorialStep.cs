@@ -11,6 +11,7 @@ public class PopupInputTutorialStep : TutorialStep
 
     [Header("Input")]
     [SerializeField] private string actionName = "UISubmit";
+    [SerializeField] private string alternativeActionName;
 
     [Header("Wait Time")]
     [SerializeField] private float waitTime = 2f;
@@ -47,16 +48,32 @@ public class PopupInputTutorialStep : TutorialStep
 
     public override bool IsCompleted()
     {
+        bool primaryPressed = player.GetButtonDown(actionName);
+        bool alternativePressed = !string.IsNullOrEmpty(alternativeActionName) && player.GetButtonDown(alternativeActionName);
+        bool anyPressed = primaryPressed || alternativePressed;
+
         if (!waitElapsed)
         {
+            // -------- SKIP WAIT TIME --------
+            // Si se pulsa el botón mientras aún se está esperando,
+            // esto solo completa el tiempo de espera, sin completar el paso todavía.
+
+            if (anyPressed)
+            {
+                waitElapsed = true;
+                return false;
+            }
+
             timer += Time.unscaledDeltaTime;
 
             if (timer < waitTime)
                 return false;
 
             waitElapsed = true;
+            return false;
         }
 
-        return player.GetButtonDown(actionName);
+        return anyPressed;
     }
+
 }

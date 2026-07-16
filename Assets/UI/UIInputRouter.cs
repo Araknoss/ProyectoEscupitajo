@@ -32,6 +32,11 @@ public class UIInputRouter : MonoBehaviour
             return;
         }
 
+        if (GameStateManager.Instance != null && !GameStateManager.Instance.CanPause())
+        {
+            Debug.Log("Pause bloqueado: tutorial o carga en curso");
+            return;
+        }
         // -------- GLOBAL INPUT --------
 
         if (player.GetButtonDown("UICancel"))
@@ -42,12 +47,7 @@ public class UIInputRouter : MonoBehaviour
         }
 
         if (player.GetButtonDown("Pause"))
-        {
-            if (GameStateManager.Instance != null && !GameStateManager.Instance.CanPause())
-            {
-                Debug.Log("Pause bloqueado: tutorial o carga en curso");
-                return;
-            }
+        {           
 
             Debug.Log("Pause pressed");
             pauseEvent.Raise(this, null);
