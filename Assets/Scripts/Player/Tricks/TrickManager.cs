@@ -53,10 +53,10 @@ public class TrickManager : MonoBehaviour
     [Header("Timing")]
     [SerializeField] private float trickPerfectTimingPercentage = 0.2f;
     [SerializeField] private float trickPerfectTime;   
-    private bool isPerfectTiming;
+    public bool isPerfectTiming;
     [SerializeField] private float trickGreatTimingPercentage = 0.5f;
     [SerializeField] private float trickGreatTime;
-    private bool isGreatTiming;
+    public bool isGreatTiming;
 
 
     [Header("OnWall")]
@@ -163,7 +163,7 @@ public class TrickManager : MonoBehaviour
                 }
             }
 
-            FailTrick();
+            //FailTrick();
             
             //FailCombo();
 
@@ -265,6 +265,7 @@ public class TrickManager : MonoBehaviour
         if (trick.isKeepTrick)
         {
             onKeepTrick = true;
+            StartKeepTiming();
         }
         if(isOnWallSlide && trick != wallSlideTrick)
         {
@@ -273,14 +274,17 @@ public class TrickManager : MonoBehaviour
     }  
     
     void PerformWallSlideTrick() //Se ejecuta al entrar en contacto con la pared 1 vez
-    {            
+    {
         onTrickPerformed.Raise(this, wallSlideTrick);
         lastTrickPerformed = wallSlideTrick;
+        onCombo = true;
+        ResetTimes(wallSlideTrick);
         SetAvailableTricks(wallSlideTrick.comboTricks);
     }
 
     void WallSlideEnd() //Se ejecuta al salir de la pared o al hacer un wall jump o wall charge
     {
+
         onWallSlideEnd.Raise(this, wallSlideTrick);
         ResetTimes(wallSlideTrick);
         SetAvailableTricks(baseTricks);
@@ -342,14 +346,16 @@ public class TrickManager : MonoBehaviour
     void HandleKeepTiming()
     {
         keepTiming = Mathf.PingPong(Time.time * keepTimingSpeed, 1f);
-        bool currentlyInside = keepTiming >= minRange && keepTiming <= maxRange;        
+        bool currentlyInside = keepTiming >= minRange && keepTiming <= maxRange;
         if (currentlyInside && !isInsideRange)
         {
+            SetGreatTiming(false);
             SetPerfectTiming(true);
         }
-        
+
         if (!currentlyInside && isInsideRange)
         {
+            SetPerfectTiming(false);
             SetGreatTiming(true);
         }
 
@@ -441,5 +447,10 @@ public class TrickManager : MonoBehaviour
         if(lastTrickPerformed != null)
             GUI.Label(new Rect(10, 10, 300, 30), lastTrickPerformed.name);
     }
-
+    private void StartKeepTiming()
+    {
+        isInsideRange = false;
+        SetPerfectTiming(false);
+        SetGreatTiming(true); //Por defecto, un truco de mantener siempre es como minimo "great"
+    }
 }
