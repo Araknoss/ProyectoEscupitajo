@@ -193,6 +193,7 @@ public class ChunkManager : MonoBehaviour
         chunkThreshold = (int)currentLevel.chunkTreshold;
         chunksPerPooler = (int)currentLevel.chunksPerPooler;
         _pooler = currentLevel.chunkPoolers[currentPoolerIndex];
+
     }
 
     private void DemoEnd()

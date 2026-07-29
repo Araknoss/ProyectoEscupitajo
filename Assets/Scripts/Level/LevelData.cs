@@ -15,4 +15,8 @@ public class LevelData
 
     [Tooltip("Chunk especial que siempre se spawnea justo antes de pasar al siguiente nivel")]
     public GameObject lastChunk;
+
+    [Header("Fondo del nivel")]
+    [Tooltip("Sprite de fondo asociado a este nivel")]
+    public GameObject backgroundObject;
 }
