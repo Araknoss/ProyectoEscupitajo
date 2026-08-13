@@ -1,7 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class GetObstacleFromPool : MonoBehaviour
+public class EnemyHorizontalSpawnerFromPool : MonoBehaviour
 {
     [SerializeField] private Pooler _pooler;
 
@@ -18,9 +19,11 @@ public class GetObstacleFromPool : MonoBehaviour
     [SerializeField] private float minHeightOffset = -1f;
     [SerializeField] private float maxHeightOffset = 1f;
 
-    //[Header("Movement for TransformMovement")]
-    //[Tooltip("Velocidad que se asignará a TransformMovement si está presente.")]
-    //[SerializeField] private float movementSpeed = 2f;
+    [Header("Sincronización de nivel")]
+    [Tooltip("Índices de nivel (según ChunkManager.levels) en los que este enemigo debe spawnear. Vacío = spawnea en todos los niveles.")]
+    [SerializeField] private List<int> activeLevelIndices = new List<int>();
+
+    private bool canSpawn = true;
 
     private void Start()
     {
@@ -33,6 +36,9 @@ public class GetObstacleFromPool : MonoBehaviour
         {
             float waitTime = Random.Range(minInterval, maxInterval);
             yield return new WaitForSeconds(waitTime);
+
+            if (!canSpawn)
+                continue;
 
             GameObject pooledObject = _pooler?.GetPooledObject();
             if (pooledObject == null) continue;
@@ -50,9 +56,21 @@ public class GetObstacleFromPool : MonoBehaviour
 
             var tm = pooledObject.GetComponent<TransformMovement>();
             if (tm != null)
-            {                
-                tm.SetHorizontalDirection(spawnLeft ? 1 : -1);                
+            {
+                tm.SetHorizontalDirection(spawnLeft ? 1 : -1);
             }
         }
+    }
+
+    /// <summary>
+    /// Handler para GameEventListener: activa/desactiva el spawn de este enemigo
+    /// según si el nuevo nivel notificado por el ChunkManager master está en su lista de niveles activos.
+    /// </summary>
+    public void OnLevelChanged(Component sender, object data)
+    {
+        if (data is not int newLevelIndex)
+            return;
+
+        canSpawn = activeLevelIndices.Count == 0 || activeLevelIndices.Contains(newLevelIndex);
     }
 }

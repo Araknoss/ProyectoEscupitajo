@@ -2,34 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnVerticalEnemyFromPool : MonoBehaviour
+public class EnemyVerticalSpawnerFromPool : MonoBehaviour
 {
     [SerializeField] private Pooler _pooler;
 
     [Header("Spawn points")]
-    [SerializeField] private Transform spawnPoint;
+    [Tooltip("Puntos entre los que se elige una posición aleatoria para spawnear el enemigo.")]
+    [SerializeField] private Transform leftSpawnPoint;
+    [SerializeField] private Transform rightSpawnPoint;
 
     [Header("Spawn timing (s)")]
     [SerializeField] private float minInterval = 3f;
     [SerializeField] private float maxInterval = 10f;
 
-    [Header("Offset")]
-    [SerializeField] private float minWidthtOffset = -1f;
-    [SerializeField] private float maxWidthOffset = 1f;
+    [Header("Movement")]
+    [Tooltip("Dirección de movimiento del enemigo tras spawnear.")]
+    [SerializeField] private Vector3 movementDirection = Vector3.down;
 
     [Header("Sincronización de nivel")]
     [Tooltip("Índices de nivel (según ChunkManager.levels) en los que este enemigo debe spawnear. Vacío = spawnea en todos los niveles.")]
     [SerializeField] private List<int> activeLevelIndices = new List<int>();
 
-    private bool spawnLeft;
     private bool canSpawn = true;
 
     private void Start()
     {
-        StartCoroutine(SpawnObstaclesRandomly());
+        StartCoroutine(SpawnEnemiesRandomly());
     }
 
-    private IEnumerator SpawnObstaclesRandomly()
+    private IEnumerator SpawnEnemiesRandomly()
     {
         while (true)
         {
@@ -42,18 +43,28 @@ public class SpawnVerticalEnemyFromPool : MonoBehaviour
             GameObject pooledObject = _pooler?.GetPooledObject();
             if (pooledObject == null) continue;
 
-            SpawnWithOffset(pooledObject, spawnPoint);
+            Vector3 spawnPos = GetRandomSpawnPosition();
+
+            pooledObject.transform.position = spawnPos;
+            pooledObject.SetActive(true);
+
+            var tm = pooledObject.GetComponent<TransformMovement>();
+            if (tm != null)
+            {
+                tm.SetDirection(movementDirection);
+            }
         }
     }
 
-    private void SpawnWithOffset(GameObject pooledObject, Transform basePoint)
+    private Vector3 GetRandomSpawnPosition()
     {
-        Vector3 spawnPos = (basePoint != null) ? basePoint.position : transform.position;
-        float widthOffset = Random.Range(minWidthtOffset, maxWidthOffset);
-        spawnPos.x += widthOffset;
+        if (leftSpawnPoint == null || rightSpawnPoint == null)
+        {
+            return transform.position;
+        }
 
-        pooledObject.transform.position = spawnPos;
-        pooledObject.SetActive(true);
+        float t = Random.value;
+        return Vector3.Lerp(leftSpawnPoint.position, rightSpawnPoint.position, t);
     }
 
     /// <summary>
