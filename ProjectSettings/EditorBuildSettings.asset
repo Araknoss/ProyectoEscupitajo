@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/0_NewMenu.unity
     guid: c4f5346112124a049b2e9941082b59da
   - enabled: 1
-    path: Assets/Scenes/2_UIGameplayTest.unity
+    path: Assets/Scenes/2_Gameplay.unity
     guid: 1f361d72526206046bc74e674251f48f
   - enabled: 0
     path: Assets/Scenes/1_Gym.unity
@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/5_MainMenu.unity
     guid: 66ee20854c7725948b5ba8969d51461a
+  - enabled: 1
+    path: Assets/Scenes/6_GameplayTest.unity
+    guid: 6cff021ba42e33d4dad54a44d3d891eb
   m_configObjects: {}

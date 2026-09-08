@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5111705241653005335}
   - component: {fileID: 7029968025639887958}
   m_Layer: 7
-  m_Name: 75x1400
+  m_Name: Agua75x1400
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
