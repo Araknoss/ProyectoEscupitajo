@@ -19,11 +19,20 @@ public class TrickAnimationPlayer : MonoBehaviour
     public void HandleComboEnd(Component sender, object data)
     {
         animator.SetBool("PerformingTrick", false);
+        animator.SetBool("SkateMove", false);
     }
 
     public void HandleOnWallSlideEnd(Component sender, object data)
     {
-        animator.SetBool("PerformingTrick", false);
+        //animator.SetBool("PerformingTrick", false);
+        if(data is bool exitWallWithoutTrick)
+        {
+            if(exitWallWithoutTrick)
+            {
+                animator.SetBool("SkateMove", true);
+            }
+        }
+
     }
 
     public void HandleOnPlayerDeath(Component sender, object data)

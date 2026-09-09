@@ -290,6 +290,10 @@ public class TrickManager : MonoBehaviour
         SetAvailableTricks(baseTricks);
 
         isOnWallSlide = false;
+
+        //Nueva implementacion: Al salir de la pared sin hacer truco, se lanza un evento para animacion de SkateMove.
+        if(lastTrickPerformed == wallSlideTrick)
+            onWallSlideEnd.Raise(this, true);
     }
 
     private void ResetTimes(Trick trick)
