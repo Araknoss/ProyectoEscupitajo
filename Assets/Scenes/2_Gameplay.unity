@@ -3069,7 +3069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &122122020
 Transform:
   m_ObjectHideFlags: 0
@@ -22009,11 +22009,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919165620}
   m_CullTransparentMesh: 1
---- !u!1 &923399421 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3152580380357045217, guid: c8c1ffe1b821f3146947e792c825dbc6, type: 3}
-  m_PrefabInstance: {fileID: 7682888514232803602}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &930374211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25300,14 +25295,6 @@ MonoBehaviour:
   spawnHeight: 35
   chunkSpeed: 12
   levels:
-  - levelName: Topo
-    chunkPoolers:
-    - {fileID: 7589976297355989643}
-    chunkTreshold: 50
-    chunksPerPooler: 2
-    firstChunk: {fileID: 923399421}
-    lastChunk: {fileID: 0}
-    backgroundObject: {fileID: 0}
   - levelName: Garbage City
     chunkPoolers:
     - {fileID: 1992350829594724626}
@@ -58148,7 +58135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5668410965770111196, guid: 65300bf885ce20e4781ebd47ce3157ea, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7596747466027795992, guid: 65300bf885ce20e4781ebd47ce3157ea, type: 3}
       propertyPath: lastChunk
@@ -58570,6 +58557,10 @@ PrefabInstance:
     - target: {fileID: 5728206007311073666, guid: a7956b3e4dd7a39449b4067f21efc9c6, type: 3}
       propertyPath: m_Name
       value: ChunkAlcantarillaEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728206007311073666, guid: a7956b3e4dd7a39449b4067f21efc9c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7140401567822018258, guid: a7956b3e4dd7a39449b4067f21efc9c6, type: 3}
       propertyPath: m_LocalPosition.x

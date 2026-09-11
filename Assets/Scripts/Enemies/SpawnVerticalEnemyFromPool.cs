@@ -22,10 +22,10 @@ public class SpawnVerticalEnemyFromPool : MonoBehaviour
     [SerializeField] private List<int> activeLevelIndices = new List<int>();
 
     private bool spawnLeft;
-    private bool canSpawn = true;
+    private bool canSpawn = false;
 
     private void Start()
-    {
+    {        
         StartCoroutine(SpawnObstaclesRandomly());
     }
 
