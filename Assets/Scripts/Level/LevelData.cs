@@ -19,4 +19,6 @@ public class LevelData
     [Header("Fondo del nivel")]
     [Tooltip("Sprite de fondo asociado a este nivel")]
     public GameObject backgroundObject;
+
+    public int levelIndex;
 }
