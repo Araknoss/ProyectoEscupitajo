@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 70396512733182621}
   - component: {fileID: 7157861163215171735}
   - component: {fileID: 135402551747145364}
-  - component: {fileID: 806048915558409549}
   m_Layer: 0
   m_Name: "BrazoF\xF3sil"
   m_TagString: Obstacle
@@ -151,22 +150,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &806048915558409549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3877730768954434480}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18f9d6ba9827822498241f8b18ea5a3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 135402551747145364}
-  body: {fileID: 70396512733182621}
-  actualState: {fileID: 0}
-  startState: {fileID: 4853589664892108421}
 --- !u!1 &5784506555607251015
 GameObject:
   m_ObjectHideFlags: 0
