@@ -296,6 +296,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6467020149598748927}
     m_Modifications:
+    - target: {fileID: 806048915558409549, guid: cdc1702fcbb3ceb4da01d588af05c1ed, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3653544009284082855, guid: cdc1702fcbb3ceb4da01d588af05c1ed, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.960023
@@ -371,6 +375,10 @@ PrefabInstance:
     - target: {fileID: 6392077739171529415, guid: cdc1702fcbb3ceb4da01d588af05c1ed, type: 3}
       propertyPath: m_Offset.y
       value: 0.025557756
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540690070597894773, guid: cdc1702fcbb3ceb4da01d588af05c1ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8861111966615465646, guid: cdc1702fcbb3ceb4da01d588af05c1ed, type: 3}
       propertyPath: m_Color.b
