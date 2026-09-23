@@ -48,7 +48,9 @@ public class ChunkManager : MonoBehaviour
     [Header("Chunk Especial (Foreground)")]
     [Tooltip("Chunk especial a spawnear una única vez en la transición indicada")]
     [SerializeField] private GameObject specialChunk;
+    [Tooltip("Índice lógico del nivel origen para el chunk especial (usa LevelData.levelIndex)")]
     [SerializeField] private int specialChunkFromLevelIndex = 0;
+    [Tooltip("Índice lógico del nivel destino para el chunk especial (usa LevelData.levelIndex)")]
     [SerializeField] private int specialChunkToLevelIndex = 1;
     private bool specialChunkUsed = false;
     private bool pendingSpecialChunk = false;
@@ -89,7 +91,8 @@ public class ChunkManager : MonoBehaviour
             if (isMaster)
             {
                 TransitionToNextLevel();
-                onLevelChanged?.Raise(this, currentLevelIndex);
+                // Notificamos a los listeners con el índice lógico del nivel (LevelData.levelIndex)
+                onLevelChanged?.Raise(this, levels[currentLevelIndex].levelIndex);
             }
 
             return;
@@ -249,23 +252,40 @@ public class ChunkManager : MonoBehaviour
     /// <summary>
     /// Handler para GameEventListener: sincroniza este ChunkManager (esclavo)
     /// cuando el ChunkManager master notifica un cambio de nivel.
+    /// Se espera que el data sea el LevelData.levelIndex (índice lógico), no el índice en la lista.
     /// </summary>
     public void OnLevelChanged(Component sender, object data)
     {
         if (isMaster)
             return;
 
-        if (data is not int newLevelIndex)
+        if (data is not int newLevelLogicalIndex)
             return;
 
+        // índice lógico del nivel actual (LevelData.levelIndex), si existe
+        int currentLevelLogicalIndex = -1;
+        if (levels != null && currentLevelIndex >= 0 && currentLevelIndex < levels.Count)
+        {
+            currentLevelLogicalIndex = levels[currentLevelIndex].levelIndex;
+        }
+
+        // Si la transición coincide con la configurada para el specialChunk, lo marcamos como pendiente
         if (!specialChunkUsed &&
-            currentLevelIndex == specialChunkFromLevelIndex &&
-            newLevelIndex == specialChunkToLevelIndex)
+            currentLevelLogicalIndex == specialChunkFromLevelIndex &&
+            newLevelLogicalIndex == specialChunkToLevelIndex)
         {
             pendingSpecialChunk = true;
         }
 
-        currentLevelIndex = newLevelIndex;
+        // Buscamos el índice en la lista local que corresponde al levelIndex recibido
+        int targetListIndex = levels.FindIndex(l => l.levelIndex == newLevelLogicalIndex);
+        if (targetListIndex == -1)
+        {
+            Debug.LogWarning($"ChunkManager: no se encontró un LevelData con levelIndex {newLevelLogicalIndex} en la lista 'levels' de este gestor.");
+            return;
+        }
+
+        currentLevelIndex = targetListIndex;
         currentPoolerIndex = 0;
         chunksInCurrentPooler = 0;
         chunksCount = 0;
